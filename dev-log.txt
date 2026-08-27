@@ -291,3 +291,9 @@ https://svelte.dev/e/a11y_click_events_have_key_events
 https://svelte.dev/e/a11y_no_static_element_interactions
 23:11:45 [vite-plugin-svelte] src/lib/components/MarketList.svelte:25:0 `<div>` with a touchstart or touchend handler must have an ARIA role
 https://svelte.dev/e/a11y_no_static_element_interactions
+23:13:52 [vite] (ssr) page reload src/lib/components/MarketList.svelte
+23:13:52 [vite] (client) hmr update /src/app.css
+23:13:52 [vite] (ssr) page reload dev-log.txt
+23:13:56 [vite] (ssr) page reload src/lib/components/MarketList.svelte
+23:13:56 [vite] (client) hmr update /src/app.css
+23:13:56 [vite] (ssr) page reload dev-log.txt
