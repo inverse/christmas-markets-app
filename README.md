@@ -8,6 +8,7 @@ A web application for discovering Christmas markets in Berlin.
 - **Interactive Pins:** Markets are represented by "christmas" themed pins on the map.
 - **Popups:** Click on a pin to reveal details about the specific market.
 - **Burger Menu:** Access a list of all available markets.
+- **Dates Open:** Highlight whether a market is currently open based on its operating dates.
 
 ## Development
 

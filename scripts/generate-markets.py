@@ -12,19 +12,27 @@ def get_market_details(url):
         soup = BeautifulSoup(response.text, 'html.parser')
         
         details = {
+            "dates": "Not found",
             "opening_times": "Not found",
             "image": None
         }
         
-        # Find Opening Hours
+        # Find Dates
         dl = soup.find('dl', class_='info-container-list')
+        if dl:
+            dt = dl.find('dt', string='Dates')
+            if dt:
+                dd = dt.find_next_sibling('dd')
+                if dd:
+                    details["dates"] = dd.text.strip()
+
+        # Find Opening Hours
         if dl:
             dt = dl.find('dt', string='Opening Hours')
             if dt:
                 dd = dt.find_next_sibling('dd')
                 if dd:
                     details["opening_times"] = dd.text.strip()
-        
         # Find Image - More robust lookup
         # Try finding the swiper container first
         # Try finding the OG image
@@ -48,8 +56,7 @@ def get_market_details(url):
         
         return details
     except Exception as e:
-        print(f"Error fetching {url}: {e}")
-        return {"opening_times": "Error", "image": None}
+        return {"dates": "Error", "opening_times": "Error", "image": None}
 
 def main():
     response = requests.get(GEOJSON_URL)
@@ -72,6 +79,7 @@ def main():
         markets.append({
             "name": props['title'],
             "address": props['address'],
+            "dates": details["dates"],
             "opening_times": details["opening_times"],
             "image_url": image_url or props['image']['url'],
             "coordinates": {
