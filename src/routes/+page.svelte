@@ -14,7 +14,7 @@
 		onclick={() => isMenuOpen = true}
 		class="absolute top-4 left-4 z-[500] bg-[#b31942] text-white p-3 rounded shadow-lg font-bold border-2 border-[#d4af37]"
 	>
-		☰ Markets
+		☰ Menu
 	</button>
 
 	{#if isMenuOpen}
