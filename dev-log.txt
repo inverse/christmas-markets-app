@@ -1,0 +1,293 @@
+
+> christmas-markets@0.0.1 dev
+> vite dev
+
+Port 5173 is in use, trying another one...
+23:00:13 [vite] (client) Re-optimizing dependencies because vite config has changed
+23:00:13 [vite] (ssr) Re-optimizing dependencies because vite config has changed
+
+  VITE v8.2.2  ready in 1490 ms
+
+  ➜  Local:   http://localhost:5174/
+  ➜  Network: use --host to expose
+23:00:23 [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+23:00:23 [vite] (ssr) page reload .svelte-kit/generated/root.js
+23:00:23 [vite] (ssr) Error when evaluating SSR module /src/routes/+page.svelte: /home/malachi/code/projects/drinking-water/christmas-markets/src/lib/components/MarketList.svelte:35:1 `</ul>` attempted to close an element that was not open
+https://svelte.dev/e/element_invalid_closing_tag
+  Plugin: vite-plugin-svelte:compile
+  File: /home/malachi/code/projects/drinking-water/christmas-markets/src/lib/components/MarketList.svelte:35:1
+   33 |        </li>
+   34 |      {/each}
+   35 |    </ul>
+           ^
+   36 |  </div>
+   37 |  
+
+[1;31m[500] GET /[0m
+
+23:00:23 [vite] (ssr) hmr update /src/app.css
+
+[1;31m[500] GET /[0m
+
+23:00:24 [vite] (client) hmr update /src/app.css
+23:00:24 [vite] (ssr) page reload dev-log.txt
+
+[1;31m[500] GET /[0m
+
+23:00:28 [vite] (client) hmr update /src/app.css
+23:00:28 [vite] (ssr) page reload src/routes/+page.svelte
+23:00:28 [vite] (client) hmr update /src/app.css
+23:00:28 [vite] (ssr) page reload dev-log.txt
+23:00:28 [vite] (ssr) Error when evaluating SSR module /src/routes/+page.svelte: /home/malachi/code/projects/drinking-water/christmas-markets/src/lib/components/MarketList.svelte:35:1 `</ul>` attempted to close an element that was not open
+https://svelte.dev/e/element_invalid_closing_tag
+  Plugin: vite-plugin-svelte:compile
+  File: /home/malachi/code/projects/drinking-water/christmas-markets/src/lib/components/MarketList.svelte:35:1
+   33 |        </li>
+   34 |      {/each}
+   35 |    </ul>
+           ^
+   36 |  </div>
+   37 |  
+23:00:28 [vite] (ssr) Error when evaluating SSR module /src/routes/+page.svelte: /home/malachi/code/projects/drinking-water/christmas-markets/src/lib/components/MarketList.svelte:35:1 `</ul>` attempted to close an element that was not open
+https://svelte.dev/e/element_invalid_closing_tag
+  Plugin: vite-plugin-svelte:compile
+  File: /home/malachi/code/projects/drinking-water/christmas-markets/src/lib/components/MarketList.svelte:35:1
+   33 |        </li>
+   34 |      {/each}
+   35 |    </ul>
+           ^
+   36 |  </div>
+   37 |  
+
+[1;31m[500] GET /[0m
+
+
+[1;31m[500] GET /[0m
+
+23:00:28 [vite] (client) hmr update /src/app.css
+23:00:28 [vite] (ssr) page reload dev-log.txt
+
+[1;31m[500] GET /[0m
+
+23:00:32 [vite] (client) hmr update /src/app.css
+23:00:32 [vite] (ssr) page reload src/lib/components/MarketList.svelte
+23:00:32 [vite] (client) hmr update /src/app.css
+23:00:32 [vite] (ssr) page reload dev-log.txt
+23:00:32 [vite-plugin-svelte] src/lib/components/MarketList.svelte:18:0 Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+23:00:32 [vite-plugin-svelte] src/lib/components/MarketList.svelte:18:0 `<div>` with a click handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+23:00:32 [vite-plugin-svelte] src/lib/components/MarketList.svelte:18:0 Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+23:00:32 [vite-plugin-svelte] src/lib/components/MarketList.svelte:18:0 `<div>` with a click handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+23:00:32 [vite] (client) hmr update /src/app.css
+23:00:32 [vite] (ssr) page reload dev-log.txt
+23:00:39 [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+23:00:39 [vite] (ssr) page reload src/routes/+page.svelte
+23:00:39 [vite] (client) hmr update /src/app.css
+23:00:39 [vite] (ssr) page reload dev-log.txt
+
+[1;31m[404] GET /binaries/asset/image_assets/9061476/source/1722322789/1000x500/[0m
+23:00:40 [vite] (client) hmr update /src/app.css
+23:00:40 [vite] (ssr) page reload dev-log.txt
+
+[1;31m[404] GET /binaries/asset/image_assets/9979609/source/1761314133/1000x500/[0m
+23:00:41 [vite] (client) hmr update /src/app.css
+23:00:41 [vite] (ssr) page reload dev-log.txt
+23:00:43 [vite-plugin-svelte] src/lib/components/MarketList.svelte:18:0 Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+23:00:43 [vite-plugin-svelte] src/lib/components/MarketList.svelte:18:0 `<div>` with a click handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+23:00:43 [vite] (client) hmr update /src/app.css
+23:00:43 [vite] (ssr) page reload dev-log.txt
+23:00:43 [vite] (client) hmr update /src/lib/components/MarketList.svelte, /src/app.css
+23:00:43 [vite] (ssr) page reload src/lib/components/MarketList.svelte
+23:00:43 [vite-plugin-svelte] src/lib/components/MarketList.svelte:18:0 Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+23:00:43 [vite-plugin-svelte] src/lib/components/MarketList.svelte:18:0 `<div>` with a click handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+23:00:44 [vite-plugin-svelte] src/lib/components/MarketList.svelte:18:0 Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+23:00:44 [vite-plugin-svelte] src/lib/components/MarketList.svelte:18:0 `<div>` with a click handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+23:00:44 [vite] (client) hmr update /src/app.css
+23:00:44 [vite] (ssr) page reload dev-log.txt
+23:01:03 [vite-plugin-svelte] src/lib/components/MarketList.svelte:18:0 Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+23:01:03 [vite-plugin-svelte] src/lib/components/MarketList.svelte:18:0 `<div>` with a click handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+23:01:03 [vite] (client) hmr update /src/app.css
+23:01:03 [vite] (ssr) page reload dev-log.txt
+23:01:03 [vite] (client) hmr update /src/lib/components/MarketList.svelte, /src/app.css
+23:01:03 [vite] (ssr) page reload src/lib/components/MarketList.svelte
+23:01:03 [vite-plugin-svelte] src/lib/components/MarketList.svelte:18:0 Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+23:01:03 [vite-plugin-svelte] src/lib/components/MarketList.svelte:18:0 `<div>` with a click handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+23:01:05 [vite-plugin-svelte] src/lib/components/MarketList.svelte:18:0 Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+23:01:05 [vite-plugin-svelte] src/lib/components/MarketList.svelte:18:0 `<div>` with a click handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+23:01:05 [vite] (client) hmr update /src/app.css
+23:01:05 [vite] (ssr) page reload dev-log.txt
+23:04:58 [vite] (client) hmr update /src/lib/components/Map.svelte, /src/app.css
+23:04:58 [vite] (ssr) page reload src/lib/components/Map.svelte
+23:04:58 [vite] (client) hmr update /src/app.css
+23:04:58 [vite] (ssr) page reload dev-log.txt
+23:05:18 [vite-plugin-svelte] src/lib/components/MarketList.svelte:18:0 Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+23:05:18 [vite-plugin-svelte] src/lib/components/MarketList.svelte:18:0 `<div>` with a click handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+23:05:18 [vite] (client) hmr update /src/app.css
+23:05:18 [vite] (ssr) page reload dev-log.txt
+23:05:18 [vite] (client) hmr update /src/lib/components/MarketList.svelte, /src/app.css
+23:05:18 [vite] (ssr) page reload src/lib/components/MarketList.svelte
+23:05:18 [vite-plugin-svelte] src/lib/components/MarketList.svelte:18:0 Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+23:05:18 [vite-plugin-svelte] src/lib/components/MarketList.svelte:18:0 `<div>` with a click handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+23:05:19 [vite-plugin-svelte] src/lib/components/MarketList.svelte:18:0 Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+23:05:19 [vite-plugin-svelte] src/lib/components/MarketList.svelte:18:0 `<div>` with a click handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+23:05:19 [vite] (client) hmr update /src/app.css
+23:05:19 [vite] (ssr) page reload dev-log.txt
+23:05:59 [vite] (client) hmr update /src/lib/components/Map.svelte, /src/app.css
+23:05:59 [vite] (ssr) page reload src/lib/components/Map.svelte
+23:05:59 [vite] (client) hmr update /src/app.css
+23:05:59 [vite] (ssr) page reload dev-log.txt
+
+[1;31m[404] GET /binaries/asset/image_assets/7611156/source/1736165535/1000x500/[0m
+23:06:09 [vite] (client) hmr update /src/app.css
+23:06:09 [vite] (ssr) page reload dev-log.txt
+
+[1;31m[404] GET /binaries/asset/image_assets/8603192/source/1773234238/1000x500/[0m
+23:06:10 [vite] (client) hmr update /src/app.css
+23:06:10 [vite] (ssr) page reload dev-log.txt
+
+[1;31m[404] GET /binaries/asset/image_assets/5589998/source/1658132658/1000x500/[0m
+23:06:11 [vite] (client) hmr update /src/app.css
+23:06:11 [vite] (ssr) page reload dev-log.txt
+23:06:44 [vite] (client) page reload data/markets.json
+23:06:44 [vite] (ssr) page reload data/markets.json
+23:06:44 [vite] (client) hmr update /src/app.css
+23:06:44 [vite] (ssr) page reload dev-log.txt
+23:07:01 [vite] (client) hmr update /src/app.css
+23:07:01 [vite] (ssr) page reload scripts/generate-markets.py
+23:07:01 [vite] (client) hmr update /src/app.css
+23:07:01 [vite] (ssr) page reload dev-log.txt
+23:07:19 [vite] (client) hmr update /src/app.css, /src/lib/components/Map.svelte, /src/lib/components/MarketList.svelte
+23:07:19 [vite] (ssr) page reload src/lib/mapStore.ts
+23:07:19 [vite] (client) hmr update /src/app.css
+23:07:19 [vite] (ssr) page reload dev-log.txt
+23:07:22 [vite] (client) hmr update /src/lib/components/Map.svelte, /src/app.css
+23:07:22 [vite] (ssr) page reload src/lib/components/Map.svelte
+23:07:22 [vite] (client) hmr update /src/app.css
+23:07:22 [vite] (ssr) page reload dev-log.txt
+23:07:23 [vite] (client) page reload data/markets.json
+23:07:23 [vite] (ssr) page reload data/markets.json
+23:07:23 [vite] (client) hmr update /src/app.css
+23:07:23 [vite] (ssr) page reload dev-log.txt
+23:07:24 [vite-plugin-svelte] src/lib/components/MarketList.svelte:13:0 Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+23:07:24 [vite-plugin-svelte] src/lib/components/MarketList.svelte:13:0 `<div>` with a click handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+23:07:24 [vite] (client) hmr update /src/app.css
+23:07:24 [vite] (ssr) page reload dev-log.txt
+23:07:24 [vite] (client) hmr update /src/lib/components/MarketList.svelte, /src/app.css
+23:07:24 [vite] (ssr) page reload src/lib/components/MarketList.svelte
+23:07:24 [vite-plugin-svelte] src/lib/components/MarketList.svelte:13:0 Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+23:07:24 [vite-plugin-svelte] src/lib/components/MarketList.svelte:13:0 `<div>` with a click handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+23:08:07 [vite] (client) hmr update /src/lib/components/Map.svelte, /src/app.css
+23:08:07 [vite] (ssr) page reload src/lib/components/Map.svelte
+23:08:07 [vite] (client) hmr update /src/app.css
+23:08:07 [vite] (ssr) page reload dev-log.txt
+23:08:08 [vite] (client) hmr update /src/lib/components/Map.svelte?svelte&type=style&lang.css, /src/app.css
+23:08:08 [vite] (ssr) page reload src/lib/components/Map.svelte
+23:08:08 [vite] (client) hmr update /src/app.css
+23:08:08 [vite] (ssr) page reload dev-log.txt
+23:08:09 [vite] (client) hmr update /src/lib/components/Map.svelte, /src/lib/components/Map.svelte?svelte&type=style&lang.css, /src/app.css
+23:08:09 [vite] (ssr) page reload src/lib/components/Map.svelte
+23:08:09 [vite] (client) hmr update /src/app.css
+23:08:09 [vite] (ssr) page reload dev-log.txt
+23:08:28 [vite] (client) hmr update /src/lib/components/Map.svelte, /src/app.css
+23:08:28 [vite] (ssr) page reload src/lib/components/Map.svelte
+23:08:28 [vite] (client) hmr update /src/app.css
+23:08:28 [vite] (ssr) page reload dev-log.txt
+23:08:43 [vite] (client) hmr update /src/lib/components/Map.svelte, /src/app.css
+23:08:43 [vite] (ssr) page reload src/lib/components/Map.svelte
+23:08:43 [vite] (client) hmr update /src/app.css
+23:08:43 [vite] (ssr) page reload dev-log.txt
+23:08:43 [vite] (client) hmr update /src/lib/components/Map.svelte, /src/app.css
+23:08:43 [vite] (ssr) page reload src/lib/components/Map.svelte
+23:08:43 [vite] (client) hmr update /src/app.css
+23:08:43 [vite] (ssr) page reload dev-log.txt
+23:09:50 [vite] (client) hmr update /src/lib/components/Map.svelte, /src/app.css
+23:09:50 [vite] (ssr) page reload src/lib/components/Map.svelte
+23:09:50 [vite] (client) hmr update /src/app.css
+23:09:50 [vite] (ssr) page reload dev-log.txt
+23:10:04 [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+23:10:04 [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+23:10:04 [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+23:10:04 [vite] (client) page reload .svelte-kit/generated/client/app.js
+23:10:04 [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+23:10:04 [vite] (ssr) page reload .svelte-kit/generated/shared/error-template.js
+23:10:04 [vite] (client) hmr update /src/app.css
+23:10:04 [vite] (ssr) page reload dev-log.txt
+23:10:04 [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+23:10:04 [vite] (client) page reload .svelte-kit/generated/root.js
+23:10:04 [vite] (ssr) page reload .svelte-kit/generated/root.js
+23:10:04 [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+23:10:04 [vite-plugin-svelte] src/lib/components/MarketList.svelte:13:0 Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+23:10:04 [vite-plugin-svelte] src/lib/components/MarketList.svelte:13:0 `<div>` with a click handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+23:10:04 [vite] (client) hmr update /src/app.css
+23:10:04 [vite] (ssr) page reload dev-log.txt
+23:11:13 [vite-plugin-svelte] src/lib/components/MarketList.svelte:13:0 Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+23:11:13 [vite-plugin-svelte] src/lib/components/MarketList.svelte:13:0 `<div>` with a click handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+23:11:13 [vite] (client) hmr update /src/app.css
+23:11:13 [vite] (ssr) page reload dev-log.txt
+23:11:13 [vite] (client) hmr update /src/lib/components/MarketList.svelte, /src/app.css
+23:11:13 [vite] (ssr) page reload src/lib/components/MarketList.svelte
+23:11:13 [vite-plugin-svelte] src/lib/components/MarketList.svelte:13:0 Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+23:11:13 [vite-plugin-svelte] src/lib/components/MarketList.svelte:13:0 `<div>` with a click handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+23:11:26 [vite-plugin-svelte] src/lib/components/MarketList.svelte:24:0 Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+23:11:26 [vite-plugin-svelte] src/lib/components/MarketList.svelte:24:0 `<div>` with a click handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+23:11:26 [vite-plugin-svelte] src/lib/components/MarketList.svelte:25:0 `<div>` with a touchstart or touchend handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+23:11:26 [vite] (client) hmr update /src/app.css
+23:11:26 [vite] (ssr) page reload dev-log.txt
+23:11:26 [vite] (client) hmr update /src/lib/components/MarketList.svelte, /src/app.css
+23:11:26 [vite] (ssr) page reload src/lib/components/MarketList.svelte
+23:11:26 [vite-plugin-svelte] src/lib/components/MarketList.svelte:24:0 Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+23:11:26 [vite-plugin-svelte] src/lib/components/MarketList.svelte:24:0 `<div>` with a click handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+23:11:26 [vite-plugin-svelte] src/lib/components/MarketList.svelte:25:0 `<div>` with a touchstart or touchend handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+23:11:45 [vite-plugin-svelte] src/lib/components/MarketList.svelte:24:0 Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+23:11:45 [vite-plugin-svelte] src/lib/components/MarketList.svelte:24:0 `<div>` with a click handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+23:11:45 [vite-plugin-svelte] src/lib/components/MarketList.svelte:25:0 `<div>` with a touchstart or touchend handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+23:11:45 [vite] (client) hmr update /src/app.css
+23:11:45 [vite] (ssr) page reload dev-log.txt
+23:11:45 [vite] (client) hmr update /src/lib/components/MarketList.svelte, /src/app.css
+23:11:45 [vite] (ssr) page reload src/lib/components/MarketList.svelte
+23:11:45 [vite-plugin-svelte] src/lib/components/MarketList.svelte:24:0 Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+23:11:45 [vite-plugin-svelte] src/lib/components/MarketList.svelte:24:0 `<div>` with a click handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+23:11:45 [vite-plugin-svelte] src/lib/components/MarketList.svelte:25:0 `<div>` with a touchstart or touchend handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions

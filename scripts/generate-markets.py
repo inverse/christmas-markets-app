@@ -6,27 +6,50 @@ import time
 # GeoJSON URL
 GEOJSON_URL = 'https://www.berlin.de/weihnachtsmarkt/suche/.x-feed/category.geojson?id=10135126&language=en_GB&_rnd=496605'
 
-def get_opening_hours(url):
+def get_market_details(url):
     try:
         response = requests.get(url)
         soup = BeautifulSoup(response.text, 'html.parser')
         
-        # Find the dl element with class 'info-container-list'
-        dl = soup.find('dl', class_='info-container-list')
-        if not dl:
-            return "Not found"
-            
-        # Find the dt that contains 'Opening Hours'
-        dt = dl.find('dt', string='Opening Hours')
-        if dt:
-            dd = dt.find_next_sibling('dd')
-            if dd:
-                return dd.text.strip()
+        details = {
+            "opening_times": "Not found",
+            "image": None
+        }
         
-        return "Not found"
+        # Find Opening Hours
+        dl = soup.find('dl', class_='info-container-list')
+        if dl:
+            dt = dl.find('dt', string='Opening Hours')
+            if dt:
+                dd = dt.find_next_sibling('dd')
+                if dd:
+                    details["opening_times"] = dd.text.strip()
+        
+        # Find Image - More robust lookup
+        # Try finding the swiper container first
+        # Try finding the OG image
+        og_img = soup.find('meta', property='og:image')
+        if og_img:
+            details["image"] = og_img.get('content')
+        
+        # Fallback to swiper
+        if not details["image"]:
+            swiper = soup.find('div', class_='swiper-wrapper')
+            if swiper:
+                img = swiper.find('img')
+                if img:
+                    details["image"] = img.get('src')
+
+        # Fallback to article if swiper fails
+        if not details["image"]:
+             article_img = soup.find('img', class_='js-imageblur')
+             if article_img:
+                details["image"] = article_img.get('src')
+        
+        return details
     except Exception as e:
         print(f"Error fetching {url}: {e}")
-        return "Error"
+        return {"opening_times": "Error", "image": None}
 
 def main():
     response = requests.get(GEOJSON_URL)
@@ -39,12 +62,18 @@ def main():
         coords = feature['geometry']['coordinates']
         
         print(f"Fetching {props['title']}...")
-        opening_hours = get_opening_hours(props['url'])
+        details = get_market_details(props['url'])
+        
+        # Construct absolute image URL if needed
+        image_url = details["image"]
+        if image_url and not image_url.startswith('http'):
+             image_url = f"https://www.berlin.de{image_url}"
         
         markets.append({
             "name": props['title'],
             "address": props['address'],
-            "opening_times": opening_hours,
+            "opening_times": details["opening_times"],
+            "image_url": image_url or props['image']['url'],
             "coordinates": {
                 "lng": coords[0],
                 "lat": coords[1]
