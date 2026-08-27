@@ -660,3 +660,76 @@ https://svelte.dev/e/a11y_no_static_element_interactions
 23:32:34 [vite] (ssr) page reload src/app.css
 23:32:34 [vite] (client) hmr update /src/app.css
 23:32:34 [vite] (ssr) page reload dev-log.txt
+23:33:53 [vite] (client) hmr update /src/app.css
+23:33:53 [vite] (ssr) page reload package.json
+23:33:53 [vite] (client) hmr update /src/app.css
+23:33:53 [vite] (ssr) page reload dev-log.txt
+23:33:58 [vite] vite.config.ts changed, restarting server...
+23:33:58 [vite] (client) hmr update /src/app.css
+23:33:58 [vite] (ssr) page reload dev-log.txt
+failed to load config from /home/malachi/code/projects/drinking-water/christmas-markets/vite.config.ts
+23:33:58 [vite] Build failed with 1 error:
+
+[31m[PARSE_ERROR] [0mIdentifier `defineConfig` has already been declared
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m vite.config.ts:2:10 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m2 │[0m [38;5;249mi[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mt[0m[38;5;249m [0m[38;5;249m{[0m[38;5;249m [0mdefineConfig[38;5;249m [0m[38;5;249m}[0m[38;5;249m [0m[38;5;249mf[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249mm[0m[38;5;249m [0m[38;5;249m'[0m[38;5;249mv[0m[38;5;249mi[0m[38;5;249mt[0m[38;5;249me[0m[38;5;249m'[0m[38;5;249m;[0m
+ [38;5;240m  │[0m          ──────┬─────  
+ [38;5;240m  │[0m                ╰─────── `defineConfig` has already been declared here
+ [38;5;240m  │[0m 
+ [38;5;246m5 │[0m [38;5;249mi[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mt[0m[38;5;249m [0m[38;5;249m{[0m[38;5;249m [0mdefineConfig[38;5;249m [0m[38;5;249m}[0m[38;5;249m [0m[38;5;249mf[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249mm[0m[38;5;249m [0m[38;5;249m'[0m[38;5;249mv[0m[38;5;249mi[0m[38;5;249mt[0m[38;5;249me[0m[38;5;249m'[0m[38;5;249m;[0m
+ [38;5;240m  │[0m          ──────┬─────  
+ [38;5;240m  │[0m                ╰─────── It can not be redeclared here
+[38;5;246m───╯[0m
+
+23:33:58 [vite] server restart failed
+23:34:00 [vite] vite.config.ts changed, restarting server...
+23:34:00 [vite] (client) hmr update /src/app.css
+23:34:00 [vite] (ssr) page reload dev-log.txt
+23:34:01 [vite] server restarted.
+23:34:01 [vite-plugin-svelte] src/lib/components/MarketList.svelte:28:0 Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+23:34:01 [vite-plugin-svelte] src/lib/components/MarketList.svelte:28:0 `<div>` with a click handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+23:34:01 [vite-plugin-svelte] src/lib/components/MarketList.svelte:29:0 `<div>` with a touchstart or touchend handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+23:34:02 [vite-plugin-svelte] src/lib/components/MarketList.svelte:28:0 Visible, non-interactive element `<div>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+23:34:02 [vite-plugin-svelte] src/lib/components/MarketList.svelte:28:0 `<div>` with a click handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+23:34:02 [vite-plugin-svelte] src/lib/components/MarketList.svelte:29:0 `<div>` with a touchstart or touchend handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+23:34:04 [vite] (client) hmr update /src/app.css
+23:34:04 [vite] (ssr) page reload postcss.config.js
+23:34:07 [vite] (client) hmr update /src/app.css
+23:34:07 [vite] (ssr) page reload postcss.config.js
+23:34:10 [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+23:34:10 [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+23:34:10 [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+23:34:10 [vite] (client) page reload .svelte-kit/generated/client/app.js
+23:34:10 [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+23:34:10 [vite] (ssr) page reload .svelte-kit/generated/shared/error-template.js
+23:34:10 [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+23:34:10 [vite] (client) page reload .svelte-kit/generated/root.js
+23:34:10 [vite] (ssr) page reload .svelte-kit/generated/root.js
+23:34:10 [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+23:34:12 [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+23:34:12 [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+23:34:12 [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+23:34:12 [vite] (client) page reload .svelte-kit/generated/client/app.js
+23:34:12 [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+23:34:12 [vite] (ssr) page reload .svelte-kit/generated/shared/error-template.js
+23:34:12 [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+23:34:12 [vite] (client) page reload .svelte-kit/generated/root.js
+23:34:12 [vite] (ssr) page reload .svelte-kit/generated/root.js
+23:34:12 [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+23:34:14 [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+23:34:14 [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+23:34:14 [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+23:34:14 [vite] (client) page reload .svelte-kit/generated/client/app.js
+23:34:14 [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+23:34:14 [vite] (ssr) page reload .svelte-kit/generated/shared/error-template.js
+23:34:14 [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+23:34:14 [vite] (client) page reload .svelte-kit/generated/root.js
+23:34:14 [vite] (ssr) page reload .svelte-kit/generated/root.js
+23:34:14 [vite] (ssr) page reload .svelte-kit/generated/root.svelte
