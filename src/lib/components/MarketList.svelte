@@ -1,108 +1,205 @@
 <script lang="ts">
-	import { isMarketOpen, statusInfo } from '$lib/utils/marketStatus';
-	import { mapStore, selectedMarket } from '$lib/mapStore';
-	import { fade, fly } from 'svelte/transition';
+  import { isMarketOpen, statusInfo } from "$lib/utils/marketStatus";
+  import { selectedMarket } from "$lib/mapStore";
+  import { fade, fly } from "svelte/transition";
+  import type { Market } from "$lib/types";
 
-	let { markets, onClose } = $props<{ markets: any[]; onClose: () => void }>();
+  type Filter = "all" | "open" | "upcoming" | "closed" | "unknown";
 
-	const sortedMarkets = $derived([...markets].sort((a, b) => {
-		const statusA = isMarketOpen(a.dates).status;
-		const statusB = isMarketOpen(b.dates).status;
+  let { markets, onClose } = $props<{
+    markets: Market[];
+    onClose: () => void;
+  }>();
+  let activeFilter = $state<Filter>("all");
 
-		const order = { open: 0, closed: 1, unknown: 2 };
-		return order[statusA] - order[statusB];
-	}));
+  const sortedMarkets = $derived(
+    [...markets].sort((a, b) => {
+      const statusA = isMarketOpen(a.dates).status;
+      const statusB = isMarketOpen(b.dates).status;
+      const order = { open: 0, upcoming: 1, closed: 2, unknown: 3 };
+      return order[statusA] - order[statusB];
+    }),
+  );
 
-	let startX = 0;
+  const filteredMarkets = $derived(
+    sortedMarkets.filter(
+      (market) =>
+        activeFilter === "all" ||
+        isMarketOpen(market.dates).status === activeFilter,
+    ),
+  );
 
-	function handleTouchStart(e: TouchEvent) {
-		startX = e.touches[0].clientX;
-	}
+  const filterOptions: { id: Filter; label: string }[] = [
+    { id: "all", label: "All" },
+    { id: "open", label: "Open now" },
+    { id: "upcoming", label: "Upcoming" },
+    { id: "unknown", label: "Dates TBA" },
+  ];
 
-	function handleTouchEnd(e: TouchEvent) {
-		const endX = e.changedTouches[0].clientX;
-		if (startX - endX > 50) {
-			// 50px swipe threshold
-			onClose();
-		}
-	}
+  function countFor(filter: Filter) {
+    return filter === "all"
+      ? markets.length
+      : markets.filter(
+          (market: Market) => isMarketOpen(market.dates).status === filter,
+        ).length;
+  }
 
-	function jumpTo(market: any) {
-		selectedMarket.set(market.name);
-		onClose();
-	}
+  function jumpTo(market: Market) {
+    selectedMarket.set(market.name);
+    onClose();
+  }
+
+  let startX = 0;
+
+  function handleTouchStart(e: TouchEvent) {
+    startX = e.touches[0].clientX;
+  }
+
+  function handleTouchEnd(e: TouchEvent) {
+    const endX = e.changedTouches[0].clientX;
+    if (startX - endX > 50) onClose();
+  }
 </script>
 
-<div class="fixed inset-0 z-[1000] bg-black/60" onclick={onClose} transition:fade></div>
+<button
+  class="fixed inset-0 z-[1000] bg-pine-dark/60"
+  aria-label="Close menu"
+  onclick={onClose}
+  transition:fade
+></button>
 <div
-	class="fixed top-0 left-0 z-[1001] w-full sm:w-96 h-full bg-cream shadow-2xl overflow-y-auto scrollbar-thin"
-	ontouchstart={handleTouchStart}
-	ontouchend={handleTouchEnd}
-	transition:fly={{ x: -320, duration: 300 }}
+  role="dialog"
+  tabindex="-1"
+  aria-label="Christmas markets"
+  class="festive-surface safe-area-bottom fixed top-0 left-0 z-[1001] h-full w-full overflow-y-auto shadow-2xl sm:w-96 scrollbar-thin"
+  style="padding-top: env(safe-area-inset-top);"
+  ontouchstart={handleTouchStart}
+  ontouchend={handleTouchEnd}
+  transition:fly={{ x: -320, duration: 300 }}
 >
-	<header class="sticky top-0 z-10 bg-gradient-to-br from-pine to-pine-dark px-5 pb-4 pt-5 border-b-4 border-gold">
-		<div class="flex items-center justify-between">
-			<div class="flex items-center gap-3">
-				<div class="flex items-center justify-center w-11 h-11 rounded-full bg-gold/20 border border-gold">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-gold"><path d="M12 2L2 20h20L12 2z" /><path d="M12 5l-7 13h14L12 5z" /><path d="M12 8l-5 9h10L12 8z" /><rect x="10" y="20" width="4" height="4" /></svg>
-				</div>
-				<div>
-					<h2 class="font-display text-xl font-bold leading-tight text-white">Christmas Markets</h2>
-					<p class="text-xs text-gold mt-0.5">Berlin's festive highlights</p>
-				</div>
-			</div>
-			<button
-				onclick={onClose}
-				aria-label="Close menu"
-				class="flex items-center justify-center w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white text-xl transition"
-			>
-				&times;
-			</button>
-		</div>
-	</header>
+  <header
+    class="relative sticky top-0 z-10 overflow-hidden border-b-4 border-gold bg-gradient-to-br from-pine to-pine-dark px-5 pb-4 pt-5"
+  >
+    <img
+      src="/icons/christmas-tree-raw.svg"
+      alt=""
+      class="pointer-events-none absolute -right-3 top-1 h-16 w-20 rotate-12 opacity-20"
+      aria-hidden="true"
+    />
+    <div class="relative flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div
+          class="flex h-11 w-11 items-center justify-center rounded-full border border-gold bg-gold/20"
+        >
+          <img
+            src="/icons/christmas-tree-raw.svg"
+            alt=""
+            class="h-6 w-6 object-contain"
+          />
+        </div>
+        <div>
+          <h2 class="font-display text-xl font-bold leading-tight text-white">
+            Christmas Markets
+          </h2>
+          <p class="mt-0.5 text-xs text-gold">
+            {markets.length} festive highlights in Berlin
+          </p>
+        </div>
+      </div>
+      <button
+        onclick={onClose}
+        aria-label="Close menu"
+        class="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-xl text-white transition hover:bg-white/20"
+      >
+        &times;
+      </button>
+    </div>
+  </header>
 
-	<div class="p-4 space-y-4">
-		<section class="rounded-xl bg-snow border border-stone-200 border-l-4 border-l-gold p-4">
-			<h3 class="font-display font-bold mb-1 text-pine">About</h3>
-			<p class="text-sm leading-relaxed text-stone-600">
-				Explore Berlin's magical Christmas markets with our interactive map. Find your nearest market and enjoy the festive spirit!
-			</p>
-		</section>
+  <div class="space-y-4 p-4">
+    <section
+      class="rounded-xl border border-stone-200 border-l-4 border-l-berry bg-snow p-4"
+    >
+      <h3 class="mb-1 font-display font-bold text-pine">About</h3>
+      <p class="text-sm leading-relaxed text-stone-600">
+        Explore Berlin's magical Christmas markets with our interactive map.
+        Find your nearest market and enjoy the festive spirit!
+      </p>
+    </section>
 
-		<section>
-			<h3 class="font-display font-bold mb-2 text-pine px-1">Markets</h3>
-			<ul class="space-y-2">
-				{#each sortedMarkets as market}
-					{@const meta = statusInfo(isMarketOpen(market.dates).status)}
-					<li>
-						<button
-							onclick={() => jumpTo(market)}
-							class="group w-full text-left bg-snow rounded-xl p-3 border border-stone-200 hover:border-gold hover:shadow-md transition flex gap-3"
-						>
-							<img
-								src={market.image_url}
-								alt=""
-								loading="lazy"
-								class="w-16 h-16 rounded-lg object-cover flex-shrink-0"
-							/>
-							<div class="min-w-0 flex-1">
-								<h4 class="font-display font-bold text-sm text-pine leading-snug group-hover:text-gold-dark transition">
-									{market.name}
-								</h4>
-								<p class="text-xs text-stone-500 mt-0.5 truncate" title={market.address}>{market.address}</p>
-								<div class="mt-1.5 flex items-center gap-2">
-									<span class="inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-full {meta.pill}">
-										<span class="w-1.5 h-1.5 rounded-full {meta.dot}"></span>
-										{meta.label}
-									</span>
-									<span class="text-[11px] text-stone-400 truncate">{market.dates}</span>
-								</div>
-							</div>
-							<span class="self-center text-stone-300 group-hover:text-gold transition-transform group-hover:translate-x-0.5">&rsaquo;</span>
-						</button>
-					</li>
-				{/each}
-			</ul>
-		</section>
-	</div>
+    <section>
+      <div class="mb-2 flex items-end justify-between px-1">
+        <h3 class="font-display font-bold text-pine">Markets</h3>
+        <span class="text-xs font-semibold text-berry"
+          >{filteredMarkets.length} shown</span
+        >
+      </div>
+      <div class="mb-3 flex gap-1.5 overflow-x-auto px-1 pb-1 scrollbar-thin">
+        {#each filterOptions as filter (filter.id)}
+          <button
+            onclick={() => (activeFilter = filter.id)}
+            aria-pressed={activeFilter === filter.id}
+            class="whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-semibold transition {activeFilter ===
+            filter.id
+              ? 'border-pine bg-pine text-white'
+              : 'border-stone-200 bg-snow text-stone-600 hover:border-gold hover:text-pine'}"
+          >
+            {filter.label} <span class="opacity-70">{countFor(filter.id)}</span>
+          </button>
+        {/each}
+      </div>
+      <ul class="space-y-2">
+        {#each filteredMarkets as market (market.name)}
+          {@const meta = statusInfo(isMarketOpen(market.dates).status)}
+          <li>
+            <button
+              onclick={() => jumpTo(market)}
+              class="group flex w-full gap-3 rounded-xl border border-stone-200 border-l-4 bg-snow p-3 text-left transition hover:border-gold hover:shadow-md {meta.accent}"
+            >
+              <img
+                src={market.image_url}
+                alt=""
+                loading="lazy"
+                class="h-16 w-16 flex-shrink-0 rounded-lg object-cover"
+              />
+              <div class="min-w-0 flex-1">
+                <h4
+                  class="font-display text-sm font-bold leading-snug text-pine transition group-hover:text-gold-dark"
+                >
+                  {market.name}
+                </h4>
+                <p
+                  class="mt-0.5 truncate text-xs text-stone-500"
+                  title={market.address}
+                >
+                  {market.address}
+                </p>
+                <div class="mt-1.5 flex items-center gap-2">
+                  <span
+                    class="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold {meta.pill}"
+                  >
+                    <span class="h-1.5 w-1.5 rounded-full {meta.dot}"></span>
+                    {meta.label}
+                  </span>
+                  <span class="truncate text-[11px] text-stone-400"
+                    >{market.dates}</span
+                  >
+                </div>
+              </div>
+              <span
+                class="self-center text-stone-300 transition-transform group-hover:translate-x-0.5 group-hover:text-gold"
+                >&rsaquo;</span
+              >
+            </button>
+          </li>
+        {:else}
+          <li
+            class="rounded-xl border border-dashed border-stone-300 p-5 text-center text-sm text-stone-500"
+          >
+            No markets match this filter.
+          </li>
+        {/each}
+      </ul>
+    </section>
+  </div>
 </div>

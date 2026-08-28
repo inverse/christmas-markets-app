@@ -29,6 +29,12 @@
 		-webkit-font-smoothing: antialiased;
 	}
 
+	button:focus-visible,
+	a:focus-visible {
+		outline: 3px solid var(--color-gold-light);
+		outline-offset: 3px;
+	}
+
 	/* Leaflet popup: remove default chrome so our card controls the look */
 	.leaflet-popup-content-wrapper {
 		padding: 0 !important;
@@ -72,3 +78,58 @@
 		background: transparent;
 	}
 }
+
+.festive-surface {
+	background-color: var(--color-cream);
+	background-image: radial-gradient(rgba(163, 22, 33, 0.07) 0.7px, transparent 0.7px);
+	background-size: 12px 12px;
+}
+
+.seasonal-map-frame {
+	background: linear-gradient(90deg, var(--color-pine), var(--color-gold), var(--color-berry), var(--color-gold), var(--color-pine));
+	box-shadow: 0 1px 8px rgba(20, 83, 45, 0.35);
+}
+
+.header-lights {
+	background-image: radial-gradient(circle, var(--color-gold-light) 0 3px, transparent 3.5px),
+		linear-gradient(var(--color-gold), var(--color-gold));
+	background-position: 8px 0, 0 2px;
+	background-size: 28px 8px, 100% 1px;
+	background-repeat: repeat-x;
+}
+
+.popup-cta {
+	background: var(--color-gold);
+	color: var(--color-pine) !important;
+}
+
+.popup-cta:hover {
+	background: var(--color-gold-dark);
+}
+
+.safe-area-bottom {
+	padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}
+
+.site-menu-button,
+.map-location-control {
+	top: max(1rem, env(safe-area-inset-top));
+}
+
+.leaflet-control-zoom {
+	border: 2px solid var(--color-gold) !important;
+	border-radius: 12px !important;
+	overflow: hidden;
+	box-shadow: 0 8px 18px rgba(20, 83, 45, 0.2) !important;
+}
+
+.leaflet-control-zoom a {
+	background: var(--color-snow) !important;
+	border: 0 !important;
+	color: var(--color-pine) !important;
+}
+
+.leaflet-control-zoom a:hover {
+	background: var(--color-gold-light) !important;
+}
+
