@@ -2,42 +2,38 @@ export function isMarketOpen(dates: string): {
 	isOpen: boolean;
 	status: 'open' | 'closed' | 'unknown';
 } {
-	// Simple heuristic: try to extract a start and end month
 	const lowerDates = dates.toLowerCase();
-	const now = new Date(2026, 7, 27); // 2026-08-27
+	const now = new Date();
 
-	// Rough parsing for "Month to Month" or "Month - Month"
-	// This is very brittle, but satisfies the "make it visual" requirement simply.
 	const monthMap: Record<string, number> = {
-		january: 0,
-		february: 1,
-		march: 2,
-		april: 3,
-		may: 4,
-		june: 5,
-		july: 6,
-		august: 7,
-		september: 8,
-		october: 9,
-		november: 10,
-		december: 11
+		january: 0, february: 1, march: 2, april: 3, may: 4, june: 5,
+		july: 6, august: 7, september: 8, october: 9, november: 10, december: 11
 	};
 
-	let startMonth = -1;
-	let endMonth = -1;
-
-	for (const [month, index] of Object.entries(monthMap)) {
-		if (lowerDates.includes(month)) {
-			if (startMonth === -1) startMonth = index;
-			else endMonth = index;
+	// Find all months mentioned in the dates string, preserving order of appearance
+	const foundMonths = [];
+	for (const month of Object.keys(monthMap)) {
+		const index = lowerDates.indexOf(month);
+		if (index !== -1) {
+			foundMonths.push({ index: index, monthIndex: monthMap[month] });
 		}
 	}
 
-	if (startMonth === -1) return { isOpen: false, status: 'unknown' };
-	if (endMonth === -1) endMonth = startMonth;
+	if (foundMonths.length === 0) return { isOpen: false, status: 'unknown' };
 
+	// Sort by appearance in string to know start and end
+	foundMonths.sort((a, b) => a.index - b.index);
+	const startMonth = foundMonths[0].monthIndex;
+	const endMonth = foundMonths[foundMonths.length - 1].monthIndex;
 	const currentMonth = now.getMonth();
-	const isOpen = currentMonth >= startMonth && currentMonth <= endMonth;
+
+	let isOpen = false;
+	// Handle wrap-around (e.g., Nov to Jan: start 10, end 0)
+	if (startMonth > endMonth) {
+		isOpen = currentMonth >= startMonth || currentMonth <= endMonth;
+	} else {
+		isOpen = currentMonth >= startMonth && currentMonth <= endMonth;
+	}
 
 	return { isOpen, status: isOpen ? 'open' : 'closed' };
 }

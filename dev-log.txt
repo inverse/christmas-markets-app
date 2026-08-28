@@ -733,3 +733,309 @@ https://svelte.dev/e/a11y_no_static_element_interactions
 23:34:14 [vite] (client) page reload .svelte-kit/generated/root.js
 23:34:14 [vite] (ssr) page reload .svelte-kit/generated/root.js
 23:34:14 [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+23:36:08 [vite] (client) hmr update /src/app.css
+23:36:08 [vite] (ssr) page reload static/icons/christmas-tree.svg
+23:36:13 [vite] (client) hmr update /src/lib/components/Map.svelte, /src/app.css
+23:36:13 [vite] (ssr) page reload src/lib/components/Map.svelte
+23:36:13 [vite] (client) [Unhandled rejection] ReferenceError: christmasIcon is not defined
+ > src/lib/components/Map.svelte:66:86
+    64 |  					</div>
+    65 |  				`;
+    66 |  				const marker = L.marker([market.coordinates.lat, market.coordinates.lng], { icon: christmasIcon })
+       |                                                                                        ^
+    67 |  					.addTo(map)
+    68 |  					.bindPopup(popupHtml);
+ > src/lib/components/Map.svelte:33:11
+
+23:36:13 [vite] (client) [Unhandled rejection] ReferenceError: christmasIcon is not defined
+ > src/lib/components/Map.svelte:66:86
+    64 |  					</div>
+    65 |  				`;
+    66 |  				const marker = L.marker([market.coordinates.lat, market.coordinates.lng], { icon: christmasIcon })
+       |                                                                                        ^
+    67 |  					.addTo(map)
+    68 |  					.bindPopup(popupHtml);
+ > src/lib/components/Map.svelte:33:11
+
+23:36:13 [vite] (client) [Unhandled rejection] ReferenceError: christmasIcon is not defined
+ > src/lib/components/Map.svelte:66:86
+    64 |  					</div>
+    65 |  				`;
+    66 |  				const marker = L.marker([market.coordinates.lat, market.coordinates.lng], { icon: christmasIcon })
+       |                                                                                        ^
+    67 |  					.addTo(map)
+    68 |  					.bindPopup(popupHtml);
+ > src/lib/components/Map.svelte:33:11
+
+23:36:13 [vite] (client) [Unhandled rejection] ReferenceError: christmasIcon is not defined
+ > src/lib/components/Map.svelte:66:86
+    64 |  					</div>
+    65 |  				`;
+    66 |  				const marker = L.marker([market.coordinates.lat, market.coordinates.lng], { icon: christmasIcon })
+       |                                                                                        ^
+    67 |  					.addTo(map)
+    68 |  					.bindPopup(popupHtml);
+ > src/lib/components/Map.svelte:33:11
+
+23:36:14 [vite] (client) [Unhandled rejection] ReferenceError: christmasIcon is not defined
+ > src/lib/components/Map.svelte:66:86
+    64 |  					</div>
+    65 |  				`;
+    66 |  				const marker = L.marker([market.coordinates.lat, market.coordinates.lng], { icon: christmasIcon })
+       |                                                                                        ^
+    67 |  					.addTo(map)
+    68 |  					.bindPopup(popupHtml);
+ > src/lib/components/Map.svelte:33:11
+
+23:36:14 [vite] (client) [Unhandled rejection] ReferenceError: christmasIcon is not defined
+ > src/lib/components/Map.svelte:66:86
+    64 |  					</div>
+    65 |  				`;
+    66 |  				const marker = L.marker([market.coordinates.lat, market.coordinates.lng], { icon: christmasIcon })
+       |                                                                                        ^
+    67 |  					.addTo(map)
+    68 |  					.bindPopup(popupHtml);
+ > src/lib/components/Map.svelte:33:11
+
+23:36:14 [vite] (client) [Unhandled rejection] ReferenceError: christmasIcon is not defined
+ > src/lib/components/Map.svelte:66:86
+    64 |  					</div>
+    65 |  				`;
+    66 |  				const marker = L.marker([market.coordinates.lat, market.coordinates.lng], { icon: christmasIcon })
+       |                                                                                        ^
+    67 |  					.addTo(map)
+    68 |  					.bindPopup(popupHtml);
+ > src/lib/components/Map.svelte:33:11
+
+23:36:14 [vite] (client) [Unhandled rejection] ReferenceError: christmasIcon is not defined
+ > src/lib/components/Map.svelte:66:86
+    64 |  					</div>
+    65 |  				`;
+    66 |  				const marker = L.marker([market.coordinates.lat, market.coordinates.lng], { icon: christmasIcon })
+       |                                                                                        ^
+    67 |  					.addTo(map)
+    68 |  					.bindPopup(popupHtml);
+ > src/lib/components/Map.svelte:33:11
+
+23:36:14 [vite] (client) [Unhandled rejection] ReferenceError: christmasIcon is not defined
+ > src/lib/components/Map.svelte:66:86
+    64 |  					</div>
+    65 |  				`;
+    66 |  				const marker = L.marker([market.coordinates.lat, market.coordinates.lng], { icon: christmasIcon })
+       |                                                                                        ^
+    67 |  					.addTo(map)
+    68 |  					.bindPopup(popupHtml);
+ > src/lib/components/Map.svelte:33:11
+
+23:36:15 [vite] (client) [Unhandled rejection] ReferenceError: christmasIcon is not defined
+ > src/lib/components/Map.svelte:66:86
+    64 |  					</div>
+    65 |  				`;
+    66 |  				const marker = L.marker([market.coordinates.lat, market.coordinates.lng], { icon: christmasIcon })
+       |                                                                                        ^
+    67 |  					.addTo(map)
+    68 |  					.bindPopup(popupHtml);
+ > src/lib/components/Map.svelte:33:11
+
+23:36:15 [vite] (client) [Unhandled rejection] ReferenceError: christmasIcon is not defined
+ > src/lib/components/Map.svelte:66:86
+    64 |  					</div>
+    65 |  				`;
+    66 |  				const marker = L.marker([market.coordinates.lat, market.coordinates.lng], { icon: christmasIcon })
+       |                                                                                        ^
+    67 |  					.addTo(map)
+    68 |  					.bindPopup(popupHtml);
+ > src/lib/components/Map.svelte:33:11
+
+23:36:15 [vite] (client) [Unhandled rejection] ReferenceError: christmasIcon is not defined
+ > src/lib/components/Map.svelte:66:86
+    64 |  					</div>
+    65 |  				`;
+    66 |  				const marker = L.marker([market.coordinates.lat, market.coordinates.lng], { icon: christmasIcon })
+       |                                                                                        ^
+    67 |  					.addTo(map)
+    68 |  					.bindPopup(popupHtml);
+ > src/lib/components/Map.svelte:33:11
+
+23:36:15 [vite] (client) [Unhandled rejection] ReferenceError: christmasIcon is not defined
+ > src/lib/components/Map.svelte:66:86
+    64 |  					</div>
+    65 |  				`;
+    66 |  				const marker = L.marker([market.coordinates.lat, market.coordinates.lng], { icon: christmasIcon })
+       |                                                                                        ^
+    67 |  					.addTo(map)
+    68 |  					.bindPopup(popupHtml);
+ > src/lib/components/Map.svelte:33:11
+
+23:36:15 [vite] (client) [Unhandled rejection] ReferenceError: christmasIcon is not defined
+ > src/lib/components/Map.svelte:66:86
+    64 |  					</div>
+    65 |  				`;
+    66 |  				const marker = L.marker([market.coordinates.lat, market.coordinates.lng], { icon: christmasIcon })
+       |                                                                                        ^
+    67 |  					.addTo(map)
+    68 |  					.bindPopup(popupHtml);
+ > src/lib/components/Map.svelte:33:11
+
+23:36:16 [vite] (client) [Unhandled rejection] ReferenceError: christmasIcon is not defined
+ > src/lib/components/Map.svelte:66:86
+    64 |  					</div>
+    65 |  				`;
+    66 |  				const marker = L.marker([market.coordinates.lat, market.coordinates.lng], { icon: christmasIcon })
+       |                                                                                        ^
+    67 |  					.addTo(map)
+    68 |  					.bindPopup(popupHtml);
+ > src/lib/components/Map.svelte:33:11
+
+23:36:16 [vite] (client) [Unhandled rejection] ReferenceError: christmasIcon is not defined
+ > src/lib/components/Map.svelte:66:86
+    64 |  					</div>
+    65 |  				`;
+    66 |  				const marker = L.marker([market.coordinates.lat, market.coordinates.lng], { icon: christmasIcon })
+       |                                                                                        ^
+    67 |  					.addTo(map)
+    68 |  					.bindPopup(popupHtml);
+ > src/lib/components/Map.svelte:33:11
+
+23:36:16 [vite] (client) [Unhandled rejection] ReferenceError: christmasIcon is not defined
+ > src/lib/components/Map.svelte:66:86
+    64 |  					</div>
+    65 |  				`;
+    66 |  				const marker = L.marker([market.coordinates.lat, market.coordinates.lng], { icon: christmasIcon })
+       |                                                                                        ^
+    67 |  					.addTo(map)
+    68 |  					.bindPopup(popupHtml);
+ > src/lib/components/Map.svelte:33:11
+
+23:36:16 [vite] (client) [Unhandled rejection] ReferenceError: christmasIcon is not defined
+ > src/lib/components/Map.svelte:66:86
+    64 |  					</div>
+    65 |  				`;
+    66 |  				const marker = L.marker([market.coordinates.lat, market.coordinates.lng], { icon: christmasIcon })
+       |                                                                                        ^
+    67 |  					.addTo(map)
+    68 |  					.bindPopup(popupHtml);
+ > src/lib/components/Map.svelte:33:11
+
+23:36:16 [vite] (client) [Unhandled rejection] ReferenceError: christmasIcon is not defined
+ > src/lib/components/Map.svelte:66:86
+    64 |  					</div>
+    65 |  				`;
+    66 |  				const marker = L.marker([market.coordinates.lat, market.coordinates.lng], { icon: christmasIcon })
+       |                                                                                        ^
+    67 |  					.addTo(map)
+    68 |  					.bindPopup(popupHtml);
+ > src/lib/components/Map.svelte:33:11
+
+23:36:17 [vite] (client) [Unhandled rejection] ReferenceError: christmasIcon is not defined
+ > src/lib/components/Map.svelte:66:86
+    64 |  					</div>
+    65 |  				`;
+    66 |  				const marker = L.marker([market.coordinates.lat, market.coordinates.lng], { icon: christmasIcon })
+       |                                                                                        ^
+    67 |  					.addTo(map)
+    68 |  					.bindPopup(popupHtml);
+ > src/lib/components/Map.svelte:33:11
+
+23:36:17 [vite] (client) [Unhandled rejection] ReferenceError: christmasIcon is not defined
+ > src/lib/components/Map.svelte:66:86
+    64 |  					</div>
+    65 |  				`;
+    66 |  				const marker = L.marker([market.coordinates.lat, market.coordinates.lng], { icon: christmasIcon })
+       |                                                                                        ^
+    67 |  					.addTo(map)
+    68 |  					.bindPopup(popupHtml);
+ > src/lib/components/Map.svelte:33:11
+
+23:36:17 [vite] (client) [Unhandled rejection] ReferenceError: christmasIcon is not defined
+ > src/lib/components/Map.svelte:66:86
+    64 |  					</div>
+    65 |  				`;
+    66 |  				const marker = L.marker([market.coordinates.lat, market.coordinates.lng], { icon: christmasIcon })
+       |                                                                                        ^
+    67 |  					.addTo(map)
+    68 |  					.bindPopup(popupHtml);
+ > src/lib/components/Map.svelte:33:11
+
+23:36:17 [vite] (client) [Unhandled rejection] ReferenceError: christmasIcon is not defined
+ > src/lib/components/Map.svelte:66:86
+    64 |  					</div>
+    65 |  				`;
+    66 |  				const marker = L.marker([market.coordinates.lat, market.coordinates.lng], { icon: christmasIcon })
+       |                                                                                        ^
+    67 |  					.addTo(map)
+    68 |  					.bindPopup(popupHtml);
+ > src/lib/components/Map.svelte:33:11
+
+23:36:17 [vite] (client) [Unhandled rejection] ReferenceError: christmasIcon is not defined
+ > src/lib/components/Map.svelte:66:86
+    64 |  					</div>
+    65 |  				`;
+    66 |  				const marker = L.marker([market.coordinates.lat, market.coordinates.lng], { icon: christmasIcon })
+       |                                                                                        ^
+    67 |  					.addTo(map)
+    68 |  					.bindPopup(popupHtml);
+ > src/lib/components/Map.svelte:33:11
+
+23:36:18 [vite] (client) [Unhandled rejection] ReferenceError: christmasIcon is not defined
+ > src/lib/components/Map.svelte:66:86
+    64 |  					</div>
+    65 |  				`;
+    66 |  				const marker = L.marker([market.coordinates.lat, market.coordinates.lng], { icon: christmasIcon })
+       |                                                                                        ^
+    67 |  					.addTo(map)
+    68 |  					.bindPopup(popupHtml);
+ > src/lib/components/Map.svelte:33:11
+
+23:36:18 [vite] (client) [Unhandled rejection] ReferenceError: christmasIcon is not defined
+ > src/lib/components/Map.svelte:66:86
+    64 |  					</div>
+    65 |  				`;
+    66 |  				const marker = L.marker([market.coordinates.lat, market.coordinates.lng], { icon: christmasIcon })
+       |                                                                                        ^
+    67 |  					.addTo(map)
+    68 |  					.bindPopup(popupHtml);
+ > src/lib/components/Map.svelte:33:11
+
+23:36:18 [vite] (client) [Unhandled rejection] ReferenceError: christmasIcon is not defined
+ > src/lib/components/Map.svelte:66:86
+    64 |  					</div>
+    65 |  				`;
+    66 |  				const marker = L.marker([market.coordinates.lat, market.coordinates.lng], { icon: christmasIcon })
+       |                                                                                        ^
+    67 |  					.addTo(map)
+    68 |  					.bindPopup(popupHtml);
+ > src/lib/components/Map.svelte:33:11
+
+23:36:18 [vite] (client) [Unhandled rejection] ReferenceError: christmasIcon is not defined
+ > src/lib/components/Map.svelte:66:86
+    64 |  					</div>
+    65 |  				`;
+    66 |  				const marker = L.marker([market.coordinates.lat, market.coordinates.lng], { icon: christmasIcon })
+       |                                                                                        ^
+    67 |  					.addTo(map)
+    68 |  					.bindPopup(popupHtml);
+ > src/lib/components/Map.svelte:33:11
+
+23:36:18 [vite] (client) [Unhandled rejection] ReferenceError: christmasIcon is not defined
+ > src/lib/components/Map.svelte:66:86
+    64 |  					</div>
+    65 |  				`;
+    66 |  				const marker = L.marker([market.coordinates.lat, market.coordinates.lng], { icon: christmasIcon })
+       |                                                                                        ^
+    67 |  					.addTo(map)
+    68 |  					.bindPopup(popupHtml);
+ > src/lib/components/Map.svelte:33:11
+
+23:36:19 [vite] (client) [Unhandled rejection] ReferenceError: christmasIcon is not defined
+ > src/lib/components/Map.svelte:66:86
+    64 |  					</div>
+    65 |  				`;
+    66 |  				const marker = L.marker([market.coordinates.lat, market.coordinates.lng], { icon: christmasIcon })
+       |                                                                                        ^
+    67 |  					.addTo(map)
+    68 |  					.bindPopup(popupHtml);
+ > src/lib/components/Map.svelte:33:11
+
+23:36:19 [vite] (client) hmr update /src/lib/components/Map.svelte, /src/app.css
+23:36:19 [vite] (ssr) page reload src/lib/components/Map.svelte

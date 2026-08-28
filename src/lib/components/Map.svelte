@@ -15,9 +15,15 @@
 			const leaflet = await import('leaflet');
 			L = leaflet.default || leaflet;
 
-			// Custom Christmas Icon
 			const christmasIcon = L.icon({
 				iconUrl: '/icons/christmas-tree.svg',
+				iconSize: [32, 32],
+				iconAnchor: [16, 32],
+				popupAnchor: [0, -32]
+			});
+
+			const christmasIconLit = L.icon({
+				iconUrl: '/icons/christmas-tree-lights.svg',
 				iconSize: [32, 32],
 				iconAnchor: [16, 32],
 				popupAnchor: [0, -32]
@@ -51,11 +57,11 @@
 							</div>
 							<div class="flex items-start gap-2 text-[13px] text-stone-700">
 								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-0.5 flex-shrink-0 text-berry"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-								<span>${market.dates}</span>
+								<span class="${market.dates === 'Not found' ? 'italic text-stone-400' : ''}">${market.dates === 'Not found' ? 'Dates to be announced' : market.dates}</span>
 							</div>
 							<div class="flex items-start gap-2 text-[13px] text-stone-700">
 								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-0.5 flex-shrink-0 text-berry"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-								<span>${market.opening_times}</span>
+								<span class="${market.opening_times === 'Not found' ? 'italic text-stone-400' : ''}">${market.opening_times === 'Not found' ? 'Opening times to be announced' : market.opening_times}</span>
 							</div>
 							<a href="${market.url}" target="_blank" class="mt-1 flex items-center justify-center gap-1.5 w-full bg-gold hover:bg-gold-dark text-pine text-sm font-bold py-2.5 rounded-lg transition shadow-sm">
 								More Info

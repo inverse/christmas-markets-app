@@ -5,6 +5,14 @@
 
 	let { markets, onClose } = $props<{ markets: any[]; onClose: () => void }>();
 
+	const sortedMarkets = $derived([...markets].sort((a, b) => {
+		const statusA = isMarketOpen(a.dates).status;
+		const statusB = isMarketOpen(b.dates).status;
+
+		const order = { open: 0, unknown: 1, closed: 2 };
+		return order[statusA] - order[statusB];
+	}));
+
 	let startX = 0;
 
 	function handleTouchStart(e: TouchEvent) {
@@ -64,7 +72,7 @@
 		<section>
 			<h3 class="font-display font-bold mb-2 text-pine px-1">Markets</h3>
 			<ul class="space-y-2">
-				{#each markets as market}
+				{#each sortedMarkets as market}
 					{@const meta = statusInfo(isMarketOpen(market.dates).status)}
 					<li>
 						<button
