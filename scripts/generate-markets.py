@@ -18,25 +18,33 @@ async def get_market_details(session, url, semaphore):
                 details = {
                     "dates": "Not found",
                     "opening_times": "Not found",
+                    "admission": "Not found",
                     "image": None
                 }
                 
-                # Find Dates
                 dl = soup.find('dl', class_='info-container-list')
                 if dl:
-                    dt = dl.find('dt', string='Dates')
-                    if dt:
-                        dd = dt.find_next_sibling('dd')
+                    # Find Dates
+                    dt_dates = dl.find('dt', string='Dates')
+                    if dt_dates:
+                        dd = dt_dates.find_next_sibling('dd')
                         if dd:
                             details["dates"] = dd.text.strip()
-
-                # Find Opening Hours
-                if dl:
-                    dt = dl.find('dt', string='Opening Hours')
-                    if dt:
-                        dd = dt.find_next_sibling('dd')
+                    
+                    # Find Opening Hours
+                    dt_hours = dl.find('dt', string='Opening Hours')
+                    if dt_hours:
+                        dd = dt_hours.find_next_sibling('dd')
                         if dd:
                             details["opening_times"] = dd.text.strip()
+                    
+                    # Find Admission
+                    dt_admission = dl.find('dt', string='Admission')
+                    if dt_admission:
+                        dd = dt_admission.find_next_sibling('dd')
+                        if dd:
+                            details["admission"] = dd.text.strip()
+
                 # Find Image - More robust lookup
                 og_img = soup.find('meta', property='og:image')
                 if og_img:
@@ -58,7 +66,7 @@ async def get_market_details(session, url, semaphore):
                 
                 return details
         except Exception as e:
-            return {"dates": "Error", "opening_times": "Error", "image": None}
+            return {"dates": "Error", "opening_times": "Error", "admission": "Error", "image": None}
 
 async def fetch_all_markets():
     async with aiohttp.ClientSession() as session:
@@ -91,6 +99,7 @@ async def process_market(session, semaphore, feature, props, coords):
         "address": props['address'],
         "dates": details["dates"],
         "opening_times": details["opening_times"],
+        "admission": details["admission"],
         "image_url": image_url or props.get('image', {}).get('url'),
         "coordinates": {
             "lng": coords[0],
