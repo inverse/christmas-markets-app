@@ -1,13 +1,28 @@
 <script lang="ts">
 	import Map from '$lib/components/Map.svelte';
 	import MarketList from '$lib/components/MarketList.svelte';
+	import WelcomeModal from '$lib/components/WelcomeModal.svelte';
+	import { onMount } from 'svelte';
 
 	let { data } = $props();
 	let markets = $derived(data.markets);
 	let isMenuOpen = $state(false);
+	let showWelcome = $state(false);
+
+	onMount(() => {
+		showWelcome = true;
+	});
+
+	function closeWelcome() {
+		showWelcome = false;
+	}
 </script>
 
 <main class="h-screen w-screen relative">
+	{#if showWelcome}
+		<WelcomeModal onClose={closeWelcome} />
+	{/if}
+
 	<Map {markets} />
 
 	<button

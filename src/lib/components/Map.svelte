@@ -9,7 +9,7 @@
 	let map: any;
 	let L: any;
 	let userMarker: any;
-
+	let markers: Map<string, any>;
 	onMount(async () => {
 		if (browser) {
 			const leaflet = await import('leaflet');
@@ -36,7 +36,7 @@
 				attribution: '&copy; OpenStreetMap contributors'
 			}).addTo(map);
 
-			const markers = new Map();
+			markers = new Map();
 			markets.forEach((market: any) => {
 				const meta = statusInfo(isMarketOpen(market.dates).status);
 				const popupHtml = `
@@ -96,20 +96,40 @@
 
 	function findMe() {
 		if (navigator.geolocation && map) {
-			navigator.geolocation.getCurrentPosition((pos) => {
-				const latlng = [pos.coords.latitude, pos.coords.longitude];
-				if (userMarker) {
-					userMarker.setLatLng(latlng);
-				} else {
-					userMarker = L.marker(latlng, {
-						icon: L.divIcon({
-							html: '<div class="w-4 h-4 bg-blue-500 rounded-full border-2 border-white shadow-lg"></div>',
-							className: 'user-marker'
-						})
-					}).addTo(map);
-				}
-				map.setView(latlng, 15);
-			});
+				navigator.geolocation.getCurrentPosition((pos) => {
+					const userLat = pos.coords.latitude;
+					const userLng = pos.coords.longitude;
+					const latlng = [userLat, userLng];
+
+					if (userMarker) {
+						userMarker.setLatLng(latlng);
+					} else {
+						userMarker = L.marker(latlng, {
+							icon: L.divIcon({
+								html: '<div class="w-4 h-4 bg-blue-500 rounded-full border-2 border-white shadow-lg"></div>',
+								className: 'user-marker'
+							})
+						}).addTo(map);
+					}
+
+					// Find closest market
+					let closestMarket = null;
+					let minDistance = Infinity;
+
+					markets.forEach((market) => {
+						const d = L.latLng([market.coordinates.lat, market.coordinates.lng]).distanceTo(latlng);
+						if (d < minDistance) {
+							minDistance = d;
+							closestMarket = market;
+						}
+					});
+
+					if (closestMarket) {
+						const marker = markers.get(closestMarket.name);
+						marker.openPopup();
+						map.setView(marker.getLatLng(), 15);
+					}
+				});
 		}
 	}
 </script>

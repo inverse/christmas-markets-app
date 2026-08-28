@@ -9,7 +9,7 @@
 		const statusA = isMarketOpen(a.dates).status;
 		const statusB = isMarketOpen(b.dates).status;
 
-		const order = { open: 0, unknown: 1, closed: 2 };
+		const order = { open: 0, closed: 1, unknown: 2 };
 		return order[statusA] - order[statusB];
 	}));
 

@@ -1,0 +1,10 @@
+<svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+  <!-- Left Leaf -->
+  <path d="M40 70 C 20 60, 0 40, 10 20 C 20 10, 40 20, 45 30 C 45 20, 60 10, 70 20 C 60 30, 55 40, 55 50 C 55 60, 50 70, 40 70 Z" fill="#008000" stroke="#004d00" stroke-width="2"/>
+  <!-- Right Leaf -->
+  <path d="M60 70 C 80 60, 100 40, 90 20 C 80 10, 60 20, 55 30 C 55 20, 40 10, 30 20 C 40 30, 45 40, 45 50 C 45 60, 50 70, 60 70 Z" fill="#008000" stroke="#004d00" stroke-width="2"/>
+  <!-- Berries -->
+  <circle cx="45" cy="35" r="8" fill="red" stroke="#990000" stroke-width="2"/>
+  <circle cx="55" cy="35" r="8" fill="red" stroke="#990000" stroke-width="2"/>
+  <circle cx="50" cy="28" r="8" fill="red" stroke="#990000" stroke-width="2"/>
+</svg>
