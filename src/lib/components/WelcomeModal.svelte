@@ -1,13 +1,11 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 
-	let { onClose } = $props<{ onClose: () => void }>();
+	let { onClose, daysUntilFirstMarket } = $props<{ 
+		onClose: () => void;
+		daysUntilFirstMarket?: number;
+	}>();
 
-	// Target date: October 31, 2026 (earliest market)
-	const targetDate = new Date(2026, 9, 31); 
-	const today = new Date(2026, 7, 28);
-	const diffTime = targetDate.getTime() - today.getTime();
-	const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 </script>
 
 <div class="fixed inset-0 z-[2000] flex items-center justify-center p-4 bg-black/70" transition:fade>
@@ -18,10 +16,12 @@
 			Discover the magic of Berlin's Christmas markets. Explore the map to find your nearest festive spot.
 		</p>
 		
-		<div class="bg-pine text-white p-4 rounded-xl text-center mb-6">
-			<div class="text-3xl font-bold font-display">{diffDays}</div>
-			<div class="text-sm font-semibold uppercase tracking-wider text-gold">Days until the first market</div>
-		</div>
+		{#if daysUntilFirstMarket !== undefined}
+			<div class="bg-pine text-white p-4 rounded-xl text-center mb-6">
+				<div class="text-3xl font-bold font-display">{daysUntilFirstMarket}</div>
+				<div class="text-sm font-semibold uppercase tracking-wider text-gold">Days until the first market</div>
+			</div>
+		{/if}
 
 		<button
 			onclick={onClose}

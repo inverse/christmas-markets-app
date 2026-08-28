@@ -9,8 +9,18 @@
 	let isMenuOpen = $state(false);
 	let showWelcome = $state(false);
 
+	// Calculate days until Oct 31, 2026
+	const targetDate = new Date(2026, 9, 31);
+	const today = new Date();
+	const diffTime = targetDate.getTime() - today.getTime();
+	const daysUntilFirstMarket = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
 	onMount(() => {
-		showWelcome = true;
+		const hasSeen = localStorage.getItem('hasSeenWelcome');
+		if (!hasSeen) {
+			showWelcome = true;
+			localStorage.setItem('hasSeenWelcome', 'true');
+		}
 	});
 
 	function closeWelcome() {
@@ -20,7 +30,7 @@
 
 <main class="h-screen w-screen relative">
 	{#if showWelcome}
-		<WelcomeModal onClose={closeWelcome} />
+		<WelcomeModal onClose={closeWelcome} daysUntilFirstMarket={daysUntilFirstMarket > 0 ? daysUntilFirstMarket : undefined} />
 	{/if}
 
 	<Map {markets} />

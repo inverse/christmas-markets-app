@@ -63,10 +63,12 @@
 								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-0.5 flex-shrink-0 text-berry"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
 								<span class="${market.opening_times === 'Not found' ? 'italic text-stone-400' : ''}">${market.opening_times === 'Not found' ? 'Opening times to be announced' : market.opening_times}</span>
 							</div>
-							<div class="flex items-start gap-2 text-[13px] text-stone-700">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-0.5 flex-shrink-0 text-berry"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-								<span class="${market.admission === 'Not found' ? 'italic text-stone-400' : ''}">${market.admission === 'Not found' ? 'Admission info not available' : market.admission}</span>
-							</div>
+							${market.admission !== 'Not found' ? `
+								<div class="flex items-start gap-2 text-[13px] text-stone-700">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-0.5 flex-shrink-0 text-berry"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+									<span>${market.admission}</span>
+								</div>
+							` : ''}
 							<a href="${market.url}" target="_blank" class="mt-1 flex items-center justify-center gap-1.5 w-full bg-gold hover:bg-gold-dark text-pine text-sm font-bold py-2.5 rounded-lg transition shadow-sm">
 								More Info
 								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
