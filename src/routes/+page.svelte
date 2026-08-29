@@ -3,17 +3,34 @@
   import MarketList from "$lib/components/MarketList.svelte";
   import WelcomeModal from "$lib/components/WelcomeModal.svelte";
   import { onMount } from "svelte";
+  import { getFirstMentionedMonth } from "$lib/utils/marketStatus";
 
   let { data } = $props();
   let markets = $derived(data.markets);
   let isMenuOpen = $state(false);
   let showWelcome = $state(false);
 
-  // Calculate days until Oct 31, 2026
-  const targetDate = new Date(2026, 9, 31);
-  const today = new Date();
-  const diffTime = targetDate.getTime() - today.getTime();
-  const daysUntilFirstMarket = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  // Calculate days until the earliest market month
+  const earliestMonth = $derived(
+    markets.reduce((min, market) => {
+      const month = getFirstMentionedMonth(market.dates);
+      return month !== null && month < min ? month : min;
+    }, 11),
+  );
+
+  const daysUntilFirstMarket = $derived(() => {
+    const now = new Date();
+    let targetYear = now.getFullYear();
+    if (earliestMonth !== null && earliestMonth < now.getMonth()) {
+      targetYear++;
+    }
+    const targetDate =
+      earliestMonth !== null
+        ? new Date(targetYear, earliestMonth, 1)
+        : new Date(2026, 9, 31);
+    const diffTime = targetDate.getTime() - now.getTime();
+    return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  });
 
   onMount(() => {
     const hasSeen = localStorage.getItem("hasSeenWelcome");
@@ -32,8 +49,8 @@
   {#if showWelcome}
     <WelcomeModal
       onClose={closeWelcome}
-      daysUntilFirstMarket={daysUntilFirstMarket > 0
-        ? daysUntilFirstMarket
+      daysUntilFirstMarket={daysUntilFirstMarket() > 0
+        ? daysUntilFirstMarket()
         : undefined}
       marketCount={markets.length}
     />
@@ -58,6 +75,13 @@
   </button>
 
   {#if isMenuOpen}
-    <MarketList {markets} onClose={() => (isMenuOpen = false)} />
+    <MarketList
+      {markets}
+      onClose={() => (isMenuOpen = false)}
+      onShowWelcome={() => {
+        showWelcome = true;
+        isMenuOpen = false;
+      }}
+    />
   {/if}
 </main>

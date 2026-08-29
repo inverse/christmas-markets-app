@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import { isMarketOpen } from "./marketStatus";
+import { isMarketOpen, getFirstMentionedMonth } from "./marketStatus";
 
 describe("isMarketOpen", () => {
   beforeEach(() => {
@@ -36,5 +36,27 @@ describe("isMarketOpen", () => {
   it("should return unknown for dates without month names", () => {
     const result = isMarketOpen("Not found");
     expect(result.status).toBe("unknown");
+  });
+});
+
+describe("getFirstMentionedMonth", () => {
+  it("should return the correct month index for a simple date", () => {
+    expect(getFirstMentionedMonth("December 5 and 6, 2026")).toBe(11);
+  });
+
+  it("should find the earliest month in a range", () => {
+    expect(
+      getFirstMentionedMonth("November 18, 2026 until January 03, 2027"),
+    ).toBe(10);
+  });
+
+  it("should return the first mentioned month even if out of chronological order", () => {
+    expect(getFirstMentionedMonth("Starts in November, ends in October")).toBe(
+      10,
+    );
+  });
+
+  it("should return null if no month found", () => {
+    expect(getFirstMentionedMonth("Dates TBA")).toBeNull();
   });
 });

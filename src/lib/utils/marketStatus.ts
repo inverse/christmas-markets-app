@@ -1,10 +1,12 @@
-export function isMarketOpen(dates: string): {
-  isOpen: boolean;
-  status: "open" | "upcoming" | "closed" | "unknown";
-} {
+export function getFirstMentionedMonth(dates: string): number | null {
   const lowerDates = dates.toLowerCase();
-  const now = new Date();
+  const foundMonths = getFoundMonths(lowerDates);
+  if (foundMonths.length === 0) return null;
+  foundMonths.sort((a, b) => a.index - b.index);
+  return foundMonths[0].monthIndex;
+}
 
+function getFoundMonths(lowerDates: string) {
   const monthMap: Record<string, number> = {
     january: 0,
     february: 1,
@@ -19,8 +21,6 @@ export function isMarketOpen(dates: string): {
     november: 10,
     december: 11,
   };
-
-  // Find all months mentioned in the dates string, preserving order of appearance
   const foundMonths = [];
   for (const month of Object.keys(monthMap)) {
     const index = lowerDates.indexOf(month);
@@ -28,10 +28,18 @@ export function isMarketOpen(dates: string): {
       foundMonths.push({ index: index, monthIndex: monthMap[month] });
     }
   }
+  return foundMonths;
+}
+
+export function isMarketOpen(dates: string): {
+  isOpen: boolean;
+  status: "open" | "upcoming" | "closed" | "unknown";
+} {
+  const now = new Date();
+  const foundMonths = getFoundMonths(dates.toLowerCase());
 
   if (foundMonths.length === 0) return { isOpen: false, status: "unknown" };
 
-  // Sort by appearance in string to know start and end
   foundMonths.sort((a, b) => a.index - b.index);
   const startMonth = foundMonths[0].monthIndex;
   const endMonth = foundMonths[foundMonths.length - 1].monthIndex;

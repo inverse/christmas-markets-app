@@ -6,9 +6,10 @@
 
   type Filter = "all" | "open" | "upcoming" | "closed" | "unknown";
 
-  let { markets, onClose } = $props<{
+  let { markets, onClose, onShowWelcome } = $props<{
     markets: Market[];
     onClose: () => void;
+    onShowWelcome: () => void;
   }>();
   let activeFilter = $state<Filter>("all");
 
@@ -133,6 +134,13 @@
         Find your nearest market and enjoy the festive spirit!
       </p>
     </section>
+    <button
+      onclick={onShowWelcome}
+      class="flex w-full items-center justify-center gap-2 rounded-lg border border-pine bg-snow px-4 py-2 text-sm font-semibold text-pine transition hover:bg-pine hover:text-white"
+    >
+      <span class="text-lg">🎄</span>
+      <span>Welcome Guide</span>
+    </button>
 
     <section>
       <div class="mb-2 flex items-end justify-between px-1">
