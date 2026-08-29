@@ -7,6 +7,7 @@
     "dev": "vite dev",
     "dev:tunnel": "concurrently \"npm run dev\" \"node scripts/dev-tunnel-qr.mjs\"",
     "build": "vite build",
+    "publish:web": "npm run build && npx wrangler pages deploy",
     "preview": "vite preview",
     "test": "vitest",
     "test:run": "vitest run",

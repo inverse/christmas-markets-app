@@ -62,6 +62,10 @@ npm run build
 
 Configured for deployment to [Cloudflare Pages](https://pages.cloudflare.com/) using Wrangler.
 
+### Custom Domain
+
+The application is served at `christmas-markets.inberlin.fyi`. Ensure this custom domain is added to your Cloudflare Pages project settings via the Cloudflare Dashboard.
+
 ### Testing and Quality
 
 This project utilizes `vitest` for running tests and `husky`/`lint-staged` for pre-commit hooks.
