@@ -1,5 +1,6 @@
 <script lang="ts">
   import "../app.css";
+  import "leaflet/dist/leaflet.css";
   import { initDateSimulation } from "$lib/utils/date";
   import { browser } from "$app/environment";
   import { onMount } from "svelte";
