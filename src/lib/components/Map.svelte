@@ -162,6 +162,7 @@
           const marker = markers.get(closestMarket!.name);
           if (marker) {
             map!.setView(marker.getLatLng(), 15);
+            marker.openPopup();
           }
         }
       });
