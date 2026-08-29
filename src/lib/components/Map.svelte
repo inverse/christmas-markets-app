@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount, onDestroy } from "svelte";
   import { browser } from "$app/environment";
-  import { isMarketOpen } from "$lib/utils/marketStatus";
+  import { isMarketOpen, statusInfo } from "$lib/utils/marketStatus";
   import type { Market } from "$lib/types";
   import { mapStore, selectedMarket } from "$lib/mapStore";
   let { markets, now } = $props<{ markets: Market[]; now: Date }>();
@@ -19,20 +19,20 @@
       L = leaflet.default || leaflet;
       // SvelteMap needs to be imported if it is from svelte
       const { SvelteMap } = await import("svelte/reactivity");
-
-      const christmasIcon = L.icon({
-        iconUrl: "/icons/christmas-tree-raw.svg",
+      const christmasIcon = L.divIcon({
+        html: `<div class="relative w-8 h-8 rounded-full border-2 border-gold/60 bg-gold/30 flex items-center justify-center"><img src="/icons/christmas-tree-raw.svg" class="w-5 h-5 opacity-70" /></div>`,
+        className: "custom-tree-icon",
         iconSize: [32, 32],
-        iconAnchor: [16, 32],
-        popupAnchor: [0, -32],
+        iconAnchor: [16, 16],
+        popupAnchor: [0, -16],
       });
 
-      const christmasIconLit = L.icon({
-        iconUrl: "/icons/christmas-tree-raw.svg",
+      const christmasIconLit = L.divIcon({
+        html: `<div class="relative w-10 h-10 rounded-full border-2 border-gold bg-gold/60 flex items-center justify-center shadow-lg"><img src="/icons/christmas-tree-raw.svg" class="w-6 h-6" /></div>`,
+        className: "custom-tree-icon-lit",
         iconSize: [40, 40],
-        iconAnchor: [20, 40],
-        popupAnchor: [0, -40],
-        className: "animate-pulse",
+        iconAnchor: [20, 20],
+        popupAnchor: [0, -20],
       });
       starIcon = L.divIcon({
         html: `<svg viewBox="0 0 24 24" fill="#EAB308" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>`,
@@ -50,16 +50,20 @@
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution: "&copy; OpenStreetMap contributors",
       }).addTo(map);
-
       markers = new SvelteMap<string, L.Marker>();
       markets.forEach((market: Market) => {
+        console.log("Processing market:", market.name);
         const status = isMarketOpen(market.dates, now).status;
         const icon = status === "open" ? christmasIconLit : christmasIcon;
+        const statusInfoObj = statusInfo(status);
         const popupHtml = `
 					<div class="w-[300px] bg-snow overflow-hidden font-sans border border-gold/40 rounded-xl">
 						<div class="relative h-40">
 							<img src="${market.image_url}" alt="${market.name}" loading="lazy" class="w-full h-full object-cover" />
 							<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              <div class="absolute top-3 left-3 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase ${statusInfoObj.bg} ${statusInfoObj.color} border ${statusInfoObj.border}">
+                ${statusInfoObj.label}
+              </div>
 							<h3 class="absolute bottom-3 left-3 right-10 text-white font-display text-lg font-bold leading-tight drop-shadow line-clamp-2">${market.name}</h3>
 						</div>
 						<div class="h-1 w-full bg-gradient-to-r from-pine via-gold to-berry"></div>
