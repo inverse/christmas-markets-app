@@ -1,68 +1,49 @@
-export function getFirstMentionedMonth(dates: string): number | null {
-  const lowerDates = dates.toLowerCase();
-  const foundMonths = getFoundMonths(lowerDates);
-  if (foundMonths.length === 0) return null;
-  foundMonths.sort((a, b) => a.index - b.index);
-  return foundMonths[0].monthIndex;
-}
+import type { Dates } from "../dateParser";
 
-function getFoundMonths(lowerDates: string) {
-  const monthMap: Record<string, number> = {
-    january: 0,
-    february: 1,
-    march: 2,
-    april: 3,
-    may: 4,
-    june: 5,
-    july: 6,
-    august: 7,
-    september: 8,
-    october: 9,
-    november: 10,
-    december: 11,
-  };
-  const foundMonths = [];
-  for (const month of Object.keys(monthMap)) {
-    const index = lowerDates.indexOf(month);
-    if (index !== -1) {
-      foundMonths.push({ index: index, monthIndex: monthMap[month] });
-    }
+export function getEarliestDate(dates: Dates): Date {
+  if (dates.type === "range" && dates.start_date) {
+    return new Date(dates.start_date);
   }
-  return foundMonths;
+  if (dates.type === "dates" && dates.dates && dates.dates.length > 0) {
+    return new Date(Math.min(...dates.dates.map((d) => new Date(d).getTime())));
+  }
+
+  // Fallback if no valid dates - return very far future date
+  return new Date(2099, 11, 31);
 }
 
-export function isMarketOpen(dates: string): {
+export function isMarketOpen(dates: Dates): {
   isOpen: boolean;
   status: "open" | "upcoming" | "closed" | "unknown";
 } {
   const now = new Date();
-  const foundMonths = getFoundMonths(dates.toLowerCase());
 
-  if (foundMonths.length === 0) return { isOpen: false, status: "unknown" };
+  if (dates.type === "range" && dates.start_date && dates.end_date) {
+    const start = new Date(dates.start_date);
+    const end = new Date(dates.end_date);
+    const isOpen = now >= start && now <= end;
+    if (isOpen) return { isOpen: true, status: "open" };
+    return { isOpen: false, status: now < start ? "upcoming" : "closed" };
+  }
+  // If dates are lists, we check if today is included
+  if (dates.type === "dates" && dates.dates && dates.dates.length > 0) {
+    const todayIso = now.toISOString().split("T")[0];
+    const isOpen = dates.dates.includes(todayIso);
+    if (isOpen) return { isOpen: true, status: "open" };
+    return {
+      isOpen: false,
+      status: now < new Date(dates.dates[0]) ? "upcoming" : "closed",
+    };
+  }
 
-  foundMonths.sort((a, b) => a.index - b.index);
-  const startMonth = foundMonths[0].monthIndex;
-  const endMonth = foundMonths[foundMonths.length - 1].monthIndex;
-  const currentMonth = now.getMonth();
-
-  const isOpen =
-    startMonth > endMonth
-      ? currentMonth >= startMonth || currentMonth <= endMonth
-      : currentMonth >= startMonth && currentMonth <= endMonth;
-
-  if (isOpen) return { isOpen: true, status: "open" };
-
-  const isUpcoming =
-    currentMonth < startMonth &&
-    (currentMonth >= 7 || currentMonth >= startMonth - 3);
-  return { isOpen: false, status: isUpcoming ? "upcoming" : "closed" };
+  return { isOpen: false, status: "unknown" };
 }
 
 interface StatusMeta {
   label: string;
-  pill: string;
-  dot: string;
-  accent: string;
+  color: string;
+  bg: string;
+  border: string;
 }
 
 const statusMeta: Record<
@@ -70,28 +51,28 @@ const statusMeta: Record<
   StatusMeta
 > = {
   open: {
-    label: "Open now",
-    pill: "bg-pine text-white",
-    dot: "bg-emerald-400",
-    accent: "border-l-pine",
+    label: "Open",
+    color: "text-pine",
+    bg: "bg-pine/10",
+    border: "border-pine",
   },
   upcoming: {
     label: "Upcoming",
-    pill: "bg-gold-light text-pine",
-    dot: "bg-gold-dark",
-    accent: "border-l-gold",
+    color: "text-gold",
+    bg: "bg-gold/10",
+    border: "border-gold",
   },
   closed: {
     label: "Closed",
-    pill: "bg-stone-200 text-stone-600",
-    dot: "bg-stone-400",
-    accent: "border-l-stone-300",
+    color: "text-pine/50",
+    bg: "bg-pine/5",
+    border: "border-pine/20",
   },
   unknown: {
-    label: "Dates TBA",
-    pill: "bg-amber-100 text-amber-800",
-    dot: "bg-amber-400",
-    accent: "border-l-amber-400",
+    label: "Check Web",
+    color: "text-gold",
+    bg: "bg-gold/10",
+    border: "border-gold",
   },
 };
 

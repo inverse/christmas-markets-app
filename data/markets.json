@@ -1,11 +1,15 @@
 [
   {
-    "name": "Pankow Advent Market at Heynh\u00f6fe",
-    "address": "Heynstra\u00dfe 15, Berlin, 13187, Deutschland",
-    "dates": "December 5 and 6, 2026",
+    "name": "Pankow Advent Market at Heynhöfe",
+    "address": "Heynstraße 15, Berlin, 13187, Deutschland",
+    "dates": {
+      "raw": "December 5 and 6, 2026",
+      "type": "dates",
+      "dates": ["2026-12-05", "2026-12-06"]
+    },
     "opening_times": "Saturday from 11 am to 8 pm, Sunday from 11 am to 7 pm",
-    "admission": "Not found",
-    "description": "For several years now, the Heynh\u00f6fe business park has been transformed into a cozy Christmas mile in December where neighborhood residents, Berliners and visitors meet.",
+    "admission": "Free",
+    "description": "For several years now, the Heynhöfe business park has been transformed into a cozy Christmas mile in December where neighborhood residents, Berliners and visitors meet.",
     "image_url": "https://www.berlin.de/binaries/asset/image_assets/5107072/ratio_4_3/1662723063/800x600/",
     "coordinates": {
       "lng": 13.4026,
@@ -16,9 +20,13 @@
   {
     "name": "Advent Market on Kollwitzplatz",
     "address": "Kollwitzplatz 1, Berlin, 10435, Deutschland",
-    "dates": "On all Sundays in Advent 2026 (29 November, 6, 13 and 20 December 2026)",
+    "dates": {
+      "raw": "On all Sundays in Advent 2026 (29 November, 6, 13 and 20 December 2026)",
+      "type": "dates",
+      "dates": ["2026-11-29", "2026-12-06", "2026-12-13", "2026-12-20"]
+    },
     "opening_times": "12 noon to 7 pm",
-    "admission": "Not found",
+    "admission": "Free",
     "description": "The Advent Market on Kollwitzplatz offers gifts, goods and foods produced under fair social and eco-friendly conditions.",
     "image_url": "https://www.berlin.de/binaries/asset/image_assets/9837409/ratio_4_3/1760363219/800x600/",
     "coordinates": {
@@ -30,9 +38,14 @@
   {
     "name": "Christmas Market at Charlottenburg Palace",
     "address": "Spandauer Damm  20, Berlin, 14059, Deutschland",
-    "dates": "November 23 to December 27, 2026",
+    "dates": {
+      "raw": "November 23 to December 27, 2026",
+      "type": "range",
+      "start_date": "2026-11-23",
+      "end_date": "2026-12-27"
+    },
     "opening_times": "Monday to Thursday from 1 pm to 10 pm, Friday to Sunday from 12 noon to 10 pm; closed on December 24",
-    "admission": "Not found",
+    "admission": "Free",
     "description": "With its romantic setting and magnificent illuminations, the Christmas market at Charlottenburg Palace is popular with Berliners and visitors alike for good reason.",
     "image_url": "https://www.berlin.de/binaries/asset/image_assets/2189921/ratio_4_3/1753452851/800x600/",
     "coordinates": {
@@ -43,10 +56,15 @@
   },
   {
     "name": "Medieval Christmas Market at the RAW Compound",
-    "address": "Revaler Stra\u00dfe 99, Berlin, 10245, Deutschland",
-    "dates": "November 12 - December 22, 2026",
+    "address": "Revaler Straße 99, Berlin, 10245, Deutschland",
+    "dates": {
+      "raw": "November 12 - December 22, 2026",
+      "type": "range",
+      "start_date": "2026-11-12",
+      "end_date": "2026-12-22"
+    },
     "opening_times": "Monday through Thursday from 3 pm to 10 pm, Friday from 3 pm to 11 pm, Saturday from noon to 11 pm, Sunday from noon to 10 pm; closed on November 22, 2026",
-    "admission": "Not found",
+    "admission": "Not yet known",
     "description": "This Christmas market in Friedrichshain presents itself in all its historical splendour.",
     "image_url": "https://www.berlin.de/binaries/asset/image_assets/7611156/ratio_4_3/1736165535/800x600/",
     "coordinates": {
@@ -58,9 +76,14 @@
   {
     "name": "Christmas Market in Alt-Rixdorf",
     "address": "Richardplatz 28, Berlin, 12055, Deutschland",
-    "dates": "December 4\u20136, 2026",
+    "dates": {
+      "raw": "December 4-6, 2026",
+      "type": "range",
+      "start_date": "2026-12-04",
+      "end_date": "2026-12-06"
+    },
     "opening_times": "Friday from 5 to 9 pm, Saturday from 2 to 9 pm, Sunday from 2 to 8 pm",
-    "admission": "Not found",
+    "admission": "Not yet known",
     "description": "Cobblestones, warm light from oil lamps and a historical backdrop: The Alt-Rixdorf Christmas market on Richardplatz attracts visitors with its unique ambience and charitable commitment.",
     "image_url": "https://www.berlin.de/binaries/asset/image_assets/8603192/ratio_4_3/1773234238/800x600/",
     "coordinates": {
@@ -72,9 +95,14 @@
   {
     "name": "Christmas Market on Gendarmenmarkt",
     "address": "Gendarmenmarkt , Berlin, 10117, Deutschland",
-    "dates": "November 23 to December 31, 2026",
+    "dates": {
+      "raw": "November 23 to December 31, 2026",
+      "type": "range",
+      "start_date": "2026-11-23",
+      "end_date": "2026-12-31"
+    },
     "opening_times": "Not yet known",
-    "admission": "Not found",
+    "admission": "Not yet known",
     "description": "Located on one of the most beautiful squares in Berlin, this Christmas Market offers quality decorations, food and entertainment.",
     "image_url": "https://www.berlin.de/binaries/asset/image_assets/8580108/ratio_4_3/1778165779/800x600/",
     "coordinates": {
@@ -86,9 +114,14 @@
   {
     "name": "Christmas Fair on Landsberger Allee",
     "address": "Landsberger Allee 300, Berlin, 13055, Deutschland",
-    "dates": "October 31 to December 27, 2026",
+    "dates": {
+      "raw": "October 31 to December 27, 2026",
+      "type": "range",
+      "start_date": "2026-10-31",
+      "end_date": "2026-12-27"
+    },
     "opening_times": "Not yet known",
-    "admission": "Not found",
+    "admission": "Not yet known",
     "description": "The \"Lichtenberger Winterzeit\" Christmas fair attracts numerous guests to Lichtenberg with mulled wine and a funfair atmosphere.",
     "image_url": "https://www.berlin.de/binaries/asset/image_assets/8440665/ratio_4_3/1694165107/800x600/",
     "coordinates": {
@@ -99,11 +132,15 @@
   },
   {
     "name": "Holy Shit Shopping",
-    "address": "Karl-Marx-Stra\u00dfe 95, Berlin, 12043, Deutschland",
-    "dates": "November 28 and 29, 2026",
+    "address": "Karl-Marx-Straße 95, Berlin, 12043, Deutschland",
+    "dates": {
+      "raw": "November 28 and 29, 2026",
+      "type": "dates",
+      "dates": ["2026-11-28", "2026-11-29"]
+    },
     "opening_times": "Not yet known",
-    "admission": "Not found",
-    "description": "During Advent, the Cank in Neuk\u00f6lln is transformed into a design market for creative gift ideas.",
+    "admission": "Not yet known",
+    "description": "During Advent, the Cank in Neukölln is transformed into a design market for creative gift ideas.",
     "image_url": "https://www.berlin.de/binaries/asset/image_assets/5589994/ratio_4_3/1658132660/800x600/",
     "coordinates": {
       "lng": 13.4365,
@@ -114,10 +151,15 @@
   {
     "name": "Christmas Market at the Humboldt Forum",
     "address": "Schlossplatz , Berlin, 10178, Deutschland",
-    "dates": "November 18, 2026 until January 03, 2027",
+    "dates": {
+      "raw": "November 18, 2026 until January 03, 2027",
+      "type": "range",
+      "start_date": "2026-11-18",
+      "end_date": "2027-01-03"
+    },
     "opening_times": "11 am to 10 pm, closed on November 22 and December 24, 2026",
-    "admission": "Not found",
-    "description": "In 2026, a winter market with a special ambience will once again take place on in front of Berlin Palace and in the Schl\u00fcterhof.",
+    "admission": "Free",
+    "description": "In 2026, a winter market with a special ambience will once again take place on in front of Berlin Palace and in the Schlüterhof.",
     "image_url": "https://www.berlin.de/binaries/asset/image_assets/9061476/ratio_4_3/1722322789/800x600/",
     "coordinates": {
       "lng": 13.4023,
@@ -130,7 +172,7 @@
     "address": "Karl-August-Platz , Berlin, 10625, Deutschland",
     "dates": "Not found",
     "opening_times": "Not yet known",
-    "admission": "Not found",
+    "admission": "Not yet known",
     "description": "Those in search of unique Christmas presents will find what they are looking for on the first three Sundays of Advent at the arts and crafts market on Karl-August-Platz.",
     "image_url": "https://www.berlin.de/binaries/asset/image_assets/7093393/ratio_4_3/1657871727/800x600/",
     "coordinates": {
@@ -142,9 +184,14 @@
   {
     "name": "Wein-Nachtsmarkt at Ludwig-Beck-Platz",
     "address": "Ludwig-Beck-Platz , Berlin, 12203, Deutschland",
-    "dates": "12 and 13 December 2026",
+    "dates": {
+      "raw": "12-13 December 2026",
+      "type": "range",
+      "start_date": "2026-12-12",
+      "end_date": "2026-12-13"
+    },
     "opening_times": "Not yet known",
-    "admission": "Not found",
+    "admission": "Not yet known",
     "description": "Once again this year, a cozy Christmas market will take place on Ludwig-Beck-Platz. A visit is particularly worthwhile for wine lovers.",
     "image_url": "https://www.berlin.de/binaries/asset/image_assets/9333003/ratio_4_3/1774356833/800x600/",
     "coordinates": {
@@ -154,12 +201,23 @@
     "url": "https://www.berlin.de/en/christmas-markets/9332973-3230598-weinachtsmarkt-at-ludwig-beck-platz.en.html"
   },
   {
-    "name": "Christmas Market at Sp\u00e4th'sche Baumschulen",
-    "address": "Sp\u00e4thstra\u00dfe 80, Berlin, 12437, Deutschland",
-    "dates": "On the first three Advent weekends in 2026 (November 28 and 29, December 05, 06, 12, and 13)",
+    "name": "Christmas Market at Späth'sche Baumschulen",
+    "address": "Späthstraße 80, Berlin, 12437, Deutschland",
+    "dates": {
+      "raw": "On the first three Advent weekends in 2026 (November 28 and 29, December 05, 06, 12, and 13)",
+      "type": "dates",
+      "dates": [
+        "2026-11-28",
+        "2026-11-29",
+        "2026-12-05",
+        "2026-12-06",
+        "2026-12-12",
+        "2026-12-13"
+      ]
+    },
     "opening_times": "11 am to 8 pm",
-    "admission": "Not found",
-    "description": "Extensive stage program with a visit from an angel: For years, the Christmas market at Sp\u00e4th'sche Baumschulen has been a winter highlight for many families.",
+    "admission": "€ 8, reduced rate € 5, children under 16 free",
+    "description": "Extensive stage program with a visit from an angel: For years, the Christmas market at Späth'sche Baumschulen has been a winter highlight for many families.",
     "image_url": "https://www.berlin.de/binaries/asset/image_assets/10018660/ratio_4_3/1763036448/800x600/",
     "coordinates": {
       "lng": 13.4732,
@@ -168,12 +226,25 @@
     "url": "https://www.berlin.de/en/christmas-markets/5734559-3230598-christmas-market-at-spaethsche-baumschul.en.html"
   },
   {
-    "name": "Advent Market at Dom\u00e4ne Dahlem",
-    "address": "K\u00f6nigin-Luise-Stra\u00dfe  49, Berlin, 14195, Deutschland",
-    "dates": "On all weekends in Advent (November 28 and 29, December 5, 6, 12, 13, 19, and 20, 2026)",
+    "name": "Advent Market at Domäne Dahlem",
+    "address": "Königin-Luise-Straße  49, Berlin, 14195, Deutschland",
+    "dates": {
+      "raw": "On all weekends in Advent (November 28 and 29, December 5, 6, 12, 13, 19, and 20, 2026)",
+      "type": "dates",
+      "dates": [
+        "2026-11-28",
+        "2026-11-29",
+        "2026-12-05",
+        "2026-12-06",
+        "2026-12-12",
+        "2026-12-13",
+        "2026-12-19",
+        "2026-12-20"
+      ]
+    },
     "opening_times": "Not yet known",
-    "admission": "Not found",
-    "description": "A cozy estate atmosphere, selected stalls and a colorful program for children: the Advent market at the Dom\u00e4ne Dahlem has a lot to offer.",
+    "admission": "Not yet known",
+    "description": "A cozy estate atmosphere, selected stalls and a colorful program for children: the Advent market at the Domäne Dahlem has a lot to offer.",
     "image_url": "https://www.berlin.de/binaries/asset/image_assets/8578596/ratio_4_3/1701085432/800x600/",
     "coordinates": {
       "lng": 13.2886,
@@ -183,10 +254,15 @@
   },
   {
     "name": "Lucia Christmas Market at Kulturbrauerei",
-    "address": "Sch\u00f6nhauser Allee 36, Berlin, 10435, Deutschland",
-    "dates": "November 23 to December 22, 2026",
+    "address": "Schönhauser Allee 36, Berlin, 10435, Deutschland",
+    "dates": {
+      "raw": "November 23 to December 22, 2026",
+      "type": "range",
+      "start_date": "2026-11-23",
+      "end_date": "2026-12-22"
+    },
     "opening_times": "Not found",
-    "admission": "Not found",
+    "admission": "Free",
     "description": "The Christmas market in the Kulturbrauerei attracts visitors with its contemplative atmosphere, a warm and cozy ambience and a daily cultural program.",
     "image_url": "https://www.berlin.de/binaries/asset/image_assets/8522428/ratio_4_3/1704805086/800x600/",
     "coordinates": {
@@ -196,12 +272,25 @@
     "url": "https://www.berlin.de/en/christmas-markets/3240367-3230598-lucia-christmas-market-at-kulturbrauerei.en.html"
   },
   {
-    "name": "Sustainable Christmas Market on Sophienstra\u00dfe",
-    "address": "Sophienstra\u00dfe , Berlin , 10178, Deutschland",
-    "dates": "On all Advent weekends in 2026 (November 28 and 29, as well as December 5, 6, 12, 13, 19 and 21, 2026)",
+    "name": "Sustainable Christmas Market on Sophienstraße",
+    "address": "Sophienstraße , Berlin , 10178, Deutschland",
+    "dates": {
+      "raw": "On all Advent weekends in 2026 (November 28 and 29, as well as December 5, 6, 12, 13, 19 and 21, 2026)",
+      "type": "dates",
+      "dates": [
+        "2026-11-28",
+        "2026-11-29",
+        "2026-12-05",
+        "2026-12-06",
+        "2026-12-12",
+        "2026-12-13",
+        "2026-12-19",
+        "2026-12-21"
+      ]
+    },
     "opening_times": "Saturday from 12 noon to 8 pm, Sunday from 11 to 7 pm",
-    "admission": "Not found",
-    "description": "For over 25 years, this Christmas market near Hackesche H\u00f6fe has offered visitors selected goods that are organic, sustainable and fairly produced.",
+    "admission": "Free",
+    "description": "For over 25 years, this Christmas market near Hackesche Höfe has offered visitors selected goods that are organic, sustainable and fairly produced.",
     "image_url": "https://www.berlin.de/binaries/asset/image_assets/9833143/ratio_4_3/1758798602/800x600/",
     "coordinates": {
       "lng": 13.4023,
@@ -211,11 +300,15 @@
   },
   {
     "name": "Christmas in Westend",
-    "address": "Preu\u00dfenallee , Berlin, 14052, Deutschland",
-    "dates": "December 19 and 20, 2026",
+    "address": "Preußenallee , Berlin, 14052, Deutschland",
+    "dates": {
+      "raw": "December 19 and 20, 2026",
+      "type": "dates",
+      "dates": ["2026-12-19", "2026-12-20"]
+    },
     "opening_times": "Not yet known",
-    "admission": "Not found",
-    "description": "Every year during Advent, a Christmassy trunked animal invites you to the Christmas market in Preu\u00dfenallee.",
+    "admission": "Free",
+    "description": "Every year during Advent, a Christmassy trunked animal invites you to the Christmas market in Preußenallee.",
     "image_url": "https://www.berlin.de/binaries/asset/image_assets/7092721/ratio_4_3/1657792116/800x600/",
     "coordinates": {
       "lng": 13.2594,
@@ -224,12 +317,12 @@
     "url": "https://www.berlin.de/en/christmas-markets/7092703-3230598-christmas-in-westend.en.html"
   },
   {
-    "name": "Advent Market in Leonhardtstra\u00dfe",
-    "address": "Leonhardtstra\u00dfe , Berlin, 14057, Deutschland",
+    "name": "Advent Market in Leonhardtstraße",
+    "address": "Leonhardtstraße , Berlin, 14057, Deutschland",
     "dates": "Not found",
     "opening_times": "Not yet known",
-    "admission": "Not found",
-    "description": "On the second Advent, Charlottenburg's Leonhardtstra\u00dfe is transformed into a cozy Advent mile where you can browse for presents.",
+    "admission": "Free",
+    "description": "On the second Advent, Charlottenburg's Leonhardtstraße is transformed into a cozy Advent mile where you can browse for presents.",
     "image_url": "https://www.berlin.de/binaries/asset/image_assets/9979609/ratio_4_3/1761314133/800x600/",
     "coordinates": {
       "lng": 13.2972,
@@ -239,10 +332,15 @@
   },
   {
     "name": "Christmas Market in Spandau",
-    "address": "Marktstra\u00dfe 10, Berlin, 13597, Deutschland",
-    "dates": "November 23 to December 22, 2026",
+    "address": "Marktstraße 10, Berlin, 13597, Deutschland",
+    "dates": {
+      "raw": "November 23 to December 22, 2026",
+      "type": "range",
+      "start_date": "2026-11-23",
+      "end_date": "2026-12-22"
+    },
     "opening_times": "Not found",
-    "admission": "Not found",
+    "admission": "Not yet known",
     "description": "In Advent, the streets and alleys in the old town of Spandau change into a beautiful Christmas world complete with market stalls and a renaissance fair.",
     "image_url": "https://www.berlin.de/binaries/asset/image_assets/9833185/ratio_4_3/1754900927/800x600/",
     "coordinates": {
@@ -253,11 +351,16 @@
   },
   {
     "name": "Christmas Market on Breitscheidplatz",
-    "address": "Kurf\u00fcrstendamm 237, Berlin, 10789, Deutschland",
-    "dates": "November 23, 2026 - January 03, 2027",
+    "address": "Kurfürstendamm 237, Berlin, 10789, Deutschland",
+    "dates": {
+      "raw": "November 23, 2026 - January 03, 2027",
+      "type": "range",
+      "start_date": "2026-11-23",
+      "end_date": "2027-01-03"
+    },
     "opening_times": "Not found",
-    "admission": "Not found",
-    "description": "This Christmas market in Berlin's western center is worth a visit while shopping on famous Kurf\u00fcrstendamm.",
+    "admission": "Free",
+    "description": "This Christmas market in Berlin's western center is worth a visit while shopping on famous Kurfürstendamm.",
     "image_url": "https://www.berlin.de/binaries/asset/image_assets/8580156/ratio_4_3/1735550604/800x600/",
     "coordinates": {
       "lng": 13.3346,

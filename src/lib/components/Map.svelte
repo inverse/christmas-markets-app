@@ -75,7 +75,7 @@
 							</div>
 							<div class="flex items-start gap-2 text-[13px] text-stone-700">
 								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-0.5 flex-shrink-0 text-berry"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-								<span class="${market.dates === "Not found" ? "italic text-stone-400" : "font-medium text-pine"}">${market.dates === "Not found" ? "Dates to be announced" : market.dates}</span>
+								<span class="${typeof market.dates === "string" && market.dates === "Not found" ? "italic text-stone-400" : "font-medium text-pine"}">${typeof market.dates === "string" ? (market.dates === "Not found" ? "Dates to be announced" : market.dates) : market.dates.raw}</span>
 							</div>
 							<div class="flex items-start gap-2 text-[13px] text-stone-700">
 								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-0.5 flex-shrink-0 text-berry"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>

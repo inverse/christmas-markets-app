@@ -1,5 +1,9 @@
 <script lang="ts">
-  import { isMarketOpen, statusInfo } from "$lib/utils/marketStatus";
+  import {
+    isMarketOpen,
+    statusInfo,
+    getEarliestDate,
+  } from "$lib/utils/marketStatus";
   import { selectedMarket } from "$lib/mapStore";
   import { fade, fly } from "svelte/transition";
   import type { Market } from "$lib/types";
@@ -15,12 +19,18 @@
 
   const sortedMarkets = $derived(
     [...markets].sort((a, b) => {
-      const statusA = isMarketOpen(a.dates).status;
-      const statusB = isMarketOpen(b.dates).status;
-      const order = { open: 0, upcoming: 1, closed: 2, unknown: 3 };
-      return order[statusA] - order[statusB];
+      const dateA = getEarliestDate(a.dates);
+      const dateB = getEarliestDate(b.dates);
+      return dateA.getTime() - dateB.getTime();
     }),
   );
+
+  $effect(() => {
+    console.log(
+      "Markets sorted:",
+      sortedMarkets.map((m) => m.name),
+    );
+  });
 
   const filteredMarkets = $derived(
     sortedMarkets.filter(
@@ -159,7 +169,7 @@
               ? 'border-pine bg-pine text-white'
               : 'border-stone-200 bg-snow text-stone-600 hover:border-gold hover:text-pine'}"
           >
-            {filter.label} <span class="opacity-70">{counts[filter.id]}</span>
+            {filter.label} <span class="opacity-70">{counts()[filter.id]}</span>
           </button>
         {/each}
       </div>
@@ -169,7 +179,7 @@
           <li>
             <button
               onclick={() => jumpTo(market)}
-              class="group flex w-full gap-3 rounded-xl border border-stone-200 border-l-4 bg-snow p-3 text-left transition hover:border-gold hover:shadow-md {meta.accent}"
+              class="group flex w-full gap-3 rounded-xl border border-stone-200 border-l-4 bg-snow p-3 text-left transition hover:border-gold hover:shadow-md"
             >
               <img
                 src={market.image_url}
@@ -191,20 +201,26 @@
                 </p>
                 <div class="mt-1.5 flex items-center gap-2">
                   <span
-                    class="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold {meta.pill}"
+                    class="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold {meta.bg} {meta.color} border {meta.border}"
                   >
-                    <span class="h-1.5 w-1.5 rounded-full {meta.dot}"></span>
+                    <span
+                      class="h-1.5 w-1.5 rounded-full {meta.color.replace(
+                        'text',
+                        'bg',
+                      )}"
+                    ></span>
                     {meta.label}
                   </span>
-                  <span class="truncate text-[11px] text-stone-400"
-                    >{market.dates}</span
-                  >
+                  <span class="truncate text-[11px] text-stone-400">
+                    {market.dates.raw}
+                  </span>
                 </div>
               </div>
               <span
                 class="self-center text-stone-300 transition-transform group-hover:translate-x-0.5 group-hover:text-gold"
-                >&rsaquo;</span
               >
+                &rsaquo;
+              </span>
             </button>
           </li>
         {:else}

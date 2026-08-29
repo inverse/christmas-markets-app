@@ -3,7 +3,7 @@
   import MarketList from "$lib/components/MarketList.svelte";
   import WelcomeModal from "$lib/components/WelcomeModal.svelte";
   import { onMount } from "svelte";
-  import { getFirstMentionedMonth } from "$lib/utils/marketStatus";
+  import { getEarliestDate } from "$lib/utils/marketStatus";
 
   let { data } = $props();
   let markets = $derived(data.markets);
@@ -13,7 +13,8 @@
   // Calculate days until the earliest market month
   const earliestMonth = $derived(
     markets.reduce((min, market) => {
-      const month = getFirstMentionedMonth(market.dates);
+      const date = getEarliestDate(market.dates);
+      const month = date.getMonth();
       return month !== null && month < min ? month : min;
     }, 11),
   );
