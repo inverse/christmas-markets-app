@@ -1,7 +1,0 @@
-<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-  <!-- Optimized tree for map marker and menu -->
-  <path d="M256 32L128 448h256L256 32z" fill="#1b6b3a" stroke="#d4af37" stroke-width="8" stroke-linejoin="round"/>
-  <path d="M256 128L192 384h128L256 128z" fill="#2d5a27" stroke="#d4af37" stroke-width="4" stroke-linejoin="round"/>
-  <rect x="240" y="448" width="32" height="32" fill="#5c4033" rx="4"/>
-  <circle cx="256" cy="128" r="16" fill="#f0d873" stroke="#d4af37" stroke-width="4"/>
-</svg>

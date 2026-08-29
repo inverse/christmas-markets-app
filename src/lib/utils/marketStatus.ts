@@ -1,4 +1,49 @@
 import type { Dates } from "../dateParser";
+import type { Market } from "../types";
+
+export function isAllClosed(markets: Market[], now: Date): boolean {
+  return markets.every((m) => {
+    const dates = m.dates;
+    if (!dates || (dates.type !== "range" && dates.type !== "dates")) {
+      return true;
+    }
+    if (dates.type === "range") {
+      if (dates.end_date) return now > new Date(dates.end_date);
+      if (dates.start_date) return now > new Date(dates.start_date);
+    }
+    if (dates.type === "dates" && dates.dates && dates.dates.length > 0) {
+      return now > new Date(dates.dates[dates.dates.length - 1]);
+    }
+    return true;
+  });
+}
+
+export function isMarketOpen(
+  dates: Dates,
+  now: Date,
+): {
+  isOpen: boolean;
+  status: "open" | "upcoming" | "closed" | "unknown";
+} {
+  if (dates.type === "range" && dates.start_date && dates.end_date) {
+    const start = new Date(dates.start_date);
+    const end = new Date(dates.end_date);
+    const isOpen = now >= start && now <= end;
+    if (isOpen) return { isOpen: true, status: "open" };
+    return { isOpen: false, status: now < start ? "upcoming" : "closed" };
+  }
+  if (dates.type === "dates" && dates.dates && dates.dates.length > 0) {
+    const todayIso = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
+    const isOpen = dates.dates.includes(todayIso);
+    if (isOpen) return { isOpen: true, status: "open" };
+    return {
+      isOpen: false,
+      status: now < new Date(dates.dates[0]) ? "upcoming" : "closed",
+    };
+  }
+
+  return { isOpen: false, status: "unknown" };
+}
 
 export function getEarliestDate(dates: Dates): Date {
   if (dates.type === "range" && dates.start_date) {
@@ -10,33 +55,6 @@ export function getEarliestDate(dates: Dates): Date {
 
   // Fallback if no valid dates - return very far future date
   return new Date(2099, 11, 31);
-}
-
-export function isMarketOpen(dates: Dates): {
-  isOpen: boolean;
-  status: "open" | "upcoming" | "closed" | "unknown";
-} {
-  const now = new Date();
-
-  if (dates.type === "range" && dates.start_date && dates.end_date) {
-    const start = new Date(dates.start_date);
-    const end = new Date(dates.end_date);
-    const isOpen = now >= start && now <= end;
-    if (isOpen) return { isOpen: true, status: "open" };
-    return { isOpen: false, status: now < start ? "upcoming" : "closed" };
-  }
-  // If dates are lists, we check if today is included
-  if (dates.type === "dates" && dates.dates && dates.dates.length > 0) {
-    const todayIso = now.toISOString().split("T")[0];
-    const isOpen = dates.dates.includes(todayIso);
-    if (isOpen) return { isOpen: true, status: "open" };
-    return {
-      isOpen: false,
-      status: now < new Date(dates.dates[0]) ? "upcoming" : "closed",
-    };
-  }
-
-  return { isOpen: false, status: "unknown" };
 }
 
 interface StatusMeta {

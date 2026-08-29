@@ -3,34 +3,38 @@
   import MarketList from "$lib/components/MarketList.svelte";
   import WelcomeModal from "$lib/components/WelcomeModal.svelte";
   import { onMount } from "svelte";
-  import { getEarliestDate } from "$lib/utils/marketStatus";
+  import { simulatedDate } from "$lib/utils/date";
+  import {
+    getEarliestDate,
+    isMarketOpen,
+    isAllClosed,
+  } from "$lib/utils/marketStatus";
 
   let { data } = $props();
   let markets = $derived(data.markets);
+  let now = $derived($simulatedDate || new Date());
+
   let isMenuOpen = $state(false);
   let showWelcome = $state(false);
 
-  // Calculate days until the earliest market month
-  const earliestMonth = $derived(
-    markets.reduce((min, market) => {
+  const anyMarketOpen = $derived(
+    markets.some((m) => isMarketOpen(m.dates, now).status === "open"),
+  );
+  const allMarketsClosed = $derived(isAllClosed(markets, now));
+
+  const earliestMarketDate = $derived(
+    markets.reduce((min: Date | null, market) => {
       const date = getEarliestDate(market.dates);
-      const month = date.getMonth();
-      return month !== null && month < min ? month : min;
-    }, 11),
+      if (min === null || date < min) return date;
+      return min;
+    }, null),
   );
 
-  const daysUntilFirstMarket = $derived(() => {
-    const now = new Date();
-    let targetYear = now.getFullYear();
-    if (earliestMonth !== null && earliestMonth < now.getMonth()) {
-      targetYear++;
-    }
-    const targetDate =
-      earliestMonth !== null
-        ? new Date(targetYear, earliestMonth, 1)
-        : new Date(2026, 9, 31);
-    const diffTime = targetDate.getTime() - now.getTime();
-    return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  const daysUntilFirst = $derived(() => {
+    if (!earliestMarketDate) return undefined;
+    const diffTime = earliestMarketDate.getTime() - now.getTime();
+    const days = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    return days > 0 ? days : undefined;
   });
 
   onMount(() => {
@@ -49,15 +53,15 @@
 <main class="h-screen w-screen relative">
   {#if showWelcome}
     <WelcomeModal
-      onClose={closeWelcome}
-      daysUntilFirstMarket={daysUntilFirstMarket() > 0
-        ? daysUntilFirstMarket()
-        : undefined}
+      daysUntilFirstMarket={daysUntilFirst()}
       marketCount={markets.length}
+      {anyMarketOpen}
+      {allMarketsClosed}
+      onClose={closeWelcome}
     />
   {/if}
 
-  <Map {markets} />
+  <Map {markets} {now} />
 
   <button
     onclick={() => (isMenuOpen = true)}
@@ -78,6 +82,7 @@
   {#if isMenuOpen}
     <MarketList
       {markets}
+      {now}
       onClose={() => (isMenuOpen = false)}
       onShowWelcome={() => {
         showWelcome = true;

@@ -10,10 +10,11 @@
 
   type Filter = "all" | "open" | "upcoming" | "closed" | "unknown";
 
-  let { markets, onClose, onShowWelcome } = $props<{
+  let { markets, onClose, onShowWelcome, now } = $props<{
     markets: Market[];
     onClose: () => void;
     onShowWelcome: () => void;
+    now: Date;
   }>();
   let activeFilter = $state<Filter>("all");
 
@@ -36,7 +37,7 @@
     sortedMarkets.filter(
       (market) =>
         activeFilter === "all" ||
-        isMarketOpen(market.dates).status === activeFilter,
+        isMarketOpen(market.dates, now).status === activeFilter,
     ),
   );
 
@@ -56,7 +57,7 @@
       unknown: 0,
     };
     for (const market of markets) {
-      const status = isMarketOpen(market.dates).status;
+      const status = isMarketOpen(market.dates, now).status;
       if (status in counts) counts[status]++;
     }
     return counts;
@@ -175,7 +176,7 @@
       </div>
       <ul class="space-y-2">
         {#each filteredMarkets as market (market.name)}
-          {@const meta = statusInfo(isMarketOpen(market.dates).status)}
+          {@const meta = statusInfo(isMarketOpen(market.dates, now).status)}
           <li>
             <button
               onclick={() => jumpTo(market)}

@@ -1,10 +1,18 @@
 <script lang="ts">
   import { fade } from "svelte/transition";
 
-  let { onClose, daysUntilFirstMarket, marketCount } = $props<{
+  let {
+    onClose,
+    daysUntilFirstMarket,
+    marketCount,
+    anyMarketOpen,
+    allMarketsClosed,
+  } = $props<{
     onClose: () => void;
     daysUntilFirstMarket?: number;
     marketCount: number;
+    anyMarketOpen: boolean;
+    allMarketsClosed: boolean;
   }>();
 </script>
 
@@ -16,34 +24,55 @@
     class="festive-surface relative w-full max-w-sm overflow-hidden rounded-2xl border-4 border-gold p-6 shadow-2xl"
   >
     <div
-      class="pointer-events-none absolute -right-4 -top-3 opacity-25"
+      class="pointer-events-none absolute -right-4 -top-3 opacity-25 rotate-12"
       aria-hidden="true"
     >
-      <img
-        src="/icons/christmas-tree-raw.svg"
-        alt=""
-        class="h-20 w-24 rotate-12"
-      />
+      <img src="/icons/christmas-tree-raw.svg" alt="" class="h-24 w-24" />
     </div>
 
     <div class="relative text-center">
-      <img
-        src="/icons/christmas-tree-raw.svg"
-        alt=""
-        class="mx-auto mb-3 h-16 w-20 object-contain"
-      />
-      <p
-        class="mb-1 text-xs font-semibold uppercase tracking-[0.2em] text-berry"
-      >
-        Berlin in winter
-      </p>
+      <img src="/icons/logo.svg" alt="Logo" class="mx-auto h-20 w-20" />
       <h2 class="font-display text-3xl font-bold text-pine">Welcome!</h2>
       <p class="mt-3 text-left leading-relaxed text-stone-700">
         Find Berlin's brightest Christmas markets, check the dates, and plan a
         magical festive outing.
       </p>
 
-      {#if daysUntilFirstMarket !== undefined}
+      {#if anyMarketOpen}
+        <div
+          class="mt-5 mb-4 flex items-center gap-4 rounded-xl bg-pine p-4 text-left text-white shadow-inner"
+        >
+          <div
+            class="rounded-lg border border-gold/60 bg-pine-dark/50 px-4 py-3 text-center text-4xl"
+          >
+            🎉
+          </div>
+          <div>
+            <div class="font-display text-lg font-bold">
+              The season is here!
+            </div>
+            <div class="mt-1 text-sm text-white/75">
+              Berlin is full of festive magic
+            </div>
+          </div>
+        </div>
+      {:else if allMarketsClosed}
+        <div
+          class="mt-5 mb-4 flex items-center gap-4 rounded-xl bg-pine-dark/20 p-4 text-left text-stone-700 shadow-inner"
+        >
+          <div
+            class="rounded-lg border border-stone-300 bg-stone-100 px-4 py-3 text-center text-4xl"
+          >
+            😔
+          </div>
+          <div>
+            <div class="font-display text-lg font-bold">
+              The season has ended
+            </div>
+            <div class="mt-1 text-sm text-stone-600">See you next year!</div>
+          </div>
+        </div>
+      {:else if daysUntilFirstMarket !== undefined}
         <div
           class="mt-5 mb-4 flex items-center gap-4 rounded-xl bg-pine p-4 text-left text-white shadow-inner"
         >
@@ -77,7 +106,7 @@
       </p>
       <button
         onclick={onClose}
-        class="w-full rounded-lg bg-gold py-3 font-bold text-pine shadow-sm transition hover:bg-gold-dark"
+        class="w-full bg-gold text-pine font-bold py-3 rounded-lg shadow-lg hover:bg-gold-light transition"
       >
         Start exploring
       </button>
