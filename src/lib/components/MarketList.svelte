@@ -36,13 +36,20 @@
     { id: "unknown", label: "Dates TBA" },
   ];
 
-  function countFor(filter: Filter) {
-    return filter === "all"
-      ? markets.length
-      : markets.filter(
-          (market: Market) => isMarketOpen(market.dates).status === filter,
-        ).length;
-  }
+  const counts = $derived(() => {
+    const counts: Record<Filter, number> = {
+      all: markets.length,
+      open: 0,
+      upcoming: 0,
+      closed: 0,
+      unknown: 0,
+    };
+    for (const market of markets) {
+      const status = isMarketOpen(market.dates).status;
+      if (status in counts) counts[status]++;
+    }
+    return counts;
+  });
 
   function jumpTo(market: Market) {
     selectedMarket.set(market.name);
@@ -144,7 +151,7 @@
               ? 'border-pine bg-pine text-white'
               : 'border-stone-200 bg-snow text-stone-600 hover:border-gold hover:text-pine'}"
           >
-            {filter.label} <span class="opacity-70">{countFor(filter.id)}</span>
+            {filter.label} <span class="opacity-70">{counts[filter.id]}</span>
           </button>
         {/each}
       </div>
