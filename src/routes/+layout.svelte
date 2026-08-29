@@ -10,15 +10,17 @@
   let DevDateSelector: Component | null = $state(null);
   onMount(async () => {
     initDateSimulation();
-    const module = await import("$lib/components/DevDateSelector.svelte");
-    DevDateSelector = module.default;
+    if (import.meta.env.DEV) {
+      const module = await import("$lib/components/DevDateSelector.svelte");
+      DevDateSelector = module.default;
+    }
   });
 
   let { children } = $props();
 </script>
 
 {#if browser && DevDateSelector}
-  <svelte:component this={DevDateSelector} />
+  <DevDateSelector />
 {/if}
 
 <svelte:head>
