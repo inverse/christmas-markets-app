@@ -76,7 +76,7 @@
       stroke-linecap="round"
       class="w-5 h-5"><path d="M4 7h16M4 12h16M4 17h16" /></svg
     >
-    <span class="font-display font-semibold">Markets</span>
+    <span class="font-display font-semibold">Menu</span>
   </button>
 
   {#if isMenuOpen}
