@@ -8,65 +8,51 @@ import os
 # GeoJSON URL
 GEOJSON_URL = 'https://www.berlin.de/weihnachtsmarkt/suche/.x-feed/category.geojson?id=10135126&language=en_GB&_rnd=496605'
 
+def get_dd_by_dt_label(dl, label):
+    dt = dl.find('dt', string=label)
+    return dt.find_next_sibling('dd') if dt else None
+
 async def get_market_details(session, url, semaphore):
-    async with semaphore:
-        try:
-            async with session.get(url) as response:
-                text = await response.text()
-                soup = BeautifulSoup(text, 'html.parser')
-                
-                details = {
-                    "dates": "Not found",
-                    "opening_times": "Not found",
-                    "admission": "Not found",
-                    "image": None
-                }
-                
-                dl = soup.find('dl', class_='info-container-list')
-                if dl:
-                    # Find Dates
-                    dt_dates = dl.find('dt', string='Dates')
-                    if dt_dates:
-                        dd = dt_dates.find_next_sibling('dd')
-                        if dd:
-                            details["dates"] = dd.text.strip()
-                    
-                    # Find Opening Hours
-                    dt_hours = dl.find('dt', string='Opening Hours')
-                    if dt_hours:
-                        dd = dt_hours.find_next_sibling('dd')
-                        if dd:
-                            details["opening_times"] = dd.text.strip()
-                    
-                    # Find Admission
-                    dt_admission = dl.find('dt', string='Admission')
-                    if dt_admission:
-                        dd = dt_admission.find_next_sibling('dd')
-                        if dd:
-                            details["admission"] = dd.text.strip()
+    async def fetch():
+        async with semaphore, session.get(url) as response:
+            text = await response.text()
+            soup = BeautifulSoup(text, 'html.parser')
+            dl = soup.find('dl', class_='info-container-list')
+            
+            details = {
+                "dates": "Not found",
+                "opening_times": "Not found",
+                "admission": "Not found",
+                "image": None
+            }
 
-                # Find Image - More robust lookup
-                og_img = soup.find('meta', property='og:image')
-                if og_img:
-                    details["image"] = og_img.get('content')
-                
-                # Fallback to swiper
-                if not details["image"]:
-                    swiper = soup.find('div', class_='swiper-wrapper')
-                    if swiper:
-                        img = swiper.find('img')
-                        if img:
-                            details["image"] = img.get('src')
+            if dl:
+                for key, label in [("dates", "Dates"), ("opening_times", "Opening Hours"), ("admission", "Admission")]:
+                    dd = get_dd_by_dt_label(dl, label)
+                    if dd:
+                        details[key] = dd.text.strip()
 
-                # Fallback to article if swiper fails
-                if not details["image"]:
-                     article_img = soup.find('img', class_='js-imageblur')
-                     if article_img:
-                        details["image"] = article_img.get('src')
-                
-                return details
-        except Exception as e:
-            return {"dates": "Error", "opening_times": "Error", "admission": "Error", "image": None}
+            details["image"] = get_image(soup)
+            return details
+
+    try:
+        return await fetch()
+    except Exception:
+        return {"dates": "Error", "opening_times": "Error", "admission": "Error", "image": None}
+def get_image(soup):
+    # Try og:image
+    og_img = soup.find('meta', property='og:image')
+    if og_img:
+        return og_img.get('content')
+    
+    # Fallback to swiper
+    swiper = soup.find('div', class_='swiper-wrapper')
+    if swiper and (img := swiper.find('img')):
+        return img.get('src')
+
+    # Fallback to article
+    article_img = soup.find('img', class_='js-imageblur')
+    return article_img.get('src') if article_img else None
 
 async def fetch_all_markets():
     async with aiohttp.ClientSession() as session:
@@ -100,6 +86,7 @@ async def process_market(session, semaphore, feature, props, coords):
         "dates": details["dates"],
         "opening_times": details["opening_times"],
         "admission": details["admission"],
+        "description": props.get('description', ''),
         "image_url": image_url or props.get('image', {}).get('url'),
         "coordinates": {
             "lng": coords[0],
