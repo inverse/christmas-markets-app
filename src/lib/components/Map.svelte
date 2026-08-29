@@ -11,6 +11,7 @@
   let L: typeof import("leaflet");
   let markers: SvelteMap<string, L.Marker>;
   let userMarker: L.Marker;
+  let starIcon: L.DivIcon;
 
   onMount(async () => {
     if (browser) {
@@ -32,6 +33,12 @@
         iconAnchor: [20, 40],
         popupAnchor: [0, -40],
         className: "animate-pulse",
+      });
+      starIcon = L.divIcon({
+        html: `<svg viewBox="0 0 24 24" fill="#EAB308" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>`,
+        className: "custom-star-icon",
+        iconSize: [32, 32],
+        iconAnchor: [16, 16],
       });
 
       map = L.map(mapElement, { zoomControl: false }).setView(
@@ -127,6 +134,7 @@
   let isLoadingLocation = $state(false);
 
   function findMe() {
+    console.log("findMe clicked");
     if (navigator.geolocation && map) {
       isLoadingLocation = true;
       navigator.geolocation.getCurrentPosition(
@@ -139,7 +147,10 @@
           if (userMarker) {
             userMarker.setLatLng(userLatLng);
           } else {
-            userMarker = L.marker(userLatLng).addTo(map);
+            userMarker = L.marker(
+              userLatLng,
+              starIcon ? { icon: starIcon } : {},
+            ).addTo(map);
           }
 
           // Find nearest market
@@ -182,6 +193,13 @@
           alert(`Could not get your location: ${error.message}`);
         },
       );
+    } else {
+      console.log(
+        "navigator.geolocation or map is missing",
+        !!navigator.geolocation,
+        !!map,
+      );
+      alert("Geolocation or map not available.");
     }
   }
 </script>
