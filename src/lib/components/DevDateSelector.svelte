@@ -24,9 +24,9 @@
       stroke-width="2"
       stroke-linecap="round"
       stroke-linejoin="round"
-      ><path
-        d="M15 2H9c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"
-      /><path d="M12 8v14" /></svg
+      ><polyline points="16 18 22 12 16 6" /><polyline
+        points="8 6 2 12 8 18"
+      /></svg
     >
   </button>
 {:else}
