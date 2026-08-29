@@ -6,7 +6,7 @@
   } from "$lib/utils/marketStatus";
   import { selectedMarket } from "$lib/mapStore";
   import { fade, fly } from "svelte/transition";
-  import type { Market } from "$lib/types";
+  import type { Market } from "$shared/types";
 
   type Filter = "all" | "open" | "upcoming" | "closed" | "unknown";
 

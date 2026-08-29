@@ -1,5 +1,5 @@
 import * as chrono from "chrono-node";
-import { getCurrentDate } from "./utils/date";
+import { getCurrentDate } from "$lib/utils/date";
 
 export interface Dates {
   raw: string;

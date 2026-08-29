@@ -2,7 +2,7 @@
   import { onMount, onDestroy } from "svelte";
   import { browser } from "$app/environment";
   import { isMarketOpen, statusInfo } from "$lib/utils/marketStatus";
-  import type { Market } from "$lib/types";
+  import type { Market } from "$shared/types";
   import { mapStore, selectedMarket } from "$lib/mapStore";
   let { markets, now } = $props<{ markets: Market[]; now: Date }>();
 

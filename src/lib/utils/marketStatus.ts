@@ -1,5 +1,5 @@
-import type { Dates } from "../dateParser";
-import type { Market } from "../types";
+import type { Dates } from "$shared/dateParser";
+import type { Market } from "$shared/types";
 
 export function isAllClosed(markets: Market[], now: Date): boolean {
   return markets.every((m) => {

@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import type { Dates } from "../dateParser";
+import type { Dates } from "$shared/dateParser";
 import { isMarketOpen, getEarliestDate, isAllClosed } from "./marketStatus";
-import type { Market } from "../types";
+import type { Market } from "$shared/types";
 
 describe("isMarketOpen", () => {
   beforeEach(() => {
