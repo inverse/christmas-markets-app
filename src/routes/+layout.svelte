@@ -3,11 +3,13 @@
   import "leaflet/dist/leaflet.css";
   import { browser } from "$app/environment";
   import { onMount } from "svelte";
+  import { initDateSimulation } from "$lib/utils/date";
   import type { Component } from "svelte";
 
   // Dynamically import to avoid SSR issues with Svelte 5 components
   let DevDateSelector: Component | null = $state(null);
   onMount(async () => {
+    initDateSimulation();
     if (import.meta.env.DEV) {
       const module = await import("$lib/components/DevDateSelector.svelte");
       DevDateSelector = module.default;

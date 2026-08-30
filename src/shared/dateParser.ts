@@ -1,5 +1,4 @@
 import * as chrono from "chrono-node";
-import { getCurrentDate } from "$lib/utils/date";
 
 export interface Dates {
   raw: string;
@@ -17,7 +16,7 @@ export function parseDates(text: string): Dates | null {
   const yearMatch = text.match(/\d{4}/);
   const refYear = yearMatch
     ? parseInt(yearMatch[0], 10)
-    : getCurrentDate().getFullYear();
+    : new Date().getFullYear();
   const referenceDate = new Date(refYear, 10, 1);
 
   // Detect type based on parentheses
