@@ -1,6 +1,7 @@
 <script lang="ts">
   import { statusInfo, type MarketStatus } from "$lib/utils/marketStatus";
   import { selectedMarket } from "$lib/mapStore";
+  import { onMount } from "svelte";
   import { fade, fly } from "svelte/transition";
   import type { Market } from "$shared/types";
 
@@ -55,24 +56,134 @@
   });
 
   function jumpTo(market: Market) {
-    selectedMarket.set(market.name);
-    onClose();
+    close(() => selectedMarket.set(market.name));
   }
+
+  // Drag-to-close: the drawer follows the finger horizontally; past a
+  // threshold (or a fast leftward flick) it glides out, otherwise it springs
+  // back. Vertical drags are left to native scrolling and the filter row is
+  // exempt so it can still be scrolled horizontally.
+  let panelEl = $state<HTMLElement | undefined>();
+  let isDragging = $state(false);
+  let offsetPct = $state(0);
+  let isClosing = $state(false);
+  let backdropOpacity = $derived(1 + offsetPct / 100);
+
+  const SNAP_THRESHOLD_PCT = 25;
+  const FLING_VELOCITY = 0.35; // px per ms
+
+  let startX = 0;
+  let startY = 0;
+  let lastX = 0;
+  let lastT = 0;
+  let axis: "x" | "y" | null = null;
+  let velocity = 0;
+  let panelWidth = 0;
+
+  function close(after?: () => void) {
+    if (isClosing) return;
+    isClosing = true;
+    isDragging = false;
+    offsetPct = -100;
+    setTimeout(() => {
+      after?.();
+      onClose();
+    }, 280);
+  }
+
+  function snapBack() {
+    isDragging = false;
+    offsetPct = 0;
+  }
+
+  function onTouchStart(e: TouchEvent) {
+    if (isClosing || e.touches.length !== 1) return;
+    if ((e.target as HTMLElement).closest(".drag-guard")) return;
+    const t = e.touches[0];
+    startX = lastX = t.clientX;
+    startY = t.clientY;
+    axis = null;
+    velocity = 0;
+    lastT = performance.now();
+    panelWidth = panelEl?.getBoundingClientRect().width ?? 1;
+    isDragging = true;
+  }
+
+  function onTouchMove(e: TouchEvent) {
+    if (!isDragging || axis === "y") return;
+    const t = e.touches[0];
+    const dx = t.clientX - startX;
+    const dy = t.clientY - startY;
+    const now = performance.now();
+    if (axis === null) {
+      if (Math.abs(dx) < 8 && Math.abs(dy) < 8) return;
+      axis = Math.abs(dx) > Math.abs(dy) ? "x" : "y";
+      if (axis === "y") {
+        isDragging = false; // let the panel scroll natively
+        return;
+      }
+    }
+    e.preventDefault();
+    velocity = (t.clientX - lastX) / Math.max(1, now - lastT);
+    lastX = t.clientX;
+    lastT = now;
+    offsetPct = Math.max(-100, Math.min(0, (dx / panelWidth) * 100));
+  }
+
+  function onTouchEnd() {
+    if (!isDragging || axis !== "x") return;
+    isDragging = false;
+    const flung = offsetPct < -8 && velocity < -FLING_VELOCITY;
+    if (offsetPct < -SNAP_THRESHOLD_PCT || flung) close();
+    else snapBack();
+  }
+
+  function onTouchCancel() {
+    isDragging = false;
+    snapBack();
+  }
+
+  function onKeydown(e: KeyboardEvent) {
+    if (e.key === "Escape") close();
+  }
+
+  onMount(() => {
+    const el = panelEl;
+    if (!el) return;
+    el.addEventListener("touchstart", onTouchStart, { passive: true });
+    el.addEventListener("touchmove", onTouchMove, { passive: false });
+    el.addEventListener("touchend", onTouchEnd);
+    el.addEventListener("touchcancel", onTouchCancel);
+    window.addEventListener("keydown", onKeydown);
+    return () => {
+      el.removeEventListener("touchstart", onTouchStart);
+      el.removeEventListener("touchmove", onTouchMove);
+      el.removeEventListener("touchend", onTouchEnd);
+      el.removeEventListener("touchcancel", onTouchCancel);
+      window.removeEventListener("keydown", onKeydown);
+    };
+  });
 </script>
 
 <button
   class="fixed inset-0 z-[1000] bg-pine-dark/60"
   aria-label="Close menu"
-  onclick={onClose}
+  style="opacity: {backdropOpacity}"
+  onclick={() => close()}
   transition:fade
 ></button>
 <div
+  bind:this={panelEl}
   role="dialog"
   tabindex="-1"
   aria-label="Christmas markets"
-  class="festive-surface safe-area-bottom fixed top-0 left-0 z-[1001] h-full w-full overflow-y-auto shadow-2xl sm:w-96 scrollbar-thin"
-  style="padding-top: env(safe-area-inset-top);"
-  transition:fly={{ x: -320, duration: 300 }}
+  class="festive-surface safe-area-bottom fixed top-0 left-0 z-[1001] h-full w-full overflow-y-auto overscroll-y-contain shadow-2xl sm:w-96 scrollbar-thin"
+  style="padding-top: env(safe-area-inset-top); transform: translate3d({offsetPct}%, 0, 0); transition: {isDragging
+    ? 'none'
+    : 'transform 260ms cubic-bezier(0.32, 0.72, 0, 1)'}; will-change: {isDragging
+    ? 'transform'
+    : 'auto'}"
+  in:fly={{ x: -320, duration: 300 }}
 >
   <header
     class="relative sticky top-0 z-10 overflow-hidden border-b-4 border-gold bg-gradient-to-br from-pine to-pine-dark px-5 pb-4 pt-5"
@@ -104,7 +215,7 @@
         </div>
       </div>
       <button
-        onclick={onClose}
+        onclick={() => close()}
         aria-label="Close menu"
         class="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-xl text-white transition hover:bg-white/20"
       >
@@ -124,7 +235,7 @@
       </p>
     </section>
     <button
-      onclick={onShowWelcome}
+      onclick={() => close(onShowWelcome)}
       class="flex w-full items-center justify-center gap-2 rounded-lg border border-pine bg-snow px-4 py-2 text-sm font-semibold text-pine transition hover:bg-pine hover:text-white"
     >
       <span class="text-lg">🎄</span>
@@ -138,7 +249,9 @@
           >{filteredMarkets.length} shown</span
         >
       </div>
-      <div class="mb-3 flex gap-1.5 overflow-x-auto px-1 pb-1 scrollbar-thin">
+      <div
+        class="drag-guard mb-3 flex gap-1.5 overflow-x-auto px-1 pb-1 scrollbar-thin"
+      >
         {#each filterOptions as filter (filter.id)}
           <button
             onclick={() => (activeFilter = filter.id)}
