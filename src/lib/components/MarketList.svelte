@@ -253,16 +253,18 @@
         class="drag-guard mb-3 flex gap-1.5 overflow-x-auto px-1 pb-1 scrollbar-thin"
       >
         {#each filterOptions as filter (filter.id)}
-          <button
-            onclick={() => (activeFilter = filter.id)}
-            aria-pressed={activeFilter === filter.id}
-            class="whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-semibold transition {activeFilter ===
-            filter.id
-              ? 'border-pine bg-pine text-white'
-              : 'border-stone-200 bg-snow text-stone-600 hover:border-gold hover:text-pine'}"
-          >
-            {filter.label} <span class="opacity-70">{counts[filter.id]}</span>
-          </button>
+          {#if filter.id !== "unknown" || counts[filter.id] > 0}
+            <button
+              onclick={() => (activeFilter = filter.id)}
+              aria-pressed={activeFilter === filter.id}
+              class="whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-semibold transition {activeFilter ===
+              filter.id
+                ? 'border-pine bg-pine text-white'
+                : 'border-stone-200 bg-snow text-stone-600 hover:border-gold hover:text-pine'}"
+            >
+              {filter.label} <span class="opacity-70">{counts[filter.id]}</span>
+            </button>
+          {/if}
         {/each}
       </div>
       <ul class="space-y-2">

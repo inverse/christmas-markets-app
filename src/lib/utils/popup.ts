@@ -29,13 +29,15 @@ export function buildPopup(market: Market, status: MarketStatus): string {
     market.opening_times === "Not found"
       ? '<span class="italic text-stone-400">Opening times to be announced</span>'
       : escapeHtml(market.opening_times);
-  const admission =
-    market.admission !== "Not found"
-      ? `<div class="flex items-start gap-2 text-[13px] text-stone-700">
-									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-0.5 flex-shrink-0 text-berry"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 1 7H6"/></svg>
+  const hasAdmission =
+    market.admission &&
+    !["Not found", "Not yet known"].includes(market.admission);
+  const admission = hasAdmission
+    ? `<div class="flex items-start gap-2 text-[13px] text-stone-700">
+									<i class="fa-solid fa-euro-sign fa-fw text-berry"></i>
 									<span>${escapeHtml(market.admission)}</span>
 								</div>`
-      : "";
+    : "";
 
   return `
 					<div class="w-[300px] bg-snow overflow-hidden font-sans border border-gold/40 rounded-xl">
@@ -51,15 +53,15 @@ export function buildPopup(market: Market, status: MarketStatus): string {
 						<div class="p-4 space-y-2.5 bg-snow">
 							${description}
 							<div class="flex items-start gap-2 text-[13px] text-stone-700">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-0.5 flex-shrink-0 text-berry"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <i class="fa-solid fa-location-dot fa-fw text-berry"></i>
 								<span>${address}</span>
 							</div>
 							<div class="flex items-start gap-2 text-[13px] text-stone-700">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-0.5 flex-shrink-0 text-berry"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                <i class="fa-solid fa-calendar-days fa-fw text-berry"></i>
 								<span class="font-medium text-pine">${datesRaw}</span>
 							</div>
 							<div class="flex items-start gap-2 text-[13px] text-stone-700">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mt-0.5 flex-shrink-0 text-berry"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                <i class="fa-solid fa-clock fa-fw text-berry"></i>
 								<span>${openingTimes}</span>
 							</div>
 							${admission}
