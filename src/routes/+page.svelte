@@ -3,11 +3,12 @@
   import MarketList from "$lib/components/MarketList.svelte";
   import WelcomeModal from "$lib/components/WelcomeModal.svelte";
   import { onMount } from "svelte";
+  import { SvelteMap } from "svelte/reactivity";
   import { simulatedDate } from "$lib/utils/date";
   import {
     getEarliestDate,
     isMarketOpen,
-    isAllClosed,
+    type MarketStatus,
   } from "$lib/utils/marketStatus";
 
   let { data } = $props();
@@ -17,22 +18,38 @@
   let isMenuOpen = $state(false);
   let showWelcome = $state(false);
 
+  const statusByMarket = $derived.by(() => {
+    const statuses = new SvelteMap<string, MarketStatus>();
+    for (const market of markets) {
+      statuses.set(market.name, isMarketOpen(market.dates, now).status);
+    }
+    return statuses;
+  });
+
+  const earliestDates = $derived.by(() => {
+    const dates = new SvelteMap<string, Date>();
+    for (const market of markets) {
+      dates.set(market.name, getEarliestDate(market.dates));
+    }
+    return dates;
+  });
+
   const anyMarketOpen = $derived(
-    markets.some((m) => isMarketOpen(m.dates, now).status === "open"),
+    [...statusByMarket.values()].some((status) => status === "open"),
   );
-  const allMarketsClosed = $derived(isAllClosed(markets, now));
-
-  const earliestMarketDate = $derived(
-    markets.reduce((min: Date | null, market) => {
-      const date = getEarliestDate(market.dates);
-      if (min === null || date < min) return date;
-      return min;
-    }, null),
+  const allMarketsClosed = $derived(
+    [...statusByMarket.values()].every(
+      (status) => status === "closed" || status === "unknown",
+    ),
   );
 
-  const daysUntilFirst = $derived(() => {
-    if (!earliestMarketDate) return undefined;
-    const diffTime = earliestMarketDate.getTime() - now.getTime();
+  const daysUntilFirst = $derived.by(() => {
+    let earliest = Infinity;
+    for (const date of earliestDates.values()) {
+      if (date.getTime() < earliest) earliest = date.getTime();
+    }
+    if (earliest === Infinity) return undefined;
+    const diffTime = earliest - now.getTime();
     const days = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     return days > 0 ? days : undefined;
   });
@@ -53,7 +70,7 @@
 <main class="h-screen w-screen relative">
   {#if showWelcome}
     <WelcomeModal
-      daysUntilFirstMarket={daysUntilFirst()}
+      daysUntilFirstMarket={daysUntilFirst}
       marketCount={markets.length}
       {anyMarketOpen}
       {allMarketsClosed}
@@ -61,10 +78,11 @@
     />
   {/if}
 
-  <Map {markets} {now} />
+  <Map {markets} {statusByMarket} />
 
   <button
     onclick={() => (isMenuOpen = true)}
+    aria-expanded={isMenuOpen}
     class="site-menu-button absolute top-4 left-4 z-[500] flex items-center gap-2 bg-pine text-snow pl-3 pr-4 py-2.5 rounded-full shadow-lg border border-gold/60 hover:bg-pine-dark transition"
   >
     <svg
@@ -82,7 +100,8 @@
   {#if isMenuOpen}
     <MarketList
       {markets}
-      {now}
+      {statusByMarket}
+      {earliestDates}
       onClose={() => (isMenuOpen = false)}
       onShowWelcome={() => {
         showWelcome = true;

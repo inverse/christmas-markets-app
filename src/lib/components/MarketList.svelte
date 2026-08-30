@@ -1,43 +1,34 @@
 <script lang="ts">
-  import {
-    isMarketOpen,
-    statusInfo,
-    getEarliestDate,
-  } from "$lib/utils/marketStatus";
+  import { statusInfo, type MarketStatus } from "$lib/utils/marketStatus";
   import { selectedMarket } from "$lib/mapStore";
   import { fade, fly } from "svelte/transition";
   import type { Market } from "$shared/types";
 
   type Filter = "all" | "open" | "upcoming" | "closed" | "unknown";
 
-  let { markets, onClose, onShowWelcome, now } = $props<{
-    markets: Market[];
-    onClose: () => void;
-    onShowWelcome: () => void;
-    now: Date;
-  }>();
+  let { markets, statusByMarket, earliestDates, onClose, onShowWelcome } =
+    $props<{
+      markets: Market[];
+      statusByMarket: Map<string, MarketStatus>;
+      earliestDates: Map<string, Date>;
+      onClose: () => void;
+      onShowWelcome: () => void;
+    }>();
   let activeFilter = $state<Filter>("all");
 
   const sortedMarkets = $derived(
     [...markets].sort((a, b) => {
-      const dateA = getEarliestDate(a.dates);
-      const dateB = getEarliestDate(b.dates);
-      return dateA.getTime() - dateB.getTime();
+      const dateA = earliestDates.get(a.name)?.getTime() ?? Infinity;
+      const dateB = earliestDates.get(b.name)?.getTime() ?? Infinity;
+      return dateA - dateB;
     }),
   );
-
-  $effect(() => {
-    console.log(
-      "Markets sorted:",
-      sortedMarkets.map((m) => m.name),
-    );
-  });
 
   const filteredMarkets = $derived(
     sortedMarkets.filter(
       (market) =>
         activeFilter === "all" ||
-        isMarketOpen(market.dates, now).status === activeFilter,
+        statusByMarket.get(market.name) === activeFilter,
     ),
   );
 
@@ -48,7 +39,7 @@
     { id: "unknown", label: "Dates TBA" },
   ];
 
-  const counts = $derived(() => {
+  const counts = $derived.by(() => {
     const counts: Record<Filter, number> = {
       all: markets.length,
       open: 0,
@@ -57,8 +48,8 @@
       unknown: 0,
     };
     for (const market of markets) {
-      const status = isMarketOpen(market.dates, now).status;
-      if (status in counts) counts[status]++;
+      const status: MarketStatus = statusByMarket.get(market.name) ?? "unknown";
+      counts[status]++;
     }
     return counts;
   });
@@ -66,17 +57,6 @@
   function jumpTo(market: Market) {
     selectedMarket.set(market.name);
     onClose();
-  }
-
-  let startX = 0;
-
-  function handleTouchStart(e: TouchEvent) {
-    startX = e.touches[0].clientX;
-  }
-
-  function handleTouchEnd(e: TouchEvent) {
-    const endX = e.changedTouches[0].clientX;
-    if (startX - endX > 50) onClose();
   }
 </script>
 
@@ -92,8 +72,6 @@
   aria-label="Christmas markets"
   class="festive-surface safe-area-bottom fixed top-0 left-0 z-[1001] h-full w-full overflow-y-auto shadow-2xl sm:w-96 scrollbar-thin"
   style="padding-top: env(safe-area-inset-top);"
-  ontouchstart={handleTouchStart}
-  ontouchend={handleTouchEnd}
   transition:fly={{ x: -320, duration: 300 }}
 >
   <header
@@ -170,13 +148,15 @@
               ? 'border-pine bg-pine text-white'
               : 'border-stone-200 bg-snow text-stone-600 hover:border-gold hover:text-pine'}"
           >
-            {filter.label} <span class="opacity-70">{counts()[filter.id]}</span>
+            {filter.label} <span class="opacity-70">{counts[filter.id]}</span>
           </button>
         {/each}
       </div>
       <ul class="space-y-2">
         {#each filteredMarkets as market (market.name)}
-          {@const meta = statusInfo(isMarketOpen(market.dates, now).status)}
+          {@const meta = statusInfo(
+            statusByMarket.get(market.name) ?? "unknown",
+          )}
           <li>
             <button
               onclick={() => jumpTo(market)}

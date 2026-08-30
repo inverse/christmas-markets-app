@@ -1,8 +1,9 @@
-import { writable } from "svelte/store";
+import { writable, get } from "svelte/store";
 import { browser } from "$app/environment";
 
 export const simulatedDate = writable<Date | null>(null);
 
+// Restore a persisted simulated date at import time, before first render.
 if (browser) {
   const saved = localStorage.getItem("simulatedDate");
   if (saved) simulatedDate.set(new Date(saved));
@@ -17,13 +18,5 @@ export function setSimulatedDate(date: Date | null) {
 }
 
 export function getCurrentDate(): Date {
-  let date: Date | null = null;
-  simulatedDate.subscribe((v) => (date = v))();
-  return date || new Date();
-}
-export function initDateSimulation() {
-  if (browser) {
-    const saved = localStorage.getItem("simulatedDate");
-    if (saved) simulatedDate.set(new Date(saved));
-  }
+  return get(simulatedDate) || new Date();
 }

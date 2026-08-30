@@ -1,6 +1,8 @@
 import type { Dates } from "$shared/dateParser";
 import type { Market } from "$shared/types";
 
+export type MarketStatus = "open" | "upcoming" | "closed" | "unknown";
+
 export function isAllClosed(markets: Market[], now: Date): boolean {
   return markets.every((m) => {
     const dates = m.dates;
@@ -23,7 +25,7 @@ export function isMarketOpen(
   now: Date,
 ): {
   isOpen: boolean;
-  status: "open" | "upcoming" | "closed" | "unknown";
+  status: MarketStatus;
 } {
   if (dates.type === "range" && dates.start_date && dates.end_date) {
     const start = new Date(dates.start_date);
@@ -64,10 +66,7 @@ interface StatusMeta {
   border: string;
 }
 
-const statusMeta: Record<
-  "open" | "upcoming" | "closed" | "unknown",
-  StatusMeta
-> = {
+const statusMeta: Record<MarketStatus, StatusMeta> = {
   open: {
     label: "Open",
     color: "text-pine",
@@ -94,8 +93,6 @@ const statusMeta: Record<
   },
 };
 
-export function statusInfo(
-  status: "open" | "upcoming" | "closed" | "unknown",
-): StatusMeta {
+export function statusInfo(status: MarketStatus): StatusMeta {
   return statusMeta[status];
 }
