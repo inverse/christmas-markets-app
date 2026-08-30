@@ -16,8 +16,7 @@
   let markers: SvelteMap<string, L.Marker>;
   let userMarker: L.Marker;
   let starIcon: L.DivIcon;
-  let christmasIcon: L.DivIcon;
-  let christmasIconLit: L.DivIcon;
+  let treeIcons: Record<MarketStatus, L.DivIcon>;
   let markersReady = $state(false);
 
   onMount(async () => {
@@ -26,21 +25,52 @@
       L = leaflet.default || leaflet;
       // SvelteMap needs to be imported if it is from svelte
       const { SvelteMap } = await import("svelte/reactivity");
-      christmasIcon = L.divIcon({
-        html: `<div class="relative w-8 h-8 rounded-full border-2 border-gold/60 bg-gold/30 flex items-center justify-center"><img src="/icons/christmas-tree-raw.svg" class="w-5 h-5 opacity-70" /></div>`,
-        className: "custom-tree-icon",
-        iconSize: [32, 32],
-        iconAnchor: [16, 16],
-        popupAnchor: [0, -16],
-      });
+      const makeTreeIcon = (
+        html: string,
+        size: number,
+        className: string,
+      ): L.DivIcon =>
+        L.divIcon({
+          html,
+          className,
+          iconSize: [size, size],
+          iconAnchor: [size / 2, size / 2],
+          popupAnchor: [0, -size / 2],
+        });
 
-      christmasIconLit = L.divIcon({
-        html: `<div class="relative w-10 h-10 rounded-full border-2 border-gold bg-gold/60 flex items-center justify-center shadow-lg"><img src="/icons/christmas-tree-raw.svg" class="w-6 h-6" /></div>`,
-        className: "custom-tree-icon-lit",
-        iconSize: [40, 40],
-        iconAnchor: [20, 20],
-        popupAnchor: [0, -20],
-      });
+      treeIcons = {
+        open: makeTreeIcon(
+          `<div class="relative w-10 h-10">
+            <span class="absolute inset-0 rounded-full bg-pine/50 marker-pulse"></span>
+            <span class="map-marker map-marker--open absolute inset-0 rounded-full border-2 border-pine flex items-center justify-center">
+              <img src="/icons/christmas-tree-raw.svg" class="w-6 h-6" />
+            </span>
+          </div>`,
+          40,
+          "custom-tree-icon-open",
+        ),
+        upcoming: makeTreeIcon(
+          `<div class="map-marker relative w-8 h-8 rounded-full border-2 border-gold flex items-center justify-center">
+            <img src="/icons/christmas-tree-raw.svg" class="w-5 h-5" />
+          </div>`,
+          32,
+          "custom-tree-icon-upcoming",
+        ),
+        closed: makeTreeIcon(
+          `<div class="map-marker relative w-8 h-8 rounded-full border-2 border-stone-400 flex items-center justify-center">
+            <img src="/icons/christmas-tree-raw.svg" class="w-5 h-5 grayscale opacity-70" />
+          </div>`,
+          32,
+          "custom-tree-icon-closed",
+        ),
+        unknown: makeTreeIcon(
+          `<div class="map-marker relative w-8 h-8 rounded-full border-2 border-dashed border-gold flex items-center justify-center">
+            <img src="/icons/christmas-tree-raw.svg" class="w-5 h-5 opacity-80" />
+          </div>`,
+          32,
+          "custom-tree-icon-unknown",
+        ),
+      };
       starIcon = L.divIcon({
         html: `<svg viewBox="0 0 24 24" fill="#EAB308" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>`,
         className: "custom-star-icon",
@@ -59,10 +89,11 @@
       }).addTo(map);
       markers = new SvelteMap<string, L.Marker>();
       markets.forEach((market: Market) => {
-        const status = statusByMarket.get(market.name) ?? "unknown";
+        const status: MarketStatus =
+          statusByMarket.get(market.name) ?? "unknown";
         const marker = L.marker(
           [market.coordinates.lat, market.coordinates.lng],
-          { icon: status === "open" ? christmasIconLit : christmasIcon },
+          { icon: treeIcons[status] },
         )
           .addTo(map)
           .bindPopup(() =>
@@ -93,8 +124,8 @@
     for (const market of markets) {
       const marker = markers.get(market.name);
       if (!marker) continue;
-      const status = statusByMarket.get(market.name) ?? "unknown";
-      marker.setIcon(status === "open" ? christmasIconLit : christmasIcon);
+      const status: MarketStatus = statusByMarket.get(market.name) ?? "unknown";
+      marker.setIcon(treeIcons[status]);
     }
   });
 

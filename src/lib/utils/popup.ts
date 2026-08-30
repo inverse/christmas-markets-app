@@ -1,7 +1,8 @@
 import { statusInfo, type MarketStatus } from "./marketStatus";
 import type { Market } from "$shared/types";
 
-function escapeHtml(value: string): string {
+function escapeHtml(value: string | undefined | null): string {
+  if (!value) return "";
   return value
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
@@ -14,7 +15,9 @@ export function buildPopup(market: Market, status: MarketStatus): string {
   const statusInfoObj = statusInfo(status);
   const name = escapeHtml(market.name);
   const address = escapeHtml(market.address);
-  const datesRaw = escapeHtml(market.dates.raw);
+  const datesRaw = market.dates?.raw
+    ? escapeHtml(market.dates.raw)
+    : "Check site";
   const url = escapeHtml(market.url);
   const description =
     market.description && market.description !== "Not found"

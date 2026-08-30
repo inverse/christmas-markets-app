@@ -81,9 +81,9 @@ const statusMeta: Record<MarketStatus, StatusMeta> = {
   },
   closed: {
     label: "Closed",
-    color: "text-pine/50",
-    bg: "bg-pine/5",
-    border: "border-pine/20",
+    color: "text-stone-500",
+    bg: "bg-stone-500/10",
+    border: "border-stone-300",
   },
   unknown: {
     label: "Check Web",

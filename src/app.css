@@ -133,3 +133,37 @@
 	background: var(--color-gold-light) !important;
 }
 
+/* Open-market marker: expanding halo ring */
+@keyframes marker-pulse {
+	0% {
+		transform: scale(1);
+		opacity: 0.5;
+	}
+	70% {
+		transform: scale(1.8);
+		opacity: 0;
+	}
+	100% {
+		transform: scale(1.8);
+		opacity: 0;
+	}
+}
+
+.marker-pulse {
+	animation: marker-pulse 2s ease-out infinite;
+}
+
+/* High-contrast marker badge: solid light fill + white halo + drop shadow */
+.map-marker {
+	background: var(--color-snow);
+	box-shadow:
+		0 0 0 2px var(--color-snow),
+		0 2px 6px rgba(0, 0, 0, 0.35);
+}
+
+.map-marker--open {
+	box-shadow:
+		0 0 0 2px var(--color-snow),
+		0 3px 12px rgba(20, 83, 45, 0.45);
+}
+
