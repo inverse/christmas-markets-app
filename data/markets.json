@@ -170,7 +170,12 @@
   {
     "name": "Advent Market on Karl-August-Platz",
     "address": "Karl-August-Platz , Berlin, 10625, Deutschland",
-    "dates": "Not found",
+    "dates": {
+      "raw": "November 29, 2026",
+      "type": "range",
+      "start_date": "2026-11-29",
+      "end_date": "2026-11-29"
+    },
     "opening_times": "Not yet known",
     "admission": "Not yet known",
     "description": "Those in search of unique Christmas presents will find what they are looking for on the first three Sundays of Advent at the arts and crafts market on Karl-August-Platz.",
@@ -274,11 +279,24 @@
   {
     "name": "Sustainable Christmas Market on Sophienstraße",
     "address": "Sophienstraße , Berlin , 10178, Deutschland",
-    "dates": "Not found",
-    "opening_times": "Not found",
-    "admission": "Not found",
+    "dates": {
+      "raw": "On all Advent weekends in 2026 (November 28 and 29, as well as December 5, 6, 12, 13, 19 and 21, 2026)",
+      "type": "dates",
+      "dates": [
+        "2026-11-28",
+        "2026-11-29",
+        "2026-12-05",
+        "2026-12-06",
+        "2026-12-12",
+        "2026-12-13",
+        "2026-12-19",
+        "2026-12-21"
+      ]
+    },
+    "opening_times": "Saturday from 12 noon to 8 pm, Sunday from 11 to 7 pm",
+    "admission": "Free",
     "description": "For over 25 years, this Christmas market near Hackesche Höfe has offered visitors selected goods that are organic, sustainable and fairly produced.",
-    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9833143/ratio_4_3/300x225/",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9833143/ratio_4_3/1758798602/800x600/",
     "coordinates": {
       "lng": 13.4023,
       "lat": 52.5253
@@ -306,11 +324,16 @@
   {
     "name": "Advent Market in Leonhardtstraße",
     "address": "Leonhardtstraße , Berlin, 14057, Deutschland",
-    "dates": "Not found",
-    "opening_times": "Not found",
-    "admission": "Not found",
+    "dates": {
+      "raw": "December 06, 2026",
+      "type": "range",
+      "start_date": "2026-12-06",
+      "end_date": "2026-12-06"
+    },
+    "opening_times": "Not yet known",
+    "admission": "Free",
     "description": "On the second Advent, Charlottenburg's Leonhardtstraße is transformed into a cozy Advent mile where you can browse for presents.",
-    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9979609/ratio_4_3/300x225/",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9979609/ratio_4_3/1761314133/800x600/",
     "coordinates": {
       "lng": 13.2972,
       "lat": 52.5052
@@ -320,11 +343,16 @@
   {
     "name": "Christmas Market in Spandau",
     "address": "Marktstraße 10, Berlin, 13597, Deutschland",
-    "dates": "Not found",
+    "dates": {
+      "raw": "November 23 to December 22, 2026",
+      "type": "range",
+      "start_date": "2026-11-23",
+      "end_date": "2026-12-22"
+    },
     "opening_times": "Not found",
-    "admission": "Not found",
+    "admission": "Not yet known",
     "description": "In Advent, the streets and alleys in the old town of Spandau change into a beautiful Christmas world complete with market stalls and a renaissance fair.",
-    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9833185/ratio_4_3/300x225/",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9833185/ratio_4_3/1754900927/800x600/",
     "coordinates": {
       "lng": 13.2048,
       "lat": 52.5372
@@ -334,11 +362,16 @@
   {
     "name": "Christmas Market on Breitscheidplatz",
     "address": "Kurfürstendamm 237, Berlin, 10789, Deutschland",
-    "dates": "Not found",
+    "dates": {
+      "raw": "November 23, 2026 - January 03, 2027",
+      "type": "range",
+      "start_date": "2026-11-23",
+      "end_date": "2027-01-03"
+    },
     "opening_times": "Not found",
-    "admission": "Not found",
+    "admission": "Free",
     "description": "This Christmas market in Berlin's western center is worth a visit while shopping on famous Kurfürstendamm.",
-    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8580156/ratio_4_3/300x225/",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8580156/ratio_4_3/1735550604/800x600/",
     "coordinates": {
       "lng": 13.3346,
       "lat": 52.5042

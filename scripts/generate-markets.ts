@@ -113,16 +113,23 @@ async function getMarketDetails(url: string): Promise<MarketDetails> {
 
     if (dl.length) {
       const labels = [
-        { key: "dates" as const, label: "Dates" },
+        { key: "dates" as const, label: ["Dates", "Date"] },
         { key: "opening_times" as const, label: "Opening Hours" },
         { key: "admission" as const, label: "Admission Fee" },
       ];
       for (const { key, label } of labels) {
-        const dd = getDdByDtLabelSimple($, dl, label);
+        let dd = null;
+        if (Array.isArray(label)) {
+          for (const l of label) {
+            dd = getDdByDtLabelSimple($, dl, l);
+            if (dd) break;
+          }
+        } else {
+          dd = getDdByDtLabelSimple($, dl, label);
+        }
         if (dd) {
           const ddText = dd.text().trim();
           if (key === "dates") {
-            // No extra debugging
             if (DATA_MAP[ddText]) {
               details[key] = { ...DATA_MAP[ddText], raw: ddText };
             } else {
@@ -168,14 +175,16 @@ async function main() {
   const response = await fetch(GEOJSON_URL);
   const data = await response.json();
 
-  const markets = [];
+  const totalMarkets = data.features.length;
+  console.log(`Found ${totalMarkets} markets. Starting fetch...`);
 
-  // Process sequentially for now, similar to python
-  for (const feature of data.features) {
+  const markets = [];
+  for (let i = 0; i < data.features.length; i++) {
+    const feature = data.features[i];
     const props = feature.properties;
     const coords = feature.geometry.coordinates;
 
-    console.log(`Fetching ${props.title}...`);
+    console.log(`[${i + 1}/${totalMarkets}] Fetching ${props.title}...`);
     const details = await getMarketDetails(props.url);
 
     let imageUrl = details.image;
