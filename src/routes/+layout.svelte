@@ -45,16 +45,19 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap"
     rel="stylesheet"
   />
-  <title>Berlin Christmas Markets Map</title>
+  <title>Berlin Christmas Markets 2026: Dates, Hours &amp; Map</title>
   <meta
     name="description"
-    content="Discover Berlin's magical Christmas markets on an interactive map. Browse dates, hours and locations, then plan your festive visit."
+    content="Find Berlin Christmas markets by date, location, opening hours and admission price. Explore markets across Mitte, Charlottenburg, Prenzlauer Berg, Kreuzberg and more."
   />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Berlin Christmas Markets Map" />
+  <meta
+    property="og:title"
+    content="Berlin Christmas Markets 2026: Dates, Hours &amp; Map"
+  />
   <meta
     property="og:description"
-    content="Discover Berlin's magical Christmas markets on an interactive map. Browse dates, hours and locations, then plan your festive visit."
+    content="Find Berlin Christmas markets by date, location, opening hours and admission price. Explore markets across Mitte, Charlottenburg, Prenzlauer Berg, Kreuzberg and more."
   />
   <meta property="og:image" content="/icons/logo.svg" />
 </svelte:head>
