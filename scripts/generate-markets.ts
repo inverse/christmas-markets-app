@@ -169,46 +169,82 @@ async function getMarketDetails(url: string): Promise<MarketDetails> {
     process.exit(1);
   }
 }
+async function processMarket(index: number, total: number, feature: unknown) {
+  if (
+    !feature ||
+    typeof feature !== "object" ||
+    !("properties" in feature) ||
+    !("geometry" in feature)
+  ) {
+    throw new Error("Invalid feature structure");
+  }
+  const { properties, geometry } = feature as {
+    properties: {
+      title: string;
+      url: string;
+      address: string;
+      description?: string;
+      image?: { url: string };
+    };
+    geometry: { coordinates: [number, number] };
+  };
+
+  const props = properties;
+  const coords = geometry.coordinates;
+
+  console.log(`[${index + 1}/${total}] Fetching ${props.title}...`);
+  const details = await getMarketDetails(props.url);
+
+  let imageUrl = details.image;
+  if (imageUrl && !imageUrl.startsWith("http")) {
+    imageUrl = `https://www.berlin.de${imageUrl}`;
+  }
+
+  return {
+    name: props.title,
+    address: props.address,
+    dates: details.dates,
+    opening_times: details.opening_times,
+    admission: details.admission,
+    description: props.description || "",
+    image_url: imageUrl || (props.image && props.image.url),
+    coordinates: {
+      lng: coords[0],
+      lat: coords[1],
+    },
+    url: props.url,
+  };
+}
+
+async function processMarketsConcurrent(
+  features: unknown[],
+  concurrency: number,
+) {
+  const totalMarkets = features.length;
+  const items = features.entries();
+  const marketResults = await Promise.all(
+    Array.from({ length: Math.min(concurrency, totalMarkets) }, async () => {
+      const results = [];
+      for (const [index, feature] of items) {
+        results.push(await processMarket(index, totalMarkets, feature));
+      }
+      return results;
+    }),
+  );
+  return marketResults.flat();
+}
 
 async function main() {
+  const start = performance.now();
   console.log("Fetching main list...");
   const response = await fetch(GEOJSON_URL);
-  const data = await response.json();
+  const data = (await response.json()) as { features: unknown[] };
 
   const totalMarkets = data.features.length;
   console.log(`Found ${totalMarkets} markets. Starting fetch...`);
-
-  const markets = [];
-  for (let i = 0; i < data.features.length; i++) {
-    const feature = data.features[i];
-    const props = feature.properties;
-    const coords = feature.geometry.coordinates;
-
-    console.log(`[${i + 1}/${totalMarkets}] Fetching ${props.title}...`);
-    const details = await getMarketDetails(props.url);
-
-    let imageUrl = details.image;
-    if (imageUrl && !imageUrl.startsWith("http")) {
-      imageUrl = `https://www.berlin.de${imageUrl}`;
-    }
-
-    const dates = details.dates;
-
-    markets.push({
-      name: props.title,
-      address: props.address,
-      dates: dates,
-      opening_times: details.opening_times,
-      admission: details.admission,
-      description: props.description || "",
-      image_url: imageUrl || (props.image && props.image.url),
-      coordinates: {
-        lng: coords[0],
-        lat: coords[1],
-      },
-      url: props.url,
-    });
-  }
+  const concurrency = 5;
+  const markets = await processMarketsConcurrent(data.features, concurrency);
+  markets.sort((a, b) => a.name.localeCompare(b.name));
 
   const dataDir = path.join(process.cwd(), "data");
   if (!fs.existsSync(dataDir)) {
@@ -218,7 +254,7 @@ async function main() {
     path.join(dataDir, "markets.json"),
     JSON.stringify(markets, null, 2),
   );
-  console.log("Done.");
+  const end = performance.now();
+  console.log(`Finished in ${((end - start) / 1000).toFixed(2)} seconds.`);
 }
-
 main();
