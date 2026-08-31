@@ -14,12 +14,31 @@
     anyMarketOpen: boolean;
     allMarketsClosed: boolean;
   }>();
+
+  const snowflakes = Array.from({ length: 100 }, () => ({
+    left: Math.random() * 100,
+    size: 10 + Math.random() * 16,
+    opacity: 0.5 + Math.random() * 0.5,
+    delay: Math.random() * 8,
+    duration: 6 + Math.random() * 8,
+    drift: Math.round((Math.random() * 2 - 1) * 60),
+  }));
 </script>
 
 <div
   class="fixed inset-0 z-[2000] flex items-center justify-center p-4 bg-pine-dark/80"
   transition:fade
 >
+  <div class="snowfall" aria-hidden="true">
+    {#each snowflakes as flake, i (i)}
+      <span
+        class="flake"
+        style="left: {flake.left}%; font-size: {flake.size}px; opacity: {flake.opacity}; animation-duration: {flake.duration}s; animation-delay: {flake.delay}s; --drift: {flake.drift}px"
+        >❄️</span
+      >
+    {/each}
+  </div>
+
   <div
     class="festive-surface relative w-full max-w-sm overflow-hidden rounded-2xl border-4 border-gold p-6 shadow-2xl"
   >
@@ -113,3 +132,34 @@
     </div>
   </div>
 </div>
+
+<style>
+  .snowfall {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .flake {
+    position: absolute;
+    top: -3rem;
+    line-height: 1;
+    animation: snow-fall linear infinite;
+  }
+
+  @keyframes snow-fall {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(var(--drift), calc(100vh + 3rem), 0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .flake {
+      animation: none;
+    }
+  }
+</style>
