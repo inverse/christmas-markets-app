@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import * as cheerio from "cheerio";
-import { parseDates, type Dates } from "../src/shared/dateParser.js";
+import { parseDates, type Dates } from "../src/shared/dateParser.ts";
 
 const GEOJSON_URL =
   "https://www.berlin.de/weihnachtsmarkt/suche/.x-feed/category.geojson?id=10135126&language=en_GB&_rnd=496605";
@@ -80,7 +80,7 @@ function getDdByDtLabelSimple(
   let result: cheerio.Cheerio<cheerio.Element> | null = null;
   dl.find("dt").each((_, el) => {
     const dtText = $(el).text().trim();
-    if (dtText === label) {
+    if (dtText.toLowerCase() === label.toLowerCase()) {
       const next = $(el).next("dd");
       if (next.length) {
         result = next;
