@@ -7,14 +7,21 @@
 
   type Filter = "all" | "open" | "upcoming" | "closed" | "unknown";
 
-  let { markets, statusByMarket, earliestDates, onClose, onShowWelcome } =
-    $props<{
-      markets: Market[];
-      statusByMarket: Map<string, MarketStatus>;
-      earliestDates: Map<string, Date>;
-      onClose: () => void;
-      onShowWelcome: () => void;
-    }>();
+  let {
+    markets,
+    statusByMarket,
+    earliestDates,
+    onClose,
+    onShowWelcome,
+    onShowAbout,
+  } = $props<{
+    markets: Market[];
+    statusByMarket: Map<string, MarketStatus>;
+    earliestDates: Map<string, Date>;
+    onClose: () => void;
+    onShowWelcome: () => void;
+    onShowAbout: () => void;
+  }>();
   let activeFilter = $state<Filter>("all");
 
   const sortedMarkets = $derived(
@@ -225,22 +232,22 @@
   </header>
 
   <div class="space-y-4 p-4">
-    <section
-      class="rounded-xl border border-stone-200 border-l-4 border-l-berry bg-snow p-4"
-    >
-      <h3 class="mb-1 font-display font-bold text-pine">About</h3>
-      <p class="text-sm leading-relaxed text-stone-600">
-        Explore Berlin's magical Christmas markets with our interactive map.
-        Find your nearest market and enjoy the festive spirit!
-      </p>
-    </section>
-    <button
-      onclick={() => close(onShowWelcome)}
-      class="flex w-full items-center justify-center gap-2 rounded-lg border border-pine bg-snow px-4 py-2 text-sm font-semibold text-pine transition hover:bg-pine hover:text-white"
-    >
-      <span class="text-lg">🎄</span>
-      <span>Welcome Guide</span>
-    </button>
+    <div class="grid grid-cols-2 gap-2">
+      <button
+        onclick={() => close(onShowWelcome)}
+        class="flex items-center justify-center gap-1.5 rounded-lg border border-pine/30 bg-snow px-3 py-2.5 text-xs font-semibold text-pine shadow-xs transition hover:bg-pine hover:text-white"
+      >
+        <span class="text-base">🎄</span>
+        <span>Welcome</span>
+      </button>
+      <button
+        onclick={() => close(onShowAbout)}
+        class="flex items-center justify-center gap-1.5 rounded-lg border border-pine/30 bg-snow px-3 py-2.5 text-xs font-semibold text-pine shadow-xs transition hover:bg-pine hover:text-white"
+      >
+        <span class="text-base">ℹ️</span>
+        <span>About</span>
+      </button>
+    </div>
 
     <section>
       <div class="mb-2 flex items-end justify-between px-1">

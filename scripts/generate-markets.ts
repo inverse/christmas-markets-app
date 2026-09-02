@@ -97,13 +97,43 @@ interface MarketDetails {
   image: string | null;
 }
 
+async function fetchWithRetry(
+  url: string,
+  retries = 4,
+  delayMs = 1500,
+): Promise<Response> {
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    try {
+      const response = await fetch(url);
+      if (response.ok) return response;
+      console.warn(
+        `[Attempt ${attempt}/${retries}] HTTP ${response.status} for ${url.split("/").pop()}...`,
+      );
+      if (attempt === retries) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
+    } catch (err) {
+      if (attempt === retries) throw err;
+      console.warn(
+        `[Attempt ${attempt}/${retries}] Fetch error for ${url.split("/").pop()}: ${(err as Error).message}`,
+      );
+    }
+    const { promise, resolve } = Promise.withResolvers<void>();
+    setTimeout(resolve, delayMs * attempt);
+    await promise;
+  }
+  throw new Error(`Failed to fetch ${url} after ${retries} attempts`);
+}
+
 async function getMarketDetails(url: string): Promise<MarketDetails> {
   try {
-    const response = await fetch(url);
+    const response = await fetchWithRetry(url);
     const text = await response.text();
     const $ = cheerio.load(text);
     const dl = $(".info-container-list");
-
+    if (!dl.length) {
+      console.warn(`Warning: No .info-container-list found on ${url}`);
+    }
     const details: MarketDetails = {
       dates: "Not found",
       opening_times: "Not found",
@@ -237,12 +267,12 @@ async function processMarketsConcurrent(
 async function main() {
   const start = performance.now();
   console.log("Fetching main list...");
-  const response = await fetch(GEOJSON_URL);
+  const response = await fetchWithRetry(GEOJSON_URL);
   const data = (await response.json()) as { features: unknown[] };
 
   const totalMarkets = data.features.length;
   console.log(`Found ${totalMarkets} markets. Starting fetch...`);
-  const concurrency = 5;
+  const concurrency = 3;
   const markets = await processMarketsConcurrent(data.features, concurrency);
   markets.sort((a, b) => a.name.localeCompare(b.name));
 

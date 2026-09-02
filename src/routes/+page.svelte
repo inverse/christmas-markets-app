@@ -2,6 +2,7 @@
   import Map from "$lib/components/Map.svelte";
   import MarketList from "$lib/components/MarketList.svelte";
   import WelcomeModal from "$lib/components/WelcomeModal.svelte";
+  import AboutModal from "$lib/components/AboutModal.svelte";
   import { onMount } from "svelte";
   import { SvelteMap } from "svelte/reactivity";
   import { simulatedDate } from "$lib/utils/date";
@@ -17,6 +18,7 @@
 
   let isMenuOpen = $state(false);
   let showWelcome = $state(false);
+  let showAbout = $state(false);
 
   const statusByMarket = $derived.by(() => {
     const statuses = new SvelteMap<string, MarketStatus>();
@@ -65,6 +67,10 @@
   function closeWelcome() {
     showWelcome = false;
   }
+
+  function closeAbout() {
+    showAbout = false;
+  }
 </script>
 
 <main class="h-screen w-screen relative">
@@ -76,6 +82,10 @@
       {allMarketsClosed}
       onClose={closeWelcome}
     />
+  {/if}
+
+  {#if showAbout}
+    <AboutModal onClose={closeAbout} />
   {/if}
 
   <Map {markets} {statusByMarket} />
@@ -105,6 +115,10 @@
       onClose={() => (isMenuOpen = false)}
       onShowWelcome={() => {
         showWelcome = true;
+        isMenuOpen = false;
+      }}
+      onShowAbout={() => {
+        showAbout = true;
         isMenuOpen = false;
       }}
     />
