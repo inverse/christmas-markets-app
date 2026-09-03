@@ -104,7 +104,7 @@
           .bindPopup(
             () =>
               buildPopup(market, statusByMarket.get(market.name) ?? "unknown"),
-            { maxWidth: 340, minWidth: 280 },
+            { maxWidth: 340, minWidth: 280, autoPanPadding: L.point(20, 60) },
           );
         markers.set(market.name, marker);
       });
@@ -191,7 +191,7 @@
             nearestMarket.coordinates.lng,
           );
           const bounds = L.latLngBounds(userLatLng, marketLatLng);
-          map.fitBounds(bounds, { padding: [50, 50] });
+          map.fitBounds(bounds, { padding: [100, 100] });
 
           const marker = markers.get(nearestMarket.name);
           if (marker) {

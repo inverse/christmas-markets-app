@@ -42,7 +42,7 @@ export function buildPopup(market: Market, status: MarketStatus): string {
     ? row("fa-euro-sign", escapeHtml(market.admission))
     : "";
 
-  return `<div class="overflow-hidden rounded-2xl border-4 border-gold bg-snow font-sans shadow-2xl">
+  return `<div class="max-h-[80vh] overflow-y-auto rounded-2xl border-4 border-gold bg-snow font-sans shadow-2xl">
 				<div class="relative h-40">
 					<img src="${escapeHtml(market.image_url)}" alt="${name}" loading="lazy" class="h-full w-full object-cover" />
 					<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
