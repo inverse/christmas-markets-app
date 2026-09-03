@@ -21,7 +21,7 @@ export function buildPopup(market: Market, status: MarketStatus): string {
   const url = escapeHtml(market.url);
   const description =
     market.description && market.description !== "Not found"
-      ? `<div class="text-[13px] text-stone-600 mb-2 leading-relaxed italic border-b border-gold/20 pb-2">
+      ? `<div class="text-[13px] text-stone-700 mb-2 leading-relaxed italic border-b border-gold/20 pb-2">
 									${escapeHtml(market.description)}
 								</div>`
       : "";
@@ -33,8 +33,8 @@ export function buildPopup(market: Market, status: MarketStatus): string {
     market.admission &&
     !["Not found", "Not yet known"].includes(market.admission);
   const admission = hasAdmission
-    ? `<div class="flex items-start gap-2 text-[13px] text-stone-700">
-									<i class="fa-solid fa-euro-sign fa-fw text-berry"></i>
+    ? `<div class="flex items-start gap-2 text-[13px] text-stone-800">
+                <i class="fa-solid fa-euro-sign fa-fw text-stone-500"></i>
 									<span>${escapeHtml(market.admission)}</span>
 								</div>`
     : "";
@@ -52,20 +52,20 @@ export function buildPopup(market: Market, status: MarketStatus): string {
 						<div class="h-1 w-full bg-gradient-to-r from-pine via-gold to-berry"></div>
 						<div class="p-4 space-y-2.5 bg-snow">
 							${description}
-							<div class="flex items-start gap-2 text-[13px] text-stone-700">
-                <i class="fa-solid fa-location-dot fa-fw text-stone-400"></i>
+							<div class="flex items-start gap-2 text-[13px] text-stone-800">
+                <i class="fa-solid fa-location-dot fa-fw text-stone-500"></i>
 								<span>${address}</span>
 							</div>
-							<div class="flex items-start gap-2 text-[13px] text-stone-700">
-                <i class="fa-solid fa-calendar-days fa-fw text-stone-400"></i>
+							<div class="flex items-start gap-2 text-[13px] text-stone-800">
+                <i class="fa-solid fa-calendar-days fa-fw text-stone-500"></i>
 								<span class="font-medium text-pine">${datesRaw}</span>
 							</div>
-							<div class="flex items-start gap-2 text-[13px] text-stone-700">
-                <i class="fa-solid fa-clock fa-fw text-stone-400"></i>
+							<div class="flex items-start gap-2 text-[13px] text-stone-800">
+                <i class="fa-solid fa-clock fa-fw text-stone-500"></i>
 								<span>${openingTimes}</span>
 							</div>
 							${admission}
-							<a href="${url}" target="_blank" class="block text-center text-sm font-bold py-2.5 rounded-lg bg-pine text-white hover:bg-pine-dark transition">View details</a>
+							<a href="${url}" target="_blank" class="block text-center text-sm font-bold py-2.5 rounded-lg bg-pine text-white hover:bg-pine-dark transition shadow-sm">View details</a>
 						</div>
 					</div>
 				`;
