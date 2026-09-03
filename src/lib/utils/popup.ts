@@ -58,7 +58,7 @@ export function buildPopup(market: Market, status: MarketStatus): string {
 					${row("fa-calendar-days", `<span class="font-medium text-pine">${dates}</span>`)}
 					${row("fa-clock", openingTimes)}
 					${admission}
-					<a href="${url}" target="_blank" class="block text-center text-sm font-bold py-2.5 rounded-lg bg-pine text-gold-light shadow-sm transition hover:bg-pine-dark">View details</a>
+					<a href="${url}" target="_blank" class="block text-center text-sm font-bold py-2.5 rounded-lg bg-berry text-white shadow-sm transition hover:bg-berry-dark">View details</a>
 				</div>
 			</div>`;
 }
