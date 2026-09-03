@@ -68,12 +68,14 @@
     >
       <section>
         <h3 class="font-display text-base font-bold text-pine mb-1">
-          Berlin Christmas Markets
+          Why I built this
         </h3>
         <p>
-          An independent interactive guide helping locals and visitors discover
-          Christmas markets across Berlin, check opening dates, and explore the
-          city's festive season.
+          Every winter, Berlin comes alive with dozens of Christmas markets, but
+          finding out which ones are open right now, where they are, and what
+          dates they run always felt harder than it should be. I built this map
+          to make it simple for locals and visitors to explore the city's
+          festive season and plan outings together.
         </p>
       </section>
 
@@ -81,10 +83,10 @@
         class="rounded-xl border border-stone-200 border-l-4 border-l-gold bg-snow p-3.5"
       >
         <h3 class="font-display text-base font-bold text-pine mb-1">
-          Data Sources
+          Where the data comes from
         </h3>
         <p>
-          Market listings and locations are sourced from the official
+          Market details and locations come directly from the official
           <a
             href="https://www.berlin.de/weihnachtsmarkt/"
             target="_blank"
@@ -92,32 +94,25 @@
             class="font-semibold text-pine underline hover:text-gold-dark"
           >
             Berlin.de Open Data portal
-          </a>
-          and parsed automatically.
-        </p>
-        <p class="mt-2 text-xs text-stone-500">
-          Dates and opening hours may change due to weather or organiser
-          updates. Always check official market sites before visiting.
-        </p>
-      </section>
-
-      <section>
-        <h3 class="font-display text-base font-bold text-pine mb-1">
-          Created By
-        </h3>
-        <p>
-          Built by
-          <a
-            href="https://malachisoord.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="font-semibold text-pine underline hover:text-gold-dark"
-          >
-            Malachi Soord
           </a>.
         </p>
+        <p class="mt-2 text-xs text-stone-500">
+          Opening hours and dates can change due to weather or organiser
+          updates, so it's always a good idea to double-check official event
+          pages before heading out!
+        </p>
       </section>
-
+      <p class="text-xs text-stone-600">
+        Created by
+        <a
+          href="https://malachisoord.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-semibold text-pine underline hover:text-gold-dark"
+        >
+          Malachi Soord
+        </a>.
+      </p>
       <section class="border-t border-stone-200 pt-3 text-xs text-stone-500">
         Map tiles &copy;
         <a
