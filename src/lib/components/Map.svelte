@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount, onDestroy } from "svelte";
+  import { SvelteMap } from "svelte/reactivity";
   import { browser } from "$app/environment";
   import type { MarketStatus } from "$lib/utils/marketStatus";
   import { buildPopup } from "$lib/utils/popup";
@@ -24,7 +25,6 @@
       const leaflet = await import("leaflet");
       L = leaflet.default || leaflet;
       // SvelteMap needs to be imported if it is from svelte
-      const { SvelteMap } = await import("svelte/reactivity");
       const makeTreeIcon = (
         html: string,
         size: number,
@@ -162,20 +162,22 @@
         }
 
         // Find nearest market
-        let nearestMarket = null;
         let minDistance = Infinity;
-
-        markets.forEach((market) => {
-          const marketLatLng = L.latLng(
-            market.coordinates.lat,
-            market.coordinates.lng,
-          );
-          const distance = userLatLng.distanceTo(marketLatLng);
-          if (distance < minDistance) {
-            minDistance = distance;
-            nearestMarket = market;
-          }
-        });
+        const nearestMarket = markets.reduce(
+          (acc: Market | null, market: Market): Market | null => {
+            const marketLatLng = L.latLng(
+              market.coordinates.lat,
+              market.coordinates.lng,
+            );
+            const distance = userLatLng.distanceTo(marketLatLng);
+            if (distance < minDistance) {
+              minDistance = distance;
+              return market;
+            }
+            return acc;
+          },
+          null,
+        );
 
         // Zoom to fit both user and nearest market
         if (nearestMarket) {

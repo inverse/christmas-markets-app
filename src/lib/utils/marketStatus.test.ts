@@ -109,6 +109,7 @@ describe("getEarliestDate", () => {
       raw: "...",
       type: "range",
       start_date: "2026-11-18",
+      end_date: "2026-11-19",
     };
     const result = getEarliestDate(dates);
     expect(result.toISOString().split("T")[0]).toBe("2026-11-18");
@@ -131,7 +132,12 @@ describe("isAllClosed", () => {
       {
         name: "A",
         address: "",
-        dates: { raw: "", type: "range", end_date: "2026-12-01" },
+        dates: {
+          raw: "",
+          type: "range",
+          start_date: "2026-11-30",
+          end_date: "2026-12-01",
+        },
         image_url: "",
         coordinates: { lat: 0, lng: 0 },
         url: "",
@@ -142,7 +148,12 @@ describe("isAllClosed", () => {
       {
         name: "B",
         address: "",
-        dates: { raw: "", type: "range", end_date: "2026-12-31" },
+        dates: {
+          raw: "",
+          type: "range",
+          start_date: "2026-12-01",
+          end_date: "2026-12-31",
+        },
         image_url: "",
         coordinates: { lat: 0, lng: 0 },
         url: "",
@@ -160,7 +171,12 @@ describe("isAllClosed", () => {
       {
         name: "A",
         address: "",
-        dates: { raw: "", type: "range", start_date: "2027-01-01" },
+        dates: {
+          raw: "",
+          type: "range",
+          start_date: "2027-01-01",
+          end_date: "2027-01-02",
+        },
         image_url: "",
         coordinates: { lat: 0, lng: 0 },
         url: "",
@@ -178,7 +194,12 @@ describe("isAllClosed", () => {
       {
         name: "A",
         address: "",
-        dates: { raw: "", type: "range", end_date: "2026-11-30" },
+        dates: {
+          raw: "",
+          type: "range",
+          start_date: "2026-11-01",
+          end_date: "2026-11-30",
+        },
         image_url: "",
         coordinates: { lat: 0, lng: 0 },
         url: "",
@@ -196,7 +217,12 @@ describe("isAllClosed", () => {
       {
         name: "Valid Market",
         address: "",
-        dates: { raw: "", type: "range", end_date: "2026-01-01" },
+        dates: {
+          raw: "",
+          type: "range",
+          start_date: "2026-01-01",
+          end_date: "2026-01-02",
+        },
         image_url: "",
         coordinates: { lat: 0, lng: 0 },
         url: "",

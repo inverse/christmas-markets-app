@@ -1,12 +1,17 @@
 import * as chrono from "chrono-node";
 
-export interface Dates {
-  raw: string;
-  type: "range" | "dates";
-  start_date?: string | null;
-  end_date?: string | null;
-  dates?: string[];
-}
+export type Dates =
+  | {
+      raw: string;
+      type: "range";
+      start_date: string;
+      end_date: string;
+    }
+  | {
+      raw: string;
+      type: "dates";
+      dates: string[];
+    };
 
 export function parseDates(text: string): Dates | null {
   // Normalization: replace en-dash and " and " with hyphens
