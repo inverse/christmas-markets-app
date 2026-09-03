@@ -16,7 +16,7 @@
   let L: typeof import("leaflet");
   let markers: SvelteMap<string, L.Marker>;
   let userMarker: L.Marker;
-  let starIcon: L.DivIcon;
+  let userLocationIcon: L.DivIcon;
   let treeIcons: Record<MarketStatus, L.DivIcon>;
   let markersReady = $state(false);
 
@@ -71,9 +71,14 @@
           "custom-tree-icon-unknown",
         ),
       };
-      starIcon = L.divIcon({
-        html: `<svg viewBox="0 0 24 24" fill="#EAB308" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>`,
-        className: "custom-star-icon",
+      userLocationIcon = L.divIcon({
+        html: `<div class="relative w-8 h-8">
+          <span class="absolute inset-0 rounded-full bg-blue-500/50 marker-pulse"></span>
+          <span class="map-marker absolute inset-0 rounded-full border-2 border-blue-500 bg-white flex items-center justify-center">
+            <svg viewBox="0 0 24 24" fill="#3b82f6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>
+          </span>
+        </div>`,
+        className: "custom-user-icon",
         iconSize: [32, 32],
         iconAnchor: [16, 16],
       });
@@ -157,7 +162,7 @@
         } else {
           userMarker = L.marker(
             userLatLng,
-            starIcon ? { icon: starIcon } : {},
+            userLocationIcon ? { icon: userLocationIcon } : {},
           ).addTo(map);
         }
 
