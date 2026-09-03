@@ -96,8 +96,10 @@
           { icon: treeIcons[status] },
         )
           .addTo(map)
-          .bindPopup(() =>
-            buildPopup(market, statusByMarket.get(market.name) ?? "unknown"),
+          .bindPopup(
+            () =>
+              buildPopup(market, statusByMarket.get(market.name) ?? "unknown"),
+            { maxWidth: 340, minWidth: 280 },
           );
         markers.set(market.name, marker);
       });

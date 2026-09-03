@@ -1,170 +1,205 @@
-
-@import 'tailwindcss';
-@import 'leaflet/dist/leaflet.css';
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
 
 @theme {
-	--color-pine: #14532d;
-	--color-pine-dark: #0f4023;
-	--color-pine-light: #1b6b3a;
-	--color-gold: #d4af37;
-	--color-gold-dark: #a8871f;
-	--color-gold-light: #f0d873;
-	--color-cream: #faf6ec;
-	--color-snow: #fffdf8;
-	--color-berry: #a31621;
-	--color-berry-dark: #7d111a;
+  --color-pine: #14532d;
+  --color-pine-dark: #0f4023;
+  --color-pine-light: #1b6b3a;
+  --color-gold: #d4af37;
+  --color-gold-dark: #a8871f;
+  --color-gold-light: #f0d873;
+  --color-cream: #faf6ec;
+  --color-snow: #fffdf8;
+  --color-berry: #a31621;
+  --color-berry-dark: #7d111a;
 
-	--font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
-	--font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
 }
 
 @layer base {
-	html {
-		font-family: var(--font-sans);
-	}
+  html {
+    font-family: var(--font-sans);
+  }
 
-	body {
-		margin: 0;
-		background: var(--color-cream);
-		color: #292524;
-		-webkit-font-smoothing: antialiased;
-	}
+  body {
+    margin: 0;
+    background: var(--color-cream);
+    color: #292524;
+    -webkit-font-smoothing: antialiased;
+  }
 
-	button:focus-visible,
-	a:focus-visible {
-		outline: 3px solid var(--color-gold-light);
-		outline-offset: 3px;
-	}
+  button:focus-visible,
+  a:focus-visible {
+    outline: 3px solid var(--color-gold-light);
+    outline-offset: 3px;
+  }
 
-	/* Leaflet popup: remove default chrome so our card controls the look */
-	.leaflet-popup-content-wrapper {
-		padding: 0 !important;
-		border-radius: 14px !important;
-		overflow: hidden;
-		box-shadow: 0 18px 40px -16px rgba(0, 0, 0, 0.45) !important;
-	}
+  /* Leaflet popup: the card inside owns the full chrome (gold frame,
+	   rounded corners, snow background, shadow) to match the app's modals,
+	   so strip Leaflet's default panel and only keep the pointer tip. */
+  .leaflet-popup-content-wrapper {
+    padding: 0 !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+    overflow: visible;
+    box-shadow: none !important;
+  }
 
-	.leaflet-popup-content {
-		margin: 0 !important;
-		line-height: normal !important;
-	}
+  .leaflet-popup-content {
+    margin: 0 !important;
+    line-height: normal !important;
+    /* keep the widened card inside narrow phone maps */
+    max-width: calc(100vw - 24px) !important;
+  }
 
-	.leaflet-popup-close-button {
-		top: 8px !important;
-		right: 10px !important;
-		width: 26px !important;
-		height: 26px !important;
-		font-size: 18px !important;
-		color: #ffffff !important;
-		text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6) !important;
-		z-index: 30 !important;
-	}
+  /* Gold pointer tip: continues the card's gold border down to the marker */
+  .leaflet-popup-tip {
+    background: var(--color-gold) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+  }
 
-	/* Slim, unobtrusive scrollbar for the drawer & popup content */
-	.scrollbar-thin {
-		scrollbar-width: thin;
-		scrollbar-color: rgba(20, 83, 45, 0.35) transparent;
-	}
+  /* Close chip: same translucent-chip language as the drawer/menu buttons,
+	   dark so it stays visible over any market photo */
+  .leaflet-popup-close-button {
+    top: 12px !important;
+    right: 12px !important;
+    z-index: 500 !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 30px !important;
+    height: 30px !important;
+    padding: 0 !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    border-radius: 9999px !important;
+    background: rgba(0, 0, 0, 0.45) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+    color: #ffffff !important;
+    font-family: var(--font-sans) !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    text-shadow: none !important;
+    text-decoration: none !important;
+    transition: background 0.15s ease;
+  }
 
-	.scrollbar-thin::-webkit-scrollbar {
-		width: 6px;
-	}
+  .leaflet-popup-close-button:hover {
+    background: rgba(0, 0, 0, 0.65) !important;
+    color: #ffffff !important;
+  }
 
-	.scrollbar-thin::-webkit-scrollbar-thumb {
-		background: rgba(20, 83, 45, 0.35);
-		border-radius: 9999px;
-	}
+  /* Slim, unobtrusive scrollbar for the drawer & popup content */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(20, 83, 45, 0.35) transparent;
+  }
 
-	.scrollbar-thin::-webkit-scrollbar-track {
-		background: transparent;
-	}
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: rgba(20, 83, 45, 0.35);
+    border-radius: 9999px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
 }
 
 .festive-surface {
-	background-color: var(--color-cream);
-	background-image: radial-gradient(rgba(163, 22, 33, 0.07) 0.7px, transparent 0.7px);
-	background-size: 12px 12px;
+  background-color: var(--color-cream);
+  background-image: radial-gradient(
+    rgba(163, 22, 33, 0.07) 0.7px,
+    transparent 0.7px
+  );
+  background-size: 12px 12px;
 }
 
 .seasonal-map-frame {
-	background: linear-gradient(90deg, var(--color-pine), var(--color-gold), var(--color-berry), var(--color-gold), var(--color-pine));
-	box-shadow: 0 1px 8px rgba(20, 83, 45, 0.35);
+  background: linear-gradient(
+    90deg,
+    var(--color-pine),
+    var(--color-gold),
+    var(--color-berry),
+    var(--color-gold),
+    var(--color-pine)
+  );
+  box-shadow: 0 1px 8px rgba(20, 83, 45, 0.35);
 }
 
 .header-lights {
-	background-image: radial-gradient(circle, var(--color-gold-light) 0 3px, transparent 3.5px),
-		linear-gradient(var(--color-gold), var(--color-gold));
-	background-position: 8px 0, 0 2px;
-	background-size: 28px 8px, 100% 1px;
-	background-repeat: repeat-x;
-}
-
-.popup-cta {
-	background: var(--color-gold);
-	color: var(--color-pine) !important;
-}
-
-.popup-cta:hover {
-	background: var(--color-gold-dark);
+  background-image:
+    radial-gradient(circle, var(--color-gold-light) 0 3px, transparent 3.5px),
+    linear-gradient(var(--color-gold), var(--color-gold));
+  background-position:
+    8px 0,
+    0 2px;
+  background-size:
+    28px 8px,
+    100% 1px;
+  background-repeat: repeat-x;
 }
 
 .safe-area-bottom {
-	padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
 }
 
 .site-menu-button,
 .map-location-control {
-	top: max(1rem, env(safe-area-inset-top));
+  top: max(1rem, env(safe-area-inset-top));
 }
 
 .leaflet-control-zoom {
-	border: 2px solid var(--color-gold) !important;
-	border-radius: 12px !important;
-	overflow: hidden;
-	box-shadow: 0 8px 18px rgba(20, 83, 45, 0.2) !important;
+  border: 2px solid var(--color-gold) !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+  box-shadow: 0 8px 18px rgba(20, 83, 45, 0.2) !important;
 }
 
 .leaflet-control-zoom a {
-	background: var(--color-snow) !important;
-	border: 0 !important;
-	color: var(--color-pine) !important;
+  background: var(--color-snow) !important;
+  border: 0 !important;
+  color: var(--color-pine) !important;
 }
 
 .leaflet-control-zoom a:hover {
-	background: var(--color-gold-light) !important;
+  background: var(--color-gold-light) !important;
 }
 
 /* Open-market marker: expanding halo ring */
 @keyframes marker-pulse {
-	0% {
-		transform: scale(1);
-		opacity: 0.5;
-	}
-	70% {
-		transform: scale(1.8);
-		opacity: 0;
-	}
-	100% {
-		transform: scale(1.8);
-		opacity: 0;
-	}
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  70% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
 }
 
 .marker-pulse {
-	animation: marker-pulse 2s ease-out infinite;
+  animation: marker-pulse 2s ease-out infinite;
 }
 
 /* High-contrast marker badge: solid light fill + white halo + drop shadow */
 .map-marker {
-	background: var(--color-snow);
-	box-shadow:
-		0 0 0 2px var(--color-snow),
-		0 2px 6px rgba(0, 0, 0, 0.35);
+  background: var(--color-snow);
+  box-shadow:
+    0 0 0 2px var(--color-snow),
+    0 2px 6px rgba(0, 0, 0, 0.35);
 }
 
 .map-marker--open {
-	box-shadow:
-		0 0 0 2px var(--color-snow),
-		0 3px 12px rgba(20, 83, 45, 0.45);
+  box-shadow:
+    0 0 0 2px var(--color-snow),
+    0 3px 12px rgba(20, 83, 45, 0.45);
 }
-
