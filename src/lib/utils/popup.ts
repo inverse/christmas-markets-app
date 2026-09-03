@@ -44,7 +44,7 @@ export function buildPopup(market: Market, status: MarketStatus): string {
 						<div class="relative h-40">
 							<img src="${escapeHtml(market.image_url)}" alt="${name}" loading="lazy" class="w-full h-full object-cover" />
 							<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-              <div class="absolute top-3 left-3 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase ${statusInfoObj.bg} ${statusInfoObj.color} border ${statusInfoObj.border}">
+              <div class="absolute top-3 left-3 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase bg-black/50 text-white border border-white/20">
                 ${statusInfoObj.label}
               </div>
 							<h3 class="absolute bottom-3 left-3 right-10 text-white font-display text-lg font-bold leading-tight drop-shadow line-clamp-2">${name}</h3>
@@ -53,19 +53,19 @@ export function buildPopup(market: Market, status: MarketStatus): string {
 						<div class="p-4 space-y-2.5 bg-snow">
 							${description}
 							<div class="flex items-start gap-2 text-[13px] text-stone-700">
-                <i class="fa-solid fa-location-dot fa-fw text-berry"></i>
+                <i class="fa-solid fa-location-dot fa-fw text-stone-400"></i>
 								<span>${address}</span>
 							</div>
 							<div class="flex items-start gap-2 text-[13px] text-stone-700">
-                <i class="fa-solid fa-calendar-days fa-fw text-berry"></i>
+                <i class="fa-solid fa-calendar-days fa-fw text-stone-400"></i>
 								<span class="font-medium text-pine">${datesRaw}</span>
 							</div>
 							<div class="flex items-start gap-2 text-[13px] text-stone-700">
-                <i class="fa-solid fa-clock fa-fw text-berry"></i>
+                <i class="fa-solid fa-clock fa-fw text-stone-400"></i>
 								<span>${openingTimes}</span>
 							</div>
 							${admission}
-							<a href="${url}" target="_blank" class="block text-center text-sm font-bold py-2.5 rounded-lg border border-gold/70">View details</a>
+							<a href="${url}" target="_blank" class="block text-center text-sm font-bold py-2.5 rounded-lg bg-pine text-white hover:bg-pine-dark transition">View details</a>
 						</div>
 					</div>
 				`;
