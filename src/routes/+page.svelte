@@ -3,8 +3,20 @@
   import MarketList from "$lib/components/MarketList.svelte";
   import WelcomeModal from "$lib/components/WelcomeModal.svelte";
   import AboutModal from "$lib/components/AboutModal.svelte";
+  import InstallPrompt from "$lib/components/InstallPrompt.svelte";
   import { onMount } from "svelte";
   import { SvelteMap } from "svelte/reactivity";
+  import {
+    menuOpen,
+    openMenu,
+    closeMenu,
+    aboutOpen,
+    welcomeOpen,
+    openAbout,
+    closeAbout,
+    openWelcome,
+    closeWelcome,
+  } from "$lib/mapStore";
   import { simulatedDate } from "$lib/utils/date";
   import {
     getEarliestDate,
@@ -15,10 +27,6 @@
   let { data } = $props();
   let markets = $derived(data.markets);
   let now = $derived($simulatedDate || new Date());
-
-  let isMenuOpen = $state(false);
-  let showWelcome = $state(false);
-  let showAbout = $state(false);
 
   const statusByMarket = $derived.by(() => {
     const statuses = new SvelteMap<string, MarketStatus>();
@@ -58,23 +66,15 @@
 
   onMount(() => {
     const hasSeen = localStorage.getItem("hasSeenWelcome");
-    if (!hasSeen) {
-      showWelcome = true;
-      localStorage.setItem("hasSeenWelcome", "true");
-    }
+    if (hasSeen) return;
+    localStorage.setItem("hasSeenWelcome", "true");
+    // A shared market link is more relevant than the intro, so don't stomp it.
+    if (window.location.hash === "") openWelcome();
   });
-
-  function closeWelcome() {
-    showWelcome = false;
-  }
-
-  function closeAbout() {
-    showAbout = false;
-  }
 </script>
 
 <main class="h-screen w-screen relative">
-  {#if showWelcome}
+  {#if $welcomeOpen}
     <WelcomeModal
       daysUntilFirstMarket={daysUntilFirst}
       marketCount={markets.length}
@@ -84,15 +84,15 @@
     />
   {/if}
 
-  {#if showAbout}
+  {#if $aboutOpen}
     <AboutModal onClose={closeAbout} />
   {/if}
 
   <Map {markets} {statusByMarket} />
 
   <button
-    onclick={() => (isMenuOpen = true)}
-    aria-expanded={isMenuOpen}
+    onclick={openMenu}
+    aria-expanded={$menuOpen}
     class="site-menu-button absolute top-4 left-4 z-[500] flex items-center gap-2 bg-pine text-snow pl-3 pr-4 py-2.5 rounded-full shadow-lg border border-gold/60 hover:bg-pine-dark transition"
   >
     <svg
@@ -107,20 +107,16 @@
     <span class="font-display font-semibold">Menu</span>
   </button>
 
-  {#if isMenuOpen}
+  {#if $menuOpen}
     <MarketList
       {markets}
       {statusByMarket}
       {earliestDates}
-      onClose={() => (isMenuOpen = false)}
-      onShowWelcome={() => {
-        showWelcome = true;
-        isMenuOpen = false;
-      }}
-      onShowAbout={() => {
-        showAbout = true;
-        isMenuOpen = false;
-      }}
+      onClose={closeMenu}
+      onShowWelcome={openWelcome}
+      onShowAbout={openAbout}
     />
   {/if}
+
+  <InstallPrompt />
 </main>

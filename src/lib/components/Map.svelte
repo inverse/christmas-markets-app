@@ -15,6 +15,10 @@
   let map: L.Map;
   let L: typeof import("leaflet");
   let markers: SvelteMap<string, L.Marker>;
+  let popupMarkets: Map<L.Popup, string>;
+  let openPopupName: string | null = null;
+  let pendingPopupClear: ReturnType<typeof setTimeout> | null = null;
+  let unsubscribeSelected: (() => void) | null = null;
   let userMarker: L.Marker;
   let userLocationIcon: L.DivIcon;
   let treeIcons: Record<MarketStatus, L.DivIcon>;
@@ -93,6 +97,7 @@
         attribution: "&copy; OpenStreetMap contributors",
       }).addTo(map);
       markers = new SvelteMap<string, L.Marker>();
+      popupMarkets = new SvelteMap<L.Popup, string>();
       markets.forEach((market: Market) => {
         const status: MarketStatus =
           statusByMarket.get(market.name) ?? "unknown";
@@ -106,19 +111,46 @@
               buildPopup(market, statusByMarket.get(market.name) ?? "unknown"),
             { maxWidth: 340, minWidth: 280, autoPanPadding: L.point(20, 60) },
           );
+        const popup = marker.getPopup();
+        if (popup) popupMarkets.set(popup, market.name);
         markers.set(market.name, marker);
       });
       markersReady = true;
-      selectedMarket.subscribe((name) => {
-        if (name && markers.has(name)) {
+
+      // Leaflet closes the previous popup when another one opens, so
+      // popupclose also fires while switching markers. The clear is deferred
+      // so a popupopen in the same tick cancels it, leaving #market=<new name>.
+      map.on("popupopen", (event) => {
+        if (pendingPopupClear !== null) {
+          clearTimeout(pendingPopupClear);
+          pendingPopupClear = null;
+        }
+        const name = popupMarkets.get(event.popup) ?? null;
+        openPopupName = name;
+        if (name !== null) selectedMarket.set(name);
+      });
+      map.on("popupclose", (event) => {
+        if ((popupMarkets.get(event.popup) ?? null) !== openPopupName) return;
+        openPopupName = null;
+        if (pendingPopupClear !== null) clearTimeout(pendingPopupClear);
+        pendingPopupClear = setTimeout(() => {
+          pendingPopupClear = null;
+          if (openPopupName === null) selectedMarket.set(null);
+        }, 0);
+      });
+
+      unsubscribeSelected = selectedMarket.subscribe((name) => {
+        if (name !== null && markers.has(name)) {
           const marker = markers.get(name);
-          if (marker && map) {
+          if (marker && map && !marker.isPopupOpen()) {
             marker.openPopup();
             map.setView(
               [marker.getLatLng().lat + 0.006, marker.getLatLng().lng],
               15,
             );
           }
+        } else if (name === null) {
+          map.closePopup();
         }
       });
 
@@ -137,6 +169,8 @@
   });
 
   onDestroy(() => {
+    unsubscribeSelected?.();
+    if (pendingPopupClear !== null) clearTimeout(pendingPopupClear);
     if (map) {
       map.remove();
       mapStore.set(null);

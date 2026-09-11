@@ -1,7 +1,22 @@
 <script lang="ts">
+  import { onMount } from "svelte";
   import { fade } from "svelte/transition";
 
   let { onClose } = $props<{ onClose: () => void }>();
+
+  // iOS Safari never fires beforeinstallprompt, so it gets the manual hint below.
+  let showIosInstall = $state(false);
+
+  onMount(() => {
+    const nav = navigator as Navigator & { standalone?: boolean };
+    const isIos =
+      /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+      (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    const isStandalone =
+      window.matchMedia("(display-mode: standalone)").matches ||
+      nav.standalone === true;
+    showIosInstall = isIos && !isStandalone;
+  });
 
   function onKeydown(e: KeyboardEvent) {
     if (e.key === "Escape") {
@@ -102,6 +117,43 @@
           pages before heading out!
         </p>
       </section>
+
+      {#if showIosInstall}
+        <section
+          class="rounded-xl border border-stone-200 border-l-4 border-l-gold bg-snow p-3.5"
+        >
+          <h3 class="font-display text-base font-bold text-pine mb-1">
+            Install on iPhone or iPad
+          </h3>
+          <p>
+            In Safari, tap the
+            <span
+              class="inline-flex items-center gap-1 align-text-bottom font-semibold text-pine"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-3.5 w-3.5"
+                aria-hidden="true"
+              >
+                <path
+                  d="M12 16V4m0 0 4 4m-4-4L8 8M5 14v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5"
+                />
+              </svg>
+              Share
+            </span>
+            button, then choose
+            <span class="font-semibold text-pine">Add to Home Screen</span>. It
+            then opens full screen, just like a native app.
+          </p>
+        </section>
+      {/if}
+
       <p class="text-xs text-stone-600">
         Created by
         <a

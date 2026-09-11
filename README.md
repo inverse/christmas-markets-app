@@ -10,6 +10,8 @@ A web application for discovering and navigating the festive Christmas markets i
 - **Market List:** Browse all available markets via the integrated menu.
 - **Operating Status:** Automatically highlights whether a market is currently open.
 - **Geolocation:** Quickly locate yourself on the map with the 'Find Me' button.
+- **Installable:** Add the map to your home screen for a full-screen, app-like experience.
+- **Shareable Links:** Every market has its own URL, and the browser Back button closes the open panel rather than leaving the app.
 
 ## Getting Started
 
@@ -18,6 +20,7 @@ A web application for discovering and navigating the festive Christmas markets i
 This project uses [mise](https://mise.jdx.dev/) to manage development tools (Node.js, etc.), ensuring consistent environments.
 
 Install managed tools:
+
 ```bash
 mise install
 ```
@@ -25,11 +28,13 @@ mise install
 ### Setup
 
 Install dependencies:
+
 ```bash
 npm install
 ```
 
 Run the development server:
+
 ```bash
 npm run dev
 ```
@@ -46,7 +51,7 @@ npm run dev:tunnel
 
 The project uses [vitest](https://vitest.dev/) for testing. Pre-commit hooks (`husky`/`lint-staged`) are automatically set up during `npm install` to ensure code quality before every commit.
 
-Run all tests: 
+Run all tests:
 
 ```bash
 npm run test
@@ -59,4 +64,3 @@ The code is deployed to cloudflare workers and leverages wrangler for that. You 
 ```bash
 npm run build
 ```
-
