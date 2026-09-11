@@ -14,7 +14,7 @@ function escapeHtml(value: string | undefined | null): string {
 /** One labeled info line: fixed-width icon column + evenly spaced content. */
 function row(icon: string, content: string): string {
   return `<div class="flex items-start gap-3 text-[13px] leading-relaxed text-stone-800">
-					<i class="fa-solid ${icon} mt-1 w-4 shrink-0 text-center text-[13px] leading-none text-stone-500" aria-hidden="true"></i>
+					<i class="fa-solid ${icon} mt-1 w-4 shrink-0 text-center text-[13px] leading-none text-stone-600" aria-hidden="true"></i>
 					<span class="min-w-0 flex-1">${content}</span>
 				</div>`;
 }
@@ -33,7 +33,7 @@ export function buildPopup(market: Market, status: MarketStatus): string {
       : "";
   const openingTimes =
     market.opening_times === "Not found"
-      ? '<span class="italic text-stone-400">Opening times to be announced</span>'
+      ? '<span class="italic text-stone-500">Opening times to be announced</span>'
       : escapeHtml(market.opening_times);
   const hasAdmission =
     market.admission &&
@@ -58,7 +58,10 @@ export function buildPopup(market: Market, status: MarketStatus): string {
 					${row("fa-calendar-days", `<span class="font-medium text-pine">${dates}</span>`)}
 					${row("fa-clock", openingTimes)}
 					${admission}
-					<a href="${url}" target="_blank" class="block text-center text-sm font-bold py-2.5 rounded-lg bg-gold !text-pine shadow-lg transition hover:bg-gold-light">View details</a>
+					<div class="grid grid-cols-2 gap-2">
+						<a href="https://www.google.com/maps/dir/?api=1&destination=${market.coordinates.lat},${market.coordinates.lng}" target="_blank" rel="noopener" class="block text-center text-sm font-bold py-2.5 rounded-lg bg-pine !text-white shadow-lg transition hover:bg-pine-dark"><i class="fa-solid fa-diamond-turn-right mr-1.5" aria-hidden="true"></i>Directions</a>
+						<a href="${url}" target="_blank" rel="noopener" class="block text-center text-sm font-bold py-2.5 rounded-lg bg-gold !text-pine-dark shadow-lg transition hover:bg-gold-light">View details</a>
+					</div>
 				</div>
 			</div>`;
 }
