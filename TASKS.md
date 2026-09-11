@@ -12,8 +12,6 @@ Here are the list of bugs of features left to implement
   - [ ] Programmatically open the nearest market's popup.
   - [ ] Adjust map zoom/centering to fit the bounding box.
 
-
 ## Features
-
 
 - [ ] Nearest market filters open state, if nothing open show a sad modal
