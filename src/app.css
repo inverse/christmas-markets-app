@@ -15,6 +15,10 @@
   --color-green: #22c55e;
   /* "You are here" star marker + its popup */
   --color-locator: #3b82f6;
+  /* Halo that pulses off an open market marker. Its own token rather than
+     --color-pine because the halo has to out-shine the badge it expands from,
+     which is a different job from the badge's own ring. See the night block. */
+  --color-pulse: #14532d;
 
   /* Semantic tokens. Unlike the brand colours above, the same utility name has
      to work on either a light or a dark surface, so each one holds the
@@ -47,7 +51,9 @@
   body {
     margin: 0;
     background: var(--color-cream);
-    color: #292524;
+    /* The inherited-text default, so anything without an explicit text-*
+       utility (the dev date widget) still follows the night ramp. */
+    color: var(--color-stone-800);
     -webkit-font-smoothing: antialiased;
   }
 
@@ -274,11 +280,16 @@
   --color-ink-berry: #f08a92;
   --color-on-gold: #0f4023; /* keep the gold buttons' ink dark */
 
-  /* Lift the brand green off the near-black tiles so the menu button and the
-     open-market halo still read against the basemap, and brighten the locator
-     blue for the same reason. */
+  /* Lift the brand green off the near-black tiles so the menu button reads
+     against the basemap, and brighten the locator blue for the same reason.
+     The marker pane re-pins both for the badges themselves (see below). */
   --color-pine: #27794a;
   --color-locator: #60a5fa;
+
+  /* The day halo is a dark green disc, which on near-black tiles is a smudge
+     (~1.3:1). At night the halo becomes light instead of shade: a bright
+     green ring whose own glow does the work, tuned for the tile paper below. */
+  --color-pulse: #4ade80;
 }
 
 .dark .festive-surface {
@@ -317,15 +328,55 @@
   filter: invert(1) hue-rotate(180deg) brightness(0.85) contrast(0.9);
 }
 
-/* Map markers keep the day palette. Their chrome sits on a light badge that
+/* Map badges keep the day palette. Their chrome sits on a light fill that
    never inverts, so the night values above would only pull the status rings
    together: an inverted stone-400 ring darkens (a "closed" pin looks louder
    than it should) and the lifted green and blue lose saturation against the
-   white fill. Same reasoning as --color-snow, scoped to the markers. */
-.dark .leaflet-marker-pane {
+   white fill. Same reasoning as --color-snow. Scoped to .map-marker, the badge
+   itself: the halos behind it are pure light on the tiles, so they keep the
+   night values (a dark badge ring under a bright ring would read as a smudge,
+   which is exactly what --color-pulse exists to avoid). */
+.dark .leaflet-marker-pane .map-marker {
   --color-pine: #14532d;
   --color-stone-400: #a8a29e;
   --color-locator: #3b82f6;
+}
+
+/* Night halo: a thin ring rather than the day theme's filled disc. On dark
+   tiles a translucent disc reads as a smudge, while a ring reads as a pulse
+   leaving the marker - and it stays legible because it never covers what is
+   underneath it. The ring is punched up with an outward glow that scales with
+   it, and the pulse runs a touch tighter (1.55x, not 1.8x) so it stays
+   attached to the pin. Same 2s ping as the day theme. */
+@keyframes marker-pulse-night {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(1.55);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.55);
+    opacity: 0;
+  }
+}
+
+.dark .leaflet-marker-pane .marker-pulse {
+  background: transparent;
+  border: 2px solid var(--color-pulse);
+  box-shadow: 0 0 12px color-mix(in oklab, var(--color-pulse) 55%, transparent);
+  animation: marker-pulse-night 2s ease-out infinite;
+}
+
+/* User-location halo follows the same ring, in the night locator blue: the
+   leaflet-marker-pane reset above no longer reaches it, so it picks up the
+   lifted #60a5fa the rest of the theme uses at night. */
+.dark .leaflet-marker-pane .custom-user-icon .marker-pulse {
+  border-color: var(--color-locator);
+  box-shadow: 0 0 12px
+    color-mix(in oklab, var(--color-locator) 55%, transparent);
 }
 
 .dark .leaflet-control-attribution {

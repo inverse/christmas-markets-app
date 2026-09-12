@@ -50,7 +50,7 @@
       treeIcons = {
         open: makeTreeIcon(
           `<div class="relative w-10 h-10">
-            <span class="absolute inset-0 rounded-full bg-pine/50 marker-pulse"></span>
+            <span class="absolute inset-0 rounded-full bg-pulse/50 marker-pulse"></span>
             <span class="map-marker map-marker--open absolute inset-0 rounded-full border-2 border-pine flex items-center justify-center">
               <img src="/icons/christmas-tree-raw.svg" class="w-6 h-6" />
             </span>
