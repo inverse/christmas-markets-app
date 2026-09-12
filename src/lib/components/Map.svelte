@@ -3,7 +3,11 @@
   import { SvelteMap } from "svelte/reactivity";
   import { browser } from "$app/environment";
   import type { MarketStatus } from "$lib/utils/marketStatus";
-  import { buildPopup } from "$lib/utils/popup";
+  import {
+    buildPopup,
+    buildUserPopup,
+    type NearestMarket,
+  } from "$lib/utils/popup";
   import type { Market } from "$shared/types";
   import { mapStore, selectedMarket } from "$lib/mapStore";
   let { markets, statusByMarket } = $props<{
@@ -21,6 +25,7 @@
   let unsubscribeSelected: (() => void) | null = null;
   let userMarker: L.Marker;
   let userLocationIcon: L.DivIcon;
+  let userNearest: NearestMarket | null = null;
   let treeIcons: Record<MarketStatus, L.DivIcon>;
   let markersReady = $state(false);
 
@@ -77,9 +82,9 @@
       };
       userLocationIcon = L.divIcon({
         html: `<div class="relative w-8 h-8">
-          <span class="absolute inset-0 rounded-full bg-blue-500/50 marker-pulse"></span>
-          <span class="map-marker absolute inset-0 rounded-full border-2 border-blue-500 bg-white flex items-center justify-center">
-            <svg viewBox="0 0 24 24" fill="#3b82f6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>
+          <span class="absolute inset-0 rounded-full bg-locator/50 marker-pulse"></span>
+          <span class="map-marker absolute inset-0 rounded-full border-2 border-locator bg-white flex items-center justify-center">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-locator"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>
           </span>
         </div>`,
         className: "custom-user-icon",
@@ -194,10 +199,18 @@
         if (userMarker) {
           userMarker.setLatLng(userLatLng);
         } else {
-          userMarker = L.marker(
-            userLatLng,
-            userLocationIcon ? { icon: userLocationIcon } : {},
-          ).addTo(map);
+          userMarker = L.marker(userLatLng, {
+            ...(userLocationIcon ? { icon: userLocationIcon } : {}),
+            title: "Your location",
+            alt: "Your location",
+          })
+            .addTo(map)
+            .bindPopup(() => buildUserPopup(userNearest), {
+              className: "user-location-popup",
+              minWidth: 200,
+              maxWidth: 260,
+              autoPanPadding: L.point(20, 60),
+            });
         }
 
         // Find nearest market
@@ -217,6 +230,13 @@
           },
           null,
         );
+
+        userNearest = nearestMarket
+          ? { name: nearestMarket.name, distanceMeters: minDistance }
+          : null;
+        // The popup content is built lazily on open; refresh it if it is
+        // already showing while the user re-runs find-me.
+        if (userMarker.isPopupOpen()) userMarker.getPopup()?.update();
 
         // Zoom to fit both user and nearest market
         if (nearestMarket) {
