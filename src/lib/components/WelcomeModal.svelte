@@ -51,7 +51,7 @@
 
     <div class="relative text-center">
       <img src="/icons/logo.svg" alt="Logo" class="mx-auto h-20 w-20" />
-      <h2 class="font-display text-3xl font-bold text-pine">Welcome!</h2>
+      <h2 class="font-display text-3xl font-bold text-ink-brand">Welcome!</h2>
       <p class="mt-3 text-left leading-relaxed text-stone-700">
         Find Berlin's brightest Christmas markets, check the dates, and plan a
         magical festive outing.
@@ -120,12 +120,12 @@
         </div>
       {/if}
 
-      <p class="mb-5 text-sm font-semibold text-pine-light">
+      <p class="mb-5 text-sm font-semibold text-ink-brand">
         Explore {marketCount} festive markets across Berlin
       </p>
       <button
         onclick={onClose}
-        class="w-full bg-gold text-pine font-bold py-3 rounded-lg shadow-lg hover:bg-gold-light transition"
+        class="w-full bg-gold text-on-gold font-bold py-3 rounded-lg shadow-lg hover:bg-gold-light transition"
       >
         Start exploring
       </button>

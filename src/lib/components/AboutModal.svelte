@@ -54,7 +54,10 @@
     >
       <div class="flex items-center gap-2">
         <img src="/icons/logo.svg" alt="" class="h-8 w-8" />
-        <h2 id="about-title" class="font-display text-2xl font-bold text-pine">
+        <h2
+          id="about-title"
+          class="font-display text-2xl font-bold text-ink-brand"
+        >
           About
         </h2>
       </div>
@@ -82,7 +85,7 @@
       class="space-y-4 overflow-y-auto p-6 text-sm text-stone-700 leading-relaxed scrollbar-thin"
     >
       <section>
-        <h3 class="font-display text-base font-bold text-pine mb-1">
+        <h3 class="font-display text-base font-bold text-ink-brand mb-1">
           Why I built this
         </h3>
         <p>
@@ -95,9 +98,9 @@
       </section>
 
       <section
-        class="rounded-xl border border-stone-200 border-l-4 border-l-gold bg-snow p-3.5"
+        class="rounded-xl border border-stone-200 border-l-4 border-l-gold bg-surface p-3.5"
       >
-        <h3 class="font-display text-base font-bold text-pine mb-1">
+        <h3 class="font-display text-base font-bold text-ink-brand mb-1">
           Where the data comes from
         </h3>
         <p>
@@ -106,7 +109,7 @@
             href="https://www.berlin.de/weihnachtsmarkt/"
             target="_blank"
             rel="noopener noreferrer"
-            class="font-semibold text-pine underline hover:text-gold-dark"
+            class="font-semibold text-ink-brand underline hover:text-ink-gold"
           >
             Berlin.de Open Data portal
           </a>.
@@ -120,15 +123,15 @@
 
       {#if showIosInstall}
         <section
-          class="rounded-xl border border-stone-200 border-l-4 border-l-gold bg-snow p-3.5"
+          class="rounded-xl border border-stone-200 border-l-4 border-l-gold bg-surface p-3.5"
         >
-          <h3 class="font-display text-base font-bold text-pine mb-1">
+          <h3 class="font-display text-base font-bold text-ink-brand mb-1">
             Install on iPhone or iPad
           </h3>
           <p>
             In Safari, tap the
             <span
-              class="inline-flex items-center gap-1 align-text-bottom font-semibold text-pine"
+              class="inline-flex items-center gap-1 align-text-bottom font-semibold text-ink-brand"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -148,8 +151,8 @@
               Share
             </span>
             button, then choose
-            <span class="font-semibold text-pine">Add to Home Screen</span>. It
-            then opens full screen, just like a native app.
+            <span class="font-semibold text-ink-brand">Add to Home Screen</span
+            >. It then opens full screen, just like a native app.
           </p>
         </section>
       {/if}
@@ -160,7 +163,7 @@
           href="https://malachisoord.com"
           target="_blank"
           rel="noopener noreferrer"
-          class="font-semibold text-pine underline hover:text-gold-dark"
+          class="font-semibold text-ink-brand underline hover:text-ink-gold"
         >
           Malachi Soord
         </a>.
@@ -188,10 +191,10 @@
     </div>
 
     <!-- Footer -->
-    <div class="border-t border-stone-200 bg-snow/50 p-4">
+    <div class="border-t border-stone-200 bg-surface/50 p-4">
       <button
         onclick={onClose}
-        class="w-full rounded-lg bg-gold py-2.5 font-bold text-pine shadow-sm hover:bg-gold-light transition"
+        class="w-full rounded-lg bg-gold py-2.5 font-bold text-on-gold shadow-sm hover:bg-gold-light transition"
       >
         Back to Map
       </button>

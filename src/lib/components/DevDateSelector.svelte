@@ -31,13 +31,13 @@
   </button>
 {:else}
   <div
-    class="fixed bottom-4 right-4 z-[9999] rounded-lg bg-white p-4 shadow-lg border border-gray-200"
+    class="fixed bottom-4 right-4 z-[9999] rounded-lg bg-surface p-4 shadow-lg border border-stone-200"
   >
     <div class="flex justify-between items-center mb-3">
       <h3 class="font-bold">Dev Date</h3>
       <button
         onclick={() => (isCollapsed = true)}
-        class="text-xs text-gray-500 hover:text-gray-800">Close</button
+        class="text-xs text-stone-500 hover:text-stone-800">Close</button
       >
     </div>
     <label class="flex items-center gap-2 mb-2">

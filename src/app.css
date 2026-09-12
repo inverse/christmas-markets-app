@@ -16,13 +16,32 @@
   /* "You are here" star marker + its popup */
   --color-locator: #3b82f6;
 
+  /* Semantic tokens. Unlike the brand colours above, the same utility name has
+     to work on either a light or a dark surface, so each one holds the
+     light-mode value here and its night-mode value in `.dark` at the bottom of
+     this file. The utility itself (bg-surface, text-ink-brand) never changes. */
+  --color-surface: #fffdf8; /* cards, popups, drawer items - light: snow */
+  --color-ink-brand: #14532d; /* headings, links, brand labels - light: pine */
+  --color-ink-gold: #a8871f; /* hover ink on gold accents - light: gold-dark */
+  --color-ink-berry: #a31621; /* small counters - light: berry */
+  --color-on-gold: #14532d; /* text sitting on a gold fill - light: pine */
+
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
 }
 
+/* Night mode is a class on <html>, not the OS setting, so re-point `dark:` at
+   that class. No component needs it yet (the colour tokens below carry the
+   whole theme) - it is here so a future `dark:` utility follows the day/night
+   switch instead of silently following the OS. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
   html {
     font-family: var(--font-sans);
+    /* Pin native chrome (scrollbars, form controls) to the theme we render;
+       the `.dark` block flips this back to dark. */
+    color-scheme: light;
   }
 
   body {
@@ -217,4 +236,103 @@
   box-shadow:
     0 0 0 2px var(--color-snow),
     0 3px 12px rgba(20, 83, 45, 0.45);
+}
+
+/* ---------------------------------------------------------------------------
+   Night mode. Two mechanisms, picked per case:
+
+   1. The colour tokens below. Every Tailwind utility reads its colour from
+      these vars, so `bg-surface`, `text-stone-500` and even the popup markup
+      assembled as HTML in popup.ts follow the theme without a single `dark:`
+      class. This block is deliberately unlayered so it beats @layer theme.
+   2. Leaflet chrome further down, which is not Tailwind and needs its own
+      rules.
+
+   `--color-snow` is intentionally NOT overridden: it is the fill of the map
+   badges and the ink on brand-green surfaces, both of which stay light.
+--------------------------------------------------------------------------- */
+.dark {
+  color-scheme: dark;
+
+  --color-cream: #0b1512; /* pine-black canvas: page, drawer, modals */
+  --color-surface: #16221c; /* cards, popups, chips */
+
+  /* The neutral ramp is inverted wholesale. stone-100/200/300 are surfaces and
+     borders, stone-400..800 are faint-to-strong text, so swapping the ends
+     keeps every existing pairing readable at night. */
+  --color-stone-100: #1d2b24;
+  --color-stone-200: #28372f;
+  --color-stone-300: #3a4a40;
+  --color-stone-400: #7b8f82;
+  --color-stone-500: #94a89a;
+  --color-stone-600: #adc0b2;
+  --color-stone-700: #cbd9cd;
+  --color-stone-800: #e4ede5;
+
+  --color-ink-brand: #cfe8d2; /* mint: headings/links read at 11:1 on surface */
+  --color-ink-gold: #e9cb63;
+  --color-ink-berry: #f08a92;
+  --color-on-gold: #0f4023; /* keep the gold buttons' ink dark */
+
+  /* Lift the brand green off the near-black tiles so the menu button and the
+     open-market halo still read against the basemap, and brighten the locator
+     blue for the same reason. */
+  --color-pine: #27794a;
+  --color-locator: #60a5fa;
+}
+
+.dark .festive-surface {
+  background-image: radial-gradient(
+    rgba(212, 175, 55, 0.07) 0.7px,
+    transparent 0.7px
+  );
+}
+
+.dark .scrollbar-thin {
+  scrollbar-color: rgba(207, 232, 210, 0.3) transparent;
+}
+
+.dark .scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgba(207, 232, 210, 0.3);
+}
+
+/* Leaflet's own light grey boxes would glare against dark tiles; the zoom
+   buttons keep their light fill so they match the map badges. The container
+   colour is the tile paper this filter produces (measured #252525 on Berlin
+   tiles) so nothing flashes a different shade while tiles load. */
+.dark .leaflet-container {
+  background: #252525;
+}
+
+/* Night basemap: the same OpenStreetMap tiles, inverted into a dark map with
+   the same tone curve as fountainfinder.app. The filter sits on the tile pane
+   alone, so markers, popups and the controls keep their real colours, and
+   label text (dark ink on a white halo) comes back as light ink on a dark one.
+   hue-rotate restores water and parks to blue and green after the inversion.
+   Measured on Berlin tiles: paper 0.148 luminance (0.89 by day), label ink
+   2.8:1 against it, faint road/fill detail 2.0:1 at z13. Softer and lighter
+   than a plain invert - raise contrast() to trade paper darkness and label ink
+   back the other way. */
+.dark .leaflet-tile-pane {
+  filter: invert(1) hue-rotate(180deg) brightness(0.85) contrast(0.9);
+}
+
+/* Map markers keep the day palette. Their chrome sits on a light badge that
+   never inverts, so the night values above would only pull the status rings
+   together: an inverted stone-400 ring darkens (a "closed" pin looks louder
+   than it should) and the lifted green and blue lose saturation against the
+   white fill. Same reasoning as --color-snow, scoped to the markers. */
+.dark .leaflet-marker-pane {
+  --color-pine: #14532d;
+  --color-stone-400: #a8a29e;
+  --color-locator: #3b82f6;
+}
+
+.dark .leaflet-control-attribution {
+  background: rgba(11, 21, 18, 0.8) !important;
+  color: #a9bdb0 !important;
+}
+
+.dark .leaflet-control-attribution a {
+  color: #cfe8d2 !important;
 }

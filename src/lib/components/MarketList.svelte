@@ -1,6 +1,7 @@
 <script lang="ts">
   import { statusInfo, type MarketStatus } from "$lib/utils/marketStatus";
   import { selectedMarket } from "$lib/mapStore";
+  import { isDark, toggleTheme } from "$lib/utils/theme";
   import { onMount } from "svelte";
   import { fade, fly } from "svelte/transition";
   import type { Market } from "$shared/types";
@@ -221,13 +222,27 @@
           </p>
         </div>
       </div>
-      <button
-        onclick={() => close()}
-        aria-label="Close menu"
-        class="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-xl text-white transition hover:bg-white/20"
-      >
-        &times;
-      </button>
+      <div class="flex items-center gap-1.5">
+        <button
+          onclick={toggleTheme}
+          aria-pressed={$isDark}
+          aria-label="Dark mode"
+          title="Toggle dark mode"
+          class="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
+        >
+          <i
+            class="fa-solid {$isDark ? 'fa-sun' : 'fa-moon'}"
+            aria-hidden="true"
+          ></i>
+        </button>
+        <button
+          onclick={() => close()}
+          aria-label="Close menu"
+          class="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-xl text-white transition hover:bg-white/20"
+        >
+          &times;
+        </button>
+      </div>
     </div>
   </header>
 
@@ -235,14 +250,14 @@
     <div class="grid grid-cols-2 gap-2">
       <button
         onclick={() => close(onShowWelcome)}
-        class="flex items-center justify-center gap-1.5 rounded-lg border border-pine/30 bg-snow px-3 py-2.5 text-xs font-semibold text-pine shadow-xs transition hover:bg-pine hover:text-white"
+        class="flex items-center justify-center gap-1.5 rounded-lg border border-pine/30 bg-surface px-3 py-2.5 text-xs font-semibold text-ink-brand shadow-xs transition hover:bg-pine hover:text-white"
       >
         <span class="text-base">🎄</span>
         <span>Welcome</span>
       </button>
       <button
         onclick={() => close(onShowAbout)}
-        class="flex items-center justify-center gap-1.5 rounded-lg border border-pine/30 bg-snow px-3 py-2.5 text-xs font-semibold text-pine shadow-xs transition hover:bg-pine hover:text-white"
+        class="flex items-center justify-center gap-1.5 rounded-lg border border-pine/30 bg-surface px-3 py-2.5 text-xs font-semibold text-ink-brand shadow-xs transition hover:bg-pine hover:text-white"
       >
         <span class="text-base">ℹ️</span>
         <span>About</span>
@@ -251,8 +266,8 @@
 
     <section>
       <div class="mb-2 flex items-end justify-between px-1">
-        <h3 class="font-display font-bold text-pine">Markets</h3>
-        <span class="text-xs font-semibold text-berry"
+        <h3 class="font-display font-bold text-ink-brand">Markets</h3>
+        <span class="text-xs font-semibold text-ink-berry"
           >{filteredMarkets.length} shown</span
         >
       </div>
@@ -267,7 +282,7 @@
               class="whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-semibold transition {activeFilter ===
               filter.id
                 ? 'border-pine bg-pine text-white'
-                : 'border-stone-200 bg-snow text-stone-600 hover:border-gold hover:text-pine'}"
+                : 'border-stone-200 bg-surface text-stone-600 hover:border-gold hover:text-ink-brand'}"
             >
               {filter.label} <span class="opacity-70">{counts[filter.id]}</span>
             </button>
@@ -282,7 +297,7 @@
           <li>
             <button
               onclick={() => jumpTo(market)}
-              class="group flex w-full gap-3 rounded-xl border border-stone-200 border-l-4 bg-snow p-3 text-left transition hover:border-gold hover:shadow-md"
+              class="group flex w-full gap-3 rounded-xl border border-stone-200 border-l-4 bg-surface p-3 text-left transition hover:border-gold hover:shadow-md"
             >
               <img
                 src={market.image_url}
@@ -292,7 +307,7 @@
               />
               <div class="min-w-0 flex-1">
                 <h4
-                  class="font-display text-sm font-bold leading-snug text-pine transition group-hover:text-gold-dark"
+                  class="font-display text-sm font-bold leading-snug text-ink-brand transition group-hover:text-ink-gold"
                 >
                   {market.name}
                 </h4>

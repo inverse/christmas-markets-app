@@ -69,9 +69,9 @@ interface StatusMeta {
 const statusMeta: Record<MarketStatus, StatusMeta> = {
   open: {
     label: "Open",
-    color: "text-pine",
-    bg: "bg-pine/10",
-    border: "border-pine",
+    color: "text-ink-brand",
+    bg: "bg-ink-brand/10",
+    border: "border-ink-brand",
   },
   upcoming: {
     label: "Upcoming",

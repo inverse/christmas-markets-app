@@ -11,6 +11,7 @@ A web application for discovering and navigating the festive Christmas markets i
 - **Operating Status:** Automatically highlights whether a market is currently open.
 - **Geolocation:** Quickly locate yourself on the map with the 'Find Me' button.
 - **Installable:** Add the map to your home screen for a full-screen, app-like experience.
+- **Night Mode:** Follows your system theme by default, with a day/night switch in the menu that darkens the map and every panel.
 - **Shareable Links:** Every market has its own URL, and the browser Back button closes the open panel rather than leaving the app.
 
 ## Getting Started

@@ -42,7 +42,7 @@ export function buildPopup(market: Market, status: MarketStatus): string {
     ? row("fa-euro-sign", escapeHtml(market.admission))
     : "";
 
-  return `<div class="max-h-[80vh] overflow-y-auto rounded-2xl border-4 border-gold bg-snow font-sans shadow-2xl">
+  return `<div class="max-h-[80vh] overflow-y-auto rounded-2xl border-4 border-gold bg-surface font-sans shadow-2xl">
 				<div class="relative h-40">
 					<img src="${escapeHtml(market.image_url)}" alt="${name}" loading="lazy" class="h-full w-full object-cover" />
 					<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
@@ -55,7 +55,7 @@ export function buildPopup(market: Market, status: MarketStatus): string {
 				<div class="space-y-3 p-4">
 					${description}
 					${row("fa-location-dot", address)}
-					${row("fa-calendar-days", `<span class="font-medium text-pine">${dates}</span>`)}
+        ${row("fa-calendar-days", `<span class="font-medium text-ink-brand">${dates}</span>`)}
 					${row("fa-clock", openingTimes)}
 					${admission}
 					<div class="grid grid-cols-2 gap-2">
@@ -81,16 +81,16 @@ function formatDistance(meters: number): string {
     as the market popups, with the locator accent and no photo header. */
 export function buildUserPopup(nearest: NearestMarket | null): string {
   const nearestLine = nearest
-    ? `Nearest market: <span class="font-semibold text-pine">${escapeHtml(nearest.name)}</span> &middot; ${formatDistance(nearest.distanceMeters)}`
+    ? `Nearest market: <span class="font-semibold text-ink-brand">${escapeHtml(nearest.name)}</span> &middot; ${formatDistance(nearest.distanceMeters)}`
     : "No market data loaded yet.";
 
-  return `<div class="rounded-2xl border-2 border-locator/70 bg-snow font-sans shadow-2xl ring-4 ring-locator/15">
+  return `<div class="rounded-2xl border-2 border-locator/70 bg-surface font-sans shadow-2xl ring-4 ring-locator/15">
 				<div class="flex items-center gap-3 py-3 pl-4 pr-11">
 					<span class="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border-2 border-locator bg-locator/10">
 						<svg viewBox="0 0 24 24" fill="currentColor" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-locator" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>
 					</span>
 					<div class="min-w-0">
-						<h3 class="font-display text-base font-bold leading-tight text-pine">You are here</h3>
+						<h3 class="font-display text-base font-bold leading-tight text-ink-brand">You are here</h3>
 						<p class="mt-1 text-[12px] leading-snug text-stone-600">${nearestLine}</p>
 					</div>
 				</div>

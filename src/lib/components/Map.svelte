@@ -98,9 +98,13 @@
       );
       L.control.zoom({ position: "bottomleft" }).addTo(map);
 
+      // OpenStreetMap tiles in both themes; night mode darkens them with a CSS
+      // filter on the tile pane (see app.css) so markers, popups and controls
+      // keep their real colours and only one basemap is ever fetched.
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution: "&copy; OpenStreetMap contributors",
       }).addTo(map);
+
       markers = new SvelteMap<string, L.Marker>();
       popupMarkets = new SvelteMap<L.Popup, string>();
       markets.forEach((market: Market) => {

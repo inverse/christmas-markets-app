@@ -91,7 +91,7 @@
     class="festive-surface fixed left-1/2 z-[1100] flex w-[calc(100%-2rem)] max-w-sm -translate-x-1/2 items-center gap-3 rounded-2xl border-2 border-gold p-2.5 pl-4 shadow-2xl"
   >
     <div class="min-w-0 flex-1">
-      <p class="font-display text-sm font-bold leading-tight text-pine">
+      <p class="font-display text-sm font-bold leading-tight text-ink-brand">
         Install app
       </p>
       <p class="mt-0.5 text-xs leading-snug text-stone-600">
@@ -101,7 +101,7 @@
 
     <button
       onclick={install}
-      class="flex min-h-11 shrink-0 items-center gap-1.5 rounded-full bg-gold px-3.5 font-display text-sm font-bold text-pine shadow-sm transition hover:bg-gold-light"
+      class="flex min-h-11 shrink-0 items-center gap-1.5 rounded-full bg-gold px-3.5 font-display text-sm font-bold text-on-gold shadow-sm transition hover:bg-gold-light"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
