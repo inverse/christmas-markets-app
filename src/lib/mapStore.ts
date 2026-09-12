@@ -1,5 +1,7 @@
 import { writable, get, type Readable } from "svelte/store";
 import { browser } from "$app/environment";
+import markets from "../../data/markets.json";
+import { slugify } from "./slug";
 import type { Map } from "leaflet";
 
 export const mapStore = writable<Map | null>(null);
@@ -47,7 +49,7 @@ function hashFor(view: View, name: string | null): string {
     case "welcome":
       return WELCOME_HASH;
     case "market":
-      return MARKET_PREFIX + encodeURIComponent(name ?? "");
+      return MARKET_PREFIX + slugify(name ?? "");
   }
 }
 
@@ -95,17 +97,29 @@ function syncFromHash() {
     selectedName.set(null);
     return;
   }
+  // Slug resolves back to the display name via the market list.
+  let slug: string | null = null;
   try {
-    selectedName.set(
-      decodeURIComponent(hash.slice(MARKET_PREFIX.length)) || null,
-    );
+    slug = decodeURIComponent(hash.slice(MARKET_PREFIX.length));
   } catch {
-    // malformed escape sequence - treat as no selection
-    selectedName.set(null);
+    // malformed escape sequence - treated as an unknown slug below
   }
+  const name = slug ? nameBySlug[slug] : undefined;
+  if (name === undefined) {
+    // Stale link, typo or malformed escape: drop the dead hash rather than
+    // leaving a #market= entry that selects nothing.
+    selectedName.set(null);
+    clearView();
+    return;
+  }
+  selectedName.set(name);
 }
 
-/** Selected market name, kept in sync with `#market=<encoded name>`. */
+const nameBySlug: Record<string, string> = Object.fromEntries(
+  markets.map((market) => [slugify(market.name), market.name]),
+);
+
+/** Selected market name, kept in sync with `#market=<slug>`. */
 export const selectedMarket = {
   subscribe: selectedName.subscribe,
   set(name: string | null) {
