@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import { exec } from "child_process";
 import * as cheerio from "cheerio";
 import { parseDates, type Dates } from "../src/shared/dateParser.ts";
 
@@ -337,8 +338,11 @@ async function main() {
   }
   fs.writeFileSync(
     path.join(dataDir, "markets.json"),
-    JSON.stringify(markets, null, 2),
+    // Match Prettier's JSON output (printWidth 100 collapses short arrays onto one line)
+    // so the generated file never needs a separate format pass.
+    JSON.stringify(markets, null, 2) + "\n",
   );
+  await exec("npx prettier --write data/markets.json");
   const end = performance.now();
   console.log(
     `Wrote ${markets.length} markets in ${((end - start) / 1000).toFixed(2)} seconds.`,
