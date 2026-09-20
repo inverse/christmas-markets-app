@@ -125,7 +125,18 @@ export const selectedMarket = {
   set(name: string | null) {
     selectedName.set(name);
     if (name === null) {
-      if (currentView() === "market") clearView();
+      // Closing a popup is a transient UI action, not navigation: strip the
+      // hash in place instead of history.back(), which would land on whatever
+      // preceded the market view (e.g. re-opening the menu).
+      if (window.location.hash.startsWith(MARKET_PREFIX)) {
+        window.history.replaceState(
+          { ...window.history.state, [MARKER]: null },
+          "",
+          window.location.pathname + window.location.search,
+        );
+      } else if (currentView() === "market") {
+        clearView();
+      }
     } else {
       menuIsOpen.set(false);
       pushView("market", name);
