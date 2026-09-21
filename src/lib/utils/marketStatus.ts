@@ -7,51 +7,61 @@ function toIso(d: Date): string {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 }
 
-export function isAllClosed(markets: Market[], now: Date): boolean {
-  const today = toIso(now);
-  return markets.every((m) => {
-    const dates = m.dates;
-    if (!dates || (dates.type !== "range" && dates.type !== "dates")) {
-      return true;
-    }
-    if (dates.type === "range") {
-      if (dates.end_date) return today > dates.end_date;
-      if (dates.start_date) return today > dates.start_date;
-    }
-    if (dates.type === "dates" && dates.dates && dates.dates.length > 0) {
-      return today > dates.dates[dates.dates.length - 1];
-    }
-    return true;
-  });
+type OpenResult = { isOpen: boolean; status: MarketStatus };
+
+// Status of a single day against an inclusive date range, compared as
+// local YYYY-MM-DD strings (never Date objects, which parse as UTC midnight).
+function statusFromRange(
+  today: string,
+  start: string,
+  end: string,
+): OpenResult {
+  if (today >= start && today <= end) {
+    return { isOpen: true, status: "open" };
+  }
+  return { isOpen: false, status: today < start ? "upcoming" : "closed" };
 }
 
-export function isMarketOpen(
-  dates: Dates,
-  now: Date,
-): {
-  isOpen: boolean;
-  status: MarketStatus;
-} {
-  if (dates.type === "range" && dates.start_date && dates.end_date) {
-    const today = toIso(now);
-    if (today >= dates.start_date && today <= dates.end_date) {
-      return { isOpen: true, status: "open" };
-    }
-    return {
-      isOpen: false,
-      status: today < dates.start_date ? "upcoming" : "closed",
-    };
+// Status of a single day against a list of market days; the first entry
+// is treated as the season start for the "upcoming" comparison.
+function statusFromDates(today: string, list: string[]): OpenResult {
+  if (list.includes(today)) {
+    return { isOpen: true, status: "open" };
+  }
+  return { isOpen: false, status: today < list[0] ? "upcoming" : "closed" };
+}
+
+// A market is past when today falls after its range end (or start, if the
+// end is unknown) or after the last entry of its date list. Unparseable
+// dates count as past so they never keep the drawer "open".
+function isMarketPast(m: Market, today: string): boolean {
+  const dates = m.dates;
+  if (!dates || (dates.type !== "range" && dates.type !== "dates")) {
+    return true;
+  }
+  if (dates.type === "range") {
+    if (dates.end_date) return today > dates.end_date;
+    if (dates.start_date) return today > dates.start_date;
   }
   if (dates.type === "dates" && dates.dates && dates.dates.length > 0) {
-    const today = toIso(now);
-    const isOpen = dates.dates.includes(today);
-    if (isOpen) return { isOpen: true, status: "open" };
-    return {
-      isOpen: false,
-      status: today < dates.dates[0] ? "upcoming" : "closed",
-    };
+    return today > dates.dates[dates.dates.length - 1];
   }
+  return true;
+}
 
+export function isAllClosed(markets: Market[], now: Date): boolean {
+  const today = toIso(now);
+  return markets.every((m) => isMarketPast(m, today));
+}
+
+export function isMarketOpen(dates: Dates, now: Date): OpenResult {
+  const today = toIso(now);
+  if (dates.type === "range" && dates.start_date && dates.end_date) {
+    return statusFromRange(today, dates.start_date, dates.end_date);
+  }
+  if (dates.type === "dates" && dates.dates && dates.dates.length > 0) {
+    return statusFromDates(today, dates.dates);
+  }
   return { isOpen: false, status: "unknown" };
 }
 
