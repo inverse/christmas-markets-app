@@ -4,6 +4,11 @@
   import { browser } from "$app/environment";
   import type { MarketStatus } from "$lib/utils/marketStatus";
   import {
+    boundingBox,
+    findNearestMarket,
+    locationErrorMessage,
+  } from "$lib/utils/findMe";
+  import {
     buildPopup,
     buildUserPopup,
     type NearestMarket,
@@ -189,6 +194,25 @@
   let isLoadingLocation = $state(false);
   let locationNotice = $state<string | null>(null);
 
+  function ensureUserMarker(map: L.Map, userLatLng: L.LatLng) {
+    if (userMarker) {
+      userMarker.setLatLng(userLatLng);
+      return;
+    }
+    userMarker = L.marker(userLatLng, {
+      ...(userLocationIcon ? { icon: userLocationIcon } : {}),
+      title: "Your location",
+      alt: "Your location",
+    })
+      .addTo(map)
+      .bindPopup(() => buildUserPopup(userNearest), {
+        className: "user-location-popup",
+        minWidth: 200,
+        maxWidth: 260,
+        autoPanPadding: L.point(20, 60),
+      });
+  }
+
   function findMe() {
     if (!navigator.geolocation || !map) {
       locationNotice = "Geolocation is not available on this device.";
@@ -198,63 +222,34 @@
     locationNotice = null;
     navigator.geolocation.getCurrentPosition(
       (pos) => {
-        const userLatLng = L.latLng(pos.coords.latitude, pos.coords.longitude);
+        const user = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+        const userLatLng = L.latLng(user.lat, user.lng);
+        ensureUserMarker(map, userLatLng);
 
-        if (userMarker) {
-          userMarker.setLatLng(userLatLng);
-        } else {
-          userMarker = L.marker(userLatLng, {
-            ...(userLocationIcon ? { icon: userLocationIcon } : {}),
-            title: "Your location",
-            alt: "Your location",
-          })
-            .addTo(map)
-            .bindPopup(() => buildUserPopup(userNearest), {
-              className: "user-location-popup",
-              minWidth: 200,
-              maxWidth: 260,
-              autoPanPadding: L.point(20, 60),
-            });
-        }
-
-        // Find nearest market
-        let minDistance = Infinity;
-        const nearestMarket = markets.reduce(
-          (acc: Market | null, market: Market): Market | null => {
-            const marketLatLng = L.latLng(
-              market.coordinates.lat,
-              market.coordinates.lng,
-            );
-            const distance = userLatLng.distanceTo(marketLatLng);
-            if (distance < minDistance) {
-              minDistance = distance;
-              return market;
+        const nearest = findNearestMarket(user, markets);
+        userNearest = nearest
+          ? {
+              name: nearest.market.name,
+              distanceMeters: nearest.distanceMeters,
             }
-            return acc;
-          },
-          null,
-        );
-
-        userNearest = nearestMarket
-          ? { name: nearestMarket.name, distanceMeters: minDistance }
           : null;
         // The popup content is built lazily on open; refresh it if it is
         // already showing while the user re-runs find-me.
         if (userMarker.isPopupOpen()) userMarker.getPopup()?.update();
 
         // Zoom to fit both user and nearest market
-        if (nearestMarket) {
-          const marketLatLng = L.latLng(
-            nearestMarket.coordinates.lat,
-            nearestMarket.coordinates.lng,
-          );
-          const bounds = L.latLngBounds(userLatLng, marketLatLng);
-          map.fitBounds(bounds, { padding: [100, 100] });
-
-          const marker = markers.get(nearestMarket.name);
-          if (marker) {
-            marker.openPopup();
+        if (nearest) {
+          const box = boundingBox([user, nearest.market.coordinates]);
+          if (box) {
+            map.fitBounds(
+              L.latLngBounds(
+                L.latLng(box.south, box.west),
+                L.latLng(box.north, box.east),
+              ),
+              { padding: [100, 100] },
+            );
           }
+          markers.get(nearest.market.name)?.openPopup();
         } else {
           map.setView(userLatLng, 15);
         }
@@ -263,7 +258,7 @@
       },
       (error: GeolocationPositionError) => {
         isLoadingLocation = false;
-        locationNotice = `Could not get your location: ${error.message}`;
+        locationNotice = locationErrorMessage(error.code, error.message);
       },
     );
   }
