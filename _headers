@@ -1,0 +1,12 @@
+# Long-tail static assets - safe to cache at the edge indefinitely
+/manifest.json
+  Cache-Control: public, max-age=86400
+
+/robots.txt
+  Cache-Control: public, max-age=86400
+
+/_app/immutable/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/icons/*
+  Cache-Control: public, max-age=604800

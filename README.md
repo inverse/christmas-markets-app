@@ -60,8 +60,49 @@ npm run test
 
 ## Deployment
 
-The code is deployed to cloudflare workers and leverages wrangler for that. You can do that with the following command:
+The code is deployed to Cloudflare Pages with the SvelteKit `adapter-cloudflare`
+and leverages wrangler for that:
 
 ```bash
-npm run build
+npm run publish:web
 ```
+
+## Edge Caching
+
+A `_headers` file in the project root sets Cloudflare Pages cache headers for
+the deployed assets:
+
+| Path | Cache-Control | Notes |
+|---|---|---|
+| `/manifest.json`, `/robots.txt` | `public, max-age=86400` | 1 day at the edge |
+| `/_app/immutable/*` | `public, max-age=31536000, immutable` | Filenames are content-hashed; never rename them manually |
+| `/icons/*` | `public, max-age=604800` | 7 days; filenames are NOT hashed |
+
+### Updating an icon
+
+Icon filenames are unversioned, so a changed icon may serve stale for up to 7
+days. Either accept the delay, rename the file (and update `static/manifest.json`
+and `app.html` references), or purge the cache early (below).
+
+### Purging the edge cache early
+
+Dashboard method:
+
+1. Go to https://dash.cloudflare.com -> **inberlin.fyi**
+2. **Caching** -> **Configuration** -> **Purge Cache**
+3. Choose **Custom Purge** -> **By URL**, list the full URLs, e.g.
+   `https://inberlin.fyi/icons/icon-512.png`
+4. Purge. Takes effect within ~30 seconds.
+
+API equivalent (needs a zone API token):
+
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/zones/f53e898ab37f83e72970929246100047/purge_cache" \
+  -H "Authorization: Bearer $CF_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{"files":["https://inberlin.fyi/icons/icon-512.png","https://inberlin.fyi/manifest.json"]}'
+```
+
+Note: purging clears Cloudflare's edge copy. Browser caches hold their own copy,
+so users with an already-cached icon still see the old one until its `max-age`
+runs out - renaming the file is the only way to bypass that.
