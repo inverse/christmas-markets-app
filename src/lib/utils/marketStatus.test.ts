@@ -101,6 +101,54 @@ describe("isMarketOpen", () => {
     const result = isMarketOpen(dates, new Date());
     expect(result.status).toBe("upcoming");
   });
+
+  it("should return open on the last day of the range at end of day", () => {
+    vi.setSystemTime(new Date(2026, 11, 24, 23, 30)); // Dec 24, 2026 23:30
+    const dates: Dates = {
+      raw: "...",
+      type: "range",
+      start_date: "2026-12-01",
+      end_date: "2026-12-24",
+    };
+    const result = isMarketOpen(dates, new Date());
+    expect(result.status).toBe("open");
+  });
+
+  it("should return open on the first day of the range at start of day", () => {
+    vi.setSystemTime(new Date(2026, 11, 1, 0, 0)); // Dec 1, 2026 00:00
+    const dates: Dates = {
+      raw: "...",
+      type: "range",
+      start_date: "2026-12-01",
+      end_date: "2026-12-24",
+    };
+    const result = isMarketOpen(dates, new Date());
+    expect(result.status).toBe("open");
+  });
+
+  it("should return closed the day after the range ends", () => {
+    vi.setSystemTime(new Date(2026, 11, 25, 0, 30)); // Dec 25, 2026 00:30
+    const dates: Dates = {
+      raw: "...",
+      type: "range",
+      start_date: "2026-12-01",
+      end_date: "2026-12-24",
+    };
+    const result = isMarketOpen(dates, new Date());
+    expect(result.status).toBe("closed");
+  });
+
+  it("should return upcoming on the day before the range starts", () => {
+    vi.setSystemTime(new Date(2026, 10, 30, 23, 30)); // Nov 30, 2026 23:30
+    const dates: Dates = {
+      raw: "...",
+      type: "range",
+      start_date: "2026-12-01",
+      end_date: "2026-12-24",
+    };
+    const result = isMarketOpen(dates, new Date());
+    expect(result.status).toBe("upcoming");
+  });
 });
 
 describe("getEarliestDate", () => {
@@ -209,6 +257,52 @@ describe("isAllClosed", () => {
       },
     ];
     vi.setSystemTime(new Date(2026, 11, 1));
+    expect(isAllClosed(markets, new Date())).toBe(true);
+  });
+
+  it("should not close a market whose end_date is today (Dec 24 noon)", () => {
+    const markets: Market[] = [
+      {
+        name: "A",
+        address: "",
+        dates: {
+          raw: "",
+          type: "range",
+          start_date: "2026-12-01",
+          end_date: "2026-12-24",
+        },
+        image_url: "",
+        coordinates: { lat: 0, lng: 0 },
+        url: "",
+        opening_times: "",
+        admission: "",
+        description: "",
+      },
+    ];
+    vi.setSystemTime(new Date(2026, 11, 24, 12, 0)); // Dec 24, 2026 noon
+    expect(isAllClosed(markets, new Date())).toBe(false);
+  });
+
+  it("should close a market the day after its end_date (Dec 25)", () => {
+    const markets: Market[] = [
+      {
+        name: "A",
+        address: "",
+        dates: {
+          raw: "",
+          type: "range",
+          start_date: "2026-12-01",
+          end_date: "2026-12-24",
+        },
+        image_url: "",
+        coordinates: { lat: 0, lng: 0 },
+        url: "",
+        opening_times: "",
+        admission: "",
+        description: "",
+      },
+    ];
+    vi.setSystemTime(new Date(2026, 11, 25, 12, 0)); // Dec 25, 2026 noon
     expect(isAllClosed(markets, new Date())).toBe(true);
   });
 

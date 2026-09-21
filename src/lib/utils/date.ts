@@ -1,4 +1,4 @@
-import { writable, get } from "svelte/store";
+import { writable } from "svelte/store";
 
 export const simulatedDate = writable<Date | null>(null);
 
@@ -12,8 +12,4 @@ export function setSimulatedDate(date: Date | null) {
   simulatedDate.set(date);
   if (date) localStorage.setItem("simulatedDate", date.toISOString());
   else localStorage.removeItem("simulatedDate");
-}
-
-export function getCurrentDate(): Date {
-  return get(simulatedDate) || new Date();
 }

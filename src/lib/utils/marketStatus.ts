@@ -3,18 +3,23 @@ import type { Market } from "$shared/types";
 
 export type MarketStatus = "open" | "upcoming" | "closed" | "unknown";
 
+function toIso(d: Date): string {
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+}
+
 export function isAllClosed(markets: Market[], now: Date): boolean {
+  const today = toIso(now);
   return markets.every((m) => {
     const dates = m.dates;
     if (!dates || (dates.type !== "range" && dates.type !== "dates")) {
       return true;
     }
     if (dates.type === "range") {
-      if (dates.end_date) return now > new Date(dates.end_date);
-      if (dates.start_date) return now > new Date(dates.start_date);
+      if (dates.end_date) return today > dates.end_date;
+      if (dates.start_date) return today > dates.start_date;
     }
     if (dates.type === "dates" && dates.dates && dates.dates.length > 0) {
-      return now > new Date(dates.dates[dates.dates.length - 1]);
+      return today > dates.dates[dates.dates.length - 1];
     }
     return true;
   });
@@ -28,19 +33,22 @@ export function isMarketOpen(
   status: MarketStatus;
 } {
   if (dates.type === "range" && dates.start_date && dates.end_date) {
-    const start = new Date(dates.start_date);
-    const end = new Date(dates.end_date);
-    const isOpen = now >= start && now <= end;
-    if (isOpen) return { isOpen: true, status: "open" };
-    return { isOpen: false, status: now < start ? "upcoming" : "closed" };
+    const today = toIso(now);
+    if (today >= dates.start_date && today <= dates.end_date) {
+      return { isOpen: true, status: "open" };
+    }
+    return {
+      isOpen: false,
+      status: today < dates.start_date ? "upcoming" : "closed",
+    };
   }
   if (dates.type === "dates" && dates.dates && dates.dates.length > 0) {
-    const todayIso = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
-    const isOpen = dates.dates.includes(todayIso);
+    const today = toIso(now);
+    const isOpen = dates.dates.includes(today);
     if (isOpen) return { isOpen: true, status: "open" };
     return {
       isOpen: false,
-      status: now < new Date(dates.dates[0]) ? "upcoming" : "closed",
+      status: today < dates.dates[0] ? "upcoming" : "closed",
     };
   }
 
