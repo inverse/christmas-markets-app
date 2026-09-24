@@ -71,6 +71,61 @@ const DATA_MAP: Record<string, Dates> = {
     type: "dates",
     dates: ["2026-11-28", "2026-11-29"],
   },
+  "November 4 to December 23, 2026; closed on November 15 (Remembrance Day) and November 22 (All Souls’ Day)":
+    {
+      raw: "November 4 to December 23, 2026; closed on November 15 (Remembrance Day) and November 22 (All Souls’ Day)",
+      type: "dates",
+      dates: [
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07",
+        "2026-11-08",
+        "2026-11-09",
+        "2026-11-10",
+        "2026-11-11",
+        "2026-11-12",
+        "2026-11-13",
+        "2026-11-14",
+        "2026-11-16",
+        "2026-11-17",
+        "2026-11-18",
+        "2026-11-19",
+        "2026-11-20",
+        "2026-11-21",
+        "2026-11-23",
+        "2026-11-24",
+        "2026-11-25",
+        "2026-11-26",
+        "2026-11-27",
+        "2026-11-28",
+        "2026-11-29",
+        "2026-11-30",
+        "2026-12-01",
+        "2026-12-02",
+        "2026-12-03",
+        "2026-12-04",
+        "2026-12-05",
+        "2026-12-06",
+        "2026-12-07",
+        "2026-12-08",
+        "2026-12-09",
+        "2026-12-10",
+        "2026-12-11",
+        "2026-12-12",
+        "2026-12-13",
+        "2026-12-14",
+        "2026-12-15",
+        "2026-12-16",
+        "2026-12-17",
+        "2026-12-18",
+        "2026-12-19",
+        "2026-12-20",
+        "2026-12-21",
+        "2026-12-22",
+        "2026-12-23",
+      ],
+    },
 };
 
 function getDdByDtLabelSimple(
@@ -273,23 +328,24 @@ async function processMarket(index: number, total: number, feature: unknown) {
   }
 }
 
-async function processMarketsConcurrent(
-  features: unknown[],
-  concurrency: number,
-) {
+function delay(ms: number): Promise<void> {
+  const { promise, resolve } = Promise.withResolvers<void>();
+  setTimeout(resolve, ms);
+  return promise;
+}
+
+async function processMarketsSequential(features: unknown[]) {
   const totalMarkets = features.length;
-  const items = features.entries();
-  const marketResults = await Promise.all(
-    Array.from({ length: Math.min(concurrency, totalMarkets) }, async () => {
-      const results = [];
-      for (const [index, feature] of items) {
-        const market = await processMarket(index, totalMarkets, feature);
-        if (market) results.push(market);
-      }
-      return results;
-    }),
-  );
-  return marketResults.flat();
+  const marketResults = [];
+  // Berlin.de rate-limits aggressively; one in-flight fetch with a small
+  // pause between requests avoids 429 storms entirely.
+  const REQUEST_GAP_MS = 250;
+  for (let i = 0; i < features.length; i++) {
+    const market = await processMarket(i, totalMarkets, features[i]);
+    if (market) marketResults.push(market);
+    if (i < features.length - 1) await delay(REQUEST_GAP_MS);
+  }
+  return marketResults;
 }
 
 async function main() {
@@ -311,8 +367,7 @@ async function main() {
 
   const totalMarkets = features.length;
   console.log(`Found ${totalMarkets} markets. Starting fetch...`);
-  const concurrency = 3;
-  const markets = await processMarketsConcurrent(features, concurrency);
+  const markets = await processMarketsSequential(features);
 
   if (failures.length) {
     console.error(
