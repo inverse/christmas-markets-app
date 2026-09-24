@@ -3,6 +3,7 @@
   import { selectedMarket } from "$lib/mapStore";
   import { isDark, toggleTheme } from "$lib/utils/theme";
   import { onMount } from "svelte";
+  import GetYourGuideWidget from "$lib/components/GetYourGuideWidget.svelte";
   import { fade, fly } from "svelte/transition";
   import type { Market } from "$shared/types";
 
@@ -349,6 +350,15 @@
           </li>
         {/each}
       </ul>
+
+      <div class="pt-3">
+        <p
+          class="mb-2 text-center text-[11px] font-medium uppercase tracking-wide text-stone-400"
+        >
+          Discover additional activities
+        </p>
+        {#key $isDark}<GetYourGuideWidget />{/key}
+      </div>
     </section>
   </div>
 </div>
