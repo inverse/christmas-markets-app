@@ -1,7 +1,7 @@
 import { statusInfo, type MarketStatus } from "./marketStatus";
 import type { Market } from "$shared/types";
 
-function escapeHtml(value: string | undefined | null): string {
+export function escapeHtml(value: string | undefined | null): string {
   if (!value) return "";
   return value
     .replace(/&/g, "&amp;")

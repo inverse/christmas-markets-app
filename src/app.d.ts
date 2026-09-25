@@ -8,6 +8,8 @@ declare global {
     // interface PageState {}
     // interface Platform {}
   }
+  // Replaced at build time from vite.config.ts (ENABLE_GYG_ATTRACTIONS env var).
+  const __ENABLE_GYG_ATTRACTIONS__: boolean;
 }
 
 export {};

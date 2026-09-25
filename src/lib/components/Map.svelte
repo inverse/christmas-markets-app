@@ -3,6 +3,9 @@
   import { SvelteMap } from "svelte/reactivity";
   import { browser } from "$app/environment";
   import type { MarketStatus } from "$lib/utils/marketStatus";
+  import attractions from "../../../data/attractions.json";
+  import { buildAttractionPopup } from "$lib/utils/attractionPopup";
+  import type { Attraction } from "$shared/types";
   import {
     boundingBox,
     findNearestMarket,
@@ -33,6 +36,7 @@
   let userNearest: NearestMarket | null = null;
   let treeIcons: Record<MarketStatus, L.DivIcon>;
   let markersReady = $state(false);
+  let attractionMarkers: L.Marker[] = [];
 
   onMount(async () => {
     if (browser) {
@@ -85,6 +89,13 @@
           "custom-tree-icon-unknown",
         ),
       };
+      const attractionIcon = makeTreeIcon(
+        `<div class="map-marker relative w-8 h-8 rounded-full border-2 border-berry bg-white flex items-center justify-center">
+          <img src="/icons/attraction-raw.svg" class="w-4 h-4 text-berry" />
+        </div>`,
+        32,
+        "custom-attraction-icon",
+      );
       userLocationIcon = L.divIcon({
         html: `<div class="relative w-8 h-8">
           <span class="absolute inset-0 rounded-full bg-locator/50 marker-pulse"></span>
@@ -129,6 +140,26 @@
         if (popup) popupMarkets.set(popup, market.name);
         markers.set(market.name, marker);
       });
+      if (__ENABLE_GYG_ATTRACTIONS__) {
+        const layer = L.layerGroup();
+        attractions.forEach((attraction: Attraction) => {
+          const marker = L.marker(
+            [attraction.coordinates.lat, attraction.coordinates.lng],
+            {
+              icon: attractionIcon,
+              title: attraction.name,
+              alt: attraction.name,
+            },
+          ).bindPopup(() => buildAttractionPopup(attraction), {
+            maxWidth: 340,
+            minWidth: 280,
+            autoPanPadding: L.point(20, 60),
+          });
+          layer.addLayer(marker);
+          attractionMarkers.push(marker);
+        });
+        layer.addTo(map);
+      }
       markersReady = true;
 
       // Leaflet closes the previous popup when another one opens, so

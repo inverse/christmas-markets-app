@@ -1,0 +1,162 @@
+[
+  {
+    "id": "spree-river",
+    "name": "Spree River",
+    "coordinates": { "lat": 52.5121, "lng": 13.4096 },
+    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Berlin%2C_Oberbaumbr%C3%BCcke_--_2011_--_2770.jpg?width=800",
+    "description": "The river weaving through Berlin's heart, lined with landmarks and boat tours from Museum Island to the East Side.",
+    "url": "https://www.getyourguide.com/spree-river-l2700/?partner_id=QZJ0CS7"
+  },
+  {
+    "id": "reichstag-dome",
+    "name": "Reichstag Dome",
+    "coordinates": { "lat": 52.5186, "lng": 13.3754 },
+    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Reichstag_building_Berlin_view_from_west_before_sunset.jpg?width=800",
+    "description": "Norman Foster's glass dome crowning the German parliament; free entry, advance registration required.",
+    "url": "https://www.getyourguide.com/reichstag-dome-l90578/?partner_id=QZJ0CS7"
+  },
+  {
+    "id": "tv-tower-berlin",
+    "name": "TV Tower, Berlin",
+    "coordinates": { "lat": 52.5208, "lng": 13.4094 },
+    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Fernsehturm%2C_Berl%C3%ADn%2C_Alemania%2C_2016-04-21%2C_DD_40-42_HDR.jpg?width=800",
+    "description": "Berlin's tallest structure at Alexanderplatz with a 360-degree observation deck and revolving restaurant.",
+    "url": "https://www.getyourguide.com/tv-tower-berlin-l4285/?partner_id=QZJ0CS7"
+  },
+  {
+    "id": "reichstag",
+    "name": "Reichstag",
+    "coordinates": { "lat": 52.5186, "lng": 13.3754 },
+    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Interior_of_the_Reichstag_dome_2015_2.jpg?width=800",
+    "description": "Home of the German Parliament since 1894, an iconic neoclassical pile with a transparent modern dome.",
+    "url": "https://www.getyourguide.com/reichstag-l2701/?partner_id=QZJ0CS7"
+  },
+  {
+    "id": "friedrichstadt-palast",
+    "name": "Friedrichstadt-Palast",
+    "coordinates": { "lat": 52.5229, "lng": 13.3888 },
+    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Fassade_Friedrichstadtpalast_Berlin.jpg?width=800",
+    "description": "Europe's largest show palace, stages spectacular revues right at the turn of Friedrichstraße.",
+    "url": "https://www.getyourguide.com/friedrichstadt-palast-l3086/?partner_id=QZJ0CS7"
+  },
+  {
+    "id": "madame-tussauds-berlin",
+    "name": "Madame Tussauds Berlin",
+    "coordinates": { "lat": 52.5168, "lng": 13.3817 },
+    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Madame_Tussauds_in_Berlin.JPG?width=800",
+    "description": "Wax museum on Unter den Linden with lifelike figures of political, pop and royal icons.",
+    "url": "https://www.getyourguide.com/madame-tussauds-berlin-l4690/?partner_id=QZJ0CS7"
+  },
+  {
+    "id": "berlin-zoo",
+    "name": "Berlin Zoo",
+    "coordinates": { "lat": 52.5087, "lng": 13.3375 },
+    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Zoologischer_Garten_Berlin_Elefantentor.jpg?width=800",
+    "description": "One of Germany's oldest zoos, famed for its iconic Elephant Gate entrance on Kurfürstendamm.",
+    "url": "https://www.getyourguide.com/berlin-zoo-l3107/?partner_id=QZJ0CS7"
+  },
+  {
+    "id": "olympic-stadium-berlin",
+    "name": "Olympic Stadium, Berlin",
+    "coordinates": { "lat": 52.5147, "lng": 13.2397 },
+    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Olympiastadion_Berlin_2015.jpg?width=800",
+    "description": "The 1936 Olympic venue now hosting Hertha BSC football and major athletics events in West Berlin.",
+    "url": "https://www.getyourguide.com/olympic-stadium-berlin-l3098/?partner_id=QZJ0CS7"
+  },
+  {
+    "id": "jewish-museum-berlin",
+    "name": "Jewish Museum Berlin",
+    "coordinates": { "lat": 52.501, "lng": 13.3946 },
+    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/J%C3%BCdisches_Museum_Berlin_-_Eingang.jpg?width=800",
+    "description": "Daniel Libeskind's architecture is as powerful an exhibit as the two millennia of Jewish history inside.",
+    "url": "https://www.getyourguide.com/jewish-museum-berlin-l4297/?partner_id=QZJ0CS7"
+  },
+  {
+    "id": "berlin-wall",
+    "name": "Berlin Wall",
+    "coordinates": { "lat": 52.5353, "lng": 13.3896 },
+    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Berliner_Mauer%2C_Bernauer_Stra%C3%9Fe%2C_Berlin%2C_160326%2C_ako.jpg?width=800",
+    "description": "The preserved wall section and memorial on Bernauer Straße tell the story of the city's division.",
+    "url": "https://www.getyourguide.com/berlin-wall-l2702/?partner_id=QZJ0CS7"
+  },
+  {
+    "id": "hitler-s-bunker",
+    "name": "Hitler's Bunker",
+    "coordinates": { "lat": 52.5118, "lng": 13.3812 },
+    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/F%C3%BChrerbunker%2C_Berlin_%28Ank_Kumar%2C_Infosys%29.jpg?width=800",
+    "description": "The unmarked car park where the F\u00fchrerbunker once stood; an information board traces the site's dark history.",
+    "url": "https://www.getyourguide.com/hitler-s-bunker-l4288/?partner_id=QZJ0CS7"
+  },
+  {
+    "id": "friedrichstrasse",
+    "name": "Friedrichstra\u00dfe",
+    "coordinates": { "lat": 52.5213, "lng": 13.3871 },
+    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/20240815_Bahnhof_Berlin_Friedrichstra%C3%9Fe_02.jpg?width=800",
+    "description": "Berlin's famous shopping boulevard, anchored by the elegant Friedrichstra\u00dfe railway station.",
+    "url": "https://www.getyourguide.com/friedrichstrasse-l4695/?partner_id=QZJ0CS7"
+  },
+  {
+    "id": "deja-vu-museum-berlin",
+    "name": "DeJa Vu Museum, Berlin",
+    "coordinates": { "lat": 52.5323, "lng": 13.4154 },
+    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Berlin-Prenzlauer_Berg_-_signs_for_Kollwitzplatz_01.jpg?width=800",
+    "description": "A quirky subculture museum exploring d\u00e9j\u00e0 vu experiences and perception in Prenzlauer Berg.",
+    "url": "https://www.getyourguide.com/deja-vu-museum-berlin-l190551/?partner_id=QZJ0CS7"
+  },
+  {
+    "id": "dark-matter-berlin",
+    "coordinates": { "lat": 52.4928, "lng": 13.4927 },
+    "name": "DARK MATTER, Berlin",
+    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Discokugelpyramide_dark-matter_koepenicker-chaussee-46_2022-08-14.png?width=800",
+    "description": "Immersive light-art installation space in Kreuzberg dissecting perception and illusion.",
+    "url": "https://www.getyourguide.com/dark-matter-berlin-l176889/?partner_id=QZJ0CS7"
+  },
+  {
+    "id": "reichstag-plenary-chambers",
+    "name": "Reichstag Plenary Chambers",
+    "coordinates": { "lat": 52.5186, "lng": 13.3759 },
+    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/View_of_the_Plenary_Chamber_of_the_Bundestag_from_the_Dome_of_the_Reichstag._(4209149129).jpg?width=800",
+    "description": "Inner chamber of the German Bundestag, visitable alongside the dome during registered tours.",
+    "url": "https://www.getyourguide.com/reichstag-plenary-chambers-l90584/?partner_id=QZJ0CS7"
+  },
+  {
+    "id": "legoland-discovery-centre-berlin",
+    "name": "LEGOLAND Discovery Centre, Berlin",
+    "coordinates": { "lat": 52.5104, "lng": 13.3753 },
+    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Entrance_to_Legoland_Discovery_Centre_Berlin.jpg?width=800",
+    "description": "Indoor brick playground at Potsdamer Platz with rides, a 4D cinema and miniature Berlin built from Lego.",
+    "url": "https://www.getyourguide.com/legoland-discovery-centre-berlin-l4693/?partner_id=QZJ0CS7"
+  },
+  {
+    "id": "estrel-showtheater",
+    "name": "Estrel Showtheater",
+    "coordinates": { "lat": 52.4736, "lng": 13.4588 },
+    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Hotel_Estrel_und_B%C3%BCrogeb%C3%A4ude%2C_Sonnenallee_in_Berlin-Neuk%C3%B6lln.jpg?width=800",
+    "description": "Europe's largest entertainment venue staging large-scale musical spectacles in Neuk\u00f6lln's Estrel hotel.",
+    "url": "https://www.getyourguide.com/estrel-showtheater-l191134/?partner_id=QZJ0CS7"
+  },
+  {
+    "id": "jannowitz-bridge",
+    "name": "Jannowitz Bridge",
+    "coordinates": { "lat": 52.5142, "lng": 13.4195 },
+    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/20220806_Bahnhof_Berlin_Jannowitzbr%C3%BCcke_02.jpg?width=800",
+    "description": "A Spree crossing between Mitte and Kreuzberg, framed by river views and boat traffic.",
+    "url": "https://www.getyourguide.com/jannowitz-bridge-l178903/?partner_id=QZJ0CS7"
+  },
+  {
+    "id": "lake-tegel",
+    "name": "Lake Tegel",
+    "coordinates": { "lat": 52.5746, "lng": 13.255 },
+    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/20240819_Tegeler_See.jpg?width=800",
+    "description": "Lakeside contemplation and swimming beaches just north of the city, framed by water-side walks.",
+    "url": "https://www.getyourguide.com/lake-tegel-l176845/?partner_id=QZJ0CS7"
+  },
+  {
+    "id": "olympic-stadium-berlin",
+    "name": "Olympic Stadium, Berlin",
+    "coordinates": { "lat": 52.5147, "lng": 13.2397 },
+    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Olympiastadion_Berlin_2015.jpg?width=800",
+    "description": "The 1936 Olympic venue now hosting Hertha BSC football and major athletics events in West Berlin.",
+    "url": "https://www.getyourguide.com/olympic-stadium-berlin-l3098/?partner_id=QZJ0CS7"
+  }
+]

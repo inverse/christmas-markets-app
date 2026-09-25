@@ -11,3 +11,12 @@ export interface Market {
   admission: string;
   description: string;
 }
+
+export interface Attraction {
+  id: string;
+  name: string;
+  coordinates: { lat: number; lng: number };
+  image_url: string;
+  description: string;
+  url: string;
+}
