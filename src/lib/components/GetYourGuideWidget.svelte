@@ -4,6 +4,7 @@
   // the widget script scans for and hydrates into an iframe.
 
   import { onMount } from "svelte";
+  import { GYG_PARTNER_ID } from "$lib/constants/getyourguide";
 
   const GYG_WIDGET_SRC = "https://widget.getyourguide.com/v2/widget.js";
 
@@ -22,7 +23,7 @@
   data-gyg-location-id="17"
   data-gyg-locale-code="en-US"
   data-gyg-widget="city"
-  data-gyg-partner-id="QZJ0CS7"
+  data-gyg-partner-id={GYG_PARTNER_ID}
   data-testid="gyg-ad-widget"
 >
   <!-- Reserved height until the widget iframe hydrates (no CLS) -->
