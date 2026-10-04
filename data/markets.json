@@ -83,6 +83,24 @@
     "url": "https://www.berlin.de/en/christmas-markets/3250022-3230598-advent-market-kollwitzplatz.en.html"
   },
   {
+    "name": "Berlin Dog Christmas Market",
+    "address": "Hüttenweg 90, Berlin, 14193, Deutschland",
+    "dates": {
+      "raw": "November 28 and 29, 2026",
+      "type": "dates",
+      "dates": ["2026-11-28", "2026-11-29"]
+    },
+    "opening_times": "10 am to 6 pm",
+    "admission": "€2.50, of which €1 goes to an animal welfare organization",
+    "description": "Berlin loves its four-legged friends! So it is not surprising that the dogs of the capital get their own Christmas market.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7794906/ratio_4_3/300x225/",
+    "coordinates": {
+      "lng": 13.2562,
+      "lat": 52.4664
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/7794849-3230598-berlin-dog-christmas-market.en.html"
+  },
+  {
     "name": "Christmas Fair on Landsberger Allee",
     "address": "Landsberger Allee 300, Berlin, 13055, Deutschland",
     "dates": {
@@ -118,6 +136,25 @@
       "lat": 52.5127
     },
     "url": "https://www.berlin.de/en/christmas-markets/7092703-3230598-christmas-in-westend.en.html"
+  },
+  {
+    "name": "Christmas Market at Berlin City Hall",
+    "address": "Rathausstraße 15, Berlin, 10178, Deutschland",
+    "dates": {
+      "raw": "November 23, 2026 to January 3, 2027",
+      "type": "range",
+      "start_date": "2026-11-23",
+      "end_date": "2027-01-03"
+    },
+    "opening_times": "Monday to Friday from 12 noon to 10 pm, Saturday and Sunday from 11 am to 10 pm, closed on Christmas Eve and New Year’s Eve, 3 January 2027 until 8 pm",
+    "admission": "Not yet known",
+    "description": "A market alley, an ice skating rink around the Neptune Fountain, street artists, puppeteers, storytellers and more: the Christmas market at Rotes Rathaus has a lot to offer.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7880862/ratio_4_3/300x225/",
+    "coordinates": {
+      "lng": 13.4075,
+      "lat": 52.5192
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/5096971-3230598-christmas-market-at-berlin-town-hall.en.html"
   },
   {
     "name": "Christmas Market at Charlottenburg Palace",
@@ -162,6 +199,25 @@
       "lat": 52.4543
     },
     "url": "https://www.berlin.de/en/christmas-markets/5734559-3230598-christmas-market-at-spaethsche-baumschul.en.html"
+  },
+  {
+    "name": "Christmas Market at the Berlin Animal Shelter",
+    "address": "Hausvaterweg 39, Berlin, 13057, Deutschland",
+    "dates": {
+      "raw": "December 6, 2026",
+      "type": "range",
+      "start_date": "2026-12-06",
+      "end_date": "2026-12-06"
+    },
+    "opening_times": "11 am to 4 pm",
+    "admission": "Free",
+    "description": "The Berlin Animal Shelter traditionally organizes the \"Christmas Festival for Animals\" every year during the Advent season. The highlight is the gift-giving in the kennels and cabins.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7897563/ratio_4_3/300x225/",
+    "coordinates": {
+      "lng": 13.5462,
+      "lat": 52.5741
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/7897509-3230598-christmas-market-animal-shelter.en.html"
   },
   {
     "name": "Christmas Market at the Humboldt Forum",
@@ -257,6 +313,25 @@
       "lat": 52.5137
     },
     "url": "https://www.berlin.de/en/christmas-markets/3235772-3230598-christmas-market-at-gendarmenmarkt.en.html"
+  },
+  {
+    "name": "Finnish Advent Bazaar",
+    "address": "Marheinekeplatz 1, Berlin, 10961, Deutschland",
+    "dates": {
+      "raw": "November 14-15, 2026",
+      "type": "range",
+      "start_date": "2026-11-14",
+      "end_date": "2026-11-15"
+    },
+    "opening_times": "12 noon to 6 pm",
+    "admission": "Free, but donations are welcome",
+    "description": "The Christmas traditions of the Nordic countries enjoy great popularity in December. In Kreuzberg, Christmas is celebrated the Finnish way with a bazaar at the Passionskirche on Marheinekeplatz.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/10021108/ratio_4_3/300x225/",
+    "coordinates": {
+      "lng": 13.3971,
+      "lat": 52.4894
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/5742137-3230598-finnish-christmas-market.en.html"
   },
   {
     "name": "Holy Shit Shopping",
@@ -425,6 +500,24 @@
       "lat": 52.5253
     },
     "url": "https://www.berlin.de/en/christmas-markets/3659027-3230598-sustainable-christmas-market-sophienstra.en.html"
+  },
+  {
+    "name": "Swedish Christmas Bazaar",
+    "address": "Landhausstraße 26-28, Berlin, 10717, Deutschland",
+    "dates": {
+      "raw": "November 28 and 29, 2026",
+      "type": "dates",
+      "dates": ["2026-11-28", "2026-11-29"]
+    },
+    "opening_times": "Not found",
+    "admission": "€ 2, free for children under 12",
+    "description": "With pytt i panna, marzipan cake, elk sausage, glögg and more, the Swedish Victoria Congregation invites Berliners to get in the mood for the Christmas season together on the first weekend of Advent.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9833149/ratio_4_3/300x225/",
+    "coordinates": {
+      "lng": 13.3291,
+      "lat": 52.4876
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/5711097-3230598-swedish-christmas-bazaar.en.html"
   },
   {
     "name": "Wein-Nachtsmarkt at Ludwig-Beck-Platz",

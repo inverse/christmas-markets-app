@@ -355,7 +355,7 @@
         <p
           class="mb-2 text-center text-[11px] font-medium uppercase tracking-wide text-stone-400"
         >
-          Discover additional activities
+          Discover additional activities &middot; Partner
         </p>
         {#key $isDark}<GetYourGuideWidget />{/key}
       </div>

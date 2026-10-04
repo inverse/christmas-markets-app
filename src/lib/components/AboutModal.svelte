@@ -97,9 +97,7 @@
         </p>
       </section>
 
-      <section
-        class="rounded-xl border border-stone-200 border-l-4 border-l-gold bg-surface p-3.5"
-      >
+      <section>
         <h3 class="font-display text-base font-bold text-ink-brand mb-1">
           Where the data comes from
         </h3>
@@ -121,10 +119,20 @@
         </p>
       </section>
 
+      <section>
+        <h3 class="font-display text-base font-bold text-ink-brand mb-1">
+          Supporting this project
+        </h3>
+        <p>
+          Some attraction and activity links (powered by GetYourGuide) are
+          affiliate links. If you book an activity or tour through them, I may
+          earn a small commission at no additional cost to you. This helps
+          support hosting and maintenance to keep the site free.
+        </p>
+      </section>
+
       {#if showIosInstall}
-        <section
-          class="rounded-xl border border-stone-200 border-l-4 border-l-gold bg-surface p-3.5"
-        >
+        <section>
           <h3 class="font-display text-base font-bold text-ink-brand mb-1">
             Install on iPhone or iPad
           </h3>
@@ -157,37 +165,41 @@
         </section>
       {/if}
 
-      <p class="text-xs text-stone-600">
-        Created by
-        <a
-          href="https://malachisoord.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="font-semibold text-ink-brand underline hover:text-ink-gold"
-        >
-          Malachi Soord
-        </a>.
-      </p>
-      <section class="border-t border-stone-200 pt-3 text-xs text-stone-500">
-        Map tiles &copy;
-        <a
-          href="https://www.openstreetmap.org/copyright"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="underline hover:text-stone-700"
-        >
-          OpenStreetMap
-        </a>
-        contributors, rendered with
-        <a
-          href="https://leafletjs.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="underline hover:text-stone-700"
-        >
-          Leaflet
-        </a>.
-      </section>
+      <div
+        class="border-t border-stone-200 pt-3 text-xs text-stone-500 space-y-1"
+      >
+        <p>
+          Created by
+          <a
+            href="https://malachisoord.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-semibold text-ink-brand underline hover:text-ink-gold"
+          >
+            Malachi Soord
+          </a>.
+        </p>
+        <p>
+          Map tiles &copy;
+          <a
+            href="https://www.openstreetmap.org/copyright"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="underline hover:text-stone-700"
+          >
+            OpenStreetMap
+          </a>
+          contributors, rendered with
+          <a
+            href="https://leafletjs.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="underline hover:text-stone-700"
+          >
+            Leaflet
+          </a>.
+        </p>
+      </div>
     </div>
 
     <!-- Footer -->
