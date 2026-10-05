@@ -76,6 +76,7 @@
   <meta name="twitter:title" content={TITLE} />
   <meta name="twitter:description" content={DESCRIPTION} />
   <meta name="twitter:image" content={SHARE_IMAGE} />
+  <meta name="twitter:image:src" content={SHARE_IMAGE} />
   <meta name="twitter:image:alt" content={IMAGE_ALT} />
 </svelte:head>
 
