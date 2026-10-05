@@ -103,10 +103,11 @@ either a 1:1 browser screenshot at that viewport, or a headless Chromium
 `page.screenshot` with `clip: { width: 1200, height: 630 }` and
 `deviceScaleFactor: 1`.
 
-Crawlers cache share images far longer than browsers cache the asset, so a
-refreshed card may not appear on a re-share. Re-test with a cache-busting
-query string (`/icons/og-image.png?v=2`), or the Facebook Sharing Debugger and
-LinkedIn Post Inspector.
+X caches a card per URL for roughly seven days, so a restyled image keeps
+serving the stale card. `SHARE_IMAGE` in `src/routes/+layout.svelte` therefore
+carries a `?v=N` suffix: bump it whenever the PNG changes, and X fetches the
+new URL instead of replaying its cache. Re-test with the Facebook Sharing
+Debugger and LinkedIn Post Inspector.
 
 ### Purging the edge cache early
 

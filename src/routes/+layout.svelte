@@ -26,7 +26,9 @@
   const IMAGE_ALT =
     "Berlin Christmas Markets 2026: a map of over 20 Berlin Christmas markets with dates, opening hours and admission prices.";
   const SITE_URL = $derived(`${data.origin}/`);
-  const SHARE_IMAGE = $derived(`${data.origin}/icons/og-image.png`);
+  // Bump when the card art changes: X caches a card per URL for ~7 days, so
+  // re-styling the image without a new URL keeps serving the stale card.
+  const SHARE_IMAGE = $derived(`${data.origin}/icons/og-image.png?v=2`);
 </script>
 
 {#if browser && DevDateSelector}
