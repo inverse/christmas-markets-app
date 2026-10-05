@@ -13,6 +13,7 @@ A web application for discovering and navigating the festive Christmas markets i
 - **Installable:** Add the map to your home screen for a full-screen, app-like experience.
 - **Night Mode:** Follows your system theme by default, with a day/night switch in the menu that darkens the map and every panel.
 - **Shareable Links:** Every market has its own URL, and the browser Back button closes the open panel rather than leaving the app.
+- **Social Share Cards:** Links unfurl in Slack, iMessage and social posts with a branded 1200×630 preview image.
 
 ## Getting Started
 
@@ -83,6 +84,29 @@ the deployed assets:
 Icon filenames are unversioned, so a changed icon may serve stale for up to 7
 days. Either accept the delay, rename the file (and update `static/manifest.json`
 and `app.html` references), or purge the cache early (below).
+
+### Social share image
+
+`static/icons/og-image.png` is the 1200×630 card that Open Graph and X render
+when the app is shared. Its editable source is
+`static/icons/og-image-raw.svg`, which embeds the Playfair Display and Inter
+woff2 files as base64 so it renders identically offline, with no font CDN.
+
+The tags that point at it live in `src/routes/+layout.svelte`. They build the
+absolute URL from the request origin (see `src/routes/+layout.ts`) rather than
+hardcoding a host, so dev tunnels and production emit identical markup. This
+matters: crawlers fetch `og:image` out of band and cannot resolve a relative
+one, so a bare `/icons/og-image.png` yields no card at all.
+
+To restyle the card, edit the raw SVG and re-render it to PNG at 1200×630 -
+either a 1:1 browser screenshot at that viewport, or a headless Chromium
+`page.screenshot` with `clip: { width: 1200, height: 630 }` and
+`deviceScaleFactor: 1`.
+
+Crawlers cache share images far longer than browsers cache the asset, so a
+refreshed card may not appear on a re-share. Re-test with a cache-busting
+query string (`/icons/og-image.png?v=2`), or the Facebook Sharing Debugger and
+LinkedIn Post Inspector.
 
 ### Purging the edge cache early
 
