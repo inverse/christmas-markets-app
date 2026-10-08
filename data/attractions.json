@@ -1,189 +1,178 @@
 [
   {
-    "id": "spree-river",
-    "name": "Spree River",
+    "id": "christmas-markets-tour",
+    "name": "Berlin Christmas Markets Tour",
     "coordinates": {
-      "lat": 52.5121,
-      "lng": 13.4096
+      "lat": 52.5233083,
+      "lng": 13.4021795
     },
-    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Berlin%2C_Oberbaumbr%C3%BCcke_--_2011_--_2770.jpg?width=800",
-    "description": "The river weaving through Berlin's heart, lined with landmarks and boat tours from Museum Island to the East Side.",
-    "url": "https://www.getyourguide.com/spree-river-l2700/"
+    "image_url": "https://cdn.getyourguide.com/img/tour/95afa2fa501967195f642c7c7859b06d70a5ef2f2736c36b257f5ecd42985e5c.jpg/148.jpg",
+    "description": "Orientation tour across Berlin's most festive markets, peppered with stories of German Christmas customs, hand-crafted gifts and seasonal treats.",
+    "url": "https://www.getyourguide.com/berlin-l17/berlin-christmas-markets-tour-t755984/"
   },
   {
-    "id": "reichstag-dome",
-    "name": "Reichstag Dome",
+    "id": "christmas-market-sightseeing-tour",
+    "name": "Christmas Market Tour with Mulled Wine",
     "coordinates": {
-      "lat": 52.5186,
-      "lng": 13.3754
+      "lat": 52.5160431,
+      "lng": 13.3799442
     },
-    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Reichstag_building_Berlin_view_from_west_before_sunset.jpg?width=800",
-    "description": "Norman Foster's glass dome crowning the German parliament; free entry, advance registration required.",
-    "url": "https://www.getyourguide.com/reichstag-dome-l90578/"
+    "image_url": "https://cdn.getyourguide.com/img/tour/2c49ac903e98d39f55f4dbb41c363f4ef9278c269b052b73330827b7cb88ecb9.jpg/148.jpg",
+    "description": "A compact evening combo: city sightseeing on the walk, finishing with a tumbler of mulled wine at one of Berlin's Christmas markets.",
+    "url": "https://www.getyourguide.com/berlin-l17/berlin-christmas-market-tour-sightseeing-christmas-market-mulled-wine-t1492483/"
   },
   {
-    "id": "tv-tower-berlin",
-    "name": "TV Tower, Berlin",
+    "id": "private-christmas-market-tour",
+    "name": "Private Christmas Market Tour",
     "coordinates": {
-      "lat": 52.5208,
-      "lng": 13.4094
+      "lat": 52.5162746,
+      "lng": 13.377704
     },
-    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Fernsehturm%2C_Berl%C3%ADn%2C_Alemania%2C_2016-04-21%2C_DD_40-42_HDR.jpg?width=800",
-    "description": "Berlin's tallest structure at Alexanderplatz with a 360-degree observation deck and revolving restaurant.",
-    "url": "https://www.getyourguide.com/tv-tower-berlin-l4285/"
+    "image_url": "https://cdn.getyourguide.com/img/tour/d2b40260405a826d3e047d6dd193fff0d6255476e056f7d4a313a4e40b518042.jpg/148.jpg",
+    "description": "A private two-hour guided stroll through Berlin's best-loved Christmas markets, for groups of up to fifteen.",
+    "url": "https://www.getyourguide.com/berlin-l17/berlin-private-christmas-market-tour-t459686/"
   },
   {
-    "id": "friedrichstadt-palast",
-    "name": "Friedrichstadt-Palast",
+    "id": "christmas-lights-bus-tour",
+    "name": "Christmas Lights Bus Tour incl. Mulled Wine",
     "coordinates": {
-      "lat": 52.5229,
-      "lng": 13.3888
+      "lat": 52.502515,
+      "lng": 13.326776300000006
     },
-    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Fassade_Friedrichstadtpalast_Berlin.jpg?width=800",
-    "description": "Europe's largest show palace, stages spectacular revues right at the turn of Friedrichstraße.",
-    "url": "https://www.getyourguide.com/friedrichstadt-palast-l3086/"
+    "image_url": "https://cdn.getyourguide.com/img/tour/16ec673c854e7f4a601ad21f73e5f9ffe79b5c042a39ac0b81edb20a41b59f5e.jpeg/148.jpg",
+    "description": "An atmospheric evening coach ride through Christmas-lit Berlin, with festive commentary and a stop to warm up at a market.",
+    "url": "https://www.getyourguide.com/berlin-l17/berlin-2-hour-christmas-lights-bus-tour-incl-mulled-wine-t26882/"
   },
   {
-    "id": "madame-tussauds-berlin",
-    "name": "Madame Tussauds Berlin",
+    "id": "tour-of-lights",
+    "name": "Tour of Lights with Photo Stops",
     "coordinates": {
-      "lat": 52.5168,
-      "lng": 13.3817
+      "lat": 52.51960630000001,
+      "lng": 13.406853
     },
-    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Madame_Tussauds_in_Berlin.JPG?width=800",
-    "description": "Wax museum on Unter den Linden with lifelike figures of political, pop and royal icons.",
-    "url": "https://www.getyourguide.com/madame-tussauds-berlin-l4690/"
+    "image_url": "https://cdn.getyourguide.com/img/tour/3a9dbebc223f20a47b5ef030ad4359797998143bb6a7dc7cf9944459b0e3f174.png/148.jpg",
+    "description": "A live-guided evening tour hunting down Berlin's most dazzling light displays, with stops for the perfect photo.",
+    "url": "https://www.getyourguide.com/berlin-l17/berlin-tour-of-lights-with-photo-stops-and-live-guide-t1044180/"
   },
   {
-    "id": "berlin-zoo",
-    "name": "Berlin Zoo",
+    "id": "evening-spree-christmas-cruise",
+    "name": "Evening River Spree Cruise at Christmastime",
     "coordinates": {
-      "lat": 52.5087,
-      "lng": 13.3375
+      "lat": 52.5215328,
+      "lng": 13.3874775
     },
-    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Zoologischer_Garten_Berlin_Elefantentor.jpg?width=800",
-    "description": "One of Germany's oldest zoos, famed for its iconic Elephant Gate entrance on Kurfürstendamm.",
-    "url": "https://www.getyourguide.com/berlin-zoo-l3107/"
+    "image_url": "https://cdn.getyourguide.com/img/tour/5a2905bfb57a1.jpeg/148.jpg",
+    "description": "Two hours gliding the heated Spree past Museum Island and the Government Quarter, all dressed in festive light.",
+    "url": "https://www.getyourguide.com/berlin-l17/berlin-evening-river-spree-cruise-at-christmastime-t119158/"
   },
   {
-    "id": "olympic-stadium-berlin",
-    "name": "Olympic Stadium, Berlin",
+    "id": "solar-catamaran-christmas-tour",
+    "name": "Tannenduft & Lichterglanz Solar Catamaran Tour",
     "coordinates": {
-      "lat": 52.5147,
-      "lng": 13.2397
+      "lat": 52.5008253,
+      "lng": 13.4503932
     },
-    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Olympiastadion_Berlin_2015.jpg?width=800",
-    "description": "The 1936 Olympic venue now hosting Hertha BSC football and major athletics events in West Berlin.",
-    "url": "https://www.getyourguide.com/olympic-stadium-berlin-l3098/"
+    "image_url": "https://cdn.getyourguide.com/img/tour/c605939124d93d14134a8ed3cd7f8a08e144c9c8e3e7e7c5313a68e4c261ccd0.jpg/148.jpg",
+    "description": "A solar-powered catamaran carrying you along the illuminated waterways on a leisurely two-and-a-half hour sightseeing glide.",
+    "url": "https://www.getyourguide.com/berlin-l17/berlin-christmas-sightseeing-boat-tour-t501578/"
   },
   {
-    "id": "jewish-museum-berlin",
-    "name": "Jewish Museum Berlin",
+    "id": "mulled-wine-boat-trip",
+    "name": "Christmas Boat Trip with Mulled Wine",
     "coordinates": {
-      "lat": 52.501,
-      "lng": 13.3946
+      "lat": 52.52068970000001,
+      "lng": 13.3843453
     },
-    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/J%C3%BCdisches_Museum_Berlin_-_Eingang.jpg?width=800",
-    "description": "Daniel Libeskind's architecture is as powerful an exhibit as the two millennia of Jewish history inside.",
-    "url": "https://www.getyourguide.com/jewish-museum-berlin-l4297/"
+    "image_url": "https://cdn.getyourguide.com/img/tour/5ad2acaa28ed4a12.jpeg/148.jpg",
+    "description": "A cosy winter cruise combining city views with hot mulled wine and pastries served on board.",
+    "url": "https://www.getyourguide.com/berlin-l17/berlin-weihnachtliche-schifffahrt-mit-gluhwein-t550429/"
   },
   {
-    "id": "berlin-wall",
-    "name": "Berlin Wall",
+    "id": "christmas-garden-berlin",
+    "name": "Christmas Garden Berlin",
     "coordinates": {
-      "lat": 52.5353,
-      "lng": 13.3896
+      "lat": 52.4586827,
+      "lng": 13.3044684
     },
-    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Berliner_Mauer%2C_Bernauer_Stra%C3%9Fe%2C_Berlin%2C_160326%2C_ako.jpg?width=800",
-    "description": "The preserved wall section and memorial on Bernauer Straße tell the story of the city's division.",
-    "url": "https://www.getyourguide.com/berlin-wall-l2702/"
+    "image_url": "https://cdn.getyourguide.com/img/tour/4c41608e72fb23a7401e226c88104919c04b66ee81b1805ffeadd8edc18facf4.jpg/148.jpg",
+    "description": "The Botanical Garden transformed into an illuminated fairytale: light arenas, luminous trees and a glowing trail winding through the beds.",
+    "url": "https://www.getyourguide.com/berlin-l17/christmas-garden-berlin-in-the-botanical-garden-t131352/"
   },
   {
-    "id": "hitler-s-bunker",
-    "name": "Hitler's Bunker",
+    "id": "christmas-at-tierpark",
+    "name": "Christmas at Tierpark",
     "coordinates": {
-      "lat": 52.5118,
-      "lng": 13.3812
+      "lat": 52.4984999,
+      "lng": 13.5235113
     },
-    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/F%C3%BChrerbunker%2C_Berlin_%28Ank_Kumar%2C_Infosys%29.jpg?width=800",
-    "description": "The unmarked car park where the Führerbunker once stood; an information board traces the site's dark history.",
-    "url": "https://www.getyourguide.com/hitler-s-bunker-l4288/"
+    "image_url": "https://cdn.getyourguide.com/img/tour/98d62574962e6de4285843c4891e8d300c3a169c20040e00c46eb4210a3762ec.jpg/148.jpg",
+    "description": "Friedrichsfelde's zoo in full festive dress: glowing art installations, winter stalls and animals in the cold-season calm.",
+    "url": "https://www.getyourguide.com/berlin-l17/berlin-christmas-at-tierpark-t336571/"
   },
   {
-    "id": "friedrichstrasse",
-    "name": "Friedrichstraße",
+    "id": "advent-concert-philharmonic",
+    "name": "Advent Concert at the Berlin Philharmonic",
     "coordinates": {
-      "lat": 52.5213,
-      "lng": 13.3871
+      "lat": 52.5094317,
+      "lng": 13.3691064
     },
-    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/20240815_Bahnhof_Berlin_Friedrichstra%C3%9Fe_02.jpg?width=800",
-    "description": "Berlin's famous shopping boulevard, anchored by the elegant Friedrichstraße railway station.",
-    "url": "https://www.getyourguide.com/friedrichstrasse-l4695/"
+    "image_url": "https://cdn.getyourguide.com/img/tour/5eb458bd6ecc874c103c47b2e234b68413c368f74d65eb67064b3c78f1157d7d.jpg/148.jpg",
+    "description": "Seasonal classical works in the warm acoustic of the Philharmonie's Chamber Music Hall - a calm island inside the Advent bustle.",
+    "url": "https://www.getyourguide.com/berlin-l17/berlin-advent-concert-in-the-chamber-music-hall-of-the-berlin-philharmonic-t1493003/"
   },
   {
-    "id": "deja-vu-museum-berlin",
-    "name": "DeJa Vu Museum, Berlin",
+    "id": "christmas-market-photoshoot",
+    "name": "Christmas Market Photoshoot",
     "coordinates": {
-      "lat": 52.5323,
-      "lng": 13.4154
+      "lat": 52.5131764,
+      "lng": 13.3942108
     },
-    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Berlin-Prenzlauer_Berg_-_signs_for_Kollwitzplatz_01.jpg?width=800",
-    "description": "A quirky subculture museum exploring déjà vu experiences and perception in Prenzlauer Berg.",
-    "url": "https://www.getyourguide.com/deja-vu-museum-berlin-l190551/"
+    "image_url": "https://cdn.getyourguide.com/img/tour/80d91abe5a5cd79e.jpeg/148.jpg",
+    "description": "A private photographer accompanies you through a Christmas market, catching festive portraits against the fairy lights.",
+    "url": "https://www.getyourguide.com/berlin-l17/berlin-christmas-market-photoshoot-t555548/"
   },
   {
-    "id": "dark-matter-berlin",
+    "id": "candle-making-workshop",
+    "name": "Candle-Making Workshop with Prosecco",
     "coordinates": {
-      "lat": 52.4928,
-      "lng": 13.4927
+      "lat": 52.5397437,
+      "lng": 13.4074987
     },
-    "name": "DARK MATTER, Berlin",
-    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Discokugelpyramide_dark-matter_koepenicker-chaussee-46_2022-08-14.png?width=800",
-    "description": "Immersive light-art installation space in Kreuzberg dissecting perception and illusion.",
-    "url": "https://www.getyourguide.com/dark-matter-berlin-l176889/"
+    "image_url": "https://cdn.getyourguide.com/img/tour/f82f42537a7165950d789b269ea06017fcfe818e4017a3f786e50609e5242342.jpg/148.jpg",
+    "description": "Pour, scent and decorate your own candles in a hands-on workshop with a glass of Prosecco on the side - gifts ready by hand.",
+    "url": "https://www.getyourguide.com/berlin-l17/berlin-candle-making-workshop-with-prosecco-t1268674/"
   },
   {
-    "id": "legoland-discovery-centre-berlin",
-    "name": "LEGOLAND Discovery Centre, Berlin",
+    "id": "christmas-pottery-workshop",
+    "name": "Private Christmas Pottery Workshop",
     "coordinates": {
-      "lat": 52.5104,
-      "lng": 13.3753
+      "lat": 52.4931201,
+      "lng": 13.4170253
     },
-    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Entrance_to_Legoland_Discovery_Centre_Berlin.jpg?width=800",
-    "description": "Indoor brick playground at Potsdamer Platz with rides, a 4D cinema and miniature Berlin built from Lego.",
-    "url": "https://www.getyourguide.com/legoland-discovery-centre-berlin-l4693/"
+    "image_url": "https://cdn.getyourguide.com/img/tour/0ee0946acc2abbe813190395624bfaed1516a68ad94bafc9a1eaa32cb92da1d0.jpg/148.jpg",
+    "description": "Hand-build festive ceramics across two hours, mulled wine in hand, in a small-group studio session.",
+    "url": "https://www.getyourguide.com/berlin-l17/berlin-private-christmas-pottery-workshop-with-mulled-wine-t1492869/"
   },
   {
-    "id": "estrel-showtheater",
-    "name": "Estrel Showtheater",
+    "id": "christmas-cooking-class",
+    "name": "studio32 Christmas Cooking Class",
     "coordinates": {
-      "lat": 52.4736,
-      "lng": 13.4588
+      "lat": 52.4945318,
+      "lng": 13.3536522
     },
-    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Hotel_Estrel_und_B%C3%BCrogeb%C3%A4ude%2C_Sonnenallee_in_Berlin-Neuk%C3%B6lln.jpg?width=800",
-    "description": "Europe's largest entertainment venue staging large-scale musical spectacles in Neukölln's Estrel hotel.",
-    "url": "https://www.getyourguide.com/estrel-showtheater-l191134/"
+    "image_url": "https://cdn.getyourguide.com/img/tour/13e6a7d972b33acce57ecde8aa926775a1666ec8cb1e36ca9ba353b330731d51.jpeg/148.jpg",
+    "description": "Four hours cooking and baking a festive menu with a local host, and leaving with dishes worth a gift wrap.",
+    "url": "https://www.getyourguide.com/berlin-l17/studio32-berlin-christmas-and-holiday-cooking-class-t1312677/"
   },
   {
-    "id": "jannowitz-bridge",
-    "name": "Jannowitz Bridge",
+    "id": "christmas-with-bibi-tina",
+    "name": "Christmas with Bibi & Tina - The Musical",
     "coordinates": {
-      "lat": 52.5142,
-      "lng": 13.4195
+      "lat": 52.5056903,
+      "lng": 13.3290618
     },
-    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/20220806_Bahnhof_Berlin_Jannowitzbr%C3%BCcke_02.jpg?width=800",
-    "description": "A Spree crossing between Mitte and Kreuzberg, framed by river views and boat traffic.",
-    "url": "https://www.getyourguide.com/jannowitz-bridge-l178903/"
-  },
-  {
-    "id": "lake-tegel",
-    "name": "Lake Tegel",
-    "coordinates": {
-      "lat": 52.5746,
-      "lng": 13.255
-    },
-    "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/20240819_Tegeler_See.jpg?width=800",
-    "description": "Lakeside contemplation and swimming beaches just north of the city, framed by water-side walks.",
-    "url": "https://www.getyourguide.com/lake-tegel-l176845/"
+    "image_url": "https://cdn.getyourguide.com/img/tour/ed8ca031420baeeb7673c153ce26306c71acd5b023db82b7390a174036a21e64.jpg/148.jpg",
+    "description": "Berlin's winter season with the horse-mad TV favourite: a three-hour family musical staging.",
+    "url": "https://www.getyourguide.com/berlin-l17/berlin-christmas-with-bibi-tina-the-musical-t1428809/"
   }
 ]
