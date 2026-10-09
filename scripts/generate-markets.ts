@@ -1,11 +1,10 @@
 import fs from "fs";
 import path from "path";
-import { exec } from "child_process";
 import * as cheerio from "cheerio";
 import { parseDates, type Dates } from "../src/shared/dateParser.ts";
 
-const GEOJSON_URL =
-  "https://www.berlin.de/weihnachtsmarkt/suche/.x-feed/category.geojson?id=10135126&language=en_GB&_rnd=496605";
+const RAW_URLS_PATH = path.resolve("data/markets-raw.json");
+const OUTPUT_PATH = path.resolve("data/markets.json");
 
 const DATA_MAP: Record<string, Dates> = {
   "On all Sundays in Advent 2026 (29 November, 6, 13 and 20 December 2026)": {
@@ -152,13 +151,10 @@ interface MarketDetails {
   admission: string;
 }
 
-// Retry budget: attempts 1..6 with 2s/4s/8s/16s/32s backoff (~62s of waiting),
-// extended by an explicit Retry-After when the server sends one (capped at 5 min).
 const RETRY_ATTEMPTS = 6;
 const RETRY_BASE_MS = 2_000;
 const RETRY_MAX_DELAY_MS = 60_000;
 const RETRY_MAX_RETRY_AFTER_MS = 300_000;
-// 408/425/429 and 5xx are worth retrying; other 4xx (e.g. 404) never will be.
 const RETRYABLE_STATUS = new Set([408, 425, 429, 500, 502, 503, 504]);
 
 function parseRetryAfter(response: Response): number | null {
@@ -219,9 +215,6 @@ async function getMarketDetails(url: string): Promise<MarketDetails> {
   const text = await response.text();
   const $ = cheerio.load(text);
   const dl = $(".info-container-list");
-  if (!dl.length) {
-    console.warn(`Warning: No .info-container-list found on ${url}`);
-  }
   const details: MarketDetails = {
     dates: "Not found",
     opening_times: "Not found",
@@ -252,9 +245,15 @@ async function getMarketDetails(url: string): Promise<MarketDetails> {
           } else {
             const parsed = parseDates(ddText);
             if (!parsed) {
-              throw new Error(`could not resolve dates: "${ddText}"`);
+              details[key] = {
+                raw: ddText,
+                type: "range",
+                start_date: "",
+                end_date: "",
+              };
+            } else {
+              details[key] = parsed;
             }
-            details[key] = parsed;
           }
         } else {
           details[key] = ddText;
@@ -265,6 +264,31 @@ async function getMarketDetails(url: string): Promise<MarketDetails> {
 
   return details;
 }
+
+async function geocodeAddress(
+  address: string,
+): Promise<{ lat: number; lng: number } | null> {
+  try {
+    const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}&limit=1`;
+    const response = await fetch(url, {
+      headers: {
+        "User-Agent": "ChristmasMarketsApp/1.0 (me@malachisoord.com)",
+      },
+    });
+    if (!response.ok) return null;
+    const data = (await response.json()) as Array<{ lat: string; lon: string }>;
+    if (Array.isArray(data) && data.length > 0) {
+      return {
+        lat: parseFloat(data[0].lat),
+        lng: parseFloat(data[0].lon),
+      };
+    }
+  } catch (err) {
+    console.error(`Geocoding error for "${address}":`, err);
+  }
+  return null;
+}
+
 interface MarketFailure {
   name: string;
   url: string;
@@ -273,57 +297,70 @@ interface MarketFailure {
 
 const failures: MarketFailure[] = [];
 
-async function processMarket(index: number, total: number, feature: unknown) {
-  const label = `[${index + 1}/${total}]`;
-  let name = "(unknown market)";
-  let url = "";
-
+async function processMarket(index: number, total: number, url: string) {
+  console.log(`[${index + 1}/${total}] Fetching ${url}`);
   try {
-    if (
-      !feature ||
-      typeof feature !== "object" ||
-      !("properties" in feature) ||
-      !("geometry" in feature)
-    ) {
-      throw new Error("invalid feature structure");
+    const response = await fetchWithRetry(url);
+    const html = await response.text();
+    const $ = cheerio.load(html);
+
+    const name =
+      $("meta[property='og:title']").attr("content") ||
+      $("h1").first().text().trim() ||
+      "Unknown Market";
+
+    let address = "";
+    const street =
+      $(".street-address").text().trim() || $(".street").text().trim();
+    const postal = $(".postal-code").text().trim();
+    const locality = $(".locality").text().trim();
+    if (street || postal || locality) {
+      address = `${street}, ${locality}, ${postal}, Deutschland`;
+    } else {
+      address = "Berlin, Deutschland";
     }
-    const { properties, geometry } = feature as {
-      properties: {
-        title: string;
-        url: string;
-        address: string;
-        description?: string;
-        image?: { url: string };
-      };
-      geometry: { coordinates: [number, number] };
-    };
 
-    const props = properties;
-    const coords = geometry.coordinates;
-    name = props.title;
-    url = props.url;
+    let lat = 52.52;
+    let lng = 13.4;
+    const latStr = $("div.geomap-map").attr("data-marker-lat");
+    const lngStr = $("div.geomap-map").attr("data-marker-long");
 
-    console.log(`${label} Fetching ${props.title}...`);
-    const details = await getMarketDetails(props.url);
+    if (latStr && lngStr) {
+      lat = parseFloat(latStr);
+      lng = parseFloat(lngStr);
+    } else if (address) {
+      console.log(`Geocoding address fallback for ${name}: ${address}`);
+      const coords = await geocodeAddress(address);
+      if (coords) {
+        lat = coords.lat;
+        lng = coords.lng;
+      }
+    }
+
+    const image_url = $("meta[property='og:image']").attr("content") || "";
+
+    const description =
+      $("meta[property='og:description']").attr("content") ||
+      $(".text p").first().text().trim() ||
+      "";
+
+    const details = await getMarketDetails(url);
 
     return {
-      name: props.title,
-      address: props.address,
+      name,
+      address,
       dates: details.dates,
       opening_times: details.opening_times,
       admission: details.admission,
-      description: props.description || "",
-      image_url: props.image?.url ?? "",
-      coordinates: {
-        lng: coords[0],
-        lat: coords[1],
-      },
-      url: props.url,
+      description,
+      image_url,
+      coordinates: { lng, lat },
+      url,
     };
   } catch (err) {
-    const error = err instanceof Error ? err.message : String(err);
-    failures.push({ name, url, error });
-    console.error(`${label} FAILED ${name}: ${error}`);
+    const errMsg = err instanceof Error ? err.message : String(err);
+    console.error(`Failed to process ${url}: ${errMsg}`);
+    failures.push({ name: url, url, error: errMsg });
     return null;
   }
 }
@@ -334,73 +371,42 @@ function delay(ms: number): Promise<void> {
   return promise;
 }
 
-async function processMarketsSequential(features: unknown[]) {
-  const totalMarkets = features.length;
-  const marketResults = [];
-  // Berlin.de rate-limits aggressively; one in-flight fetch with a small
-  // pause between requests avoids 429 storms entirely.
-  const REQUEST_GAP_MS = 250;
-  for (let i = 0; i < features.length; i++) {
-    const market = await processMarket(i, totalMarkets, features[i]);
-    if (market) marketResults.push(market);
-    if (i < features.length - 1) await delay(REQUEST_GAP_MS);
+async function processMarketsSequential(urls: string[]) {
+  const results = [];
+  for (let i = 0; i < urls.length; i++) {
+    const market = await processMarket(i, urls.length, urls[i]);
+    if (market) {
+      results.push(market);
+    }
+    if (i < urls.length - 1) {
+      await delay(1000);
+    }
   }
-  return marketResults;
+  return results;
 }
 
 async function main() {
-  const start = performance.now();
-  console.log("Fetching main list...");
-
-  let features: unknown[];
-  try {
-    const response = await fetchWithRetry(GEOJSON_URL);
-    const data = (await response.json()) as { features: unknown[] };
-    features = data.features;
-  } catch (err) {
-    const error = err instanceof Error ? err.message : String(err);
-    console.error(`FAILED to fetch the market list: ${error}`);
-    console.error("Nothing was written. Re-run once the feed is reachable.");
-    process.exitCode = 1;
-    return;
+  if (!fs.existsSync(RAW_URLS_PATH)) {
+    console.error(`Error: ${RAW_URLS_PATH} not found.`);
+    process.exit(1);
   }
 
-  const totalMarkets = features.length;
-  console.log(`Found ${totalMarkets} markets. Starting fetch...`);
-  const markets = await processMarketsSequential(features);
-
-  if (failures.length) {
-    console.error(
-      `\n${failures.length}/${totalMarkets} markets failed - markets.json NOT written:`,
-    );
-    for (const failure of failures) {
-      console.error(
-        `  - ${failure.name} (${failure.url || "no url"}): ${failure.error}`,
-      );
-    }
-    console.error(
-      "Re-run once the failures above are resolved, or fix the parser if the wording changed.",
-    );
-    process.exitCode = 1;
-    return;
-  }
-
-  markets.sort((a, b) => a.name.localeCompare(b.name));
-
-  const dataDir = path.join(process.cwd(), "data");
-  if (!fs.existsSync(dataDir)) {
-    fs.mkdirSync(dataDir);
-  }
-  fs.writeFileSync(
-    path.join(dataDir, "markets.json"),
-    // Match Prettier's JSON output (printWidth 100 collapses short arrays onto one line)
-    // so the generated file never needs a separate format pass.
-    JSON.stringify(markets, null, 2) + "\n",
-  );
-  await exec("npx prettier --write data/markets.json");
-  const end = performance.now();
+  const urls: string[] = JSON.parse(fs.readFileSync(RAW_URLS_PATH, "utf-8"));
   console.log(
-    `Wrote ${markets.length} markets in ${((end - start) / 1000).toFixed(2)} seconds.`,
+    `Loaded ${urls.length} market URLs from markets-raw.json. Starting scrape...`,
   );
+
+  const markets = await processMarketsSequential(urls);
+
+  fs.writeFileSync(OUTPUT_PATH, JSON.stringify(markets, null, 2));
+  console.log(`Successfully wrote ${markets.length} markets to ${OUTPUT_PATH}`);
+
+  if (failures.length > 0) {
+    console.warn(`\nEncountered ${failures.length} failures:`);
+    for (const f of failures) {
+      console.warn(`- ${f.name} (${f.url}): ${f.error}`);
+    }
+  }
 }
+
 main();
