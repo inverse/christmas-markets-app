@@ -28,6 +28,9 @@
   let L: typeof import("leaflet");
   let markers: SvelteMap<string, L.Marker>;
   let popupMarkets: Map<L.Popup, string>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let markerClusterGroup: any;
+
   let openPopupName: string | null = null;
   let pendingPopupClear: ReturnType<typeof setTimeout> | null = null;
   let unsubscribeSelected: (() => void) | null = null;
@@ -41,6 +44,7 @@
   onMount(async () => {
     if (browser) {
       const leaflet = await import("leaflet");
+      await import("leaflet.markercluster");
       L = leaflet.default || leaflet;
       // SvelteMap needs to be imported if it is from svelte
       const makeTreeIcon = (
@@ -123,25 +127,30 @@
 
       markers = new SvelteMap<string, L.Marker>();
       popupMarkets = new SvelteMap<L.Popup, string>();
+      markerClusterGroup = L.markerClusterGroup({
+        maxClusterRadius: 50,
+        spiderfyOnMaxZoom: true,
+        showCoverageOnHover: false,
+        zoomToBoundsOnClick: true,
+      });
       markets.forEach((market: Market) => {
         const status: MarketStatus =
           statusByMarket.get(market.name) ?? "unknown";
         const marker = L.marker(
           [market.coordinates.lat, market.coordinates.lng],
           { icon: treeIcons[status] },
-        )
-          .addTo(map)
-          .bindPopup(
-            () =>
-              buildPopup(market, statusByMarket.get(market.name) ?? "unknown"),
-            { maxWidth: 340, minWidth: 280, autoPanPadding: L.point(20, 60) },
-          );
+        ).bindPopup(
+          () =>
+            buildPopup(market, statusByMarket.get(market.name) ?? "unknown"),
+          { maxWidth: 340, minWidth: 280, autoPanPadding: L.point(20, 60) },
+        );
         const popup = marker.getPopup();
         if (popup) popupMarkets.set(popup, market.name);
         markers.set(market.name, marker);
+        markerClusterGroup.addLayer(marker);
       });
+      map.addLayer(markerClusterGroup);
       if (__ENABLE_GYG_ATTRACTIONS__) {
-        const layer = L.layerGroup();
         attractions.forEach((attraction: Attraction) => {
           const marker = L.marker(
             [attraction.coordinates.lat, attraction.coordinates.lng],
@@ -155,11 +164,11 @@
             minWidth: 280,
             autoPanPadding: L.point(20, 60),
           });
-          layer.addLayer(marker);
+          markerClusterGroup.addLayer(marker);
           attractionMarkers.push(marker);
         });
-        layer.addTo(map);
       }
+
       markersReady = true;
 
       // Leaflet closes the previous popup when another one opens, so
@@ -188,11 +197,13 @@
         if (name !== null && markers.has(name)) {
           const marker = markers.get(name);
           if (marker && map && !marker.isPopupOpen()) {
-            marker.openPopup();
-            map.setView(
-              [marker.getLatLng().lat + 0.006, marker.getLatLng().lng],
-              15,
-            );
+            markerClusterGroup.zoomToShowLayer(marker, () => {
+              marker.openPopup();
+              map.setView(
+                [marker.getLatLng().lat + 0.006, marker.getLatLng().lng],
+                15,
+              );
+            });
           }
         } else if (name === null) {
           map.closePopup();
