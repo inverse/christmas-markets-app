@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import * as cheerio from "cheerio";
+import * as prettier from "prettier";
 import { parseDates, type Dates } from "../src/shared/dateParser.ts";
 
 const RAW_URLS_PATH = path.resolve("data/markets-raw.json");
@@ -398,7 +399,13 @@ async function main() {
 
   const markets = await processMarketsSequential(urls);
 
-  fs.writeFileSync(OUTPUT_PATH, JSON.stringify(markets, null, 2));
+  const jsonContent = JSON.stringify(markets, null, 2);
+  const config = await prettier.resolveConfig(OUTPUT_PATH);
+  const formatted = await prettier.format(jsonContent, {
+    ...config,
+    filepath: OUTPUT_PATH,
+  });
+  fs.writeFileSync(OUTPUT_PATH, formatted);
   console.log(`Successfully wrote ${markets.length} markets to ${OUTPUT_PATH}`);
 
   if (failures.length > 0) {
