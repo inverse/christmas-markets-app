@@ -35,19 +35,28 @@
   );
 
   const filteredMarkets = $derived(
-    sortedMarkets.filter(
-      (market) =>
-        activeFilter === "all" ||
-        statusByMarket.get(market.name) === activeFilter,
-    ),
+    sortedMarkets.filter((market) => {
+      if (activeFilter === "all") return true;
+      const status = statusByMarket.get(market.name) ?? "unknown";
+      if (activeFilter === "upcoming") {
+        return status === "upcoming" || status === "unknown";
+      }
+      return status === activeFilter;
+    }),
   );
 
   const filterOptions: { id: Filter; label: string }[] = [
     { id: "all", label: "All" },
     { id: "open", label: "Open now" },
     { id: "upcoming", label: "Upcoming" },
-    { id: "unknown", label: "Dates TBA" },
   ];
+
+  function getCount(id: Filter): number {
+    if (id === "upcoming") {
+      return counts.upcoming + counts.unknown;
+    }
+    return counts[id];
+  }
 
   const counts = $derived.by(() => {
     const counts: Record<Filter, number> = {
@@ -276,18 +285,16 @@
         class="drag-guard mb-3 flex gap-1.5 overflow-x-auto px-1 pb-1 scrollbar-thin"
       >
         {#each filterOptions as filter (filter.id)}
-          {#if filter.id !== "unknown" || counts[filter.id] > 0}
-            <button
-              onclick={() => (activeFilter = filter.id)}
-              aria-pressed={activeFilter === filter.id}
-              class="whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-semibold transition {activeFilter ===
-              filter.id
-                ? 'border-pine bg-pine text-white'
-                : 'border-stone-200 bg-surface text-stone-600 hover:border-gold hover:text-ink-brand'}"
-            >
-              {filter.label} <span class="opacity-70">{counts[filter.id]}</span>
-            </button>
-          {/if}
+          <button
+            onclick={() => (activeFilter = filter.id)}
+            aria-pressed={activeFilter === filter.id}
+            class="whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-semibold transition {activeFilter ===
+            filter.id
+              ? 'border-pine bg-pine text-white'
+              : 'border-stone-200 bg-surface text-stone-600 hover:border-gold hover:text-ink-brand'}"
+          >
+            {filter.label} <span class="opacity-70">{getCount(filter.id)}</span>
+          </button>
         {/each}
       </div>
       <ul class="space-y-2">
