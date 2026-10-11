@@ -38,12 +38,6 @@
 <svelte:head>
   <link rel="icon" href="/icons/logo.svg" />
   <link rel="manifest" href="/manifest.json" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin="anonymous"
-  />
 
   <link
     rel="stylesheet"
@@ -53,10 +47,6 @@
     referrerpolicy="no-referrer"
   />
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap"
-    rel="stylesheet"
-  />
   <title>{TITLE}</title>
   <meta name="description" content={DESCRIPTION} />
 

@@ -39,10 +39,17 @@
   let userNearest: NearestMarket | null = null;
   let treeIcons: Record<MarketStatus, L.DivIcon>;
   let markersReady = $state(false);
+  let mapReady = $state(false);
+  let tileLayerCleanup: (() => void) | undefined;
   let attractionMarkers: L.Marker[] = [];
 
-  onMount(async () => {
-    if (browser) {
+  onMount(() => {
+    let cancelled = false;
+    let firstFrame = 0;
+    let secondFrame = 0;
+
+    const initializeMap = async () => {
+      if (!browser) return;
       const leaflet = await import("leaflet");
       await import("leaflet.markercluster");
       L = leaflet.default || leaflet;
@@ -112,7 +119,7 @@
         iconAnchor: [16, 16],
       });
 
-      map = L.map(mapElement, { zoomControl: false }).setView(
+      map = L.map(mapElement, { zoomControl: false, maxZoom: 19 }).setView(
         [52.52, 13.4],
         12,
       );
@@ -121,9 +128,23 @@
       // OpenStreetMap tiles in both themes; night mode darkens them with a CSS
       // filter on the tile pane (see app.css) so markers, popups and controls
       // keep their real colours and only one basemap is ever fetched.
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: "&copy; OpenStreetMap contributors",
-      }).addTo(map);
+      const addTiles = () => {
+        if (cancelled) return;
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          attribution: "&copy; OpenStreetMap contributors",
+          updateWhenIdle: true,
+          keepBuffer: 1,
+        }).addTo(map);
+      };
+
+      if (document.readyState === "complete") {
+        const timer = window.setTimeout(addTiles, 0);
+        tileLayerCleanup = () => window.clearTimeout(timer);
+      } else {
+        const onLoad = () => window.setTimeout(addTiles, 0);
+        window.addEventListener("load", onLoad, { once: true });
+        tileLayerCleanup = () => window.removeEventListener("load", onLoad);
+      }
 
       markers = new SvelteMap<string, L.Marker>();
       popupMarkets = new SvelteMap<L.Popup, string>();
@@ -210,8 +231,22 @@
         }
       });
 
+      mapReady = true;
       mapStore.set(map);
-    }
+    };
+
+    firstFrame = requestAnimationFrame(() => {
+      secondFrame = requestAnimationFrame(() => {
+        if (!cancelled) void initializeMap();
+      });
+    });
+
+    return () => {
+      cancelled = true;
+      cancelAnimationFrame(firstFrame);
+      cancelAnimationFrame(secondFrame);
+      tileLayerCleanup?.();
+    };
   });
 
   $effect(() => {
@@ -311,10 +346,14 @@
   }
 </script>
 
-<div bind:this={mapElement} class="h-screen w-full relative">
+<div
+  bind:this={mapElement}
+  class="relative h-screen w-full bg-cream"
+  aria-busy={!mapReady}
+>
   <button
     onclick={findMe}
-    disabled={isLoadingLocation}
+    disabled={isLoadingLocation || !mapReady}
     title="Find my location"
     class="absolute top-4 right-4 z-[1000] flex items-center justify-center w-11 h-11 bg-snow text-pine rounded-full shadow-lg border-2 border-gold hover:bg-gold-light/40 transition disabled:opacity-50"
   >
