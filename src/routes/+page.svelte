@@ -93,7 +93,7 @@
   <button
     onclick={openMenu}
     aria-expanded={$menuOpen}
-    class="site-menu-button absolute top-4 left-4 z-[500] flex items-center gap-2 bg-pine text-snow pl-3 pr-4 py-2.5 rounded-full shadow-lg border border-gold/60 hover:bg-pine-dark transition"
+    class="font-sans site-menu-button absolute top-4 left-4 z-[500] flex items-center gap-2 bg-pine text-snow pl-3 pr-4 py-2.5 rounded-full shadow-lg border border-gold/60 hover:bg-pine-dark transition"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -104,7 +104,7 @@
       stroke-linecap="round"
       class="w-5 h-5"><path d="M4 7h16M4 12h16M4 17h16" /></svg
     >
-    <span class="font-display font-semibold">Menu</span>
+    <span class="font-sans font-semibold">Menu</span>
   </button>
 
   {#if $menuOpen}

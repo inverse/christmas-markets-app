@@ -224,7 +224,7 @@
           />
         </div>
         <div>
-          <h2 class="font-display text-xl font-bold leading-tight text-white">
+          <h2 class="font-sans text-xl font-bold leading-tight text-white">
             Christmas Markets
           </h2>
           <p class="mt-0.5 text-xs text-gold">
@@ -260,14 +260,14 @@
     <div class="grid grid-cols-2 gap-2">
       <button
         onclick={() => close(onShowWelcome)}
-        class="flex items-center justify-center gap-1.5 rounded-lg border border-pine/30 bg-surface px-3 py-2.5 text-xs font-semibold text-ink-brand shadow-xs transition hover:bg-pine hover:text-white"
+        class="font-display flex items-center justify-center gap-1.5 rounded-lg border border-pine/30 bg-surface px-3 py-2.5 text-xs font-semibold text-ink-brand shadow-xs transition hover:bg-pine hover:text-white"
       >
         <span class="text-base">🎄</span>
         <span>Welcome</span>
       </button>
       <button
         onclick={() => close(onShowAbout)}
-        class="flex items-center justify-center gap-1.5 rounded-lg border border-pine/30 bg-surface px-3 py-2.5 text-xs font-semibold text-ink-brand shadow-xs transition hover:bg-pine hover:text-white"
+        class="font-display flex items-center justify-center gap-1.5 rounded-lg border border-pine/30 bg-surface px-3 py-2.5 text-xs font-semibold text-ink-brand shadow-xs transition hover:bg-pine hover:text-white"
       >
         <span class="text-base">ℹ️</span>
         <span>About</span>
@@ -288,7 +288,7 @@
           <button
             onclick={() => (activeFilter = filter.id)}
             aria-pressed={activeFilter === filter.id}
-            class="whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-semibold transition {activeFilter ===
+            class="font-display whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-semibold transition {activeFilter ===
             filter.id
               ? 'border-pine bg-pine text-white'
               : 'border-stone-200 bg-surface text-stone-600 hover:border-gold hover:text-ink-brand'}"
