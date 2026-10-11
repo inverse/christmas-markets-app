@@ -281,17 +281,22 @@
 
         // Zoom to fit both user and nearest market
         if (nearest) {
-          const box = boundingBox([user, nearest.market.coordinates]);
-          if (box) {
-            map.fitBounds(
-              L.latLngBounds(
-                L.latLng(box.south, box.west),
-                L.latLng(box.north, box.east),
-              ),
-              { padding: [100, 100] },
-            );
+          const marketMarker = markers.get(nearest.market.name);
+          if (marketMarker) {
+            markerClusterGroup.zoomToShowLayer(marketMarker, () => {
+              const box = boundingBox([user, nearest.market.coordinates]);
+              if (box) {
+                map.fitBounds(
+                  L.latLngBounds(
+                    L.latLng(box.south, box.west),
+                    L.latLng(box.north, box.east),
+                  ),
+                  { padding: [100, 100] },
+                );
+              }
+              marketMarker.openPopup();
+            });
           }
-          markers.get(nearest.market.name)?.openPopup();
         } else {
           map.setView(userLatLng, 15);
         }
