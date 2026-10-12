@@ -153,7 +153,16 @@ export function openMenu() {
 export function closeMenu() {
   if (!get(menuIsOpen)) return;
   menuIsOpen.set(false);
-  if (currentView() === "menu") clearView();
+  // Strip the hash in place instead of history.back(): going back fires
+  // popstate onto the pre-menu entry, whose URL lacks the ?date= plan, and
+  // that would silently clear the selected visit date.
+  if (currentView() === "menu" && window.location.hash === MENU_HASH) {
+    window.history.replaceState(
+      { ...window.history.state, [MARKER]: null },
+      "",
+      window.location.pathname + window.location.search,
+    );
+  }
 }
 
 // The drawer is a transient overlay over the map, not a page. A modal opened
