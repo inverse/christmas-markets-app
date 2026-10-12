@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { page } from "$app/state";
   import Map from "$lib/components/Map.svelte";
   import MarketList from "$lib/components/MarketList.svelte";
   import WelcomeModal from "$lib/components/WelcomeModal.svelte";
@@ -20,21 +21,40 @@
   import { simulatedDate } from "$lib/utils/date";
   import {
     getEarliestDate,
-    isMarketOpen,
+    isMarketOpenOnDate,
+    isValidIsoDate,
+    nextMarketDate,
+    seasonRange,
+    toIsoDate,
     type MarketStatus,
   } from "$lib/utils/marketStatus";
 
   let { data } = $props();
   let markets = $derived(data.markets);
   let now = $derived($simulatedDate || new Date());
+  let today = $derived(toIsoDate(now));
 
-  const statusByMarket = $derived.by(() => {
+  // Optional ?date=YYYY-MM-DD; absent or invalid means "today" (normal view).
+  function dateFromSearch(search: string): string | null {
+    const date = new URLSearchParams(search).get("date");
+    return date && isValidIsoDate(date) ? date : null;
+  }
+  let planDate = $state<string | null>(dateFromSearch(page.url.search));
+  let statusDay = $derived(planDate ?? today);
+
+  function statusesOn(day: string) {
     const statuses = new SvelteMap<string, MarketStatus>();
     for (const market of markets) {
-      statuses.set(market.name, isMarketOpen(market.dates, now).status);
+      statuses.set(market.name, isMarketOpenOnDate(market.dates, day).status);
     }
     return statuses;
-  });
+  }
+
+  const statusByMarket = $derived(statusesOn(statusDay));
+  // The welcome modal describes the real present, never the planned day.
+  const todayStatuses = $derived(
+    planDate ? [...statusesOn(today).values()] : [...statusByMarket.values()],
+  );
 
   const earliestDates = $derived.by(() => {
     const dates = new SvelteMap<string, Date>();
@@ -44,13 +64,36 @@
     return dates;
   });
 
-  const anyMarketOpen = $derived(
-    [...statusByMarket.values()].some((status) => status === "open"),
+  const season = $derived(seasonRange(markets));
+  const nextDate = $derived(
+    planDate ? nextMarketDate(markets, planDate) : null,
   );
+
+  // Writes the plan date into the current history entry, keeping its hash and
+  // history.state (SvelteKit's replaceState would drop the #menu view marker).
+  function syncUrl() {
+    const query = planDate ? `?date=${planDate}` : "";
+    window.history.replaceState(
+      window.history.state,
+      "",
+      `${window.location.pathname}${query}${window.location.hash}`,
+    );
+  }
+
+  function selectDate(date: string | null) {
+    planDate = date;
+    syncUrl();
+  }
+
+  // Adopts the date already in the entry we landed on; the URL is the source
+  // of truth, so no history write happens here.
+  function restoreDateFromUrl() {
+    planDate = dateFromSearch(window.location.search);
+  }
+
+  const anyMarketOpen = $derived(todayStatuses.some((s) => s === "open"));
   const allMarketsClosed = $derived(
-    [...statusByMarket.values()].every(
-      (status) => status === "closed" || status === "unknown",
-    ),
+    todayStatuses.every((s) => s === "closed" || s === "unknown"),
   );
 
   const daysUntilFirst = $derived.by(() => {
@@ -73,6 +116,8 @@
   });
 </script>
 
+<!-- Back/forward lands on an entry whose ?date may differ from memory; adopt it. -->
+<svelte:window onpopstate={restoreDateFromUrl} />
 <main class="h-screen w-screen relative">
   {#if $welcomeOpen}
     <WelcomeModal
@@ -112,6 +157,10 @@
       {markets}
       {statusByMarket}
       {earliestDates}
+      {planDate}
+      {nextDate}
+      {season}
+      onSetDate={selectDate}
       onClose={closeMenu}
       onShowWelcome={openWelcome}
       onShowAbout={openAbout}

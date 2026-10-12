@@ -177,7 +177,12 @@ async function fetchWithRetry(url: string): Promise<Response> {
   for (let attempt = 1; attempt <= RETRY_ATTEMPTS; attempt++) {
     let response: Response | null = null;
     try {
-      response = await fetch(url);
+      response = await fetch(url, {
+        headers: {
+          "User-Agent":
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        },
+      });
     } catch (err) {
       lastError = err instanceof Error ? err.message : String(err);
     }

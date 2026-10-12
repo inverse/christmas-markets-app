@@ -9,6 +9,7 @@ A web application for discovering and navigating the festive Christmas markets i
 - **Market Details:** Detailed popups featuring descriptions, addresses, operating dates, hours, and admission information.
 - **Market List:** Browse all available markets via the integrated menu.
 - **Operating Status:** Automatically highlights whether a market is currently open.
+- **Plan a Visit:** Pick a date in the menu to see which markets are open that day; map icons and list statuses follow the chosen date. The date is kept in the URL (`?date=YYYY-MM-DD`) so plans can be shared; **Back to today** returns to the live view.
 - **Geolocation:** Quickly locate yourself on the map with the 'Find Me' button.
 - **Installable:** Add the map to your home screen for a full-screen, app-like experience.
 - **Night Mode:** Follows your system theme by default, with a day/night switch in the menu that darkens the map and every panel.

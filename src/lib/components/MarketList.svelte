@@ -2,7 +2,7 @@
   import { statusInfo, type MarketStatus } from "$lib/utils/marketStatus";
   import { selectedMarket } from "$lib/mapStore";
   import { isDark, toggleTheme } from "$lib/utils/theme";
-  import { onMount } from "svelte";
+  import { onMount, untrack } from "svelte";
   import GetYourGuideWidget from "$lib/components/GetYourGuideWidget.svelte";
   import { fade, fly } from "svelte/transition";
   import type { Market } from "$shared/types";
@@ -13,6 +13,10 @@
     markets,
     statusByMarket,
     earliestDates,
+    planDate,
+    nextDate,
+    season,
+    onSetDate,
     onClose,
     onShowWelcome,
     onShowAbout,
@@ -20,11 +24,16 @@
     markets: Market[];
     statusByMarket: Map<string, MarketStatus>;
     earliestDates: Map<string, Date>;
+    planDate: string | null;
+    nextDate: string | null;
+    season: { start: string; end: string } | null;
+    onSetDate: (date: string | null) => void;
     onClose: () => void;
     onShowWelcome: () => void;
     onShowAbout: () => void;
   }>();
-  let activeFilter = $state<Filter>("all");
+  // Opening the drawer with a planned day lands on that day's open markets.
+  let activeFilter = $state<Filter>(untrack(() => planDate) ? "open" : "all");
 
   const sortedMarkets = $derived(
     [...markets].sort((a, b) => {
@@ -45,11 +54,27 @@
     }),
   );
 
-  const filterOptions: { id: Filter; label: string }[] = [
+  // Parsed as UTC so the label never shifts a day in western time zones.
+  const dayLabel = new Intl.DateTimeFormat(undefined, {
+    weekday: "short",
+    day: "numeric",
+    month: "short",
+    timeZone: "UTC",
+  });
+  const planLabel = $derived(
+    planDate ? dayLabel.format(new Date(`${planDate}T00:00:00Z`)) : null,
+  );
+
+  const filterOptions = $derived<{ id: Filter; label: string }[]>([
     { id: "all", label: "All" },
-    { id: "open", label: "Open now" },
+    { id: "open", label: planLabel ? `Open ${planLabel}` : "Open now" },
     { id: "upcoming", label: "Upcoming" },
-  ];
+  ]);
+
+  function setDate(date: string | null) {
+    activeFilter = date ? "open" : "all";
+    onSetDate(date);
+  }
 
   function getCount(id: Filter): number {
     if (id === "upcoming") {
@@ -273,11 +298,42 @@
         <span>About</span>
       </button>
     </div>
+    <div class="mb-2 flex items-end justify-between px-1">
+      <h3 class="font-display font-bold text-ink-brand">
+        <label for="visit-date">Plan a visit</label>
+      </h3>
+    </div>
+    <div class="rounded-xl border border-pine/20 bg-pine/5 p-3">
+      <p class="mb-2 text-xs text-stone-600">
+        Want to know what's open on a particular day? Pick a date and the map
+        and list will show you.
+      </p>
+      <div class="flex items-center gap-2">
+        <input
+          id="visit-date"
+          type="date"
+          value={planDate ?? ""}
+          min={season?.start}
+          max={season?.end}
+          onchange={(event) => setDate(event.currentTarget.value || null)}
+          class="min-w-0 flex-1 rounded-lg border border-pine/30 bg-surface px-3 py-2.5 text-sm font-semibold shadow-xs transition focus:border-gold focus:outline-none focus-visible:ring-2 focus-visible:ring-gold/60 [&::-webkit-calendar-picker-indicator]:cursor-pointer {planDate
+            ? 'text-ink-brand'
+            : 'text-stone-400'}"
+        />
+        {#if planDate}
+          <button
+            onclick={() => setDate(null)}
+            class="whitespace-nowrap rounded-lg px-2 py-2 text-xs font-semibold text-pine underline"
+            >Clear</button
+          >
+        {/if}
+      </div>
+    </div>
 
     <section>
       <div class="mb-2 flex items-end justify-between px-1">
         <h3 class="font-display font-bold text-ink-brand">Markets</h3>
-        <span class="text-xs font-semibold text-ink-berry"
+        <span class="text-xs font-semibold text-stone-500"
           >{filteredMarkets.length} shown</span
         >
       </div>
@@ -353,7 +409,20 @@
           <li
             class="rounded-xl border border-dashed border-stone-300 p-5 text-center text-sm text-stone-500"
           >
-            No markets match this filter.
+            {#if planDate && activeFilter === "open"}
+              <p>No markets are open on {planLabel}.</p>
+              {#if nextDate}
+                <button
+                  onclick={() => setDate(nextDate)}
+                  class="mt-3 rounded-full bg-pine px-4 py-2 text-xs font-semibold text-white"
+                  >Jump to {dayLabel.format(
+                    new Date(`${nextDate}T00:00:00Z`),
+                  )}</button
+                >
+              {/if}
+            {:else}
+              No markets match this filter.
+            {/if}
           </li>
         {/each}
       </ul>
