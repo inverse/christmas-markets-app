@@ -321,7 +321,7 @@ async function processMarket(index: number, total: number, url: string) {
     const postal = $(".postal-code").text().trim();
     const locality = $(".locality").text().trim();
     if (street || postal || locality) {
-      address = `${street}, ${locality}, ${postal}, Deutschland`;
+      address = `${street}, ${postal}, ${locality}`;
     } else {
       address = "Berlin, Deutschland";
     }

@@ -12,10 +12,10 @@ export function escapeHtml(value: string | undefined | null): string {
 }
 
 /** One labeled info line: fixed-width icon column + evenly spaced content. */
-function row(icon: string, content: string): string {
+function row(icon: string, label: string, content: string): string {
   return `<div class="flex items-start gap-3 text-[13px] leading-relaxed text-stone-800">
 					<i class="fa-solid ${icon} mt-1 w-4 shrink-0 text-center text-[13px] leading-none text-stone-600" aria-hidden="true"></i>
-					<span class="min-w-0 flex-1">${content}</span>
+					<span class="min-w-0 flex-1"><span class="mr-1.5 font-semibold text-stone-600">${label}:</span>${content}</span>
 				</div>`;
 }
 
@@ -27,7 +27,7 @@ export function buildPopup(market: Market, status: MarketStatus): string {
   const dates = escapeHtml(market.dates?.raw ? market.dates.raw : "Check site");
   const description =
     market.description && market.description !== "Not found"
-      ? `<div class="border-b border-gold/20 pb-3 text-[13px] italic leading-relaxed text-stone-700">${escapeHtml(
+      ? `<div class="border-b border-gold/20 pb-3 text-[13px] leading-relaxed text-stone-800">${escapeHtml(
           market.description,
         )}</div>`
       : "";
@@ -39,9 +39,13 @@ export function buildPopup(market: Market, status: MarketStatus): string {
     market.admission &&
     !["Not found", "Not yet known"].includes(market.admission);
   const admission = hasAdmission
-    ? row("fa-euro-sign", escapeHtml(market.admission))
+    ? row(
+        "fa-euro-sign",
+        "Admission",
+        `<strong class="text-ink-brand">${escapeHtml(market.admission)}</strong>`,
+      )
     : "";
-
+  const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${market.coordinates.lat},${market.coordinates.lng}`)}`;
   return `<div class="max-h-[80vh] overflow-y-auto rounded-2xl border-4 border-gold bg-surface font-sans shadow-2xl">
 				<div class="relative h-40">
 					<img src="${escapeHtml(market.image_url)}" alt="${name}" loading="lazy" class="h-full w-full object-cover" />
@@ -54,12 +58,12 @@ export function buildPopup(market: Market, status: MarketStatus): string {
 				<div class="h-1 w-full bg-gradient-to-r from-pine via-gold to-berry"></div>
 				<div class="space-y-3 p-4">
 					${description}
-					${row("fa-location-dot", address)}
-        ${row("fa-calendar-days", `<span class="font-medium text-ink-brand">${dates}</span>`)}
-					${row("fa-clock", openingTimes)}
+					${row("fa-location-dot", "Address", `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(market.address)}" target="_blank" rel="noopener" class="font-medium text-ink-brand underline decoration-gold underline-offset-2 hover:text-pine">${address}</a>`)}
+        ${row("fa-calendar-days", "Date", `<strong class="text-ink-brand">${dates}</strong>`)}
+					${row("fa-clock", "Hours", `<strong>${openingTimes}</strong>`)}
 					${admission}
 					<div class="grid grid-cols-2 gap-2">
-						<a href="https://www.google.com/maps/dir/?api=1&destination=${market.coordinates.lat},${market.coordinates.lng}" target="_blank" rel="noopener" class="block text-center text-sm font-bold py-2.5 rounded-lg bg-pine !text-white shadow-lg transition hover:bg-pine-dark"><i class="fa-solid fa-diamond-turn-right mr-1.5" aria-hidden="true"></i>Directions</a>
+						<a href="${directionsUrl}" target="_blank" rel="noopener" class="block text-center text-sm font-bold py-2.5 rounded-lg bg-pine !text-white shadow-lg transition hover:bg-pine-dark"><i class="fa-solid fa-diamond-turn-right mr-1.5" aria-hidden="true"></i>Directions</a>
 						<a href="${url}" target="_blank" rel="noopener" class="block text-center text-sm font-bold py-2.5 rounded-lg bg-gold !text-pine-dark shadow-lg transition hover:bg-gold-light">View details</a>
 					</div>
 				</div>

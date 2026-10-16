@@ -1,7 +1,7 @@
 [
   {
     "name": "Medieval Christmas Market at Britz Palace",
-    "address": "Alt-Britz 73, Berlin, 12359, Deutschland",
+    "address": "Alt-Britz 73, 12359, Berlin",
     "dates": {
       "raw": "Not yet known",
       "type": "range",
@@ -20,7 +20,7 @@
   },
   {
     "name": "Christmas Flea Market on Kranoldplatz",
-    "address": "Kranoldplatz, Berlin, 12051, Deutschland",
+    "address": "Kranoldplatz, 12051, Berlin",
     "dates": {
       "raw": "Not yet known",
       "type": "range",
@@ -39,7 +39,7 @@
   },
   {
     "name": "Nowkoelln Xmas Flowmarkt",
-    "address": "Maybachufer 31, Berlin, 12047, Deutschland",
+    "address": "Maybachufer 31, 12047, Berlin",
     "dates": {
       "raw": "Not yet known",
       "type": "range",
@@ -58,7 +58,7 @@
   },
   {
     "name": "Rudow Christmas Mile",
-    "address": "Krokusstraße 93, Berlin, 12357, Deutschland",
+    "address": "Krokusstraße 93, 12357, Berlin",
     "dates": {
       "raw": "Not yet known",
       "type": "range",
@@ -77,7 +77,7 @@
   },
   {
     "name": "Advent Market in Alt-Buckow",
-    "address": "Alt-Buckow 16-18, Berlin, 12349, Deutschland",
+    "address": "Alt-Buckow 16-18, 12349, Berlin",
     "dates": {
       "raw": "Not yet known",
       "type": "range",
@@ -96,7 +96,7 @@
   },
   {
     "name": "Christmas Market on the Dicke Linda",
-    "address": "Kranoldplatz, Berlin, 12051, Deutschland",
+    "address": "Kranoldplatz, 12051, Berlin",
     "dates": {
       "raw": "Not yet known",
       "type": "range",
@@ -115,7 +115,7 @@
   },
   {
     "name": "Christmas Bazaar in Britz",
-    "address": "Deutsch-Kroner-Ring 25, Berlin, 12349, Deutschland",
+    "address": "Deutsch-Kroner-Ring 25, 12349, Berlin",
     "dates": {
       "raw": "Not yet known",
       "type": "range",
@@ -134,7 +134,7 @@
   },
   {
     "name": "Christmas Market on Alexanderplatz",
-    "address": "Alexanderplatz, Berlin, 10178, Deutschland",
+    "address": "Alexanderplatz, 10178, Berlin",
     "dates": {
       "raw": "Not yet known",
       "type": "range",
@@ -153,7 +153,7 @@
   },
   {
     "name": "Wintermünze",
-    "address": "Molkenmarkt 2, Berlin, 10179, Deutschland",
+    "address": "Molkenmarkt 2, 10179, Berlin",
     "dates": {
       "raw": "Not yet known",
       "type": "range",
@@ -172,7 +172,7 @@
   },
   {
     "name": "Bloody X-Mas Market",
-    "address": "Schumannstraße 22, Berlin, 10117, Deutschland",
+    "address": "Schumannstraße 22, 10117, Berlin",
     "dates": {
       "raw": "Not yet known",
       "type": "range",
@@ -191,7 +191,7 @@
   },
   {
     "name": "Christmas Bazaar in the Atrium of the Federal Foreign Office",
-    "address": "Werderscher Markt 1, Berlin, 10117, Deutschland",
+    "address": "Werderscher Markt 1, 10117, Berlin",
     "dates": {
       "raw": "Not yet known",
       "type": "range",
@@ -210,7 +210,7 @@
   },
   {
     "name": "Christmas Magic in Buch",
-    "address": "Alt-Buch 45-51, Berlin, 13125, Deutschland",
+    "address": "Alt-Buch 45-51, 13125, Berlin",
     "dates": {
       "raw": "Not yet known",
       "type": "range",
@@ -229,7 +229,7 @@
   },
   {
     "name": "Sustainable Christmas Market at Schönhausen Palace",
-    "address": "Tschaikowskistraße 1, Berlin, 13156, Deutschland",
+    "address": "Tschaikowskistraße 1, 13156, Berlin",
     "dates": {
       "raw": "Not yet known",
       "type": "range",
@@ -248,7 +248,7 @@
   },
   {
     "name": "St. Nicholas Market at the Children's Farm Pinke-Panke",
-    "address": "Am Bürgerpark 15-18, Berlin, 13156, Deutschland",
+    "address": "Am Bürgerpark 15-18, 13156, Berlin",
     "dates": {
       "raw": "Not yet known",
       "type": "range",
@@ -267,7 +267,7 @@
   },
   {
     "name": "Advent Bazaar of the Kaspar Hauser Foundation",
-    "address": "Rolandstraße  35, Berlin, 13156, Deutschland",
+    "address": "Rolandstraße  35, 13156, Berlin",
     "dates": {
       "raw": "Not yet known",
       "type": "range",
@@ -286,7 +286,7 @@
   },
   {
     "name": "Spandauer Winterland",
-    "address": "Klosterstraße 38, Berlin, 13581, Deutschland",
+    "address": "Klosterstraße 38, 13581, Berlin",
     "dates": {
       "raw": "Not yet known",
       "type": "range",
@@ -305,7 +305,7 @@
   },
   {
     "name": "Christmas Market at Spandau City Hall",
-    "address": "Carl-Schurz-Straße 2-6, Berlin, 13597, Deutschland",
+    "address": "Carl-Schurz-Straße 2-6, 13597, Berlin",
     "dates": {
       "raw": "Not yet known",
       "type": "range",
@@ -324,7 +324,7 @@
   },
   {
     "name": "Christmas Market at the Evangelical St. John's Foundation",
-    "address": "Schönwalder Allee 26, Berlin, 13587, Deutschland",
+    "address": "Schönwalder Allee 26, 13587, Berlin",
     "dates": {
       "raw": "Not yet known",
       "type": "range",
@@ -343,7 +343,7 @@
   },
   {
     "name": "Social Christmas Market in Spandau",
-    "address": "Pillnitzer Weg 8, Berlin, 13593, Deutschland",
+    "address": "Pillnitzer Weg 8, 13593, Berlin",
     "dates": {
       "raw": "Not yet known",
       "type": "range",
@@ -362,7 +362,7 @@
   },
   {
     "name": "Arts and Crafts Christmas Market in Gatow",
-    "address": "Alt-Gatow 32-38, Berlin, 14089, Deutschland",
+    "address": "Alt-Gatow 32-38, 14089, Berlin",
     "dates": {
       "raw": "Not yet known",
       "type": "range",
@@ -381,7 +381,7 @@
   },
   {
     "name": "Advent Market at Domäne Dahlem",
-    "address": "Königin-Luise-Straße  49, Berlin, 14195, Deutschland",
+    "address": "Königin-Luise-Straße  49, 14195, Berlin",
     "dates": {
       "raw": "On all weekends in Advent (November 28 and 29, December 5, 6, 12, 13, 19, and 20, 2026)",
       "type": "dates",
@@ -408,7 +408,7 @@
   },
   {
     "name": "Advent Market in Leonhardtstraße",
-    "address": "Leonhardtstraße, Berlin, 14057, Deutschland",
+    "address": "Leonhardtstraße, 14057, Berlin",
     "dates": {
       "raw": "December 06, 2026",
       "type": "range",
@@ -427,7 +427,7 @@
   },
   {
     "name": "Advent Market on Karl-August-Platz",
-    "address": "Karl-August-Platz, Berlin, 10625, Deutschland",
+    "address": "Karl-August-Platz, 10625, Berlin",
     "dates": {
       "raw": "November 29, 2026",
       "type": "range",
@@ -446,7 +446,7 @@
   },
   {
     "name": "Advent Market on Kollwitzplatz",
-    "address": "Kollwitzplatz 1, Berlin, 10435, Deutschland",
+    "address": "Kollwitzplatz 1, 10435, Berlin",
     "dates": {
       "raw": "On all Sundays in Advent 2026 (29 November, 6, 13 and 20 December 2026)",
       "type": "dates",
@@ -464,7 +464,7 @@
   },
   {
     "name": "Berlin Dog Christmas Market",
-    "address": "Hüttenweg 90, Berlin, 14193, Deutschland",
+    "address": "Hüttenweg 90, 14193, Berlin",
     "dates": {
       "raw": "November 28 and 29, 2026",
       "type": "dates",
@@ -482,7 +482,7 @@
   },
   {
     "name": "Christmas Fair on Landsberger Allee",
-    "address": "Landsberger Allee 300, Berlin, 13055, Deutschland",
+    "address": "Landsberger Allee 300, 13055, Berlin",
     "dates": {
       "raw": "October 31 to December 27, 2026",
       "type": "range",
@@ -501,7 +501,7 @@
   },
   {
     "name": "Christmas in Westend",
-    "address": "Preußenallee, Berlin, 14052, Deutschland",
+    "address": "Preußenallee, 14052, Berlin",
     "dates": {
       "raw": "December 19 and 20, 2026",
       "type": "dates",
@@ -519,7 +519,7 @@
   },
   {
     "name": "Christmas Market at Berlin City Hall",
-    "address": "Rathausstraße 15, Berlin, 10178, Deutschland",
+    "address": "Rathausstraße 15, 10178, Berlin",
     "dates": {
       "raw": "November 23, 2026 to January 3, 2027",
       "type": "range",
@@ -538,7 +538,7 @@
   },
   {
     "name": "Christmas Market at Charlottenburg Palace",
-    "address": "Spandauer Damm  20, Berlin, 14059, Deutschland",
+    "address": "Spandauer Damm  20, 14059, Berlin",
     "dates": {
       "raw": "November 23 to December 27, 2026",
       "type": "range",
@@ -557,7 +557,7 @@
   },
   {
     "name": "Christmas Market at Späth'sche Baumschulen",
-    "address": "Späthstraße 80, Berlin, 12437, Deutschland",
+    "address": "Späthstraße 80, 12437, Berlin",
     "dates": {
       "raw": "On the first three Advent weekends in 2026 (November 28 and 29, December 05, 06, 12, and 13)",
       "type": "dates",
@@ -582,7 +582,7 @@
   },
   {
     "name": "Christmas Market at the Berlin Animal Shelter",
-    "address": "Hausvaterweg 39, Berlin, 13057, Deutschland",
+    "address": "Hausvaterweg 39, 13057, Berlin",
     "dates": {
       "raw": "December 6, 2026",
       "type": "range",
@@ -601,7 +601,7 @@
   },
   {
     "name": "Christmas Market at the Humboldt Forum",
-    "address": "Schlossplatz, Berlin, 10178, Deutschland",
+    "address": "Schlossplatz, 10178, Berlin",
     "dates": {
       "raw": "November 18, 2026 until January 03, 2027",
       "type": "range",
@@ -620,7 +620,7 @@
   },
   {
     "name": "Christmas Market in Alt-Rixdorf",
-    "address": "Richardplatz 28, Berlin, 12055, Deutschland",
+    "address": "Richardplatz 28, 12055, Berlin",
     "dates": {
       "raw": "December 4-6, 2026",
       "type": "range",
@@ -639,7 +639,7 @@
   },
   {
     "name": "Christmas Market in Spandau",
-    "address": "Marktstraße 10, Berlin, 13597, Deutschland",
+    "address": "Marktstraße 10, 13597, Berlin",
     "dates": {
       "raw": "November 23 to December 22, 2026",
       "type": "range",
@@ -677,7 +677,7 @@
   },
   {
     "name": "Christmas Market on Gendarmenmarkt",
-    "address": "Gendarmenmarkt, Berlin, 10117, Deutschland",
+    "address": "Gendarmenmarkt, 10117, Berlin",
     "dates": {
       "raw": "November 23 to December 31, 2026",
       "type": "range",
@@ -696,7 +696,7 @@
   },
   {
     "name": "Finnish Advent Bazaar",
-    "address": "Marheinekeplatz 1, Berlin, 10961, Deutschland",
+    "address": "Marheinekeplatz 1, 10961, Berlin",
     "dates": {
       "raw": "November 14-15, 2026",
       "type": "range",
@@ -715,7 +715,7 @@
   },
   {
     "name": "Holy Shit Shopping",
-    "address": "Eichenstraße 4A, Berlin, 12435, Deutschland",
+    "address": "Eichenstraße 4A, 12435, Berlin",
     "dates": {
       "raw": "November 28 and 29, 2026",
       "type": "dates",
@@ -733,7 +733,7 @@
   },
   {
     "name": "LGBTIQA Winterdays and Christmas Avenue",
-    "address": "Nollendorfplatz, Berlin, 10787, Deutschland",
+    "address": "Nollendorfplatz, 10787, Berlin",
     "dates": {
       "raw": "November 4 to December 23, 2026; closed on November 15 (Remembrance Day) and November 22 (All Souls’ Day)",
       "type": "dates",
@@ -800,7 +800,7 @@
   },
   {
     "name": "Lucia Christmas Market at Kulturbrauerei",
-    "address": "Schönhauser Allee 36, Berlin, 10435, Deutschland",
+    "address": "Schönhauser Allee 36, 10435, Berlin",
     "dates": {
       "raw": "November 23 to December 22, 2026",
       "type": "range",
@@ -819,7 +819,7 @@
   },
   {
     "name": "Medieval Christmas Market at the RAW Compound",
-    "address": "Revaler Straße 99, Berlin, 10245, Deutschland",
+    "address": "Revaler Straße 99, 10245, Berlin",
     "dates": {
       "raw": "November 12 - December 22, 2026",
       "type": "range",
@@ -838,7 +838,7 @@
   },
   {
     "name": "Pankow Advent Market at Heynhöfe",
-    "address": "Heynstraße 15, Berlin, 13187, Deutschland",
+    "address": "Heynstraße 15, 13187, Berlin",
     "dates": {
       "raw": "December 5 and 6, 2026",
       "type": "dates",
@@ -856,7 +856,7 @@
   },
   {
     "name": "Sustainable Christmas Market on Sophienstraße",
-    "address": "Sophienstraße, Berlin, 10178, Deutschland",
+    "address": "Sophienstraße, 10178, Berlin",
     "dates": {
       "raw": "On all Advent weekends in 2026 (November 28 and 29, as well as December 5, 6, 12, 13, 19 and 21, 2026)",
       "type": "dates",
@@ -883,7 +883,7 @@
   },
   {
     "name": "Swedish Christmas Bazaar",
-    "address": "Landhausstraße 26-28, Berlin, 10717, Deutschland",
+    "address": "Landhausstraße 26-28, 10717, Berlin",
     "dates": {
       "raw": "November 28 and 29, 2026",
       "type": "dates",
@@ -901,7 +901,7 @@
   },
   {
     "name": "Wein-Nachtsmarkt at Ludwig-Beck-Platz",
-    "address": "Ludwig-Beck-Platz, Berlin, 12203, Deutschland",
+    "address": "Ludwig-Beck-Platz, 12203, Berlin",
     "dates": {
       "raw": "12-13 December 2026",
       "type": "range",
