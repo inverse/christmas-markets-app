@@ -74,11 +74,11 @@ npm run publish:web
 A `_headers` file in the project root sets Cloudflare Pages cache headers for
 the deployed assets:
 
-| Path | Cache-Control | Notes |
-|---|---|---|
-| `/manifest.json`, `/robots.txt` | `public, max-age=86400` | 1 day at the edge |
-| `/_app/immutable/*` | `public, max-age=31536000, immutable` | Filenames are content-hashed; never rename them manually |
-| `/icons/*` | `public, max-age=604800` | 7 days; filenames are NOT hashed |
+| Path                            | Cache-Control                         | Notes                                                    |
+| ------------------------------- | ------------------------------------- | -------------------------------------------------------- |
+| `/manifest.json`, `/robots.txt` | `public, max-age=86400`               | 1 day at the edge                                        |
+| `/_app/immutable/*`             | `public, max-age=31536000, immutable` | Filenames are content-hashed; never rename them manually |
+| `/icons/*`                      | `public, max-age=604800`              | 7 days; filenames are NOT hashed                         |
 
 ### Updating an icon
 
