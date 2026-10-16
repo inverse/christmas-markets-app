@@ -1,17 +1,21 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import type { Dates } from "$shared/dateParser";
+import type { Market } from "$shared/types";
 import {
-  isMarketOpen,
   isMarketOpenOnDate,
   getEarliestDate,
   isAllClosed,
   isValidIsoDate,
   nextMarketDate,
   seasonRange,
+  toIsoDate,
 } from "./marketStatus";
-import type { Market } from "$shared/types";
 
-describe("isMarketOpen", () => {
+function statusToday(dates: Dates) {
+  return isMarketOpenOnDate(dates, toIsoDate(new Date()));
+}
+
+describe("market status for today", () => {
   beforeEach(() => {
     vi.useFakeTimers();
   });
@@ -28,7 +32,7 @@ describe("isMarketOpen", () => {
       start_date: "2026-11-18",
       end_date: "2027-01-03",
     };
-    const result = isMarketOpen(dates, new Date());
+    const result = statusToday(dates);
     expect(result.status).toBe("upcoming");
   });
 
@@ -40,7 +44,7 @@ describe("isMarketOpen", () => {
       start_date: "2026-08-01",
       end_date: "2026-09-01",
     };
-    const result = isMarketOpen(dates, new Date());
+    const result = statusToday(dates);
     expect(result.status).toBe("open");
   });
 
@@ -51,7 +55,7 @@ describe("isMarketOpen", () => {
       type: "dates",
       dates: ["2026-12-01", "2026-12-02"],
     };
-    const result = isMarketOpen(dates, new Date());
+    const result = statusToday(dates);
     expect(result.status).toBe("open");
   });
 
@@ -63,7 +67,7 @@ describe("isMarketOpen", () => {
       start_date: "2026-11-18",
       end_date: "2027-01-03",
     };
-    const result = isMarketOpen(dates, new Date());
+    const result = statusToday(dates);
     expect(result.status).toBe("closed");
   });
 
@@ -72,7 +76,7 @@ describe("isMarketOpen", () => {
       raw: "...",
       type: "unknown",
     } as unknown as Dates;
-    const result = isMarketOpen(dates, new Date());
+    const result = statusToday(dates);
     expect(result.status).toBe("unknown");
   });
 
@@ -84,7 +88,7 @@ describe("isMarketOpen", () => {
       start_date: "2026-08-01",
       end_date: "2026-09-01",
     };
-    const result = isMarketOpen(dates, new Date());
+    const result = statusToday(dates);
     expect(result.status).toBe("open");
   });
 
@@ -95,7 +99,7 @@ describe("isMarketOpen", () => {
       type: "dates",
       dates: ["2026-08-28"],
     };
-    const result = isMarketOpen(dates, new Date());
+    const result = statusToday(dates);
     expect(result.status).toBe("open");
   });
 
@@ -106,7 +110,7 @@ describe("isMarketOpen", () => {
       type: "dates",
       dates: ["2026-12-01"],
     };
-    const result = isMarketOpen(dates, new Date());
+    const result = statusToday(dates);
     expect(result.status).toBe("upcoming");
   });
 
@@ -118,7 +122,7 @@ describe("isMarketOpen", () => {
       start_date: "2026-12-01",
       end_date: "2026-12-24",
     };
-    const result = isMarketOpen(dates, new Date());
+    const result = statusToday(dates);
     expect(result.status).toBe("open");
   });
 
@@ -130,7 +134,7 @@ describe("isMarketOpen", () => {
       start_date: "2026-12-01",
       end_date: "2026-12-24",
     };
-    const result = isMarketOpen(dates, new Date());
+    const result = statusToday(dates);
     expect(result.status).toBe("open");
   });
 
@@ -142,7 +146,7 @@ describe("isMarketOpen", () => {
       start_date: "2026-12-01",
       end_date: "2026-12-24",
     };
-    const result = isMarketOpen(dates, new Date());
+    const result = statusToday(dates);
     expect(result.status).toBe("closed");
   });
 
@@ -154,7 +158,7 @@ describe("isMarketOpen", () => {
       start_date: "2026-12-01",
       end_date: "2026-12-24",
     };
-    const result = isMarketOpen(dates, new Date());
+    const result = statusToday(dates);
     expect(result.status).toBe("upcoming");
   });
 
@@ -165,7 +169,7 @@ describe("isMarketOpen", () => {
       type: "dates",
       dates: ["2026-12-01", "2026-12-05"],
     };
-    const result = isMarketOpen(dates, new Date());
+    const result = statusToday(dates);
     expect(result.status).toBe("open");
   });
 
@@ -176,7 +180,7 @@ describe("isMarketOpen", () => {
       type: "dates",
       dates: ["2026-12-01", "2026-12-05"],
     };
-    const result = isMarketOpen(dates, new Date());
+    const result = statusToday(dates);
     expect(result.status).toBe("open");
   });
 
@@ -187,7 +191,7 @@ describe("isMarketOpen", () => {
       type: "dates",
       dates: ["2026-12-01", "2026-12-05"],
     };
-    const result = isMarketOpen(dates, new Date());
+    const result = statusToday(dates);
     expect(result.status).toBe("closed");
   });
 
@@ -198,7 +202,7 @@ describe("isMarketOpen", () => {
       type: "dates",
       dates: ["2026-12-01", "2026-12-05"],
     };
-    const result = isMarketOpen(dates, new Date());
+    const result = statusToday(dates);
     expect(result.status).toBe("upcoming");
   });
 
@@ -209,7 +213,7 @@ describe("isMarketOpen", () => {
       type: "dates",
       dates: ["2026-12-01", "2026-12-05"],
     };
-    const result = isMarketOpen(dates, new Date());
+    const result = statusToday(dates);
     expect(result.status).toBe("closed");
   });
 
@@ -219,7 +223,7 @@ describe("isMarketOpen", () => {
       type: "dates",
       dates: [],
     };
-    const result = isMarketOpen(dates, new Date());
+    const result = statusToday(dates);
     expect(result.status).toBe("unknown");
   });
 
@@ -229,7 +233,7 @@ describe("isMarketOpen", () => {
       type: "range",
       start_date: "2026-12-01",
     } as unknown as Dates;
-    const result = isMarketOpen(dates, new Date());
+    const result = statusToday(dates);
     expect(result.status).toBe("unknown");
   });
 });

@@ -90,10 +90,10 @@
         </h3>
         <p>
           Every winter, Berlin comes alive with dozens of Christmas markets, but
-          finding out which ones are open right now, where they are, and what
-          dates they run always felt harder than it should be. I built this map
-          to make it simple for locals and visitors to explore the city's
-          festive season and plan outings together.
+          finding out which ones are open today, where they are, and what dates
+          they run always felt harder than it should be. I built this map to
+          make it simple for locals and visitors to explore the city's festive
+          season and plan outings together.
         </p>
       </section>
 

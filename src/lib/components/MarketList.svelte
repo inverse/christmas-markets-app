@@ -67,7 +67,7 @@
 
   const filterOptions = $derived<{ id: Filter; label: string }[]>([
     { id: "all", label: "All" },
-    { id: "open", label: planLabel ? `Open ${planLabel}` : "Open now" },
+    { id: "open", label: planLabel ? `Open ${planLabel}` : "Open today" },
     { id: "upcoming", label: "Upcoming" },
   ]);
 

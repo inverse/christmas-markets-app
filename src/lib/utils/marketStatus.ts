@@ -67,10 +67,6 @@ export function isMarketOpenOnDate(dates: Dates, day: string): OpenResult {
   return { isOpen: false, status: "unknown" };
 }
 
-export function isMarketOpen(dates: Dates, now: Date): OpenResult {
-  return isMarketOpenOnDate(dates, toIsoDate(now));
-}
-
 export function isValidIsoDate(value: string): boolean {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
   const date = new Date(`${value}T00:00:00Z`);
