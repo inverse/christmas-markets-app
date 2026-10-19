@@ -337,6 +337,14 @@
           >{filteredMarkets.length} shown</span
         >
       </div>
+      <a
+        href="https://forms.gle/eoZER8JEssuHaGtDA"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mb-3 inline-block px-1 text-xs font-semibold text-ink-brand underline decoration-gold underline-offset-2 hover:text-ink-gold"
+      >
+        Know a market we're missing? Tell us about it
+      </a>
       <div
         class="drag-guard mb-3 flex gap-1.5 overflow-x-auto px-1 pb-1 scrollbar-thin"
       >
