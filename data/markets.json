@@ -917,5 +917,817 @@
       "lat": 52.4428
     },
     "url": "https://www.berlin.de/en/christmas-markets/9332973-3230598-weinachtsmarkt-at-ludwig-beck-platz.en.html"
+  },
+  {
+    "name": "CJD Advent Market",
+    "address": "Reichstagufer 14, 10117, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Not yet known",
+    "description": "Every year, original and lovingly handcrafted products from the Christmas workshop of the Christliches Jugenddorfwerk Deutschland are offered at the CJD Advent Market.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9837481/ratio_4_3/1768998517/800x600/",
+    "coordinates": {
+      "lng": 13.3845,
+      "lat": 52.5193
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/5698641-3230598-cjd-advent-market.en.html"
+  },
+  {
+    "name": "Winter Market at the Wendenschloss Lido",
+    "address": "Möllhausenufer 30, 12557, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Not yet known",
+    "description": "The Christmas market on the banks of the Dahme has become a crowd favorite with curling, carneval attractions, mulled wine variations and bonfires.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7883886/ratio_4_3/1669204516/800x600/",
+    "coordinates": {
+      "lng": 13.5995,
+      "lat": 52.4154
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/7876023-3230598-winterzauber-strandbad-wendenschloss.en.html"
+  },
+  {
+    "name": "Danish Christmas Market",
+    "address": "Brienner Straße 12, 10713, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Free",
+    "description": "Christianskirkens julemarked, the Danish Christmas market on Brienner Straße, attracts visitors to Wilmersdorf with numerous Nordic specialties.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/1316232/ratio_4_3/1663929161/800x600/",
+    "coordinates": {
+      "lng": 13.3127,
+      "lat": 52.488
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/5701678-3230598-danish-christmas-market.en.html"
+  },
+  {
+    "name": "Christmas Market at Villa Donnersmarck",
+    "address": "Schädestraße 9, 14165, Berlin",
+    "dates": {
+      "raw": "Does not take place in 2025",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Not yet known",
+    "description": "During Advent, Villa Donnersmarck transforms into a real Christmas house. Families with children in particular can spend a contemplative day at the Christmas market.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/3683004/ratio_4_3/1661942177/800x600/",
+    "coordinates": {
+      "lng": 13.2584,
+      "lat": 52.4272
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/5703211-3230598-christmas-market-villa-donnersmarck.en.html"
+  },
+  {
+    "name": "Christmas Market in Grunewald",
+    "address": "Bismarckallee 28b, 14193, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Not yet known",
+    "description": "Since 1976, the Grunewald Christmas Market has been held on the 1st of Advent around the Grunewald Church.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9837421/ratio_4_3/1760516424/800x600/",
+    "coordinates": {
+      "lng": 13.2748,
+      "lat": 52.4854
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/5689204-3230598-christmas-market-grunewald.en.html"
+  },
+  {
+    "name": "Caribbean Christmas Market at Yaam",
+    "address": "An der Schillingbrücke 3, 10243, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Not yet known",
+    "description": "The Yaam on Ice Christmas market beckons with Caribbean charm, reggae and dancehall for your ears, tropical Christmas creations and all kinds of unusual gift ideas.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8562336/ratio_4_3/1700463797/800x600/",
+    "coordinates": {
+      "lng": 13.43,
+      "lat": 52.5097
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/8562243-3230598-caribbean-christmas-market-at-yaam.en.html"
+  },
+  {
+    "name": "Christmas Market at the Karlshorst Racing Track",
+    "address": "Treskowallee 159, 10318, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Not yet known",
+    "description": "This intercultural Christmas market takes place every year under the motto \"The world at home in Karlshorst\".",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9837433/ratio_4_3/1762329300/800x600/",
+    "coordinates": {
+      "lng": 13.5229,
+      "lat": 52.4752
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/5695405-3230598-christmas-market-karlshorst.en.html"
+  },
+  {
+    "name": "Christmas Market on Alice-Salomon-Platz",
+    "address": "Alice-Salomon-Platz, 12627, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Not yet known",
+    "description": "The family Christmas market in Hellersdorf will make children's eyes shine from the end of November.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9837391/ratio_4_3/1764054063/800x600/",
+    "coordinates": {
+      "lng": 13.6042,
+      "lat": 52.537
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/5742806-3230598-christmas-market-alice-salomon-platz.en.html"
+  },
+  {
+    "name": "Norwegian Christmas Bazaar",
+    "address": "Wartenburgstraße 7, 10963, Berlin",
+    "dates": "Not found",
+    "opening_times": "Not found",
+    "admission": "Not found",
+    "description": "The Norwegian Church in Berlin traditionally organizes a cozy Christmas bazaar in Kreuzberg in the Advent season.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7794549/ratio_4_3/1671006577/800x600/",
+    "coordinates": {
+      "lng": 13.3808,
+      "lat": 52.4957
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/7792272-3230598-norwegian-julebasar.en.html"
+  },
+  {
+    "name": "Christmas Market on Marzahner Promenade",
+    "address": "Marzahner Promenade 55, 12679, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Not yet known",
+    "description": "This neighbourhood Christmas market attracts visitors to Marzahn with fire bowls, a colorful cultural program and an international range of foods and goods.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/5084195/ratio_4_3/1664188705/800x600/",
+    "coordinates": {
+      "lng": 13.5555,
+      "lat": 52.5472
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/5748698-3230598-christmas-market-marzahner-promenade.en.html"
+  },
+  {
+    "name": "British Christmas Market",
+    "address": "Preußenallee 17, 14052, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Not yet known",
+    "description": "Under the motto \"A Very British Christmas\", the congregation of St George's Church in Charlottenburg organizes a cozy Christmas market every year.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7689369/ratio_4_3/1665386594/800x600/",
+    "coordinates": {
+      "lng": 13.2589,
+      "lat": 52.5121
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/7689300-3230598-british-christmas-market.en.html"
+  },
+  {
+    "name": "African Winter Market",
+    "address": "Luckenwalder Straße 3, 10963, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Not yet known",
+    "description": "If you are still looking for unusual Christmas presents, you should stop by the African goods market: This is where African culture, fashion and cuisine come together.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8565792/ratio_4_3/1700473330/800x600/",
+    "coordinates": {
+      "lng": 13.3765,
+      "lat": 52.4997
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/8565711-3230598-african-winter-market.en.html"
+  },
+  {
+    "name": "Italian Christmas Market",
+    "address": "Eichenstraße 4, 12435, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Not yet known",
+    "description": "Buon Natale! With numerous sweet and savory treats, the Christmas edition of the Italian Street Food Festival invites you to a calorie-rich Italian Christmas market.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8533027/ratio_4_3/1729590970/800x600/",
+    "coordinates": {
+      "lng": 13.4537,
+      "lat": 52.497
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/8532964-3230598-italian-christmas-market.en.html"
+  },
+  {
+    "name": "Japan Market Christmas Edition",
+    "address": "Am Flutgraben 2, 12435, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Not yet known",
+    "description": "At the end of November, the Christmas edition of the Berlin Japan Market will once again take place at the Festsaal Kreuzberg.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/10019005/ratio_4_3/1763109500/800x600/",
+    "coordinates": {
+      "lng": 13.4514,
+      "lat": 52.4969
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/7079116-3230598-japanmarkt-christmas-edition.en.html"
+  },
+  {
+    "name": "Japanese Christmas Market of Manufactories",
+    "address": "Potsdamer Straße 93, 10785, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Not yet known",
+    "description": "This Japanese Christmas market in Tiergarten is all about kōgei, the traditional crafts of Japan. ",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8538092/ratio_4_3/1699000972/800x600/",
+    "coordinates": {
+      "lng": 13.3645,
+      "lat": 52.5014
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/8538065-3230598-japanese-kogei-christmas-market.en.html"
+  },
+  {
+    "name": "Japanese Christmas Market",
+    "address": "Bessemerstr. 2, 12103, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not found",
+    "admission": "Not found",
+    "description": "This Christmas market is all about Japan. Visitors can sample Japanese food, make toys and purchase art and crafty gifts.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/5603758/ratio_4_3/1657792549/800x600/",
+    "coordinates": {
+      "lng": 13.3668,
+      "lat": 52.4662
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/3701010-3230598-japanese-christmas-market.en.html"
+  },
+  {
+    "name": "Winterquartier Berlin",
+    "address": "Modersohnstraße 49a, 10245, Berlin",
+    "dates": {
+      "raw": "November 29 to December 31, 2025",
+      "type": "range",
+      "start_date": "2025-11-29",
+      "end_date": "2025-12-31"
+    },
+    "opening_times": "Monday to Friday from 3 p.m. to 10 p.m.\nSaturday and Sunday from 12 noon to 10 p.m.\nPublic holidays from 10 a.m.\nClosed on December 24 and 25, 2025",
+    "admission": "On a donation basis",
+    "description": "A new Christmas world for Berlin: Christmas fans will find everything they could wish for at the Napoleon complex with a Christmas market, ice rink, curling and a cultural program.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9837466/ratio_4_3/1766398709/800x600/",
+    "coordinates": {
+      "lng": 13.4577,
+      "lat": 52.5033
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/9921991-3230598-winterquartier-berlin.en.html"
+  },
+  {
+    "name": "Winter Market on Teufelsberg",
+    "address": "Teufelsseechaussee 10, 14193, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Not yet known",
+    "description": "Berlin's highest Christmas tree stands in the green Wilmersdorf district on the Teufelsberg: the Winter Market attracts visitors with an atmospheric program.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9284124/ratio_4_3/1733314255/800x600/",
+    "coordinates": {
+      "lng": 13.2396,
+      "lat": 52.4966
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/9282624-3230598-winter-market-on-teufelsberg.en.html"
+  },
+  {
+    "name": "Culinary Christmas Market in Schöneberg",
+    "address": "Kolonnenstraße 62, 10827, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Not yet known",
+    "description": "Always follow your nose: One of Berlin's most delicious Christmas markets is hidden in a Schöneberg courtyard.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9248220/ratio_4_3/1730460233/800x600/",
+    "coordinates": {
+      "lng": 13.3593,
+      "lat": 52.4866
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/9248226-3230598-culinary-christmas-market-schoeneberg.en.html"
+  },
+  {
+    "name": "Christmas Market in Zehlendorf",
+    "address": "Kirchstraße 1, 14163, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Not yet known",
+    "description": "For five weeks, the old center of Zehlendorf in front of the town hall is illuminated in Christmas colors.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/4651625/ratio_4_3/1658142845/800x600/",
+    "coordinates": {
+      "lng": 13.2593,
+      "lat": 52.4331
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/5703047-3230598-christmas-market-zehlendorf.en.html"
+  },
+  {
+    "name": "Winter World on Potsdamer Platz",
+    "address": "Potsdamer Platz, 10785, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Not yet known",
+    "description": "Winter sports and Christmas markets come together at Potsdamer Platz during the Christmas season.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/4183572/ratio_4_3/1666598145/800x600/",
+    "coordinates": {
+      "lng": 13.3772,
+      "lat": 52.5089
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/3249647-3230598-christmas-market-at-potsdamer-platz.en.html"
+  },
+  {
+    "name": "Weihnachtsrodeo Design Market",
+    "address": "Schönhauser Allee 123, 10437, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Not yet known",
+    "description": "During Advent, the Colosseum hosts a Christmas market with a difference. Designers present creative gift ideas in a rather unique location.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9349756/ratio_4_3/1733994177/800x600/",
+    "coordinates": {
+      "lng": 13.4131,
+      "lat": 52.5479
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/4180727-3230598-weihnachtsrodeo-design-market.en.html"
+  },
+  {
+    "name": "Weddingmarkt - Christmas Edition",
+    "address": "Leopoldplatz, 13353, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Not yet known",
+    "description": "The Christmas Edition of the Weddingmarkt art market offers lots of unique gift ideas by local artists and designers.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7831133/ratio_4_3/1666779362/800x600/",
+    "coordinates": {
+      "lng": 13.3599,
+      "lat": 52.5475
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/7791702-3230598-weddingmarkt-christmas-edition.en.html"
+  },
+  {
+    "name": "Designer Christmas Market",
+    "address": "Am Flutgraben 2, 12435, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not found",
+    "admission": "Not found",
+    "description": "This Christmas market in Kreuzberg offers jewelry, fashion, art and stylish home goods from some of the best local designers.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/5577748/ratio_4_3/1661858145/800x600/",
+    "coordinates": {
+      "lng": 13.4514,
+      "lat": 52.4969
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/5589836-3230598-designer-christmas-market.en.html"
+  },
+  {
+    "name": "Winter Dream in Niederschöneweide",
+    "address": "Schnellerstraße 145, 12439, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Free",
+    "description": "The Christmas rush returns to Treptow! Berlin's Winter Dream Christmas Market is back on Schnellerstraße this year.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9975040/ratio_4_3/1761141056/800x600/",
+    "coordinates": {
+      "lng": 13.4982,
+      "lat": 52.4646
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/9229587-3230598-winter-dream-in-koepenick.en.html"
+  },
+  {
+    "name": "Christmas Market on Wilmersdorfer Straße",
+    "address": "Wilmersdorfer Straße, 10627, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Free",
+    "description": "The pedestrian zone on Wilmersdorfer Straße gets into the Christmas spirit at the end of the year.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/1322601/ratio_4_3/1662381500/800x600/",
+    "coordinates": {
+      "lng": 13.3064,
+      "lat": 52.5078
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/5697424-3230598-christmas-market-wilmersdorfer-strasse.en.html"
+  },
+  {
+    "name": "Christmas Market at the Bröhan Museum",
+    "address": "Schloßstraße 1a, 14059, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Not yet known",
+    "description": "The small Christmas market in front of the Bröhan Museum has become a real insider tip thanks to its neighborly, typically Berlin atmosphere and a careful selection of stalls.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8567781/ratio_4_3/1701769740/800x600/",
+    "coordinates": {
+      "lng": 13.2952,
+      "lat": 52.5189
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/3659759-3230598-christmas-market-broehan-museum.en.html"
+  },
+  {
+    "name": "St. Nicholas Market at Charlottenburg City Hall",
+    "address": "Otto-Suhr-Allee 100, 10585, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Not found",
+    "description": "Since 2007, the Charlottenburg-Wilmersdorf district office has been inviting visitors to its St. Nicholas Market at Charlottenburg City Hall every year.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8571966/ratio_4_3/1729576565/800x600/",
+    "coordinates": {
+      "lng": 13.3082,
+      "lat": 52.5172
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/5695766-3230598-st-nicholas-market-charlottenburg-city-h.en.html"
+  },
+  {
+    "name": "KiezWeihnacht",
+    "address": "Samariterstraße 14, 10247, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Not found",
+    "description": "Every year, visitors can stroll around the 60 stalls of this cozy neighborhood Christmas market in Friedrichshain's Samariterkiez.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/4662677/ratio_4_3/1662971487/800x600/",
+    "coordinates": {
+      "lng": 13.466,
+      "lat": 52.5177
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/5710579-3230598-christmas-market-samariterkiez.en.html"
+  },
+  {
+    "name": "All Inclusive Christmas Market at Spreespeicher",
+    "address": "Stralauer Allee 2, 10245, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Not yet known",
+    "description": "At this very special Christmas market near the Oberbaum Bridge, all foods and drinks are included in the market admission fee.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7132318/ratio_4_3/1666688910/800x600/",
+    "coordinates": {
+      "lng": 13.4489,
+      "lat": 52.5018
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/6333570-3230598-all-inclusive-christmas-market-at-sprees.en.html"
+  },
+  {
+    "name": "Heissa Holzmarkt",
+    "address": "Holzmarktstraße 25, 10243, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Not yet known",
+    "description": "The winter market on Holzmarktstraße boasts a very special atmosphere, extraordinary foods and drinks and a diverse program for all visitors.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7875639/ratio_4_3/1668773051/800x600/",
+    "coordinates": {
+      "lng": 13.4269,
+      "lat": 52.5115
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/5703554-3230598-heissa-holzmarkt.en.html"
+  },
+  {
+    "name": "Glühwald at Uber Platz",
+    "address": "Uber Platz, 10243, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Not yet known",
+    "description": "Uber Platz is transformed into a cozy Christmas forest during the Advent season.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7842425/ratio_4_3/1765189933/800x600/",
+    "coordinates": {
+      "lng": 13.4432,
+      "lat": 52.5057
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/7839542-3230598-gluehwald-at-uber-platz.en.html"
+  },
+  {
+    "name": "Kinky Christmas Market",
+    "address": "Köpenicker Straße 18-20, 10997, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Not yet known",
+    "description": "The Berlin Kinky Christmas Market has been part of the capital since 2023 and is expected to return in 2026.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8593942/ratio_4_3/1701770567/800x600/",
+    "coordinates": {
+      "lng": 13.433,
+      "lat": 52.5056
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/8593915-3230598-kinky-christmas-market.en.html"
+  },
+  {
+    "name": "Merry Markthalle",
+    "address": "Eisenbahnstraße 42, 10997, Berlin-Kreuzberg",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Not yet known",
+    "description": "Markthalle Neun is transformed into a cozy Christmas paradise during the Advent season.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8533490/ratio_4_3/1729594657/800x600/",
+    "coordinates": {
+      "lng": 13.432,
+      "lat": 52.502
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/8533421-3230598-merry-markthalle.en.html"
+  },
+  {
+    "name": "Solidarity Winter Market in Görlitzer Park",
+    "address": "Skalitzer Straße 47, 10997, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Not yet known",
+    "description": "The Solidarity Winter Market sees itself as an alternative to the many commercial Christmas markets in Berlin.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8572173/ratio_4_3/1702556649/800x600/",
+    "coordinates": {
+      "lng": 13.4338,
+      "lat": 52.4979
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/8572515-3230598-solidarity-winter-market-in-goerlitzer-p.en.html"
+  },
+  {
+    "name": "Advent Bazaar at the Christuskirche",
+    "address": "Dieffenbachstraße 39-40, 10967, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Not yet known",
+    "description": "On the Saturday before the first Advent, Christmas scents and sounds spread a contemplative atmosphere in Kreuzberg's Dieffenbachstraße.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7842431/ratio_4_3/1733315925/800x600/",
+    "coordinates": {
+      "lng": 13.4199,
+      "lat": 52.4919
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/7868574-3230598-advent-bazaar-at-the-christuskirche.en.html"
+  },
+  {
+    "name": "Artisan Christmas Market at Gotisches Haus",
+    "address": "Breite Straße 32, 13597, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Not yet known",
+    "description": "Anyone looking for regional and handmade Christmas gifts should head to the arts and crafts market in Spandau during the Advent season.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8572197/ratio_4_3/1744360183/800x600/",
+    "coordinates": {
+      "lng": 13.2065,
+      "lat": 52.5377
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/8572050-3230598-artisan-christmas-market-at-gotisches-ha.en.html"
+  },
+  {
+    "name": "Winter market in the Atelier Gardens",
+    "address": "Oberlandstraße 26-35, 12099, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Not yet known",
+    "description": "Enjoy the festive Christmas spirit with a clear conscience: the winter market at Atelier Gardens offers all kinds of sustainable products and gift ideas.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8567775/ratio_4_3/1733128871/800x600/",
+    "coordinates": {
+      "lng": 13.4113,
+      "lat": 52.4644
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/8567733-3230598-winter-market-in-the-atelier-gardens.en.html"
+  },
+  {
+    "name": "Christmas Market on Lehmann's Farm",
+    "address": "Alt-Marienfelde 35, 12277, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Not yet known",
+    "description": "Cozy Christmas in the south of Berlin: On the Lehmann farm in Marienfelde, visitors can enjoy a break from the big city while strolling through the local Christmas market.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8554101/ratio_4_3/1736332636/800x600/",
+    "coordinates": {
+      "lng": 13.3669,
+      "lat": 52.4119
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/5742213-3230598-christmas-market-lehmanns-bauernhof.en.html"
+  },
+  {
+    "name": "Christmas Market in Lichtenrade",
+    "address": "Alt-Lichtenrade, 12309, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Not yet known",
+    "description": "The Lichtenrade Christmas market is expected to take place for the 48th time in 2026. The old village green will be decked out in festive decorations during Advent.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/5497165/ratio_4_3/1658144680/800x600/",
+    "coordinates": {
+      "lng": 13.4102,
+      "lat": 52.39
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/5702850-3230598-christmas-lights-lichtenrade.en.html"
+  },
+  {
+    "name": "Christmas at Tempelhof Airport",
+    "address": "Tempelhofer Damm 45, 12101, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Not yet known",
+    "description": "With a Christmas winter market, Christmas tree sale, a big Christmas carol sing and a children's program, the old fire station of the THF Tower will be a winter wonderland.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9330348/ratio_4_3/1733914814/800x600/",
+    "coordinates": {
+      "lng": 13.3862,
+      "lat": 52.4781
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/9330357-3230598-christmas-at-tempelhof-airport.en.html"
+  },
+  {
+    "name": "Christmas Market Around the Marienfelde Village Church ",
+    "address": "An der Dorfkirche 5, 12277, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Not yet known",
+    "description": "An association of several institutions celebrates the Christmas season in Tempelhof with a Christmas market around the village church of Marienfelde.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9837445/ratio_4_3/1770105196/800x600/",
+    "coordinates": {
+      "lng": 13.3673,
+      "lat": 52.4134
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/5702336-3230598-christmas-market-marienfelde-village-chu.en.html"
+  },
+  {
+    "name": "Christmas Market at Alpinia",
+    "address": "Säntisstraße 32-34, 12107, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Free",
+    "description": "Christmas coziness in Tempelhof: The Hotel Landhaus Alpinia is once again hosting a small but exquisite Advent market this year.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7897041/ratio_4_3/1729593435/800x600/",
+    "coordinates": {
+      "lng": 13.392,
+      "lat": 52.4211
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/7897062-3230598-christmas-market-at-alpinia.en.html"
   }
 ]
