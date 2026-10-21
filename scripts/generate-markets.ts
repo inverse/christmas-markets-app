@@ -216,10 +216,7 @@ async function fetchWithRetry(url: string): Promise<Response> {
   throw new Error(`${lastError} (gave up after ${RETRY_ATTEMPTS} attempts)`);
 }
 
-async function getMarketDetails(url: string): Promise<MarketDetails> {
-  const response = await fetchWithRetry(url);
-  const text = await response.text();
-  const $ = cheerio.load(text);
+function parseMarketDetails($: cheerio.CheerioAPI): MarketDetails {
   const dl = $(".info-container-list");
   const details: MarketDetails = {
     dates: "Not found",
@@ -229,9 +226,9 @@ async function getMarketDetails(url: string): Promise<MarketDetails> {
 
   if (dl.length) {
     const labels = [
-      { key: "dates" as const, label: ["Dates", "Date"] },
-      { key: "opening_times" as const, label: "Opening Hours" },
-      { key: "admission" as const, label: "Admission Fee" },
+      { key: "dates" as const, label: ["Dates", "Date", "Termine", "Datum"] },
+      { key: "opening_times" as const, label: ["Opening Hours", "Öffnungszeiten"] },
+      { key: "admission" as const, label: ["Admission Fee", "Eintritt"] },
     ];
     for (const { key, label } of labels) {
       let dd = null;
@@ -350,7 +347,7 @@ async function processMarket(index: number, total: number, url: string) {
       $(".text p").first().text().trim() ||
       "";
 
-    const details = await getMarketDetails(url);
+    const details = parseMarketDetails($);
 
     return {
       name,
