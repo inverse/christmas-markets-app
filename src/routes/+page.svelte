@@ -98,8 +98,18 @@
 
   const daysUntilFirst = $derived.by(() => {
     let earliest = Infinity;
-    for (const date of earliestDates.values()) {
-      if (date.getTime() < earliest) earliest = date.getTime();
+    for (const market of markets) {
+      const dates = market.dates;
+      if (!dates) continue;
+      if (dates.type === "range" && dates.start_date) {
+        const t = new Date(dates.start_date).getTime();
+        if (t >= now.getTime() && t < earliest) earliest = t;
+      } else if (dates.type === "dates" && Array.isArray(dates.dates)) {
+        for (const d of dates.dates) {
+          const t = new Date(d).getTime();
+          if (t >= now.getTime() && t < earliest) earliest = t;
+        }
+      }
     }
     if (earliest === Infinity) return undefined;
     const diffTime = earliest - now.getTime();
