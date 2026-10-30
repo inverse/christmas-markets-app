@@ -13,6 +13,12 @@ export default defineConfig({
   plugins: [sveltekit(), tailwindcss()],
   define: {
     __ENABLE_GYG_ATTRACTIONS__: JSON.stringify(enabled),
+    __BUILD_TIME__: JSON.stringify(
+      new Date().toLocaleString("en-GB", {
+        dateStyle: "medium",
+        timeStyle: "short",
+      }),
+    ),
   },
   server: {
     allowedHosts: true,

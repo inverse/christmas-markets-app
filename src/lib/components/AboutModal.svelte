@@ -169,6 +169,9 @@
         class="border-t border-stone-200 pt-3 text-xs text-stone-500 space-y-1"
       >
         <p>
+          Last built: {__BUILD_TIME__}
+        </p>
+        <p>
           Created by
           <a
             href="https://malachisoord.com"

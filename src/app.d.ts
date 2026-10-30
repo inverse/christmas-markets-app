@@ -10,6 +10,7 @@ declare global {
   }
   // Replaced at build time from vite.config.ts (ENABLE_GYG_ATTRACTIONS env var).
   const __ENABLE_GYG_ATTRACTIONS__: boolean;
+  const __BUILD_TIME__: string;
 }
 
 export {};
