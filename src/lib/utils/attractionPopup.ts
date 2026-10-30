@@ -14,7 +14,7 @@ export function buildAttractionPopup(attraction: {
   const name = escapeHtml(attraction.name);
   const description = escapeHtml(attraction.description);
   const image = escapeHtml(attraction.image_url);
-  const url = escapeHtml(gygAffiliateUrl(attraction.url));
+  const url = escapeHtml(gygAffiliateUrl(attraction.url, "map-pin"));
 
   return `<div class="max-h-[80vh] overflow-y-auto rounded-2xl border-4 border-gold bg-surface font-sans shadow-2xl">
 				<div class="relative h-40">
