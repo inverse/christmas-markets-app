@@ -3,7 +3,7 @@
   import { selectedMarket } from "$lib/mapStore";
   import { isDark, toggleTheme } from "$lib/utils/theme";
   import { onMount, untrack } from "svelte";
-  import GetYourGuideWidget from "$lib/components/GetYourGuideWidget.svelte";
+  import AttractionStrip from "$lib/components/AttractionStrip.svelte";
   import { fade, fly } from "svelte/transition";
   import type { Market } from "$shared/types";
 
@@ -329,6 +329,7 @@
         {/if}
       </div>
     </div>
+    <AttractionStrip />
 
     <section>
       <div class="mb-2 flex items-end justify-between px-1">
@@ -434,15 +435,6 @@
           </li>
         {/each}
       </ul>
-
-      <div class="pt-3">
-        <p
-          class="mb-2 text-center text-[11px] font-medium uppercase tracking-wide text-stone-400"
-        >
-          Discover additional activities &middot; Partner
-        </p>
-        {#key $isDark}<GetYourGuideWidget />{/key}
-      </div>
     </section>
   </div>
 </div>
