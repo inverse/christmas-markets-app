@@ -234,7 +234,7 @@
       "end_date": "2026-11-29"
     },
     "opening_times": "Friday from 2 pm to 9 pm, Saturday from 12 noon to 9 pm, Sunday from 12 noon to 6 pm",
-    "admission": "€4, concessions €2, free for children under 18",
+    "admission": "€2, free for children under 18",
     "description": "The Sustainable Christmas market in Pankow takes place in a magical setting.",
     "image_url": "https://www.berlin.de/binaries/asset/image_assets/3717101/ratio_4_3/1763973412/800x600/",
     "coordinates": {
@@ -478,6 +478,25 @@
     "url": "https://www.berlin.de/en/christmas-markets/7794849-3230598-berlin-dog-christmas-market.en.html"
   },
   {
+    "name": "Lichtenberger Winterzeit",
+    "address": "Landsberger Allee 300, 10365, Berlin",
+    "dates": {
+      "raw": "October 31 to December 27, 2026",
+      "type": "range",
+      "start_date": "2026-10-31",
+      "end_date": "2026-12-27"
+    },
+    "opening_times": "Monday to Thursday from 2 pm to 10 pm, Friday and Saturday from 2 pm to 11 pm, Sunday and public holidays from 2 pm to 10 pm; closed on 22 November and 24 December 2026",
+    "admission": "Free",
+    "description": "The \"Lichtenberger Winterzeit\" Christmas fair attracts numerous guests to Lichtenberg with mulled wine and a funfair atmosphere.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/10711835/ratio_4_3/1792665900/800x600/",
+    "coordinates": {
+      "lng": 13.5035,
+      "lat": 52.5343
+    },
+    "url": "https://www.berlin.de/en/christmas-markets/5741424-3230598-christmas-funfair-on-landsberger-allee.en.html"
+  },
+  {
     "name": "Christmas in Westend",
     "address": "Preußenallee, 14052, Berlin",
     "dates": {
@@ -713,58 +732,10 @@
     "name": "LGBTIQA Winterdays and Christmas Avenue",
     "address": "Nollendorfplatz, 10787, Berlin",
     "dates": {
-      "raw": "November 4 to December 23, 2026; closed on November 15 (Remembrance Day) and November 22 (All Souls’ Day)",
-      "type": "dates",
-      "dates": [
-        "2026-11-04",
-        "2026-11-05",
-        "2026-11-06",
-        "2026-11-07",
-        "2026-11-08",
-        "2026-11-09",
-        "2026-11-10",
-        "2026-11-11",
-        "2026-11-12",
-        "2026-11-13",
-        "2026-11-14",
-        "2026-11-16",
-        "2026-11-17",
-        "2026-11-18",
-        "2026-11-19",
-        "2026-11-20",
-        "2026-11-21",
-        "2026-11-23",
-        "2026-11-24",
-        "2026-11-25",
-        "2026-11-26",
-        "2026-11-27",
-        "2026-11-28",
-        "2026-11-29",
-        "2026-11-30",
-        "2026-12-01",
-        "2026-12-02",
-        "2026-12-03",
-        "2026-12-04",
-        "2026-12-05",
-        "2026-12-06",
-        "2026-12-07",
-        "2026-12-08",
-        "2026-12-09",
-        "2026-12-10",
-        "2026-12-11",
-        "2026-12-12",
-        "2026-12-13",
-        "2026-12-14",
-        "2026-12-15",
-        "2026-12-16",
-        "2026-12-17",
-        "2026-12-18",
-        "2026-12-19",
-        "2026-12-20",
-        "2026-12-21",
-        "2026-12-22",
-        "2026-12-23"
-      ]
+      "raw": "November 7 to December 23, 2026; closed on November 15 (Remembrance Day) and November 22 (All Souls’ Day)",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
     },
     "opening_times": "Monday to Thursday, 4 pm to 10 pm; Friday to Sunday, 3 pm to 10 pm",
     "admission": "Free",
@@ -957,15 +928,15 @@
     "name": "Christmas Market at Villa Donnersmarck",
     "address": "Schädestraße 9, 14165, Berlin",
     "dates": {
-      "raw": "Does not take place in 2025",
+      "raw": "December 13, 2026",
       "type": "range",
-      "start_date": "",
-      "end_date": ""
+      "start_date": "2026-12-13",
+      "end_date": "2026-12-13"
     },
-    "opening_times": "Not yet known",
-    "admission": "Not yet known",
+    "opening_times": "3 pm to 6 pm",
+    "admission": "Free",
     "description": "During Advent, Villa Donnersmarck transforms into a real Christmas house. Families with children in particular can spend a contemplative day at the Christmas market.",
-    "image_url": "https://www.berlin.de/binaries/asset/image_assets/3683004/ratio_4_3/1661942177/800x600/",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/10727726/ratio_4_3/1793364459/800x600/",
     "coordinates": {
       "lng": 13.2584,
       "lat": 52.4272
@@ -1859,14 +1830,14 @@
     "name": "Christmas Lights at Lichtenberg City Hall",
     "address": "Möllendorffstraße 6, 10367, Berlin",
     "dates": {
-      "raw": "Not yet known",
+      "raw": "November 29, 2026",
       "type": "range",
-      "start_date": "",
-      "end_date": ""
+      "start_date": "2026-11-29",
+      "end_date": "2026-11-29"
     },
-    "opening_times": "Not yet known",
-    "admission": "Not yet known",
-    "description": "For more than 25 years, the Lichtenberg District Office has been inviting people to enjoy the pre-Christmas season in a neighborly atmosphere on the first day of Advent.",
+    "opening_times": "1 pm to 6 pm",
+    "admission": "Free",
+    "description": "For more than 30 years, the Lichtenberg District Office has been inviting people to enjoy the pre-Christmas season in a neighborly atmosphere on the first day of Advent.",
     "image_url": "https://www.berlin.de/binaries/asset/image_assets/9837436/ratio_4_3/1760512065/800x600/",
     "coordinates": {
       "lng": 13.4795,
@@ -2371,5 +2342,19 @@
       "lat": 52.43944
     },
     "url": "https://www.berlin.de/en/christmas-markets/10720667-3230598-winter-wonderland-im-britzer-garten.en.html"
+  },
+  {
+    "name": "Nordberliner Weihnachtsrummel",
+    "address": "Am Borsigturm 30, 13507, Berlin",
+    "dates": "Not found",
+    "opening_times": "12 bis 22 Uhr",
+    "admission": "Kostenlos",
+    "description": "Berlin bekommt in diesem Jahr einen neuen Weihnachtsrummel: Wer Weihnachtsstimmung mit rasanten Fahrgeschäften verbinden möchte, wird in Tegel fündig.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/10727837/ratio_4_3/1793368919/800x600/",
+    "coordinates": {
+      "lng": 13.2846,
+      "lat": 52.5825
+    },
+    "url": "https://www.berlin.de/weihnachtsmarkt/10727807-3496862-nordberliner-weihnachtsrummel.html"
   }
 ]
