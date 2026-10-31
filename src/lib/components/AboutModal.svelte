@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
   import { fade } from "svelte/transition";
 
-  let { onClose } = $props<{ onClose: () => void }>();
+  let { onClose }: { onClose: () => void } = $props();
 
   // iOS Safari never fires beforeinstallprompt, so it gets the manual hint below.
   let showIosInstall = $state(false);

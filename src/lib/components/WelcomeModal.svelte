@@ -7,13 +7,13 @@
     marketCount,
     anyMarketOpen,
     allMarketsClosed,
-  } = $props<{
+  }: {
     onClose: () => void;
     daysUntilFirstMarket?: number;
     marketCount: number;
     anyMarketOpen: boolean;
     allMarketsClosed: boolean;
-  }>();
+  } = $props();
 
   const snowflakes = Array.from({ length: 100 }, () => ({
     left: Math.random() * 100,

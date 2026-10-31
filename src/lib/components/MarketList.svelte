@@ -20,7 +20,7 @@
     onClose,
     onShowWelcome,
     onShowAbout,
-  } = $props<{
+  }: {
     markets: Market[];
     statusByMarket: Map<string, MarketStatus>;
     earliestDates: Map<string, Date>;
@@ -31,7 +31,7 @@
     onClose: () => void;
     onShowWelcome: () => void;
     onShowAbout: () => void;
-  }>();
+  } = $props();
   // Opening the drawer with a planned day lands on that day's open markets.
   let activeFilter = $state<Filter>(untrack(() => planDate) ? "open" : "all");
 

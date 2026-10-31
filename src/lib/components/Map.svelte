@@ -18,10 +18,13 @@
   } from "$lib/utils/popup";
   import type { Market } from "$shared/types";
   import { mapStore, selectedMarket } from "$lib/mapStore";
-  let { markets, statusByMarket } = $props<{
+  let {
+    markets,
+    statusByMarket,
+  }: {
     markets: Market[];
     statusByMarket: Map<string, MarketStatus>;
-  }>();
+  } = $props();
 
   let mapElement: HTMLDivElement;
   let map: L.Map;
