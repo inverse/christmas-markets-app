@@ -4,8 +4,8 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "generate-markets": "tsx scripts/generate-markets.ts",
-    "find-markets": "tsx scripts/find-new-markets.ts",
+    "markets:generate": "tsx scripts/generate-markets.ts",
+    "markets:find": "tsx scripts/find-new-markets.ts",
     "dev": "vite dev",
     "dev:tunnel": "concurrently \"npm run dev\" \"node scripts/dev-tunnel-qr.mjs\"",
     "build": "vite build",
