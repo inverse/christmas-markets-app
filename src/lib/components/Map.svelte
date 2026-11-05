@@ -158,6 +158,8 @@
         zoomToBoundsOnClick: true,
       });
       markets.forEach((market: Market) => {
+        // Approximate coordinates (geocoder fallback) would pin the wrong spot.
+        if (market.coordinates_approximate) return;
         const status: MarketStatus =
           statusByMarket.get(market.name) ?? "unknown";
         const marker = L.marker(

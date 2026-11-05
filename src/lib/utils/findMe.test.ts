@@ -57,6 +57,18 @@ describe("findNearestMarket", () => {
     expect(findNearestMarket({ lat: 48, lng: 11 }, [])).toBeNull();
   });
 
+  it("ignores markets with approximate coordinates", () => {
+    const approximate = {
+      ...makeMarket("Approx", 49.2, 11.3),
+      coordinates_approximate: true,
+    };
+    const nearest = findNearestMarket({ lat: 49.2, lng: 11.3 }, [
+      approximate,
+      ...markets,
+    ]);
+    expect(nearest!.market.name).toBe("Nuremberg");
+  });
+
   it("picks the closest market and reports the distance", () => {
     const user = { lat: 49.2, lng: 11.3 };
     const nearest = findNearestMarket(user, markets);

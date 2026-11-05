@@ -3,9 +3,22 @@
     "name": "Medieval Christmas Market at Britz Palace",
     "address": "Alt-Britz 73, 12359, Berlin",
     "dates": {
-      "raw": "On all Advent weekends in 2026 (November 27 to 29, December 4 to 6, 11 to 13,-18 to 20)",
+      "raw": "On all Advent weekends in 2026 (November 27 to 29, December 4 to 6, 11 to 13, and 18 to 20)",
       "type": "dates",
-      "dates": ["2011-12-04", "2026-11-01", "2026-11-27"]
+      "dates": [
+        "2026-11-27",
+        "2026-11-28",
+        "2026-11-29",
+        "2026-12-04",
+        "2026-12-05",
+        "2026-12-06",
+        "2026-12-11",
+        "2026-12-12",
+        "2026-12-13",
+        "2026-12-18",
+        "2026-12-19",
+        "2026-12-20"
+      ]
     },
     "opening_times": "Not yet known",
     "admission": "Not yet known",
@@ -15,6 +28,7 @@
       "lng": 13.4379,
       "lat": 52.4469
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5506372-3230598-nordic-fairy-tale-christmas-market-at-br.en.html"
   },
   {
@@ -34,6 +48,7 @@
       "lng": 13.4378,
       "lat": 52.4664
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/10041394-3230598-christmas-flea-market-on-kranoldplatz.en.html"
   },
   {
@@ -53,6 +68,7 @@
       "lng": 13.4313,
       "lat": 52.4925
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/4611178-3230598-nowkoelln-xmas-flowmarkt.en.html"
   },
   {
@@ -71,6 +87,7 @@
       "lng": 13.4935,
       "lat": 52.4206
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5685707-3230598-rudow-christmas-mile.en.html"
   },
   {
@@ -90,6 +107,7 @@
       "lng": 13.4335,
       "lat": 52.4231
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5694654-3230598-advent-market-alt-buckow.en.html"
   },
   {
@@ -109,6 +127,7 @@
       "lng": 13.4378,
       "lat": 52.4664
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/8374125-3230598-christmas-market-dicke-linda.en.html"
   },
   {
@@ -127,6 +146,7 @@
       "lng": 13.4262,
       "lat": 52.4367
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/8533553-3230598-christmas-bazaar-in-britz.en.html"
   },
   {
@@ -146,12 +166,18 @@
       "lng": 13.413,
       "lat": 52.5218
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/3240090-3230598-christmas-market-at-alexanderplatz.en.html"
   },
   {
     "name": "Wintermünze",
     "address": "Berlin, Deutschland",
-    "dates": "Not found",
+    "dates": {
+      "raw": "Not found",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
     "opening_times": "Not found",
     "admission": "Not found",
     "description": "The Alte Münze in the Nikolaiviertel is transformed into a cozy winter market at Christmas time.",
@@ -160,6 +186,7 @@
       "lng": 13.3951309,
       "lat": 52.5173885
     },
+    "coordinates_approximate": true,
     "url": "https://www.berlin.de/en/christmas-markets/7897335-3230598-wintermuenze.en.html"
   },
   {
@@ -179,16 +206,16 @@
       "lng": 13.3779,
       "lat": 52.5234
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/9358333-3230598-bloody-xmas-market.en.html"
   },
   {
     "name": "Christmas Bazaar in the Atrium of the Federal Foreign Office",
     "address": "Werderscher Markt 1, 10117, Berlin",
     "dates": {
-      "raw": "December 4-5, 2026",
-      "type": "range",
-      "start_date": "2026-12-04",
-      "end_date": "2026-12-05"
+      "raw": "December 4 and 5, 2026",
+      "type": "dates",
+      "dates": ["2026-12-04", "2026-12-05"]
     },
     "opening_times": "Friday from 3 pm to 6 pm, Saturday from 12 noon to 6 pm",
     "admission": "Free",
@@ -198,6 +225,7 @@
       "lng": 13.3985,
       "lat": 52.5154
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/7875792-3230598-christmas-bazaar-federal-foreign-office.en.html"
   },
   {
@@ -217,6 +245,7 @@
       "lng": 13.4997,
       "lat": 52.6358
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5742526-3230598-medieval-christmas-market-buch.en.html"
   },
   {
@@ -236,6 +265,7 @@
       "lng": 13.4055,
       "lat": 52.5783
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/7092130-3230598-christmas-market-schoenhausen-palace.en.html"
   },
   {
@@ -255,6 +285,7 @@
       "lng": 13.3882,
       "lat": 52.569
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/7790997-3230598-st-nicholas-market-farm-pinke-panke.en.html"
   },
   {
@@ -274,6 +305,7 @@
       "lng": 13.4176,
       "lat": 52.5819
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/7866354-3230598-advent-bazaar-kaspar-hauser-foundation.en.html"
   },
   {
@@ -293,6 +325,7 @@
       "lng": 13.1994,
       "lat": 52.5336
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/10000126-3230598-spandauer-winterland.en.html"
   },
   {
@@ -312,6 +345,7 @@
       "lng": 13.2,
       "lat": 52.5347
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5698821-3230598-christmas-market-spandau-city-hall.en.html"
   },
   {
@@ -331,6 +365,7 @@
       "lng": 13.1924,
       "lat": 52.5677
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5698904-3230598-christmas-market-evangelisches-johanness.en.html"
   },
   {
@@ -350,6 +385,7 @@
       "lng": 13.1576,
       "lat": 52.523
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5701517-3230598-social-christmas-market.en.html"
   },
   {
@@ -369,6 +405,7 @@
       "lng": 13.1815,
       "lat": 52.4865
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5711172-3230598-arts-crafts-christmas-market-gatow.en.html"
   },
   {
@@ -396,6 +433,7 @@
       "lng": 13.2886,
       "lat": 52.4583
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/3250138-3230598-advent-market-at-domaene-dahlem.en.html"
   },
   {
@@ -415,6 +453,7 @@
       "lng": 13.2972,
       "lat": 52.5052
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/9284175-3230598-advent-market-in-leonhardtstrasse.en.html"
   },
   {
@@ -434,6 +473,7 @@
       "lng": 13.3104,
       "lat": 52.5084
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/7093285-3230598-advent-market-karlaugustplatz.en.html"
   },
   {
@@ -452,6 +492,7 @@
       "lng": 13.4177,
       "lat": 52.5365
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/3250022-3230598-advent-market-kollwitzplatz.en.html"
   },
   {
@@ -470,7 +511,28 @@
       "lng": 13.2562,
       "lat": 52.4664
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/7794849-3230598-berlin-dog-christmas-market.en.html"
+  },
+  {
+    "name": "Lichtenberger Winterzeit",
+    "address": "Landsberger Allee 300, 10365, Berlin",
+    "dates": {
+      "raw": "October 31 to December 27, 2026",
+      "type": "range",
+      "start_date": "2026-10-31",
+      "end_date": "2026-12-27"
+    },
+    "opening_times": "Monday to Thursday from 2 pm to 10 pm, Friday and Saturday from 2 pm to 11 pm, Sunday and public holidays from 2 pm to 10 pm; closed on 22 November and 24 December 2026",
+    "admission": "Free",
+    "description": "The \"Lichtenberger Winterzeit\" Christmas fair attracts numerous guests to Lichtenberg with mulled wine and a funfair atmosphere.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/10711835/ratio_4_3/1792665900/800x600/",
+    "coordinates": {
+      "lng": 13.5035,
+      "lat": 52.5343
+    },
+    "coordinates_approximate": false,
+    "url": "https://www.berlin.de/en/christmas-markets/5741424-3230598-christmas-funfair-on-landsberger-allee.en.html"
   },
   {
     "name": "Christmas in Westend",
@@ -488,6 +550,7 @@
       "lng": 13.2594,
       "lat": 52.5127
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/7092703-3230598-christmas-in-westend.en.html"
   },
   {
@@ -507,6 +570,7 @@
       "lng": 13.4075,
       "lat": 52.5192
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5096971-3230598-christmas-market-at-berlin-town-hall.en.html"
   },
   {
@@ -526,6 +590,7 @@
       "lng": 13.2935,
       "lat": 52.5199
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/3240314-3230598-christmas-market-charlottenburg-palace.en.html"
   },
   {
@@ -551,6 +616,7 @@
       "lng": 13.4732,
       "lat": 52.4543
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5734559-3230598-christmas-market-at-spaethsche-baumschul.en.html"
   },
   {
@@ -570,6 +636,7 @@
       "lng": 13.5462,
       "lat": 52.5741
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/7897509-3230598-christmas-market-animal-shelter.en.html"
   },
   {
@@ -589,13 +656,14 @@
       "lng": 13.4023,
       "lat": 52.5161
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/8360550-3230598-christmas-market-at-the-humboldt-forum.en.html"
   },
   {
     "name": "Christmas Market in Alt-Rixdorf",
     "address": "Richardplatz 28, 12055, Berlin",
     "dates": {
-      "raw": "December 4-6, 2026",
+      "raw": "December 4–6, 2026",
       "type": "range",
       "start_date": "2026-12-04",
       "end_date": "2026-12-06"
@@ -608,6 +676,7 @@
       "lng": 13.4463,
       "lat": 52.4742
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/3240343-3230598-christmas-market-altrixdorf-in-neukoelln.en.html"
   },
   {
@@ -627,6 +696,7 @@
       "lng": 13.2048,
       "lat": 52.5372
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/3249571-3230598-christmas-market-in-spandau.en.html"
   },
   {
@@ -646,6 +716,7 @@
       "lng": 13.3346,
       "lat": 52.5042
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/3240274-3230598-christmas-market-at-kaiser-wilhelm-memor.en.html"
   },
   {
@@ -665,16 +736,16 @@
       "lng": 13.3921,
       "lat": 52.5137
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/3235772-3230598-christmas-market-at-gendarmenmarkt.en.html"
   },
   {
     "name": "Finnish Advent Bazaar",
     "address": "Marheinekeplatz 1, 10961, Berlin",
     "dates": {
-      "raw": "November 14-15, 2026",
-      "type": "range",
-      "start_date": "2026-11-14",
-      "end_date": "2026-11-15"
+      "raw": "November 14 and 15, 2026",
+      "type": "dates",
+      "dates": ["2026-11-14", "2026-11-15"]
     },
     "opening_times": "12 noon to 6 pm",
     "admission": "Free, but donations are welcome",
@@ -684,6 +755,7 @@
       "lng": 13.3971,
       "lat": 52.4894
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5742137-3230598-finnish-christmas-market.en.html"
   },
   {
@@ -702,6 +774,7 @@
       "lng": 13.453986686509,
       "lat": 52.496078776217
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/2208886-3230598-holy-shit-shopping.en.html"
   },
   {
@@ -709,9 +782,54 @@
     "address": "Nollendorfplatz, 10777, Berlin",
     "dates": {
       "raw": "November 7 to December 23, 2026; closed on November 15 (Remembrance Day) and November 22 (All Souls’ Day)",
-      "type": "range",
-      "start_date": "",
-      "end_date": ""
+      "type": "dates",
+      "dates": [
+        "2026-11-07",
+        "2026-11-08",
+        "2026-11-09",
+        "2026-11-10",
+        "2026-11-11",
+        "2026-11-12",
+        "2026-11-13",
+        "2026-11-14",
+        "2026-11-16",
+        "2026-11-17",
+        "2026-11-18",
+        "2026-11-19",
+        "2026-11-20",
+        "2026-11-21",
+        "2026-11-23",
+        "2026-11-24",
+        "2026-11-25",
+        "2026-11-26",
+        "2026-11-27",
+        "2026-11-28",
+        "2026-11-29",
+        "2026-11-30",
+        "2026-12-01",
+        "2026-12-02",
+        "2026-12-03",
+        "2026-12-04",
+        "2026-12-05",
+        "2026-12-06",
+        "2026-12-07",
+        "2026-12-08",
+        "2026-12-09",
+        "2026-12-10",
+        "2026-12-11",
+        "2026-12-12",
+        "2026-12-13",
+        "2026-12-14",
+        "2026-12-15",
+        "2026-12-16",
+        "2026-12-17",
+        "2026-12-18",
+        "2026-12-19",
+        "2026-12-20",
+        "2026-12-21",
+        "2026-12-22",
+        "2026-12-23"
+      ]
     },
     "opening_times": "Monday to Thursday, 4 pm to 10 pm; Friday to Sunday, 3 pm to 10 pm",
     "admission": "Free",
@@ -721,6 +839,7 @@
       "lng": 13.3533,
       "lat": 52.4992
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5948422-3230598-christmas-avenue.en.html"
   },
   {
@@ -740,6 +859,7 @@
       "lng": 13.4126,
       "lat": 52.5382
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/3240367-3230598-lucia-christmas-market-at-kulturbrauerei.en.html"
   },
   {
@@ -759,6 +879,7 @@
       "lng": 13.4518,
       "lat": 52.5081
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5983209-3230598-medieval-christmas-market-at-the-raw-com.en.html"
   },
   {
@@ -777,6 +898,7 @@
       "lng": 13.4026,
       "lat": 52.563
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5742619-3230598-pankow-advent-market-heynhoefe.en.html"
   },
   {
@@ -804,6 +926,7 @@
       "lng": 13.4023,
       "lat": 52.5253
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/3659027-3230598-sustainable-christmas-market-sophienstra.en.html"
   },
   {
@@ -823,16 +946,16 @@
       "lng": 13.3291,
       "lat": 52.4876
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5711097-3230598-swedish-christmas-bazaar.en.html"
   },
   {
     "name": "Wein-Nachtsmarkt at Ludwig-Beck-Platz",
     "address": "Ludwig-Beck-Platz, 12203, Berlin",
     "dates": {
-      "raw": "12-13 December 2026",
-      "type": "range",
-      "start_date": "2026-12-12",
-      "end_date": "2026-12-13"
+      "raw": "12 and 13 December 2026",
+      "type": "dates",
+      "dates": ["2026-12-12", "2026-12-13"]
     },
     "opening_times": "From 12 noon",
     "admission": "Free",
@@ -842,6 +965,7 @@
       "lng": 13.3122,
       "lat": 52.4428
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/9332973-3230598-weinachtsmarkt-at-ludwig-beck-platz.en.html"
   },
   {
@@ -861,6 +985,7 @@
       "lng": 13.3845,
       "lat": 52.5193
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5698641-3230598-cjd-advent-market.en.html"
   },
   {
@@ -880,6 +1005,7 @@
       "lng": 13.5995,
       "lat": 52.4154
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/7876023-3230598-winterzauber-strandbad-wendenschloss.en.html"
   },
   {
@@ -899,6 +1025,7 @@
       "lng": 13.3127,
       "lat": 52.488
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5701678-3230598-danish-christmas-market.en.html"
   },
   {
@@ -918,6 +1045,7 @@
       "lng": 13.2584,
       "lat": 52.4272
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5703211-3230598-christmas-market-villa-donnersmarck.en.html"
   },
   {
@@ -937,6 +1065,7 @@
       "lng": 13.2748,
       "lat": 52.4854
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5689204-3230598-christmas-market-grunewald.en.html"
   },
   {
@@ -956,6 +1085,7 @@
       "lng": 13.43,
       "lat": 52.5097
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/8562243-3230598-caribbean-christmas-market-at-yaam.en.html"
   },
   {
@@ -975,6 +1105,7 @@
       "lng": 13.5229,
       "lat": 52.4752
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5695405-3230598-christmas-market-karlshorst.en.html"
   },
   {
@@ -994,12 +1125,18 @@
       "lng": 13.6042,
       "lat": 52.537
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5742806-3230598-christmas-market-alice-salomon-platz.en.html"
   },
   {
     "name": "Norwegian Christmas Bazaar",
     "address": "Wartenburgstraße 7, 10963, Berlin",
-    "dates": "Not found",
+    "dates": {
+      "raw": "Not found",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
     "opening_times": "Not found",
     "admission": "Not found",
     "description": "The Norwegian Church in Berlin traditionally organizes a cozy Christmas bazaar in Kreuzberg in the Advent season.",
@@ -1008,6 +1145,7 @@
       "lng": 13.3808,
       "lat": 52.4957
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/7792272-3230598-norwegian-julebasar.en.html"
   },
   {
@@ -1027,6 +1165,7 @@
       "lng": 13.5555,
       "lat": 52.5472
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5748698-3230598-christmas-market-marzahner-promenade.en.html"
   },
   {
@@ -1046,12 +1185,18 @@
       "lng": 13.2589,
       "lat": 52.5121
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/7689300-3230598-british-christmas-market.en.html"
   },
   {
     "name": "African Winter Market",
     "address": "Berlin, Deutschland",
-    "dates": "Not found",
+    "dates": {
+      "raw": "Not found",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
     "opening_times": "Not found",
     "admission": "Not found",
     "description": "If you are still looking for unusual Christmas presents, you should stop by the African goods market: This is where African culture, fashion and cuisine come together.",
@@ -1060,12 +1205,18 @@
       "lng": 13.3951309,
       "lat": 52.5173885
     },
+    "coordinates_approximate": true,
     "url": "https://www.berlin.de/en/christmas-markets/8565711-3230598-african-winter-market.en.html"
   },
   {
     "name": "Italian Christmas Market",
     "address": "Berlin, Deutschland",
-    "dates": "Not found",
+    "dates": {
+      "raw": "Not found",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
     "opening_times": "Not found",
     "admission": "Not found",
     "description": "Buon Natale! With numerous sweet and savory treats, the Christmas edition of the Italian Street Food Festival invites you to a calorie-rich Italian Christmas market.",
@@ -1074,6 +1225,7 @@
       "lng": 13.3951309,
       "lat": 52.5173885
     },
+    "coordinates_approximate": true,
     "url": "https://www.berlin.de/en/christmas-markets/8532964-3230598-italian-christmas-market.en.html"
   },
   {
@@ -1093,6 +1245,7 @@
       "lng": 13.4514,
       "lat": 52.4969
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/7079116-3230598-japanmarkt-christmas-edition.en.html"
   },
   {
@@ -1112,6 +1265,7 @@
       "lng": 13.3645,
       "lat": 52.5014
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/8538065-3230598-japanese-kogei-christmas-market.en.html"
   },
   {
@@ -1131,6 +1285,7 @@
       "lng": 13.3668,
       "lat": 52.4662
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/3701010-3230598-japanese-christmas-market.en.html"
   },
   {
@@ -1140,7 +1295,7 @@
       "raw": "November 6, 2026 to February 2027",
       "type": "range",
       "start_date": "2026-11-06",
-      "end_date": "2027-02-06"
+      "end_date": "2027-02-01"
     },
     "opening_times": "Saturdays and Sundays from 12 noon to 8 pm",
     "admission": "On a donation basis",
@@ -1150,6 +1305,7 @@
       "lng": 13.4577,
       "lat": 52.5033
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/9921991-3230598-winterquartier-berlin.en.html"
   },
   {
@@ -1169,6 +1325,7 @@
       "lng": 13.2396,
       "lat": 52.4966
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/9282624-3230598-winter-market-on-teufelsberg.en.html"
   },
   {
@@ -1188,6 +1345,7 @@
       "lng": 13.3593,
       "lat": 52.4866
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/9248226-3230598-culinary-christmas-market-schoeneberg.en.html"
   },
   {
@@ -1207,6 +1365,7 @@
       "lng": 13.2593,
       "lat": 52.4331
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5703047-3230598-christmas-market-zehlendorf.en.html"
   },
   {
@@ -1226,16 +1385,16 @@
       "lng": 13.3772,
       "lat": 52.5089
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/3249647-3230598-christmas-market-at-potsdamer-platz.en.html"
   },
   {
     "name": "Weihnachtsrodeo Design Market",
     "address": "Schönhauser Allee 123, 10437, Berlin",
     "dates": {
-      "raw": "December 12-13, 2026",
-      "type": "range",
-      "start_date": "2026-12-12",
-      "end_date": "2026-12-13"
+      "raw": "December 12 and 13, 2026",
+      "type": "dates",
+      "dates": ["2026-12-12", "2026-12-13"]
     },
     "opening_times": "12 noon to 8 pm",
     "admission": "€8",
@@ -1245,6 +1404,7 @@
       "lng": 13.4131,
       "lat": 52.5479
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/4180727-3230598-weihnachtsrodeo-design-market.en.html"
   },
   {
@@ -1264,6 +1424,7 @@
       "lng": 13.3599,
       "lat": 52.5475
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/7791702-3230598-weddingmarkt-christmas-edition.en.html"
   },
   {
@@ -1283,6 +1444,7 @@
       "lng": 13.4514,
       "lat": 52.4969
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5589836-3230598-designer-christmas-market.en.html"
   },
   {
@@ -1302,6 +1464,7 @@
       "lng": 13.3681,
       "lat": 52.5295
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/9229587-3230598-winter-dream-in-koepenick.en.html"
   },
   {
@@ -1321,6 +1484,7 @@
       "lng": 13.3064,
       "lat": 52.5078
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5697424-3230598-christmas-market-wilmersdorfer-strasse.en.html"
   },
   {
@@ -1340,6 +1504,7 @@
       "lng": 13.2952,
       "lat": 52.5189
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/3659759-3230598-christmas-market-broehan-museum.en.html"
   },
   {
@@ -1359,6 +1524,7 @@
       "lng": 13.3082,
       "lat": 52.5172
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5695766-3230598-st-nicholas-market-charlottenburg-city-h.en.html"
   },
   {
@@ -1378,6 +1544,7 @@
       "lng": 13.466,
       "lat": 52.5177
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5710579-3230598-christmas-market-samariterkiez.en.html"
   },
   {
@@ -1397,6 +1564,7 @@
       "lng": 13.4489,
       "lat": 52.5018
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/6333570-3230598-all-inclusive-christmas-market-at-sprees.en.html"
   },
   {
@@ -1416,6 +1584,7 @@
       "lng": 13.4269,
       "lat": 52.5115
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5703554-3230598-heissa-holzmarkt.en.html"
   },
   {
@@ -1435,6 +1604,7 @@
       "lng": 13.4432,
       "lat": 52.5057
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/7839542-3230598-gluehwald-at-uber-platz.en.html"
   },
   {
@@ -1454,15 +1624,16 @@
       "lng": 13.433,
       "lat": 52.5056
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/8593915-3230598-kinky-christmas-market.en.html"
   },
   {
     "name": "Merry Markthalle",
     "address": "Eisenbahnstraße 42, 10997, Berlin-Kreuzberg",
     "dates": {
-      "raw": "On the last three Sundays of Advent in 2026 (6, 13-20 December 2026)",
+      "raw": "On the last three Sundays of Advent in 2026 (6, 13 and 20 December 2026)",
       "type": "dates",
-      "dates": ["2026-12-13"]
+      "dates": ["2026-12-06", "2026-12-13", "2026-12-20"]
     },
     "opening_times": "11 am to 6 pm",
     "admission": "Free",
@@ -1472,16 +1643,16 @@
       "lng": 13.432,
       "lat": 52.502
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/8533421-3230598-merry-markthalle.en.html"
   },
   {
     "name": "Solidarity Winter Market in Görlitzer Park",
     "address": "Skalitzer Straße 47, 10997, Berlin",
     "dates": {
-      "raw": "December 12-13, 2026",
-      "type": "range",
-      "start_date": "2026-12-12",
-      "end_date": "2026-12-13"
+      "raw": "December 12 and 13, 2026",
+      "type": "dates",
+      "dates": ["2026-12-12", "2026-12-13"]
     },
     "opening_times": "Saturday from 2 pm to 8 pm, Sunday from 12 noon to 6 pm",
     "admission": "Not yet known",
@@ -1491,6 +1662,7 @@
       "lng": 13.4338,
       "lat": 52.4979
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/8572515-3230598-solidarity-winter-market-in-goerlitzer-p.en.html"
   },
   {
@@ -1510,12 +1682,18 @@
       "lng": 13.4199,
       "lat": 52.4919
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/7868574-3230598-advent-bazaar-at-the-christuskirche.en.html"
   },
   {
     "name": "Artisan Christmas Market at Gotisches Haus",
     "address": "Berlin, Deutschland",
-    "dates": "Not found",
+    "dates": {
+      "raw": "Not found",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
     "opening_times": "Not found",
     "admission": "Not found",
     "description": "Anyone looking for regional and handmade Christmas gifts should head to the arts and crafts market in Spandau during the Advent season.",
@@ -1524,6 +1702,7 @@
       "lng": 13.3951309,
       "lat": 52.5173885
     },
+    "coordinates_approximate": true,
     "url": "https://www.berlin.de/en/christmas-markets/8572050-3230598-artisan-christmas-market-at-gotisches-ha.en.html"
   },
   {
@@ -1543,15 +1722,23 @@
       "lng": 13.4113,
       "lat": 52.4644
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/8567733-3230598-winter-market-in-the-atelier-gardens.en.html"
   },
   {
     "name": "Christmas Market on Lehmann's Farm",
     "address": "Alt-Marienfelde 35, 12277, Berlin",
     "dates": {
-      "raw": "On the second-third weekends of Advent in 2026 (4 to 6-11 to 13 December)",
+      "raw": "On the second and third weekends of Advent in 2026 (4 to 6 and 11 to 13 December)",
       "type": "dates",
-      "dates": ["2026-12-11"]
+      "dates": [
+        "2026-12-04",
+        "2026-12-05",
+        "2026-12-06",
+        "2026-12-11",
+        "2026-12-12",
+        "2026-12-13"
+      ]
     },
     "opening_times": "Friday from 2 pm to 8 pm, Saturday and Sunday from 12 noon to 8 pm",
     "admission": "Free",
@@ -1561,6 +1748,7 @@
       "lng": 13.3669,
       "lat": 52.4119
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5742213-3230598-christmas-market-lehmanns-bauernhof.en.html"
   },
   {
@@ -1580,6 +1768,7 @@
       "lng": 13.4102,
       "lat": 52.39
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5702850-3230598-christmas-lights-lichtenrade.en.html"
   },
   {
@@ -1599,6 +1788,7 @@
       "lng": 13.3862,
       "lat": 52.4781
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/9330357-3230598-christmas-at-tempelhof-airport.en.html"
   },
   {
@@ -1618,15 +1808,16 @@
       "lng": 13.3673,
       "lat": 52.4134
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5702336-3230598-christmas-market-marienfelde-village-chu.en.html"
   },
   {
     "name": "Christmas Market at Alpinia",
     "address": "Säntisstraße 32-34, 12107, Berlin",
     "dates": {
-      "raw": "On all Sundays in Advent 2026 (November 29, December 6, 13-20, 2026)",
+      "raw": "On all Sundays in Advent 2026 (November 29, December 6, 13 and 20, 2026)",
       "type": "dates",
-      "dates": ["2013-12-06", "2026-11-29"]
+      "dates": ["2026-11-29", "2026-12-06", "2026-12-13", "2026-12-20"]
     },
     "opening_times": "3 pm to 8 pm",
     "admission": "Free",
@@ -1636,6 +1827,7 @@
       "lng": 13.392,
       "lat": 52.4211
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/7897062-3230598-christmas-market-at-alpinia.en.html"
   },
   {
@@ -1655,6 +1847,7 @@
       "lng": 13.5813,
       "lat": 52.5086
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5685370-3230598-altkaulsdorfer-weihnachtsmarkt.en.html"
   },
   {
@@ -1674,6 +1867,7 @@
       "lng": 13.4821,
       "lat": 52.5792
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5737948-3230598-weihnachtsmarkt-auf-dem-naturhof-malchow.en.html"
   },
   {
@@ -1693,6 +1887,7 @@
       "lng": 13.4842,
       "lat": 52.5496
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/7125802-3230598-weihnachtsmarkt-am-orankesee.en.html"
   },
   {
@@ -1711,6 +1906,7 @@
       "lng": 13.5991,
       "lat": 52.4078
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/7828055-3230598-adventsmarkt-in-hanffs-ruh.en.html"
   },
   {
@@ -1730,6 +1926,7 @@
       "lng": 13.524,
       "lat": 52.4634
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5710626-3230598-lichtermarkt-an-der-christuskirche-obers.en.html"
   },
   {
@@ -1748,6 +1945,7 @@
       "lng": 13.5256,
       "lat": 52.4587
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/8544404-3230598-weihnachtsmarkt-in-oberschoeneweide.en.html"
   },
   {
@@ -1767,7 +1965,48 @@
       "lng": 13.5737,
       "lat": 52.4436
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5666333-3230598-weihnachtsmarkt-auf-dem-schlossplatz-koe.en.html"
+  },
+  {
+    "name": "Christmas Market on Bölschestraße",
+    "address": "Bölschestraße 28, 12587, Berlin",
+    "dates": {
+      "raw": "December 18 to 20, 2026",
+      "type": "range",
+      "start_date": "2026-12-18",
+      "end_date": "2026-12-20"
+    },
+    "opening_times": "Friday from 2 pm to 10 pm, Saturday from 12 noon to 10 pm, Sunday from 12 noon to 8 pm",
+    "admission": "Not yet known",
+    "description": "During Advent, the marketplace on the Bölschestraße in Friedrichshagen is transformed into a romantic Christmas market.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8594083/ratio_4_3/1729583033/800x600/",
+    "coordinates": {
+      "lng": 13.6247,
+      "lat": 52.451
+    },
+    "coordinates_approximate": false,
+    "url": "https://www.berlin.de/en/christmas-markets/5734847-3230598-weihnachtsmarkt-in-der-boelschestrasse.en.html"
+  },
+  {
+    "name": "Sustainable Christmas Market in Lichtenberg",
+    "address": "Prerower Platz 1, 10351, Berlin",
+    "dates": {
+      "raw": "Not yet known",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "opening_times": "Not yet known",
+    "admission": "Not found",
+    "description": "Organic mulled wine and fairtrade chocolate: this Christmas market in Lichtenberg scores with fairl and sustainable products.",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7094941/ratio_4_3/1663761272/800x600/",
+    "coordinates": {
+      "lng": 13.5063,
+      "lat": 52.565
+    },
+    "coordinates_approximate": false,
+    "url": "https://www.berlin.de/en/christmas-markets/7094821-3230598-fairer-weihnachtsmarkt-in-lichtenberg.en.html"
   },
   {
     "name": "Christmas Lights at Lichtenberg City Hall",
@@ -1786,6 +2025,7 @@
       "lng": 13.4795,
       "lat": 52.5158
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5692582-3230598-lichtermarkt-am-rathaus-lichtenberg.en.html"
   },
   {
@@ -1805,6 +2045,7 @@
       "lng": 13.5599,
       "lat": 52.5436
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5685805-3230598-adventsmarkt-altmarzahn.en.html"
   },
   {
@@ -1824,6 +2065,7 @@
       "lng": 13.5583,
       "lat": 52.5051
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/9307908-3230598-biesdorfer-weihnachtsdorf.en.html"
   },
   {
@@ -1843,16 +2085,16 @@
       "lng": 13.5568,
       "lat": 52.5099
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/7153624-3230598-weihnachtsmarkt-rund-um-schloss-biesdorf.en.html"
   },
   {
     "name": "Advent Market in Papierstraße",
     "address": "Alt-Reinickendorf 29, 13407, Berlin",
     "dates": {
-      "raw": "November 19-December 3, 2026",
-      "type": "range",
-      "start_date": "2026-11-19",
-      "end_date": "2026-12-03"
+      "raw": "November 19 and December 3, 2026",
+      "type": "dates",
+      "dates": ["2026-11-19", "2026-12-03"]
     },
     "opening_times": "1 pm to 6 pm",
     "admission": "Not yet known",
@@ -1862,6 +2104,7 @@
       "lng": 13.3495,
       "lat": 52.5763
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/7892913-3230598-weihnachtsmarkt-in-der-papierstrasse.en.html"
   },
   {
@@ -1880,6 +2123,7 @@
       "lng": 13.2915,
       "lat": 52.5541
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/9964084-3230598-wintermarkt-am-ehemaligen-flughafen-tege.en.html"
   },
   {
@@ -1899,12 +2143,18 @@
       "lng": 13.2719,
       "lat": 52.6053
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5737880-3230598-advent-im-forstamt-tegel.en.html"
   },
   {
     "name": "Adventsbasar der Kirchengemeinde Lübars",
     "address": "Alt-Lübars 24, 13469, Berlin",
-    "dates": "Not found",
+    "dates": {
+      "raw": "Not found",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
     "opening_times": "12 bis 18 Uhr",
     "admission": "Kostenlos",
     "description": "An der Grenze zum grünen Brandenburg lädt der nachbarschaftliche Weihnachtsmarkt in Lübars dazu ein, die vorweihnachtliche Zeit gemeinsam zu genießen.",
@@ -1913,6 +2163,7 @@
       "lng": 13.3553,
       "lat": 52.6209
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/weihnachtsmarkt/5735127-3496862-adventsbasar-der-kirchengemeinde-luebars.html"
   },
   {
@@ -1931,6 +2182,7 @@
       "lng": 13.2897,
       "lat": 52.6334
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5734991-3230598-kunsthandwerklicher-weihnachtsmarkt-in-f.en.html"
   },
   {
@@ -1939,8 +2191,8 @@
     "dates": {
       "raw": "6. Dezember 2026",
       "type": "range",
-      "start_date": "",
-      "end_date": ""
+      "start_date": "2026-12-06",
+      "end_date": "2026-12-06"
     },
     "opening_times": "13 bis 18 Uhr",
     "admission": "Noch nicht bekannt",
@@ -1950,6 +2202,7 @@
       "lng": 13.368,
       "lat": 52.6079
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/weihnachtsmarkt/7826792-3496862-weihnachtsfest-in-der-alten-fasanerie.html"
   },
   {
@@ -1969,6 +2222,7 @@
       "lng": 13.2969,
       "lat": 52.5733
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/7866294-3230598-adventsbasar-in-der-jva-tegel.en.html"
   },
   {
@@ -1988,6 +2242,7 @@
       "lng": 13.3429,
       "lat": 52.5017
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/weihnachtsmarkt/9934333-3496862-weihnachtsmarkt-am-kadewe.html"
   },
   {
@@ -2007,6 +2262,7 @@
       "lng": 13.335,
       "lat": 52.472
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/weihnachtsmarkt/5711523-3496862-friedenauer-engelmarkt.html"
   },
   {
@@ -2026,12 +2282,18 @@
       "lng": 13.3183,
       "lat": 52.4562
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5748614-3230598-alt-steglitzer-weihnachtsmarkt.en.html"
   },
   {
     "name": "Schauriger Weihnachtsmarkt im Goerzwerk",
     "address": "Berlin, Deutschland",
-    "dates": "Not found",
+    "dates": {
+      "raw": "Not found",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
     "opening_times": "Not found",
     "admission": "Not found",
     "description": "Das Goerzwerk lädt zum Weihnachtsmarkt, auf dem unter anderem ein schauriger Krampus umherstreift.",
@@ -2040,12 +2302,18 @@
       "lng": 13.3951309,
       "lat": 52.5173885
     },
+    "coordinates_approximate": true,
     "url": "https://www.berlin.de/weihnachtsmarkt/9323172-3496862-schauriger-weihnachtsmarkt-im-goerzwerk.html"
   },
   {
     "name": "Weihnachtsmarkt to go im Kranoldkiez",
     "address": "Ferdinandstraße 34, 12209, Berlin",
-    "dates": "Not found",
+    "dates": {
+      "raw": "Not found",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
     "opening_times": "14 bis 19 Uhr",
     "admission": "Kostenlos",
     "description": "Der gesamte Kranoldkiez verwandelt sich am Samstag vor dem dritten Advent in einen dezentralen Weihnachtsmarkt.",
@@ -2054,6 +2322,7 @@
       "lng": 13.3284,
       "lat": 52.4278
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/weihnachtsmarkt/5692701-3496862-weihnachtsmarkt-am-kranoldplatz.html"
   },
   {
@@ -2062,8 +2331,8 @@
     "dates": {
       "raw": "5. Dezember 2026",
       "type": "range",
-      "start_date": "",
-      "end_date": ""
+      "start_date": "2026-12-05",
+      "end_date": "2026-12-05"
     },
     "opening_times": "15 bis 20 Uhr",
     "admission": "Kostenlos",
@@ -2073,6 +2342,7 @@
       "lng": 13.3471,
       "lat": 52.4589
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/weihnachtsmarkt/8523637-3496862-weihnachtsmarkt-in-der-abenteueroase.html"
   },
   {
@@ -2092,6 +2362,7 @@
       "lng": 13.3263,
       "lat": 52.5322
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/10041553-3230598-sozialweihnachtsmarkt-im-stadtschloss-mo.en.html"
   },
   {
@@ -2100,8 +2371,8 @@
     "dates": {
       "raw": "6. Dezember 2026",
       "type": "range",
-      "start_date": "",
-      "end_date": ""
+      "start_date": "2026-12-06",
+      "end_date": "2026-12-06"
     },
     "opening_times": "Ab 15 Uhr",
     "admission": "Kostenlos",
@@ -2111,6 +2382,7 @@
       "lng": 13.5592,
       "lat": 52.4103
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/weihnachtsmarkt/5685464-3496862-altglienicker-adventsmarkt.html"
   },
   {
@@ -2130,6 +2402,7 @@
       "lng": 13.4537,
       "lat": 52.5935
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5694703-3230598-blankenburger-weihnachtsfest.en.html"
   },
   {
@@ -2149,6 +2422,7 @@
       "lng": 13.4488,
       "lat": 52.5912
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5744189-3230598-adventsbasar-der-albert-schweitzer-stift.en.html"
   },
   {
@@ -2168,6 +2442,7 @@
       "lng": 13.2364,
       "lat": 52.4919
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5694601-3230598-adventsmarkt-im-oekowerk.en.html"
   },
   {
@@ -2176,8 +2451,8 @@
     "dates": {
       "raw": "13. Dezember 2026",
       "type": "range",
-      "start_date": "",
-      "end_date": ""
+      "start_date": "2026-12-13",
+      "end_date": "2026-12-13"
     },
     "opening_times": "11 bis 18 Uhr",
     "admission": "Kostenlos",
@@ -2187,6 +2462,7 @@
       "lng": 13.2637,
       "lat": 52.4766
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/weihnachtsmarkt/7912461-3496862-weihnachtsmarkt-und-wildfleischverkauf-i.html"
   },
   {
@@ -2206,6 +2482,7 @@
       "lng": 13.277,
       "lat": 52.488
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5701609-3230598-weihnachtsmarkt-im-st-michaels-heim.en.html"
   },
   {
@@ -2225,15 +2502,16 @@
       "lng": 13.3138,
       "lat": 52.4898
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/weihnachtsmarkt/6003520-3496862-veganer-weihnachtsmarkt-auf-dem-fehrbell.html"
   },
   {
     "name": "Arts and Crafts Christmas Market on Mexikoplatz",
     "address": "Mexikoplatz 4, 14163, Berlin",
     "dates": {
-      "raw": "On all Sundays in Advent 2026 (November 29, December 6, 13-20, 2026)",
+      "raw": "On all Sundays in Advent 2026 (November 29, December 6, 13 and 20, 2026)",
       "type": "dates",
-      "dates": ["2013-12-06", "2026-11-29"]
+      "dates": ["2026-11-29", "2026-12-06", "2026-12-13", "2026-12-20"]
     },
     "opening_times": "11 am to 6 pm",
     "admission": "Free",
@@ -2243,6 +2521,7 @@
       "lng": 13.2334,
       "lat": 52.4378
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5734908-3230598-kunsthandwerklicher-weihnachtsmarkt-am-m.en.html"
   },
   {
@@ -2261,6 +2540,7 @@
       "lng": 13.2612,
       "lat": 52.4673
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/5506437-3230598-weihnachtsmarkt-am-jagdschloss-grunewald.en.html"
   },
   {
@@ -2269,7 +2549,20 @@
     "dates": {
       "raw": "An allen Adventswochenenden 2026 (27. bis 29. November, 04. bis 06., 11. bis 13. sowie 18. bis 20. Dezember)",
       "type": "dates",
-      "dates": ["2026-11-04"]
+      "dates": [
+        "2026-11-27",
+        "2026-11-28",
+        "2026-11-29",
+        "2026-12-04",
+        "2026-12-05",
+        "2026-12-06",
+        "2026-12-11",
+        "2026-12-12",
+        "2026-12-13",
+        "2026-12-18",
+        "2026-12-19",
+        "2026-12-20"
+      ]
     },
     "opening_times": "10 bis 20 Uhr",
     "admission": "Nur Parkeintritt (2 Euro, ermäßigt 1 Euro, Kinder bis einschließlich 5 Jahre Eintritt frei)",
@@ -2279,12 +2572,18 @@
       "lng": 13.41306,
       "lat": 52.43944
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/10720667-3230598-winter-wonderland-im-britzer-garten.en.html"
   },
   {
     "name": "Nordberliner Weihnachtsrummel",
     "address": "Am Borsigturm 30, 13507, Berlin",
-    "dates": "Not found",
+    "dates": {
+      "raw": "Not found",
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
     "opening_times": "12 bis 22 Uhr",
     "admission": "Kostenlos",
     "description": "Berlin bekommt in diesem Jahr einen neuen Weihnachtsrummel: Wer Weihnachtsstimmung mit rasanten Fahrgeschäften verbinden möchte, wird in Tegel fündig.",
@@ -2293,6 +2592,7 @@
       "lng": 13.2846,
       "lat": 52.5825
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/weihnachtsmarkt/10727807-3496862-nordberliner-weihnachtsrummel.html"
   },
   {
@@ -2312,6 +2612,7 @@
       "lng": 13.45,
       "lat": 52.4971
     },
+    "coordinates_approximate": false,
     "url": "https://www.berlin.de/en/christmas-markets/10734992-3230598-weihnachtsmarkt-auf-der-lohmuehleninsel.en.html"
   }
 ]

@@ -6,6 +6,7 @@ export interface Market {
   dates: Dates;
   image_url: string;
   coordinates: { lat: number; lng: number };
+  coordinates_approximate?: boolean;
   url: string;
   opening_times: string;
   admission: string;

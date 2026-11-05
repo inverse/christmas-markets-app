@@ -19,18 +19,26 @@ async function hasGlanceSection(url: string): Promise<boolean> {
   const html = await res.text();
   if (CANCELLED_PHRASES.test(html)) return false;
   const $ = cheerio.load(html);
-  return $("h2").toArray().some((el) => GLANCE_HEADINGS.test($(el).text()));
+  return $("h2")
+    .toArray()
+    .some((el) => GLANCE_HEADINGS.test($(el).text()));
 }
 
 // Returns a valid English URL for a German market page, or null.
-async function findEnglishUrl(gUrl: string, id: string): Promise<string | null> {
+async function findEnglishUrl(
+  gUrl: string,
+  id: string,
+): Promise<string | null> {
   const res = await fetch(gUrl, { headers });
   const $ = cheerio.load(await res.text());
   const candidates: string[] = [];
   const enLink = $('link[hreflang="en"]').attr("href");
   if (enLink) candidates.push(toAbsolute(enLink));
   const slug = gUrl.match(/\/weihnachtsmarkt\/\d+-\d+-(.*)\.html/)?.[1];
-  if (slug) candidates.push(`https://www.berlin.de/en/christmas-markets/${id}-3230598-${slug}.en.html`);
+  if (slug)
+    candidates.push(
+      `https://www.berlin.de/en/christmas-markets/${id}-3230598-${slug}.en.html`,
+    );
   for (const c of candidates) {
     if (await hasGlanceSection(c).catch(() => false)) return c;
   }
@@ -49,17 +57,37 @@ async function main() {
   }
 
   const districts = [
-    "charlottenburg", "friedrichshain", "hellersdorf", "hohenschoenhausen",
-    "kreuzberg", "koepenick", "lichtenberg", "marzahn", "mitte", "neukoelln",
-    "pankow", "prenzlauer-berg", "reinickendorf", "schoeneberg", "spandau",
-    "steglitz", "tempelhof", "tiergarten", "treptow", "wedding", "weissensee",
-    "wilmersdorf", "zehlendorf"
+    "charlottenburg",
+    "friedrichshain",
+    "hellersdorf",
+    "hohenschoenhausen",
+    "kreuzberg",
+    "koepenick",
+    "lichtenberg",
+    "marzahn",
+    "mitte",
+    "neukoelln",
+    "pankow",
+    "prenzlauer-berg",
+    "reinickendorf",
+    "schoeneberg",
+    "spandau",
+    "steglitz",
+    "tempelhof",
+    "tiergarten",
+    "treptow",
+    "wedding",
+    "weissensee",
+    "wilmersdorf",
+    "zehlendorf",
   ];
 
   const allGermanUrls = new Set<string>();
   async function fetchLinks(url: string) {
     try {
-      const res = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0" } });
+      const res = await fetch(url, {
+        headers: { "User-Agent": "Mozilla/5.0" },
+      });
       if (!res.ok) return;
       const html = await res.text();
       const $ = cheerio.load(html);
@@ -67,42 +95,66 @@ async function main() {
         let h = $(el).attr("href");
         if (!h) return;
         if (h.startsWith("/")) h = "https://www.berlin.de" + h;
-        if (h.includes("/weihnachtsmarkt/") && h.endsWith(".html") && !h.includes("rubric") && !h.includes("index") && !h.includes("suche")) {
+        if (
+          h.includes("/weihnachtsmarkt/") &&
+          h.endsWith(".html") &&
+          !h.includes("rubric") &&
+          !h.includes("index") &&
+          !h.includes("suche")
+        ) {
           allGermanUrls.add(h);
         }
       });
-    } catch (e) {}
+    } catch {
+      // ignore
+    }
   }
 
+  const CONCURRENCY = 5;
   console.log("Fetching main page...");
   await fetchLinks("https://www.berlin.de/weihnachtsmarkt/");
-  for (const d of districts) {
-    console.log(`Fetching district: ${d}`);
-    await fetchLinks(`https://www.berlin.de/weihnachtsmarkt/${d}/`);
+  for (let i = 0; i < districts.length; i += CONCURRENCY) {
+    const batch = districts.slice(i, i + CONCURRENCY);
+    console.log(`Fetching districts: ${batch.join(", ")}`);
+    await Promise.allSettled(
+      batch.map((d) =>
+        fetchLinks(`https://www.berlin.de/weihnachtsmarkt/${d}/`),
+      ),
+    );
   }
 
   console.log(`Found ${allGermanUrls.size} German market URLs total.`);
 
   const newUrls: string[] = [];
 
-  for (const gUrl of allGermanUrls) {
+  const URL_CONCURRENCY = 3;
+  const newUrlCandidates = [...allGermanUrls].filter((gUrl) => {
     const m = gUrl.match(/\/weihnachtsmarkt\/(\d+)-/);
-    if (!m) continue;
-    const id = m[1];
-    if (existingIds.has(id)) continue;
+    return m && !existingIds.has(m[1]);
+  });
 
-    try {
-      const enUrl = await findEnglishUrl(gUrl, id);
-      if (enUrl) newUrls.push(enUrl);
-      else console.log(`Skipping, no valid English page: ${gUrl}`);
-    } catch (e) {
-      console.log(`Skipping, fetch failed: ${gUrl}`);
-    }
+  for (let i = 0; i < newUrlCandidates.length; i += URL_CONCURRENCY) {
+    const batch = newUrlCandidates.slice(i, i + URL_CONCURRENCY);
+    await Promise.allSettled(
+      batch.map(async (gUrl) => {
+        const m = gUrl.match(/\/weihnachtsmarkt\/(\d+)-/)!;
+        const id = m[1];
+        try {
+          const enUrl = await findEnglishUrl(gUrl, id);
+          if (enUrl) newUrls.push(enUrl);
+          else console.log(`Skipping, no valid English page: ${gUrl}`);
+        } catch {
+          console.log(`Skipping, fetch failed: ${gUrl}`);
+        }
+      }),
+    );
   }
 
   const combined = [...rawUrls, ...newUrls];
   fs.writeFileSync(rawUrlsPath, JSON.stringify(combined, null, 2), "utf8");
-  console.log(`Added ${newUrls.length} new markets. Total markets in raw: ${combined.length}`);
+  console.log(
+    `Added ${newUrls.length} new markets. Total markets in raw: ${combined.length}`,
+  );
 }
 
 main();

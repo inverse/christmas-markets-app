@@ -2,131 +2,12 @@ import fs from "fs";
 import path from "path";
 import * as cheerio from "cheerio";
 import * as prettier from "prettier";
-import { parseDates, type Dates } from "../src/shared/dateParser.ts";
+import { parseArgs } from "node:util";
+import { parseDates } from "../src/shared/dateParser.ts";
+import type { Market } from "../src/shared/types.ts";
 
 const RAW_URLS_PATH = path.resolve("data/markets-raw.json");
 const OUTPUT_PATH = path.resolve("data/markets.json");
-
-const DATA_MAP: Record<string, Dates> = {
-  "On all Sundays in Advent 2026 (29 November, 6, 13 and 20 December 2026)": {
-    raw: "On all Sundays in Advent 2026 (29 November, 6, 13 and 20 December 2026)",
-    type: "dates",
-    dates: ["2026-11-29", "2026-12-06", "2026-12-13", "2026-12-20"],
-  },
-  "On the first three Advent weekends in 2026 (November 28 and 29, December 05, 06, 12, and 13)":
-    {
-      raw: "On the first three Advent weekends in 2026 (November 28 and 29, December 05, 06, 12, and 13)",
-      type: "dates",
-      dates: [
-        "2026-11-28",
-        "2026-11-29",
-        "2026-12-05",
-        "2026-12-06",
-        "2026-12-12",
-        "2026-12-13",
-      ],
-    },
-  "On all weekends in Advent (November 28 and 29, December 5, 6, 12, 13, 19, and 20, 2026)":
-    {
-      raw: "On all weekends in Advent (November 28 and 29, December 5, 6, 12, 13, 19, and 20, 2026)",
-      type: "dates",
-      dates: [
-        "2026-11-28",
-        "2026-11-29",
-        "2026-12-05",
-        "2026-12-06",
-        "2026-12-12",
-        "2026-12-13",
-        "2026-12-19",
-        "2026-12-20",
-      ],
-    },
-  "On all Advent weekends in 2026 (November 28 and 29, as well as December 5, 6, 12, 13, 19 and 21, 2026)":
-    {
-      raw: "On all Advent weekends in 2026 (November 28 and 29, as well as December 5, 6, 12, 13, 19 and 21, 2026)",
-      type: "dates",
-      dates: [
-        "2026-11-28",
-        "2026-11-29",
-        "2026-12-05",
-        "2026-12-06",
-        "2026-12-12",
-        "2026-12-13",
-        "2026-12-19",
-        "2026-12-21",
-      ],
-    },
-  "December 5 and 6, 2026": {
-    raw: "December 5 and 6, 2026",
-    type: "dates",
-    dates: ["2026-12-05", "2026-12-06"],
-  },
-  "December 19 and 20, 2026": {
-    raw: "December 19 and 20, 2026",
-    type: "dates",
-    dates: ["2026-12-19", "2026-12-20"],
-  },
-  "November 28 and 29, 2026": {
-    raw: "November 28 and 29, 2026",
-    type: "dates",
-    dates: ["2026-11-28", "2026-11-29"],
-  },
-  "November 4 to December 23, 2026; closed on November 15 (Remembrance Day) and November 22 (All Souls’ Day)":
-    {
-      raw: "November 4 to December 23, 2026; closed on November 15 (Remembrance Day) and November 22 (All Souls’ Day)",
-      type: "dates",
-      dates: [
-        "2026-11-04",
-        "2026-11-05",
-        "2026-11-06",
-        "2026-11-07",
-        "2026-11-08",
-        "2026-11-09",
-        "2026-11-10",
-        "2026-11-11",
-        "2026-11-12",
-        "2026-11-13",
-        "2026-11-14",
-        "2026-11-16",
-        "2026-11-17",
-        "2026-11-18",
-        "2026-11-19",
-        "2026-11-20",
-        "2026-11-21",
-        "2026-11-23",
-        "2026-11-24",
-        "2026-11-25",
-        "2026-11-26",
-        "2026-11-27",
-        "2026-11-28",
-        "2026-11-29",
-        "2026-11-30",
-        "2026-12-01",
-        "2026-12-02",
-        "2026-12-03",
-        "2026-12-04",
-        "2026-12-05",
-        "2026-12-06",
-        "2026-12-07",
-        "2026-12-08",
-        "2026-12-09",
-        "2026-12-10",
-        "2026-12-11",
-        "2026-12-12",
-        "2026-12-13",
-        "2026-12-14",
-        "2026-12-15",
-        "2026-12-16",
-        "2026-12-17",
-        "2026-12-18",
-        "2026-12-19",
-        "2026-12-20",
-        "2026-12-21",
-        "2026-12-22",
-        "2026-12-23",
-      ],
-    },
-};
 
 function getDdByDtLabelSimple(
   $: cheerio.CheerioAPI,
@@ -147,7 +28,7 @@ function getDdByDtLabelSimple(
 }
 
 interface MarketDetails {
-  dates: Dates | string;
+  dates: Dates;
   opening_times: string;
   admission: string;
 }
@@ -208,9 +89,7 @@ async function fetchWithRetry(url: string): Promise<Response> {
     console.warn(
       `[Attempt ${attempt}/${RETRY_ATTEMPTS}] ${label}: ${lastError} - retrying in ${(waitMs / 1000).toFixed(1)}s`,
     );
-    const { promise, resolve } = Promise.withResolvers<void>();
-    setTimeout(resolve, waitMs);
-    await promise;
+    await delay(waitMs);
   }
 
   throw new Error(`${lastError} (gave up after ${RETRY_ATTEMPTS} attempts)`);
@@ -219,7 +98,7 @@ async function fetchWithRetry(url: string): Promise<Response> {
 function parseMarketDetails($: cheerio.CheerioAPI): MarketDetails {
   const dl = $(".info-container-list");
   const details: MarketDetails = {
-    dates: "Not found",
+    dates: { raw: "Not found", type: "range", start_date: "", end_date: "" },
     opening_times: "Not found",
     admission: "Not found",
   };
@@ -227,37 +106,28 @@ function parseMarketDetails($: cheerio.CheerioAPI): MarketDetails {
   if (dl.length) {
     const labels = [
       { key: "dates" as const, label: ["Dates", "Date", "Termine", "Datum"] },
-      { key: "opening_times" as const, label: ["Opening Hours", "Öffnungszeiten"] },
+      {
+        key: "opening_times" as const,
+        label: ["Opening Hours", "Öffnungszeiten"],
+      },
       { key: "admission" as const, label: ["Admission Fee", "Eintritt"] },
     ];
     for (const { key, label } of labels) {
       let dd = null;
-      if (Array.isArray(label)) {
-        for (const l of label) {
-          dd = getDdByDtLabelSimple($, dl, l);
-          if (dd) break;
-        }
-      } else {
-        dd = getDdByDtLabelSimple($, dl, label);
+      for (const l of label) {
+        dd = getDdByDtLabelSimple($, dl, l);
+        if (dd) break;
       }
       if (dd) {
         const ddText = dd.text().trim();
         if (key === "dates") {
-          if (DATA_MAP[ddText]) {
-            details[key] = { ...DATA_MAP[ddText], raw: ddText };
-          } else {
-            const parsed = parseDates(ddText);
-            if (!parsed) {
-              details[key] = {
-                raw: ddText,
-                type: "range",
-                start_date: "",
-                end_date: "",
-              };
-            } else {
-              details[key] = parsed;
-            }
-          }
+          const parsed = parseDates(ddText);
+          details[key] = parsed ?? {
+            raw: ddText,
+            type: "range",
+            start_date: "",
+            end_date: "",
+          };
         } else {
           details[key] = ddText;
         }
@@ -325,6 +195,7 @@ async function processMarket(index: number, total: number, url: string) {
 
     let lat = 52.52;
     let lng = 13.4;
+    let coordinates_approximate = false;
     const latStr = $("div.geomap-map").attr("data-marker-lat");
     const lngStr = $("div.geomap-map").attr("data-marker-long");
 
@@ -337,7 +208,18 @@ async function processMarket(index: number, total: number, url: string) {
       if (coords) {
         lat = coords.lat;
         lng = coords.lng;
+        coordinates_approximate = true;
+      } else {
+        coordinates_approximate = true;
+        console.warn(
+          `No coordinates found for ${name} — using city-centre fallback`,
+        );
       }
+    } else {
+      coordinates_approximate = true;
+      console.warn(
+        `No coordinates found for ${name} — using city-centre fallback`,
+      );
     }
 
     const image_url = $("meta[property='og:image']").attr("content") || "";
@@ -358,6 +240,7 @@ async function processMarket(index: number, total: number, url: string) {
       description,
       image_url,
       coordinates: { lng, lat },
+      coordinates_approximate,
       url,
     };
   } catch (err) {
@@ -388,18 +271,49 @@ async function processMarketsSequential(urls: string[]) {
   return results;
 }
 
+// Usage: markets:generate [--missing] [--only <url-substring>]...
+//   (no flags)  scrape every URL in markets-raw.json
+//   --missing   scrape only URLs that are not yet in markets.json
+//   --only      scrape only URLs containing the given text (repeatable)
+// Scraped markets are merged into markets.json by URL; a failed scrape keeps
+// the previous entry instead of dropping the market.
 async function main() {
+  const { values } = parseArgs({
+    options: {
+      missing: { type: "boolean" },
+      only: { type: "string", multiple: true },
+    },
+  });
+
   if (!fs.existsSync(RAW_URLS_PATH)) {
     console.error(`Error: ${RAW_URLS_PATH} not found.`);
     process.exit(1);
   }
 
   const urls: string[] = JSON.parse(fs.readFileSync(RAW_URLS_PATH, "utf-8"));
+  const existing: Market[] = fs.existsSync(OUTPUT_PATH)
+    ? JSON.parse(fs.readFileSync(OUTPUT_PATH, "utf-8"))
+    : [];
+  const byUrl = new Map(existing.map((m) => [m.url, m]));
+
+  const only = values.only ?? [];
+  const targets = urls.filter(
+    (u) =>
+      (!values.missing || !byUrl.has(u)) &&
+      (only.length === 0 || only.some((s) => u.includes(s))),
+  );
+  if (targets.length === 0) {
+    console.log("Nothing to fetch.");
+    return;
+  }
   console.log(
-    `Loaded ${urls.length} market URLs from markets-raw.json. Starting scrape...`,
+    `Loaded ${urls.length} market URLs from markets-raw.json. Scraping ${targets.length}...`,
   );
 
-  const markets = await processMarketsSequential(urls);
+  for (const market of await processMarketsSequential(targets)) {
+    byUrl.set(market.url, market);
+  }
+  const markets = urls.flatMap((u) => byUrl.get(u) ?? []);
 
   const jsonContent = JSON.stringify(markets, null, 2);
   const config = await prettier.resolveConfig(OUTPUT_PATH);

@@ -39,6 +39,8 @@ export function findNearestMarket(
 ): NearestResult | null {
   let best: NearestResult | null = null;
   for (const market of markets) {
+    // Approximate pins are not drawn on the map, so they cannot be "nearest".
+    if (market.coordinates_approximate) continue;
     const distanceMeters = haversineDistance(user, market.coordinates);
     if (!best || distanceMeters < best.distanceMeters) {
       best = { market, distanceMeters };
