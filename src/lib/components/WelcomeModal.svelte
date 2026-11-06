@@ -1,19 +1,25 @@
 <script lang="ts">
   import { fade } from "svelte/transition";
+  import type { Locale } from "$shared/types";
+  import { messages, interpolate } from "$lib/i18n/messages";
 
   let {
     onClose,
+    locale,
     daysUntilFirstMarket,
     marketCount,
     anyMarketOpen,
     allMarketsClosed,
   }: {
     onClose: () => void;
+    locale: Locale;
     daysUntilFirstMarket?: number;
     marketCount: number;
     anyMarketOpen: boolean;
     allMarketsClosed: boolean;
   } = $props();
+
+  const dict = $derived(messages(locale));
 
   const snowflakes = Array.from({ length: 100 }, () => ({
     left: Math.random() * 100,
@@ -51,10 +57,11 @@
 
     <div class="relative text-center">
       <img src="/icons/logo.svg" alt="Logo" class="mx-auto h-20 w-20" />
-      <h2 class="font-display text-3xl font-bold text-ink-brand">Welcome!</h2>
+      <h2 class="font-display text-3xl font-bold text-ink-brand">
+        {dict.welcomeTitle}
+      </h2>
       <p class="mt-3 text-left leading-relaxed text-stone-700">
-        Find Berlin's brightest Christmas markets, check the dates, and plan a
-        magical festive outing.
+        {dict.welcomeIntro}
       </p>
 
       {#if anyMarketOpen}
@@ -68,10 +75,10 @@
           </div>
           <div>
             <div class="font-display text-lg font-bold">
-              The season is here!
+              {dict.welcomeSeasonHere}
             </div>
             <div class="mt-1 text-sm text-white/75">
-              Berlin is full of festive magic
+              {dict.welcomeSeasonHereHint}
             </div>
           </div>
         </div>
@@ -86,9 +93,11 @@
           </div>
           <div>
             <div class="font-display text-lg font-bold">
-              The season has ended
+              {dict.welcomeSeasonEnded}
             </div>
-            <div class="mt-1 text-sm text-stone-600">See you next year!</div>
+            <div class="mt-1 text-sm text-stone-600">
+              {dict.welcomeSeeYouNextYear}
+            </div>
           </div>
         </div>
       {:else if daysUntilFirstMarket !== undefined}
@@ -106,28 +115,28 @@
             <div
               class="mt-1 text-[10px] font-bold uppercase tracking-widest text-white/75"
             >
-              days
+              {dict.welcomeDays}
             </div>
           </div>
           <div>
             <div class="font-display text-lg font-bold">
-              The season is nearly here
+              {dict.welcomeSeasonNearlyHere}
             </div>
             <div class="mt-1 text-sm text-white/75">
-              until the first market opens
+              {dict.welcomeUntilFirstMarket}
             </div>
           </div>
         </div>
       {/if}
 
       <p class="mb-5 text-sm font-semibold text-ink-brand">
-        Explore {marketCount} festive markets across Berlin
+        {interpolate(dict.welcomeExploreCount, { count: String(marketCount) })}
       </p>
       <button
         onclick={onClose}
         class="w-full bg-gold text-on-gold font-bold py-3 rounded-lg shadow-lg hover:bg-gold-light transition"
       >
-        Start exploring
+        {dict.welcomeStartExploring}
       </button>
     </div>
   </div>

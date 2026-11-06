@@ -1,5 +1,6 @@
-import { statusInfo, type MarketStatus } from "./marketStatus";
-import type { Market } from "$shared/types";
+import type { MarketStatus } from "./marketStatus";
+import type { Locale, Market } from "$shared/types";
+import { messages } from "$lib/i18n/messages";
 
 export function escapeHtml(value: string | undefined | null): string {
   if (!value) return "";
@@ -19,29 +20,26 @@ function row(icon: string, label: string, content: string): string {
 				</div>`;
 }
 
-export function buildPopup(market: Market, status: MarketStatus): string {
-  const statusInfoObj = statusInfo(status);
+export function buildPopup(
+  market: Market,
+  status: MarketStatus,
+  locale: Locale,
+): string {
+  const dict = messages(locale);
   const name = escapeHtml(market.name);
   const address = escapeHtml(market.address);
   const url = escapeHtml(market.url);
-  const dates = escapeHtml(market.dates?.raw ? market.dates.raw : "Check site");
-  const description =
-    market.description && market.description !== "Not found"
-      ? `<div class="border-b border-gold/20 pb-3 text-[13px] leading-relaxed text-stone-800">${escapeHtml(
-          market.description,
-        )}</div>`
-      : "";
-  const openingTimes =
-    market.opening_times === "Not found"
-      ? '<span class="italic text-stone-500">Opening times to be announced</span>'
-      : escapeHtml(market.opening_times);
-  const hasAdmission =
-    market.admission &&
-    !["Not found", "Not yet known"].includes(market.admission);
-  const admission = hasAdmission
+  const dates = escapeHtml(market.dates.raw || dict.checkSite);
+  const description = market.description
+    ? `<div class="border-b border-gold/20 pb-3 text-[13px] leading-relaxed text-stone-800">${escapeHtml(market.description)}</div>`
+    : "";
+  const openingTimes = market.opening_times
+    ? escapeHtml(market.opening_times)
+    : `<span class="italic text-stone-500">${dict.openingTimesToBeAnnounced}</span>`;
+  const admission = market.admission
     ? row(
         "fa-euro-sign",
-        "Admission",
+        dict.admission,
         `<strong class="text-ink-brand">${escapeHtml(market.admission)}</strong>`,
       )
     : "";
@@ -51,20 +49,20 @@ export function buildPopup(market: Market, status: MarketStatus): string {
 					<img src="${escapeHtml(market.image_url)}" alt="${name}" loading="lazy" class="h-full w-full object-cover" />
 					<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
 					<div class="absolute top-3 left-3 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide bg-black/50 text-white border border-white/20">
-						${statusInfoObj.label}
+						${dict.status[status]}
 					</div>
 					<h3 class="absolute bottom-3 left-3 right-10 text-white font-display text-lg font-bold leading-tight drop-shadow line-clamp-2">${name}</h3>
 				</div>
 				<div class="h-1 w-full bg-gradient-to-r from-pine via-gold to-berry"></div>
 				<div class="space-y-3 p-4">
 					${description}
-					${row("fa-location-dot", "Address", `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(market.address)}" target="_blank" rel="noopener" class="font-medium text-ink-brand underline decoration-gold underline-offset-2 hover:text-pine">${address}</a>`)}
-        ${row("fa-calendar-days", "Date", `<strong class="text-ink-brand">${dates}</strong>`)}
-					${row("fa-clock", "Hours", `<strong>${openingTimes}</strong>`)}
+					${row("fa-location-dot", dict.address, `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(market.address)}" target="_blank" rel="noopener" class="font-medium text-ink-brand underline decoration-gold underline-offset-2 hover:text-pine">${address}</a>`)}
+        ${row("fa-calendar-days", dict.date, `<strong class="text-ink-brand">${dates}</strong>`)}
+					${row("fa-clock", dict.hours, `<strong>${openingTimes}</strong>`)}
 					${admission}
 					<div class="grid grid-cols-2 gap-2">
-						<a href="${directionsUrl}" target="_blank" rel="noopener" class="block text-center text-sm font-bold py-2.5 rounded-lg bg-pine !text-white shadow-lg transition hover:bg-pine-dark"><i class="fa-solid fa-diamond-turn-right mr-1.5" aria-hidden="true"></i>Directions</a>
-						<a href="${url}" target="_blank" rel="noopener" class="block text-center text-sm font-bold py-2.5 rounded-lg bg-gold !text-pine-dark shadow-lg transition hover:bg-gold-light">View details</a>
+						<a href="${directionsUrl}" target="_blank" rel="noopener" class="block text-center text-sm font-bold py-2.5 rounded-full bg-pine !text-white shadow-lg transition hover:bg-pine-dark">${dict.directions}</a>
+						<a href="${url}" target="_blank" rel="noopener" class="block text-center text-sm font-bold py-2.5 rounded-full bg-gold !text-pine-dark shadow-lg transition hover:bg-gold-light">${dict.viewDetails}</a>
 					</div>
 				</div>
 			</div>`;
@@ -83,18 +81,22 @@ function formatDistance(meters: number): string {
 
 /** Compact "you are here" card for the blue star marker: same chrome language
     as the market popups, with the locator accent and no photo header. */
-export function buildUserPopup(nearest: NearestMarket | null): string {
+export function buildUserPopup(
+  nearest: NearestMarket | null,
+  locale: Locale,
+): string {
+  const dict = messages(locale);
   const nearestLine = nearest
-    ? `Nearest market: <span class="font-semibold text-ink-brand">${escapeHtml(nearest.name)}</span> &middot; ${formatDistance(nearest.distanceMeters)}`
-    : "No market data loaded yet.";
+    ? `${dict.nearestMarket} <span class="font-semibold text-ink-brand">${escapeHtml(nearest.name)}</span> &middot; ${formatDistance(nearest.distanceMeters)}`
+    : dict.noMarketData;
 
   return `<div class="rounded-2xl border-2 border-locator/70 bg-surface font-sans shadow-2xl ring-4 ring-locator/15">
 				<div class="flex items-center gap-3 py-3 pl-4 pr-11">
 					<span class="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border-2 border-locator bg-locator/10">
-						<svg viewBox="0 0 24 24" fill="currentColor" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-locator" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>
+						<svg viewBox="0 0 24 24" fill="currentColor" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-locator" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87-1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>
 					</span>
 					<div class="min-w-0">
-						<h3 class="font-display text-base font-bold leading-tight text-ink-brand">You are here</h3>
+						<h3 class="font-display text-base font-bold leading-tight text-ink-brand">${dict.youAreHere}</h3>
 						<p class="mt-1 text-[12px] leading-snug text-stone-600">${nearestLine}</p>
 					</div>
 				</div>

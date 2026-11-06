@@ -1,0 +1,1856 @@
+[
+  {
+    "id": "medieval-christmas-market-at-britz-palace",
+    "dates": {
+      "type": "dates",
+      "dates": [
+        "2026-11-27",
+        "2026-11-28",
+        "2026-11-29",
+        "2026-12-04",
+        "2026-12-05",
+        "2026-12-06",
+        "2026-12-11",
+        "2026-12-12",
+        "2026-12-13",
+        "2026-12-18",
+        "2026-12-19",
+        "2026-12-20"
+      ]
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/5491322/ratio_4_3/1669618388/800x600/",
+    "coordinates": {
+      "lng": 13.4379,
+      "lat": 52.4469
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-flea-market-on-kranoldplatz",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9837514/ratio_4_3/1764074950/800x600/",
+    "coordinates": {
+      "lng": 13.4378,
+      "lat": 52.4664
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "nowkoelln-xmas-flowmarkt",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-11-29",
+      "end_date": "2026-11-29"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7880856/ratio_4_3/1700563355/800x600/",
+    "coordinates": {
+      "lng": 13.4313,
+      "lat": 52.4925
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "rudow-christmas-mile",
+    "dates": {
+      "type": "dates",
+      "dates": ["2026-12-05", "2026-12-06"]
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/6179403/ratio_4_3/1704803618/800x600/",
+    "coordinates": {
+      "lng": 13.4935,
+      "lat": 52.4206
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "advent-market-in-alt-buckow",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-11-27",
+      "end_date": "2026-11-29"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8571960/ratio_4_3/1736494079/800x600/",
+    "coordinates": {
+      "lng": 13.4335,
+      "lat": 52.4231
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-on-the-dicke-linda",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-12-12",
+      "end_date": "2026-12-12"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8374188/ratio_4_3/1729666153/800x600/",
+    "coordinates": {
+      "lng": 13.4378,
+      "lat": 52.4664
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-bazaar-in-britz",
+    "dates": {
+      "type": "dates",
+      "dates": ["2026-12-05", "2026-12-06"]
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7132417/ratio_4_3/1730463941/800x600/",
+    "coordinates": {
+      "lng": 13.4262,
+      "lat": 52.4367
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-on-alexanderplatz",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-11-23",
+      "end_date": "2026-12-26"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/10733279/ratio_4_3/1793626750/800x600/",
+    "coordinates": {
+      "lng": 13.413,
+      "lat": 52.5218
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "wintermuenze",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7794543/ratio_4_3/1793875744/800x600/",
+    "coordinates": {
+      "lng": 13.3951309,
+      "lat": 52.5173885
+    },
+    "coordinates_approximate": true
+  },
+  {
+    "id": "bloody-x-mas-market",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9358408/ratio_4_3/1734436584/800x600/",
+    "coordinates": {
+      "lng": 13.3779,
+      "lat": 52.5234
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-bazaar-in-the-atrium-of-the-federal-foreign-office",
+    "dates": {
+      "type": "dates",
+      "dates": ["2026-12-04", "2026-12-05"]
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7842419/ratio_4_3/1668778139/800x600/",
+    "coordinates": {
+      "lng": 13.3985,
+      "lat": 52.5154
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-magic-in-buch",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/5476957/ratio_4_3/1662970815/800x600/",
+    "coordinates": {
+      "lng": 13.4997,
+      "lat": 52.6358
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "sustainable-christmas-market-at-schoenhausen-palace",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-11-27",
+      "end_date": "2026-11-29"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/3717101/ratio_4_3/1763973412/800x600/",
+    "coordinates": {
+      "lng": 13.4055,
+      "lat": 52.5783
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "st-nicholas-market-at-the-children-s-farm-pinke-panke",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/3168798/ratio_4_3/1665054337/800x600/",
+    "coordinates": {
+      "lng": 13.3882,
+      "lat": 52.569
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "advent-bazaar-of-the-kaspar-hauser-foundation",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-11-28",
+      "end_date": "2026-11-28"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7842419/ratio_4_3/1668778139/800x600/",
+    "coordinates": {
+      "lng": 13.4176,
+      "lat": 52.5819
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "spandauer-winterland",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-11-13",
+      "end_date": "2026-12-27"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/10000243/ratio_4_3/1762334285/800x600/",
+    "coordinates": {
+      "lng": 13.1994,
+      "lat": 52.5336
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-at-spandau-city-hall",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7799928/ratio_4_3/1693299978/800x600/",
+    "coordinates": {
+      "lng": 13.2,
+      "lat": 52.5347
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-at-the-evangelical-st-john-s-foundation",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-11-29",
+      "end_date": "2026-11-29"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/5640122/ratio_4_3/1663051581/800x600/",
+    "coordinates": {
+      "lng": 13.1924,
+      "lat": 52.5677
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "social-christmas-market-in-spandau",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8572167/ratio_4_3/1701351617/800x600/",
+    "coordinates": {
+      "lng": 13.1576,
+      "lat": 52.523
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "arts-and-crafts-christmas-market-in-gatow",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-12-13",
+      "end_date": "2026-12-13"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9395944/ratio_4_3/1736495280/800x600/",
+    "coordinates": {
+      "lng": 13.1815,
+      "lat": 52.4865
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "advent-market-at-domaene-dahlem",
+    "dates": {
+      "type": "dates",
+      "dates": [
+        "2026-11-28",
+        "2026-11-29",
+        "2026-12-05",
+        "2026-12-06",
+        "2026-12-12",
+        "2026-12-13",
+        "2026-12-19",
+        "2026-12-20"
+      ]
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8578596/ratio_4_3/1701085432/800x600/",
+    "coordinates": {
+      "lng": 13.2886,
+      "lat": 52.4583
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "advent-market-in-leonhardtstrasse",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-12-06",
+      "end_date": "2026-12-06"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9979609/ratio_4_3/1761314133/800x600/",
+    "coordinates": {
+      "lng": 13.2972,
+      "lat": 52.5052
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "advent-market-on-karl-august-platz",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-11-29",
+      "end_date": "2026-11-29"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7093393/ratio_4_3/1657871727/800x600/",
+    "coordinates": {
+      "lng": 13.3104,
+      "lat": 52.5084
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "advent-market-on-kollwitzplatz",
+    "dates": {
+      "type": "dates",
+      "dates": ["2026-11-29", "2026-12-06", "2026-12-13", "2026-12-20"]
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9837409/ratio_4_3/1760363219/800x600/",
+    "coordinates": {
+      "lng": 13.4177,
+      "lat": 52.5365
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "berlin-dog-christmas-market",
+    "dates": {
+      "type": "dates",
+      "dates": ["2026-11-28", "2026-11-29"]
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7794906/ratio_4_3/1665404441/800x600/",
+    "coordinates": {
+      "lng": 13.2562,
+      "lat": 52.4664
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "lichtenberger-winterzeit",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-10-31",
+      "end_date": "2026-12-27"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/10711835/ratio_4_3/1792665900/800x600/",
+    "coordinates": {
+      "lng": 13.5035,
+      "lat": 52.5343
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-in-westend",
+    "dates": {
+      "type": "dates",
+      "dates": ["2026-12-19", "2026-12-20"]
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7092721/ratio_4_3/1657792116/800x600/",
+    "coordinates": {
+      "lng": 13.2594,
+      "lat": 52.5127
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-at-berlin-city-hall",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-11-23",
+      "end_date": "2027-01-03"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7880862/ratio_4_3/1704803196/800x600/",
+    "coordinates": {
+      "lng": 13.4075,
+      "lat": 52.5192
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-at-charlottenburg-palace",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-11-23",
+      "end_date": "2026-12-27"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/2189921/ratio_4_3/1753452851/800x600/",
+    "coordinates": {
+      "lng": 13.2935,
+      "lat": 52.5199
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-at-spaeth-sche-baumschulen",
+    "dates": {
+      "type": "dates",
+      "dates": [
+        "2026-11-28",
+        "2026-11-29",
+        "2026-12-05",
+        "2026-12-06",
+        "2026-12-12",
+        "2026-12-13"
+      ]
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/10018660/ratio_4_3/1763036448/800x600/",
+    "coordinates": {
+      "lng": 13.4732,
+      "lat": 52.4543
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-at-the-berlin-animal-shelter",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-12-06",
+      "end_date": "2026-12-06"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7897563/ratio_4_3/1669819952/800x600/",
+    "coordinates": {
+      "lng": 13.5462,
+      "lat": 52.5741
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-at-the-humboldt-forum",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-11-18",
+      "end_date": "2027-01-03"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9061476/ratio_4_3/1722322789/800x600/",
+    "coordinates": {
+      "lng": 13.4023,
+      "lat": 52.5161
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-in-alt-rixdorf",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-12-04",
+      "end_date": "2026-12-06"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8603192/ratio_4_3/1773234238/800x600/",
+    "coordinates": {
+      "lng": 13.4463,
+      "lat": 52.4742
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-in-spandau",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-11-23",
+      "end_date": "2026-12-22"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9833185/ratio_4_3/1754900927/800x600/",
+    "coordinates": {
+      "lng": 13.2048,
+      "lat": 52.5372
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-on-breitscheidplatz",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-11-13",
+      "end_date": "2027-01-03"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8580156/ratio_4_3/1735550604/800x600/",
+    "coordinates": {
+      "lng": 13.3346,
+      "lat": 52.5042
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-on-gendarmenmarkt",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-11-23",
+      "end_date": "2026-12-31"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8580108/ratio_4_3/1778165779/800x600/",
+    "coordinates": {
+      "lng": 13.3921,
+      "lat": 52.5137
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "finnish-advent-bazaar",
+    "dates": {
+      "type": "dates",
+      "dates": ["2026-11-14", "2026-11-15"]
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/10021108/ratio_4_3/1763121621/800x600/",
+    "coordinates": {
+      "lng": 13.3971,
+      "lat": 52.4894
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "holy-shit-shopping",
+    "dates": {
+      "type": "dates",
+      "dates": ["2026-11-28", "2026-11-29"]
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/5589994/ratio_4_3/1658132660/800x600/",
+    "coordinates": {
+      "lng": 13.453986686509,
+      "lat": 52.496078776217
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "lgbtiqa-winterdays-and-christmas-avenue",
+    "dates": {
+      "type": "dates",
+      "dates": [
+        "2026-11-07",
+        "2026-11-08",
+        "2026-11-09",
+        "2026-11-10",
+        "2026-11-11",
+        "2026-11-12",
+        "2026-11-13",
+        "2026-11-14",
+        "2026-11-16",
+        "2026-11-17",
+        "2026-11-18",
+        "2026-11-19",
+        "2026-11-20",
+        "2026-11-21",
+        "2026-11-23",
+        "2026-11-24",
+        "2026-11-25",
+        "2026-11-26",
+        "2026-11-27",
+        "2026-11-28",
+        "2026-11-29",
+        "2026-11-30",
+        "2026-12-01",
+        "2026-12-02",
+        "2026-12-03",
+        "2026-12-04",
+        "2026-12-05",
+        "2026-12-06",
+        "2026-12-07",
+        "2026-12-08",
+        "2026-12-09",
+        "2026-12-10",
+        "2026-12-11",
+        "2026-12-12",
+        "2026-12-13",
+        "2026-12-14",
+        "2026-12-15",
+        "2026-12-16",
+        "2026-12-17",
+        "2026-12-18",
+        "2026-12-19",
+        "2026-12-20",
+        "2026-12-21",
+        "2026-12-22",
+        "2026-12-23"
+      ]
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9260664/ratio_4_3/1730450526/800x600/",
+    "coordinates": {
+      "lng": 13.3533,
+      "lat": 52.4992
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "lucia-christmas-market-at-kulturbrauerei",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-11-23",
+      "end_date": "2026-12-22"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8522428/ratio_4_3/1704805086/800x600/",
+    "coordinates": {
+      "lng": 13.4126,
+      "lat": 52.5382
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "medieval-christmas-market-at-the-raw-compound",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-11-12",
+      "end_date": "2026-12-22"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7611156/ratio_4_3/1736165535/800x600/",
+    "coordinates": {
+      "lng": 13.4518,
+      "lat": 52.5081
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "pankow-advent-market-at-heynhoefe",
+    "dates": {
+      "type": "dates",
+      "dates": ["2026-12-05", "2026-12-06"]
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/5107072/ratio_4_3/1662723063/800x600/",
+    "coordinates": {
+      "lng": 13.4026,
+      "lat": 52.563
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "sustainable-christmas-market-on-sophienstrasse",
+    "dates": {
+      "type": "dates",
+      "dates": [
+        "2026-11-28",
+        "2026-11-29",
+        "2026-12-05",
+        "2026-12-06",
+        "2026-12-12",
+        "2026-12-13",
+        "2026-12-19",
+        "2026-12-20"
+      ]
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9833143/ratio_4_3/1758798602/800x600/",
+    "coordinates": {
+      "lng": 13.4023,
+      "lat": 52.5253
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "swedish-christmas-bazaar",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-11-27",
+      "end_date": "2026-11-29"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9833149/ratio_4_3/1758797533/800x600/",
+    "coordinates": {
+      "lng": 13.3291,
+      "lat": 52.4876
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "wein-nachtsmarkt-at-ludwig-beck-platz",
+    "dates": {
+      "type": "dates",
+      "dates": ["2026-12-12", "2026-12-13"]
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9333003/ratio_4_3/1774356833/800x600/",
+    "coordinates": {
+      "lng": 13.3122,
+      "lat": 52.4428
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "cjd-advent-market",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9837481/ratio_4_3/1768998517/800x600/",
+    "coordinates": {
+      "lng": 13.3845,
+      "lat": 52.5193
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "winter-market-at-the-wendenschloss-lido",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7883886/ratio_4_3/1669204516/800x600/",
+    "coordinates": {
+      "lng": 13.5995,
+      "lat": 52.4154
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "danish-christmas-market",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-11-27",
+      "end_date": "2026-11-29"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/1316232/ratio_4_3/1663929161/800x600/",
+    "coordinates": {
+      "lng": 13.3127,
+      "lat": 52.488
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-at-villa-donnersmarck",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-12-13",
+      "end_date": "2026-12-13"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/10727726/ratio_4_3/1793364459/800x600/",
+    "coordinates": {
+      "lng": 13.2584,
+      "lat": 52.4272
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-in-grunewald",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-11-29",
+      "end_date": "2026-11-29"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9837421/ratio_4_3/1760516424/800x600/",
+    "coordinates": {
+      "lng": 13.2748,
+      "lat": 52.4854
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "caribbean-christmas-market-at-yaam",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8562336/ratio_4_3/1700463797/800x600/",
+    "coordinates": {
+      "lng": 13.43,
+      "lat": 52.5097
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-at-the-karlshorst-racing-track",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-11-28",
+      "end_date": "2026-11-29"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9837433/ratio_4_3/1762329300/800x600/",
+    "coordinates": {
+      "lng": 13.5229,
+      "lat": 52.4752
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-on-alice-salomon-platz",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-11-25",
+      "end_date": "2026-12-27"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9837391/ratio_4_3/1764054063/800x600/",
+    "coordinates": {
+      "lng": 13.6042,
+      "lat": 52.537
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "norwegian-christmas-bazaar",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7794549/ratio_4_3/1671006577/800x600/",
+    "coordinates": {
+      "lng": 13.3808,
+      "lat": 52.4957
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-on-marzahner-promenade",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/5084195/ratio_4_3/1664188705/800x600/",
+    "coordinates": {
+      "lng": 13.5555,
+      "lat": 52.5472
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "british-christmas-market",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-12-05",
+      "end_date": "2026-12-05"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7689369/ratio_4_3/1665386594/800x600/",
+    "coordinates": {
+      "lng": 13.2589,
+      "lat": 52.5121
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "african-winter-market",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8565792/ratio_4_3/1793875281/800x600/",
+    "coordinates": {
+      "lng": 13.3951309,
+      "lat": 52.5173885
+    },
+    "coordinates_approximate": true
+  },
+  {
+    "id": "italian-christmas-market",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8533027/ratio_4_3/1793875382/800x600/",
+    "coordinates": {
+      "lng": 13.3951309,
+      "lat": 52.5173885
+    },
+    "coordinates_approximate": true
+  },
+  {
+    "id": "japan-market-christmas-edition",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-12-06",
+      "end_date": "2026-12-06"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/10019005/ratio_4_3/1763109500/800x600/",
+    "coordinates": {
+      "lng": 13.4514,
+      "lat": 52.4969
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "japanese-christmas-market-of-manufactories",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8538092/ratio_4_3/1699000972/800x600/",
+    "coordinates": {
+      "lng": 13.3645,
+      "lat": 52.5014
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "japanese-christmas-market",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/5603758/ratio_4_3/1657792549/800x600/",
+    "coordinates": {
+      "lng": 13.3668,
+      "lat": 52.4662
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "winterquartier-berlin",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-11-06",
+      "end_date": "2027-02-01"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9837466/ratio_4_3/1766398709/800x600/",
+    "coordinates": {
+      "lng": 13.4577,
+      "lat": 52.5033
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "winter-market-on-teufelsberg",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9284124/ratio_4_3/1733314255/800x600/",
+    "coordinates": {
+      "lng": 13.2396,
+      "lat": 52.4966
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "culinary-christmas-market-in-schoeneberg",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-11-23",
+      "end_date": "2026-12-23"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9248220/ratio_4_3/1730460233/800x600/",
+    "coordinates": {
+      "lng": 13.3593,
+      "lat": 52.4866
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-in-zehlendorf",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-11-23",
+      "end_date": "2026-12-30"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/4651625/ratio_4_3/1658142845/800x600/",
+    "coordinates": {
+      "lng": 13.2593,
+      "lat": 52.4331
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "winter-world-on-potsdamer-platz",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-11-23",
+      "end_date": "2026-12-26"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/4183572/ratio_4_3/1666598145/800x600/",
+    "coordinates": {
+      "lng": 13.3772,
+      "lat": 52.5089
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "weihnachtsrodeo-design-market",
+    "dates": {
+      "type": "dates",
+      "dates": ["2026-12-12", "2026-12-13"]
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9349756/ratio_4_3/1733994177/800x600/",
+    "coordinates": {
+      "lng": 13.4131,
+      "lat": 52.5479
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "weddingmarkt-christmas-edition",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7831133/ratio_4_3/1666779362/800x600/",
+    "coordinates": {
+      "lng": 13.3599,
+      "lat": 52.5475
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "designer-christmas-market",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/5577748/ratio_4_3/1661858145/800x600/",
+    "coordinates": {
+      "lng": 13.4514,
+      "lat": 52.4969
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "winter-dream-at-hauptbahnhof",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9975040/ratio_4_3/1761141056/800x600/",
+    "coordinates": {
+      "lng": 13.3681,
+      "lat": 52.5295
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-on-wilmersdorfer-strasse",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/1322601/ratio_4_3/1662381500/800x600/",
+    "coordinates": {
+      "lng": 13.3064,
+      "lat": 52.5078
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-at-the-broehan-museum",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8567781/ratio_4_3/1701769740/800x600/",
+    "coordinates": {
+      "lng": 13.2952,
+      "lat": 52.5189
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "advent-market-at-charlottenburg-town-hall",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-11-25",
+      "end_date": "2026-11-25"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8571966/ratio_4_3/1729576565/800x600/",
+    "coordinates": {
+      "lng": 13.3082,
+      "lat": 52.5172
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "kiezweihnacht",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/4662677/ratio_4_3/1662971487/800x600/",
+    "coordinates": {
+      "lng": 13.466,
+      "lat": 52.5177
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "all-inclusive-christmas-market-at-spreespeicher",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-11-16",
+      "end_date": "2026-12-30"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7132318/ratio_4_3/1666688910/800x600/",
+    "coordinates": {
+      "lng": 13.4489,
+      "lat": 52.5018
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "heissa-holzmarkt",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-11-06",
+      "end_date": "2026-12-20"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7875639/ratio_4_3/1668773051/800x600/",
+    "coordinates": {
+      "lng": 13.4269,
+      "lat": 52.5115
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "gluehwald-at-uber-platz",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-11-06",
+      "end_date": "2026-11-06"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7842425/ratio_4_3/1765189933/800x600/",
+    "coordinates": {
+      "lng": 13.4432,
+      "lat": 52.5057
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "kinky-christmas-market",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8593942/ratio_4_3/1701770567/800x600/",
+    "coordinates": {
+      "lng": 13.433,
+      "lat": 52.5056
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "merry-markthalle",
+    "dates": {
+      "type": "dates",
+      "dates": ["2026-12-06", "2026-12-13", "2026-12-20"]
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8533490/ratio_4_3/1729594657/800x600/",
+    "coordinates": {
+      "lng": 13.432,
+      "lat": 52.502
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "solidarity-winter-market-in-goerlitzer-park",
+    "dates": {
+      "type": "dates",
+      "dates": ["2026-12-12", "2026-12-13"]
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8572173/ratio_4_3/1702556649/800x600/",
+    "coordinates": {
+      "lng": 13.4338,
+      "lat": 52.4979
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "advent-bazaar-at-the-christuskirche",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7842431/ratio_4_3/1733315925/800x600/",
+    "coordinates": {
+      "lng": 13.4199,
+      "lat": 52.4919
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "artisan-christmas-market-at-gotisches-haus",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8572197/ratio_4_3/1793875920/800x600/",
+    "coordinates": {
+      "lng": 13.3951309,
+      "lat": 52.5173885
+    },
+    "coordinates_approximate": true
+  },
+  {
+    "id": "winter-market-in-the-atelier-gardens",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8567775/ratio_4_3/1733128871/800x600/",
+    "coordinates": {
+      "lng": 13.4113,
+      "lat": 52.4644
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-on-lehmann-s-farm",
+    "dates": {
+      "type": "dates",
+      "dates": [
+        "2026-12-04",
+        "2026-12-05",
+        "2026-12-06",
+        "2026-12-11",
+        "2026-12-12",
+        "2026-12-13"
+      ]
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8554101/ratio_4_3/1736332636/800x600/",
+    "coordinates": {
+      "lng": 13.3669,
+      "lat": 52.4119
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-in-lichtenrade",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/5497165/ratio_4_3/1658144680/800x600/",
+    "coordinates": {
+      "lng": 13.4102,
+      "lat": 52.39
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-at-tempelhof-airport",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9330348/ratio_4_3/1733914814/800x600/",
+    "coordinates": {
+      "lng": 13.3862,
+      "lat": 52.4781
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-around-the-marienfelde-village-church",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9837445/ratio_4_3/1770105196/800x600/",
+    "coordinates": {
+      "lng": 13.3673,
+      "lat": 52.4134
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-at-alpinia",
+    "dates": {
+      "type": "dates",
+      "dates": ["2026-11-29", "2026-12-06", "2026-12-13", "2026-12-20"]
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7897041/ratio_4_3/1729593435/800x600/",
+    "coordinates": {
+      "lng": 13.392,
+      "lat": 52.4211
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-in-alt-kaulsdorf",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-12-05",
+      "end_date": "2026-12-05"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9837442/ratio_4_3/1761044170/800x600/",
+    "coordinates": {
+      "lng": 13.5813,
+      "lat": 52.5086
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-at-the-naturhof-malchow",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/5588220/ratio_4_3/1663837194/800x600/",
+    "coordinates": {
+      "lng": 13.4821,
+      "lat": 52.5792
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-at-orankesee-lido",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7862538/ratio_4_3/1668240137/800x600/",
+    "coordinates": {
+      "lng": 13.4842,
+      "lat": 52.5496
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "advent-market-at-hanff-s-ruh",
+    "dates": {
+      "type": "dates",
+      "dates": ["2026-11-28", "2026-11-29"]
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7828109/ratio_4_3/1666687599/800x600/",
+    "coordinates": {
+      "lng": 13.5991,
+      "lat": 52.4078
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-at-the-christuskirche-in-oberschoeneweide",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-11-28",
+      "end_date": "2026-11-28"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/5085331/ratio_4_3/1663850343/800x600/",
+    "coordinates": {
+      "lng": 13.524,
+      "lat": 52.4634
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-in-oberschoeneweide",
+    "dates": {
+      "type": "dates",
+      "dates": ["2026-12-05", "2026-12-06"]
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8538257/ratio_4_3/1729594009/800x600/",
+    "coordinates": {
+      "lng": 13.5256,
+      "lat": 52.4587
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-at-koepenick-palace",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-12-11",
+      "end_date": "2026-12-13"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9837511/ratio_4_3/1758798713/800x600/",
+    "coordinates": {
+      "lng": 13.5737,
+      "lat": 52.4436
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-on-boelschestrasse",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-12-18",
+      "end_date": "2026-12-20"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8594083/ratio_4_3/1729583033/800x600/",
+    "coordinates": {
+      "lng": 13.6247,
+      "lat": 52.451
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "sustainable-christmas-market-in-lichtenberg",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7094941/ratio_4_3/1663761272/800x600/",
+    "coordinates": {
+      "lng": 13.5063,
+      "lat": 52.565
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-lights-at-lichtenberg-city-hall",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-11-29",
+      "end_date": "2026-11-29"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9837436/ratio_4_3/1760512065/800x600/",
+    "coordinates": {
+      "lng": 13.4795,
+      "lat": 52.5158
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "advent-market-in-alt-marzahn",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9837517/ratio_4_3/1770105375/800x600/",
+    "coordinates": {
+      "lng": 13.5599,
+      "lat": 52.5436
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "biesdorf-christmas-village",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8603183/ratio_4_3/1744361914/800x600/",
+    "coordinates": {
+      "lng": 13.5583,
+      "lat": 52.5051
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-at-biesdorf-palace",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/5980326/ratio_4_3/1657866943/800x600/",
+    "coordinates": {
+      "lng": 13.5568,
+      "lat": 52.5099
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "advent-market-in-papierstrasse",
+    "dates": {
+      "type": "dates",
+      "dates": ["2026-11-19", "2026-12-03"]
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7897275/ratio_4_3/1730459146/800x600/",
+    "coordinates": {
+      "lng": 13.3495,
+      "lat": 52.5763
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "winter-market-at-the-former-tegel-airport",
+    "dates": {
+      "type": "dates",
+      "dates": ["2026-11-28", "2026-11-29"]
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9837373/ratio_4_3/1761036540/800x600/",
+    "coordinates": {
+      "lng": 13.2915,
+      "lat": 52.5541
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "advent-market-at-the-tegel-forestry-office",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-11-28",
+      "end_date": "2026-11-28"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/3939228/ratio_4_3/1662726316/800x600/",
+    "coordinates": {
+      "lng": 13.2719,
+      "lat": 52.6053
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "adventsbasar-der-kirchengemeinde-luebars",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8571978/ratio_4_3/1729579188/800x600/",
+    "coordinates": {
+      "lng": 13.3553,
+      "lat": 52.6209
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "arts-and-crafts-christmas-market-in-frohnau",
+    "dates": {
+      "type": "dates",
+      "dates": ["2026-12-05", "2026-12-06"]
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/2837244/ratio_4_3/1554814628/800x600/",
+    "coordinates": {
+      "lng": 13.2897,
+      "lat": 52.6334
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "weihnachtsfest-in-der-alten-fasanerie",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-12-06",
+      "end_date": "2026-12-06"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7794549/ratio_4_3/1671006577/800x600/",
+    "coordinates": {
+      "lng": 13.368,
+      "lat": 52.6079
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "advent-bazaar-at-tegel-prison",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/2836687/ratio_4_3/1701444292/800x600/",
+    "coordinates": {
+      "lng": 13.2969,
+      "lat": 52.5733
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "weihnachtsmarkt-am-kadewe",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-11-01",
+      "end_date": "2026-11-01"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9934363/ratio_4_3/1761035412/800x600/",
+    "coordinates": {
+      "lng": 13.3429,
+      "lat": 52.5017
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "friedenauer-engelmarkt",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9837367/ratio_4_3/1768998281/800x600/",
+    "coordinates": {
+      "lng": 13.335,
+      "lat": 52.472
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-in-alt-steglitz",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9833191/ratio_4_3/1770104900/800x600/",
+    "coordinates": {
+      "lng": 13.3183,
+      "lat": 52.4562
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "schauriger-weihnachtsmarkt-im-goerzwerk",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9322146/ratio_4_3/1793875552/800x600/",
+    "coordinates": {
+      "lng": 13.3951309,
+      "lat": 52.5173885
+    },
+    "coordinates_approximate": true
+  },
+  {
+    "id": "weihnachtsmarkt-to-go-im-kranoldkiez",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7842425/ratio_4_3/1765189933/800x600/",
+    "coordinates": {
+      "lng": 13.3284,
+      "lat": 52.4278
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "weihnachtsmarkt-in-der-abenteueroase",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-12-05",
+      "end_date": "2026-12-05"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7497327/ratio_4_3/1762510377/800x600/",
+    "coordinates": {
+      "lng": 13.3471,
+      "lat": 52.4589
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "social-christmas-market-at-stadtschloss-moabit",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-11-30",
+      "end_date": "2026-11-30"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9302787/ratio_4_3/1765797757/800x600/",
+    "coordinates": {
+      "lng": 13.3263,
+      "lat": 52.5322
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "altglienicker-adventsmarkt",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-12-06",
+      "end_date": "2026-12-06"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9837448/ratio_4_3/1760514004/800x600/",
+    "coordinates": {
+      "lng": 13.5592,
+      "lat": 52.4103
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-in-blankenburg",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9833167/ratio_4_3/1770103696/800x600/",
+    "coordinates": {
+      "lng": 13.4537,
+      "lat": 52.5935
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "advent-bazaar-of-the-albert-schweitzer-foundation",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7817756/ratio_4_3/1666177723/800x600/",
+    "coordinates": {
+      "lng": 13.4488,
+      "lat": 52.5912
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "advent-market-at-oekowerk",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/5602137/ratio_4_3/1700735435/800x600/",
+    "coordinates": {
+      "lng": 13.2364,
+      "lat": 52.4919
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "waldweihnachtsmarkt-am-forstamt-grunewald",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-12-13",
+      "end_date": "2026-12-13"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7912512/ratio_4_3/1730464724/800x600/",
+    "coordinates": {
+      "lng": 13.2637,
+      "lat": 52.4766
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-at-st-michaels-heim",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/1320580/ratio_4_3/1663929684/800x600/",
+    "coordinates": {
+      "lng": 13.277,
+      "lat": 52.488
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "veganer-weihnachtsmarkt-auf-dem-fehrbelliner-platz",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/3717101/ratio_4_3/1763973412/800x600/",
+    "coordinates": {
+      "lng": 13.3138,
+      "lat": 52.4898
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "arts-and-crafts-christmas-market-on-mexikoplatz",
+    "dates": {
+      "type": "dates",
+      "dates": ["2026-11-29", "2026-12-06", "2026-12-13", "2026-12-20"]
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/4296415/ratio_4_3/1663052175/800x600/",
+    "coordinates": {
+      "lng": 13.2334,
+      "lat": 52.4378
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-at-the-grunewald-hunting-lodge",
+    "dates": {
+      "type": "dates",
+      "dates": ["2026-12-05", "2026-12-06"]
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/3260468/ratio_4_3/1549454844/800x600/",
+    "coordinates": {
+      "lng": 13.2612,
+      "lat": 52.4673
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "winter-wonderland-im-britzer-garten",
+    "dates": {
+      "type": "dates",
+      "dates": [
+        "2026-11-27",
+        "2026-11-28",
+        "2026-11-29",
+        "2026-12-04",
+        "2026-12-05",
+        "2026-12-06",
+        "2026-12-11",
+        "2026-12-12",
+        "2026-12-13",
+        "2026-12-18",
+        "2026-12-19",
+        "2026-12-20"
+      ]
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/10047433/ratio_4_3/1768823200/800x600/",
+    "coordinates": {
+      "lng": 13.4131,
+      "lat": 52.4394
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "nordberliner-weihnachtsrummel",
+    "dates": {
+      "type": "range",
+      "start_date": "",
+      "end_date": ""
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/10727837/ratio_4_3/1793368919/800x600/",
+    "coordinates": {
+      "lng": 13.2846,
+      "lat": 52.5825
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-on-lohmuehlen-island",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-11-20",
+      "end_date": "2026-12-20"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/10735028/ratio_4_3/1793704957/800x600/",
+    "coordinates": {
+      "lng": 13.45,
+      "lat": 52.4971
+    },
+    "coordinates_approximate": false
+  }
+]

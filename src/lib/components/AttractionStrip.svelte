@@ -2,11 +2,16 @@
   // Compact, horizontally scrolling row of affiliate tour cards for the
   // drawer. Sits above the market list so it is seen without scrolling.
   import attractions from "../../../data/attractions.json";
-  import type { Attraction } from "$shared/types";
+  import type { Attraction, Locale } from "$shared/types";
+  import { messages } from "$lib/i18n/messages";
+  import { attractionText } from "$lib/i18n/attractions";
   import {
     GYG_DRAWER_FEATURED_IDS,
     gygAffiliateUrl,
   } from "$lib/constants/getyourguide";
+
+  let { locale }: { locale: Locale } = $props();
+  const dict = $derived(messages(locale));
 
   const byId = new Map(
     (attractions as Attraction[]).map((attraction) => [
@@ -21,11 +26,11 @@
   <section aria-labelledby="tours-heading">
     <div class="mb-2 flex items-end justify-between px-1">
       <h3 id="tours-heading" class="font-display font-bold text-ink-brand">
-        Tours &amp; experiences
+        {dict.toursHeading}
       </h3>
       <span
         class="text-[11px] font-medium uppercase tracking-wide text-stone-400"
-        >Ad &middot; GetYourGuide</span
+        >{dict.adDisclosure} &middot; GetYourGuide</span
       >
     </div>
     <div
@@ -52,7 +57,7 @@
           <span
             class="absolute inset-x-2 bottom-1.5 line-clamp-2 text-[11px] font-bold leading-tight text-white drop-shadow"
           >
-            {attraction.name}
+            {attractionText(attraction, locale).name}
           </span>
         </a>
       {/each}

@@ -151,7 +151,7 @@ async function main() {
   }
 
   const combined = [...rawUrls, ...newUrls];
-  fs.writeFileSync(rawUrlsPath, JSON.stringify(combined, null, 2), "utf8");
+  fs.writeFileSync(rawUrlsPath, JSON.stringify(combined, null, 2) + "\n");
   console.log(
     `Added ${newUrls.length} new markets. Total markets in raw: ${combined.length}`,
   );

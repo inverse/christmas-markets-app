@@ -265,6 +265,7 @@ describe("isAllClosed", () => {
   it("should return false if at least one market is open", () => {
     const markets: Market[] = [
       {
+        id: "a",
         name: "A",
         address: "",
         dates: {
@@ -281,6 +282,7 @@ describe("isAllClosed", () => {
         description: "",
       },
       {
+        id: "b",
         name: "B",
         address: "",
         dates: {
@@ -304,6 +306,7 @@ describe("isAllClosed", () => {
   it("should return false if at least one market is upcoming", () => {
     const markets: Market[] = [
       {
+        id: "a",
         name: "A",
         address: "",
         dates: {
@@ -327,6 +330,7 @@ describe("isAllClosed", () => {
   it("should return true if all markets are closed", () => {
     const markets: Market[] = [
       {
+        id: "a",
         name: "A",
         address: "",
         dates: {
@@ -350,6 +354,7 @@ describe("isAllClosed", () => {
   it("should not close a market whose end_date is today (Dec 24 noon)", () => {
     const markets: Market[] = [
       {
+        id: "a",
         name: "A",
         address: "",
         dates: {
@@ -373,6 +378,7 @@ describe("isAllClosed", () => {
   it("should close a market the day after its end_date (Dec 25)", () => {
     const markets: Market[] = [
       {
+        id: "a",
         name: "A",
         address: "",
         dates: {
@@ -396,6 +402,7 @@ describe("isAllClosed", () => {
   it("should ignore markets with invalid dates when checking if all closed", () => {
     const markets: Market[] = [
       {
+        id: "valid",
         name: "Valid Market",
         address: "",
         dates: {
@@ -412,6 +419,7 @@ describe("isAllClosed", () => {
         description: "",
       },
       {
+        id: "invalid",
         name: "Invalid Market",
         address: "",
         dates: { raw: "", type: "range" } as unknown as Dates,
@@ -430,6 +438,7 @@ describe("isAllClosed", () => {
   it("should not close a dates-list market on its last date", () => {
     const markets: Market[] = [
       {
+        id: "a",
         name: "A",
         address: "",
         dates: {
@@ -452,6 +461,7 @@ describe("isAllClosed", () => {
   it("should close a dates-list market the day after its last date", () => {
     const markets: Market[] = [
       {
+        id: "a",
         name: "A",
         address: "",
         dates: {
@@ -474,6 +484,7 @@ describe("isAllClosed", () => {
   it("should treat a range with no start or end date as closed", () => {
     const markets: Market[] = [
       {
+        id: "a",
         name: "A",
         address: "",
         dates: { raw: "", type: "range" } as unknown as Dates,

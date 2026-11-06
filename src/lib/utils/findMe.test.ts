@@ -9,6 +9,7 @@ import {
 
 function makeMarket(name: string, lat: number, lng: number): Market {
   return {
+    id: name.toLowerCase().replaceAll(" ", "-"),
     name,
     address: "Test address",
     dates: {
@@ -122,22 +123,28 @@ describe("boundingBox", () => {
 });
 
 describe("locationErrorMessage", () => {
+  it("maps code 0 (no geolocation API) to the unavailable notice", () => {
+    expect(locationErrorMessage(0, "", "en")).toContain("not available");
+    expect(locationErrorMessage(0, "", "de")).toContain("nicht verfügbar");
+  });
   it("maps permission denied to a friendly notice", () => {
-    expect(locationErrorMessage(1, "User denied geolocation")).toContain(
+    expect(locationErrorMessage(1, "User denied geolocation", "en")).toContain(
       "denied",
     );
   });
 
   it("maps position unavailable to a friendly notice", () => {
-    expect(locationErrorMessage(2, "unavailable")).toContain("unavailable");
+    expect(locationErrorMessage(2, "unavailable", "en")).toContain(
+      "unavailable",
+    );
   });
 
   it("maps timeout to a friendly notice", () => {
-    expect(locationErrorMessage(3, "timed out")).toContain("timed out");
+    expect(locationErrorMessage(3, "timed out", "en")).toContain("timed out");
   });
 
   it("falls back to the raw message for unknown codes", () => {
-    expect(locationErrorMessage(99, "Something odd")).toBe(
+    expect(locationErrorMessage(99, "Something odd", "en")).toBe(
       "Could not get your location: Something odd",
     );
   });

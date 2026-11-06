@@ -1,6 +1,11 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { fade } from "svelte/transition";
+  import type { Locale } from "$shared/types";
+  import { messages } from "$lib/i18n/messages";
+
+  let { locale }: { locale: Locale } = $props();
+  const dict = $derived(messages(locale));
 
   type BeforeInstallPromptEvent = Event & {
     prompt: () => Promise<void>;
@@ -85,17 +90,17 @@
 {#if visible}
   <div
     role="region"
-    aria-label="Install app"
+    aria-label={dict.installApp}
     transition:fade={{ duration: 200 }}
     style="bottom: max(1rem, env(safe-area-inset-bottom));"
     class="festive-surface fixed left-1/2 z-[1100] flex w-[calc(100%-2rem)] max-w-sm -translate-x-1/2 items-center gap-3 rounded-2xl border-2 border-gold p-2.5 pl-4 shadow-2xl"
   >
     <div class="min-w-0 flex-1">
       <p class="font-display text-sm font-bold leading-tight text-ink-brand">
-        Install app
+        {dict.installApp}
       </p>
       <p class="mt-0.5 text-xs leading-snug text-stone-600">
-        Quick access from your home screen.
+        {dict.installHint}
       </p>
     </div>
 
@@ -116,12 +121,12 @@
       >
         <path d="M12 3v12m0 0 4-4m-4 4-4-4M5 19h14" />
       </svg>
-      Install
+      {dict.install}
     </button>
 
     <button
       onclick={dismiss}
-      aria-label="Dismiss install prompt"
+      aria-label={dict.dismissInstallPrompt}
       class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-stone-400 transition hover:bg-stone-100 hover:text-stone-700"
     >
       <svg

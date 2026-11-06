@@ -1,8 +1,12 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { fade } from "svelte/transition";
+  import type { Locale } from "$shared/types";
+  import { messages, interpolate } from "$lib/i18n/messages";
 
-  let { onClose }: { onClose: () => void } = $props();
+  let { onClose, locale }: { onClose: () => void; locale: Locale } = $props();
+
+  const dict = $derived(messages(locale));
 
   // iOS Safari never fires beforeinstallprompt, so it gets the manual hint below.
   let showIosInstall = $state(false);
@@ -58,12 +62,12 @@
           id="about-title"
           class="font-display text-2xl font-bold text-ink-brand"
         >
-          About
+          {dict.about}
         </h2>
       </div>
       <button
         onclick={onClose}
-        aria-label="Close about modal"
+        aria-label={dict.closeAboutModal}
         class="rounded-full p-1 text-stone-400 hover:bg-stone-100 hover:text-stone-700 transition"
       >
         <svg
@@ -86,58 +90,49 @@
     >
       <section>
         <h3 class="font-display text-base font-bold text-ink-brand mb-1">
-          Why I built this
+          {dict.aboutWhyTitle}
         </h3>
         <p>
-          Every winter, Berlin comes alive with dozens of Christmas markets, but
-          finding out which ones are open today, where they are, and what dates
-          they run always felt harder than it should be. I built this map to
-          make it simple for locals and visitors to explore the city's festive
-          season and plan outings together.
+          {dict.aboutWhyBody}
         </p>
       </section>
 
       <section>
         <h3 class="font-display text-base font-bold text-ink-brand mb-1">
-          Where the data comes from
+          {dict.aboutDataTitle}
         </h3>
         <p>
-          Market details and locations come directly from the official
+          {dict.aboutDataBefore}
           <a
             href="https://www.berlin.de/weihnachtsmarkt/"
             target="_blank"
             rel="noopener noreferrer"
             class="font-semibold text-ink-brand underline hover:text-ink-gold"
           >
-            Berlin.de Open Data portal
+            {dict.aboutDataLink}
           </a>.
         </p>
         <p class="mt-2 text-xs text-stone-500">
-          Opening hours and dates can change due to weather or organiser
-          updates, so it's always a good idea to double-check official event
-          pages before heading out!
+          {dict.aboutDataNote}
         </p>
       </section>
 
       <section>
         <h3 class="font-display text-base font-bold text-ink-brand mb-1">
-          Supporting this project
+          {dict.aboutSupportTitle}
         </h3>
         <p>
-          Some attraction and activity links (powered by GetYourGuide) are
-          affiliate links. If you book an activity or tour through them, I may
-          earn a small commission at no additional cost to you. This helps
-          support hosting and maintenance to keep the site free.
+          {dict.aboutSupportBody}
         </p>
       </section>
 
       {#if showIosInstall}
         <section>
           <h3 class="font-display text-base font-bold text-ink-brand mb-1">
-            Install on iPhone or iPad
+            {dict.aboutIosTitle}
           </h3>
           <p>
-            In Safari, tap the
+            {dict.aboutIosBefore}
             <span
               class="inline-flex items-center gap-1 align-text-bottom font-semibold text-ink-brand"
             >
@@ -156,11 +151,12 @@
                   d="M12 16V4m0 0 4 4m-4-4L8 8M5 14v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5"
                 />
               </svg>
-              Share
+              {dict.aboutIosShare}
             </span>
-            button, then choose
-            <span class="font-semibold text-ink-brand">Add to Home Screen</span
-            >. It then opens full screen, just like a native app.
+            {dict.aboutIosMiddle}
+            <span class="font-semibold text-ink-brand"
+              >{dict.aboutIosAddToHome}</span
+            >. {dict.aboutIosAfter}
           </p>
         </section>
       {/if}
@@ -169,10 +165,10 @@
         class="border-t border-stone-200 pt-3 text-xs text-stone-500 space-y-1"
       >
         <p>
-          Last built: {__BUILD_TIME__}
+          {interpolate(dict.aboutLastBuilt, { time: __BUILD_TIME__ })}
         </p>
         <p>
-          Created by
+          {dict.aboutCreatedBy}
           <a
             href="https://malachisoord.com"
             target="_blank"
@@ -183,7 +179,7 @@
           </a>.
         </p>
         <p>
-          Map tiles &copy;
+          {dict.aboutTilesBefore}
           <a
             href="https://www.openstreetmap.org/copyright"
             target="_blank"
@@ -192,7 +188,7 @@
           >
             OpenStreetMap
           </a>
-          contributors, rendered with
+          {dict.aboutTilesMiddle}
           <a
             href="https://leafletjs.com/"
             target="_blank"
@@ -211,7 +207,7 @@
         onclick={onClose}
         class="w-full rounded-lg bg-gold py-2.5 font-bold text-on-gold shadow-sm hover:bg-gold-light transition"
       >
-        Back to Map
+        {dict.aboutBackToMap}
       </button>
     </div>
   </div>

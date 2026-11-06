@@ -5,7 +5,7 @@
   import type { MarketStatus } from "$lib/utils/marketStatus";
   import attractions from "../../../data/attractions.json";
   import { buildAttractionPopup } from "$lib/utils/attractionPopup";
-  import type { Attraction } from "$shared/types";
+  import type { Attraction, Locale, Market } from "$shared/types";
   import {
     boundingBox,
     findNearestMarket,
@@ -16,15 +16,20 @@
     buildUserPopup,
     type NearestMarket,
   } from "$lib/utils/popup";
-  import type { Market } from "$shared/types";
   import { mapStore, selectedMarket } from "$lib/mapStore";
+  import { messages } from "$lib/i18n/messages";
+  import { attractionText } from "$lib/i18n/attractions";
   let {
     markets,
     statusByMarket,
+    locale,
   }: {
     markets: Market[];
     statusByMarket: Map<string, MarketStatus>;
+    locale: Locale;
   } = $props();
+
+  const dict = $derived(messages(locale));
 
   let mapElement: HTMLDivElement;
   let map: L.Map;
@@ -39,7 +44,18 @@
   let unsubscribeSelected: (() => void) | null = null;
   let userMarker: L.Marker;
   let userLocationIcon: L.DivIcon;
-  let userNearest: NearestMarket | null = null;
+  // Stores the id, not the name: the name must follow the current locale.
+  let userNearest: { id: string; distanceMeters: number } | null = null;
+  // Popups are built lazily and must read current-locale market text, not the
+  // objects captured when markers were created on first load.
+  const marketsById = $derived(new Map(markets.map((m) => [m.id, m])));
+  function nearestForPopup(): NearestMarket | null {
+    if (!userNearest) return null;
+    const market = marketsById.get(userNearest.id);
+    return market
+      ? { name: market.name, distanceMeters: userNearest.distanceMeters }
+      : null;
+  }
   let treeIcons: Record<MarketStatus, L.DivIcon>;
   let markersReady = $state(false);
   let mapReady = $state(false);
@@ -160,19 +176,22 @@
       markets.forEach((market: Market) => {
         // Approximate coordinates (geocoder fallback) would pin the wrong spot.
         if (market.coordinates_approximate) return;
-        const status: MarketStatus =
-          statusByMarket.get(market.name) ?? "unknown";
+        const status: MarketStatus = statusByMarket.get(market.id) ?? "unknown";
         const marker = L.marker(
           [market.coordinates.lat, market.coordinates.lng],
           { icon: treeIcons[status] },
         ).bindPopup(
           () =>
-            buildPopup(market, statusByMarket.get(market.name) ?? "unknown"),
+            buildPopup(
+              marketsById.get(market.id) ?? market,
+              statusByMarket.get(market.id) ?? "unknown",
+              locale,
+            ),
           { maxWidth: 340, minWidth: 280, autoPanPadding: L.point(20, 60) },
         );
         const popup = marker.getPopup();
-        if (popup) popupMarkets.set(popup, market.name);
-        markers.set(market.name, marker);
+        if (popup) popupMarkets.set(popup, market.id);
+        markers.set(market.id, marker);
         markerClusterGroup.addLayer(marker);
       });
       map.addLayer(markerClusterGroup);
@@ -182,10 +201,10 @@
             [attraction.coordinates.lat, attraction.coordinates.lng],
             {
               icon: attractionIcon,
-              title: attraction.name,
-              alt: attraction.name,
+              title: attractionText(attraction, locale).name,
+              alt: attractionText(attraction, locale).name,
             },
-          ).bindPopup(() => buildAttractionPopup(attraction), {
+          ).bindPopup(() => buildAttractionPopup(attraction, locale), {
             maxWidth: 340,
             minWidth: 280,
             autoPanPadding: L.point(20, 60),
@@ -257,10 +276,25 @@
   $effect(() => {
     if (!markersReady) return;
     for (const market of markets) {
-      const marker = markers.get(market.name);
+      const marker = markers.get(market.id);
       if (!marker) continue;
-      const status: MarketStatus = statusByMarket.get(market.name) ?? "unknown";
+      const status: MarketStatus = statusByMarket.get(market.id) ?? "unknown";
       marker.setIcon(treeIcons[status]);
+      const popup = marker.getPopup();
+      if (popup?.isOpen()) {
+        popup.setContent(buildPopup(market, status, locale));
+        popup.update();
+      }
+    }
+  });
+
+  // Marker options carry title/alt, so re-running the icon rebuilds them when
+  // the locale flips under an existing pin.
+  $effect(() => {
+    if (userMarker) {
+      userMarker.options.title = dict.youAreHere;
+      userMarker.options.alt = dict.youAreHere;
+      if (userLocationIcon) userMarker.setIcon(userLocationIcon);
     }
   });
 
@@ -274,7 +308,9 @@
   });
 
   let isLoadingLocation = $state(false);
-  let locationNotice = $state<string | null>(null);
+  // Kept as a code+message pair, not rendered text: the notice must follow
+  // the locale when it changes while visible.
+  let locationNotice = $state<{ code: number; message: string } | null>(null);
 
   function ensureUserMarker(map: L.Map, userLatLng: L.LatLng) {
     if (userMarker) {
@@ -283,11 +319,11 @@
     }
     userMarker = L.marker(userLatLng, {
       ...(userLocationIcon ? { icon: userLocationIcon } : {}),
-      title: "Your location",
-      alt: "Your location",
+      title: dict.youAreHere,
+      alt: dict.youAreHere,
     })
       .addTo(map)
-      .bindPopup(() => buildUserPopup(userNearest), {
+      .bindPopup(() => buildUserPopup(nearestForPopup(), locale), {
         className: "user-location-popup",
         minWidth: 200,
         maxWidth: 260,
@@ -297,7 +333,7 @@
 
   function findMe() {
     if (!navigator.geolocation || !map) {
-      locationNotice = "Geolocation is not available on this device.";
+      locationNotice = { code: 0, message: "" };
       return;
     }
     isLoadingLocation = true;
@@ -310,10 +346,7 @@
 
         const nearest = findNearestMarket(user, markets);
         userNearest = nearest
-          ? {
-              name: nearest.market.name,
-              distanceMeters: nearest.distanceMeters,
-            }
+          ? { id: nearest.market.id, distanceMeters: nearest.distanceMeters }
           : null;
         // The popup content is built lazily on open; refresh it if it is
         // already showing while the user re-runs find-me.
@@ -321,7 +354,7 @@
 
         // Zoom to fit both user and nearest market
         if (nearest) {
-          const marketMarker = markers.get(nearest.market.name);
+          const marketMarker = markers.get(nearest.market.id);
           if (marketMarker) {
             markerClusterGroup.zoomToShowLayer(marketMarker, () => {
               const box = boundingBox([user, nearest.market.coordinates]);
@@ -345,7 +378,7 @@
       },
       (error: GeolocationPositionError) => {
         isLoadingLocation = false;
-        locationNotice = locationErrorMessage(error.code, error.message);
+        locationNotice = { code: error.code, message: error.message };
       },
     );
   }
@@ -359,7 +392,7 @@
   <button
     onclick={findMe}
     disabled={isLoadingLocation || !mapReady}
-    title="Find my location"
+    title={dict.findMyLocation}
     class="absolute top-4 right-4 z-[1000] flex items-center justify-center w-11 h-11 bg-snow text-pine rounded-full shadow-lg border-2 border-gold hover:bg-gold-light/40 transition disabled:opacity-50"
   >
     <svg
@@ -382,10 +415,16 @@
       role="status"
       class="absolute bottom-6 left-1/2 z-[1000] flex max-w-[90vw] -translate-x-1/2 items-center gap-3 rounded-lg bg-pine-dark/90 px-4 py-2.5 text-sm text-snow shadow-lg"
     >
-      <span class="flex-1">{locationNotice}</span>
+      <span class="flex-1"
+        >{locationErrorMessage(
+          locationNotice.code,
+          locationNotice.message,
+          locale,
+        )}</span
+      >
       <button
         onclick={() => (locationNotice = null)}
-        aria-label="Dismiss"
+        aria-label={dict.dismiss}
         class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
       >
         &times;

@@ -18,6 +18,7 @@
     openWelcome,
     closeWelcome,
   } from "$lib/mapStore";
+  import { initMarkets } from "$lib/mapStore";
   import { simulatedDate } from "$lib/utils/date";
   import {
     getEarliestDate,
@@ -28,9 +29,11 @@
     toIsoDate,
     type MarketStatus,
   } from "$lib/utils/marketStatus";
+  import { messages } from "$lib/i18n/messages";
 
   let { data } = $props();
   let markets = $derived(data.markets);
+  $effect(() => initMarkets(data.markets));
   let now = $derived($simulatedDate || new Date());
   let today = $derived(toIsoDate(now));
 
@@ -45,7 +48,7 @@
   function statusesOn(day: string) {
     const statuses = new SvelteMap<string, MarketStatus>();
     for (const market of markets) {
-      statuses.set(market.name, isMarketOpenOnDate(market.dates, day).status);
+      statuses.set(market.id, isMarketOpenOnDate(market.dates, day).status);
     }
     return statuses;
   }
@@ -59,7 +62,7 @@
   const earliestDates = $derived.by(() => {
     const dates = new SvelteMap<string, Date>();
     for (const market of markets) {
-      dates.set(market.name, getEarliestDate(market.dates));
+      dates.set(market.id, getEarliestDate(market.dates));
     }
     return dates;
   });
@@ -131,6 +134,7 @@
 <main class="h-screen w-screen relative">
   {#if $welcomeOpen}
     <WelcomeModal
+      locale={data.locale}
       daysUntilFirstMarket={daysUntilFirst}
       marketCount={markets.length}
       {anyMarketOpen}
@@ -140,10 +144,10 @@
   {/if}
 
   {#if $aboutOpen}
-    <AboutModal onClose={closeAbout} />
+    <AboutModal onClose={closeAbout} locale={data.locale} />
   {/if}
 
-  <Map {markets} {statusByMarket} />
+  <Map {markets} {statusByMarket} locale={data.locale} />
 
   <button
     onclick={openMenu}
@@ -159,11 +163,11 @@
       stroke-linecap="round"
       class="w-5 h-5"><path d="M4 7h16M4 12h16M4 17h16" /></svg
     >
-    <span class="font-sans font-semibold">Menu</span>
+    <span class="font-sans font-semibold">{messages(data.locale).menu}</span>
   </button>
-
   {#if $menuOpen}
     <MarketList
+      locale={data.locale}
       {markets}
       {statusByMarket}
       {earliestDates}
@@ -177,5 +181,5 @@
     />
   {/if}
 
-  <InstallPrompt />
+  <InstallPrompt locale={data.locale} />
 </main>

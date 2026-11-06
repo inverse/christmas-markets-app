@@ -1,11 +1,12 @@
 <script lang="ts">
-  import "../app.css";
+  import "../../app.css";
   import "leaflet/dist/leaflet.css";
   import { browser } from "$app/environment";
   import { onMount } from "svelte";
   import { initDateSimulation } from "$lib/utils/date";
   import { initTheme } from "$lib/utils/theme";
   import type { Component } from "svelte";
+  import { messages } from "$lib/i18n/messages";
 
   // Dynamically import to avoid SSR issues with Svelte 5 components
   let DevDateSelector: Component | null = $state(null);
@@ -20,15 +21,18 @@
 
   let { data, children } = $props();
 
-  const TITLE = "Berlin Christmas Markets 2026: Dates, Hours & Map";
-  const DESCRIPTION =
-    "Find Berlin Christmas markets by date, location, opening hours and admission price. Explore markets across Mitte, Charlottenburg, Prenzlauer Berg, Kreuzberg and more.";
-  const IMAGE_ALT =
-    "Berlin Christmas Markets 2026: a map of over 20 Berlin Christmas markets with dates, opening hours and admission prices.";
-  const SITE_URL = $derived(`${data.origin}/`);
+  const locale = $derived(data.locale);
+  const dict = $derived(messages(locale));
+  const TITLE = $derived(dict.title);
+  const DESCRIPTION = $derived(dict.description);
+  const IMAGE_ALT = $derived(dict.imageAlt);
+  const SITE_URL = $derived(`${data.origin}${locale === "de" ? "/de/" : "/"}`);
   // Bump when the card art changes: X caches a card per URL for ~7 days, so
   // re-styling the image without a new URL keeps serving the stale card.
   const SHARE_IMAGE = $derived(`${data.origin}/icons/og-image.png?v=2`);
+  $effect(() => {
+    if (browser) document.documentElement.lang = locale;
+  });
 </script>
 
 {#if browser && DevDateSelector}
@@ -53,7 +57,10 @@
   <link rel="canonical" href={SITE_URL} />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Berlin Christmas Markets" />
-  <meta property="og:locale" content="en_GB" />
+  <meta
+    property="og:locale"
+    content={data.locale === "de" ? "de_DE" : "en_GB"}
+  />
   <meta property="og:url" content={SITE_URL} />
   <meta property="og:title" content={TITLE} />
   <meta property="og:description" content={DESCRIPTION} />

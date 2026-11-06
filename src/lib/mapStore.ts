@@ -1,10 +1,10 @@
 import { writable, get, type Readable } from "svelte/store";
 import { browser } from "$app/environment";
-import markets from "../../data/markets.json";
+import type { Market } from "$shared/types";
 import { slugify } from "./slug";
-import type { Map } from "leaflet";
+import type { Map as LeafletMap } from "leaflet";
 
-export const mapStore = writable<Map | null>(null);
+export const mapStore = writable<LeafletMap | null>(null);
 
 const selectedName = writable<string | null>(null);
 const menuIsOpen = writable(false);
@@ -40,7 +40,7 @@ function currentView(): View | null {
   return view !== undefined && VIEWS.includes(view) ? view : null;
 }
 
-function hashFor(view: View, name: string | null): string {
+function hashFor(view: View, id: string | null): string {
   switch (view) {
     case "menu":
       return MENU_HASH;
@@ -49,7 +49,7 @@ function hashFor(view: View, name: string | null): string {
     case "welcome":
       return WELCOME_HASH;
     case "market":
-      return MARKET_PREFIX + slugify(name ?? "");
+      return MARKET_PREFIX + encodeURIComponent(id ?? "");
   }
 }
 
@@ -97,34 +97,47 @@ function syncFromHash() {
     selectedName.set(null);
     return;
   }
-  // Slug resolves back to the display name via the market list.
-  let slug: string | null = null;
+  let id: string | null = null;
   try {
-    slug = decodeURIComponent(hash.slice(MARKET_PREFIX.length));
+    id = decodeURIComponent(hash.slice(MARKET_PREFIX.length));
   } catch {
-    // malformed escape sequence - treated as an unknown slug below
+    // Malformed escape sequences are treated as stale links.
   }
-  const name = slug ? nameBySlug[slug] : undefined;
-  if (name === undefined) {
-    // Stale link, typo or malformed escape: drop the dead hash rather than
-    // leaving a #market= entry that selects nothing.
+  // Resolve exact ids first, then the legacy slug form: older links carried
+  // `#market=<slugify(name)>`, and ids currently equal those slugs - but only
+  // as long as the id scheme doesn't change. The alias map keeps shared links
+  // alive either way.
+  const resolved =
+    id && marketAliases !== null ? (marketAliases.get(id) ?? null) : id;
+  if (!resolved) {
     selectedName.set(null);
     clearView();
     return;
   }
-  selectedName.set(name);
+  selectedName.set(resolved);
 }
 
-const nameBySlug: Record<string, string> = Object.fromEntries(
-  markets.map((market) => [slugify(market.name), market.name]),
-);
+// Canonical lookup for hash ids: market.id plus its legacy slugify(name)
+// alias, both pointing at the real id.
+let marketAliases: Map<string, string> | null = null;
 
-/** Selected market name, kept in sync with `#market=<slug>`. */
+export function initMarkets(markets: Market[]) {
+  marketAliases = new Map(
+    markets.flatMap((market) => [
+      [market.id, market.id] as const,
+      [slugify(market.name), market.id] as const,
+    ]),
+  );
+  syncFromHash();
+}
+
+/** Selected market id, kept in sync with `#market=<id>`. */
+
 export const selectedMarket = {
   subscribe: selectedName.subscribe,
-  set(name: string | null) {
-    selectedName.set(name);
-    if (name === null) {
+  set(id: string | null) {
+    selectedName.set(id);
+    if (id === null) {
       // Closing a popup is a transient UI action, not navigation: strip the
       // hash in place instead of history.back(), which would land on whatever
       // preceded the market view (e.g. re-opening the menu).
@@ -139,7 +152,7 @@ export const selectedMarket = {
       }
     } else {
       menuIsOpen.set(false);
-      pushView("market", name);
+      pushView("market", id);
     }
   },
 };

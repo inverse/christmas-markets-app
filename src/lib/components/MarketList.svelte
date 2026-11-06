@@ -5,12 +5,15 @@
   import { onMount, untrack } from "svelte";
   import AttractionStrip from "$lib/components/AttractionStrip.svelte";
   import { fade, fly } from "svelte/transition";
-  import type { Market } from "$shared/types";
+  import type { Locale, Market } from "$shared/types";
+  import { resolve } from "$app/paths";
+  import { interpolate, messages } from "$lib/i18n/messages";
 
   type Filter = "all" | "open" | "upcoming" | "closed" | "unknown";
 
   let {
     markets,
+    locale,
     statusByMarket,
     earliestDates,
     planDate,
@@ -22,6 +25,7 @@
     onShowAbout,
   }: {
     markets: Market[];
+    locale: Locale;
     statusByMarket: Map<string, MarketStatus>;
     earliestDates: Map<string, Date>;
     planDate: string | null;
@@ -37,8 +41,8 @@
 
   const sortedMarkets = $derived(
     [...markets].sort((a, b) => {
-      const dateA = earliestDates.get(a.name)?.getTime() ?? Infinity;
-      const dateB = earliestDates.get(b.name)?.getTime() ?? Infinity;
+      const dateA = earliestDates.get(a.id)?.getTime() ?? Infinity;
+      const dateB = earliestDates.get(b.id)?.getTime() ?? Infinity;
       return dateA - dateB;
     }),
   );
@@ -46,7 +50,7 @@
   const filteredMarkets = $derived(
     sortedMarkets.filter((market) => {
       if (activeFilter === "all") return true;
-      const status = statusByMarket.get(market.name) ?? "unknown";
+      const status = statusByMarket.get(market.id) ?? "unknown";
       if (activeFilter === "upcoming") {
         return status === "upcoming" || status === "unknown";
       }
@@ -55,20 +59,28 @@
   );
 
   // Parsed as UTC so the label never shifts a day in western time zones.
-  const dayLabel = new Intl.DateTimeFormat(undefined, {
-    weekday: "short",
-    day: "numeric",
-    month: "short",
-    timeZone: "UTC",
-  });
+  const dayLabel = $derived(
+    new Intl.DateTimeFormat(locale, {
+      weekday: "short",
+      day: "numeric",
+      month: "short",
+      timeZone: "UTC",
+    }),
+  );
+  const dict = $derived(messages(locale));
   const planLabel = $derived(
     planDate ? dayLabel.format(new Date(`${planDate}T00:00:00Z`)) : null,
   );
 
   const filterOptions = $derived<{ id: Filter; label: string }[]>([
-    { id: "all", label: "All" },
-    { id: "open", label: planLabel ? `Open ${planLabel}` : "Open today" },
-    { id: "upcoming", label: "Upcoming" },
+    { id: "all", label: dict.filterAll },
+    {
+      id: "open",
+      label: planLabel
+        ? interpolate(dict.filterOpenOn, { date: planLabel })
+        : dict.filterOpenToday,
+    },
+    { id: "upcoming", label: dict.filterUpcoming },
   ]);
 
   function setDate(date: string | null) {
@@ -92,14 +104,14 @@
       unknown: 0,
     };
     for (const market of markets) {
-      const status: MarketStatus = statusByMarket.get(market.name) ?? "unknown";
+      const status: MarketStatus = statusByMarket.get(market.id) ?? "unknown";
       counts[status]++;
     }
     return counts;
   });
 
   function jumpTo(market: Market) {
-    close(() => selectedMarket.set(market.name));
+    close(() => selectedMarket.set(market.id));
   }
 
   // Drag-to-close: the drawer follows the finger horizontally; past a
@@ -206,11 +218,17 @@
       window.removeEventListener("keydown", onKeydown);
     };
   });
+
+  // Keeps ?date and the #menu hash on the switched page.
+  function preserveLocaleState(event: MouseEvent) {
+    const link = event.currentTarget as HTMLAnchorElement;
+    link.href = link.pathname + window.location.search + window.location.hash;
+  }
 </script>
 
 <button
   class="fixed inset-0 z-[1000] bg-pine-dark/60"
-  aria-label="Close menu"
+  aria-label={dict.closeMenu}
   style="opacity: {backdropOpacity}"
   onclick={() => close()}
   transition:fade
@@ -250,29 +268,17 @@
         </div>
         <div>
           <h2 class="font-sans text-xl font-bold leading-tight text-white">
-            Christmas Markets
+            {dict.menuTitle}
           </h2>
           <p class="mt-0.5 text-xs text-gold">
-            {markets.length} festive highlights in Berlin
+            {interpolate(dict.menuSubtitle, { count: String(markets.length) })}
           </p>
         </div>
       </div>
       <div class="flex items-center gap-1.5">
         <button
-          onclick={toggleTheme}
-          aria-pressed={$isDark}
-          aria-label="Dark mode"
-          title="Toggle dark mode"
-          class="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
-        >
-          <i
-            class="fa-solid {$isDark ? 'fa-sun' : 'fa-moon'}"
-            aria-hidden="true"
-          ></i>
-        </button>
-        <button
           onclick={() => close()}
-          aria-label="Close menu"
+          aria-label={dict.closeMenu}
           class="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-xl text-white transition hover:bg-white/20"
         >
           &times;
@@ -282,32 +288,53 @@
   </header>
 
   <div class="space-y-4 p-4">
-    <div class="grid grid-cols-2 gap-2">
+    <div class="flex gap-2">
       <button
         onclick={() => close(onShowWelcome)}
-        class="font-display flex items-center justify-center gap-1.5 rounded-lg border border-pine/30 bg-surface px-3 py-2.5 text-xs font-semibold text-ink-brand shadow-xs transition hover:bg-pine hover:text-white"
+        class="font-display flex flex-1 items-center justify-center gap-1.5 rounded-lg border border-pine/30 bg-surface px-2 py-2.5 text-xs font-semibold text-ink-brand shadow-xs transition hover:bg-pine hover:text-white"
       >
         <span class="text-base">🎄</span>
-        <span>Welcome</span>
+        <span>{dict.welcome}</span>
       </button>
       <button
         onclick={() => close(onShowAbout)}
-        class="font-display flex items-center justify-center gap-1.5 rounded-lg border border-pine/30 bg-surface px-3 py-2.5 text-xs font-semibold text-ink-brand shadow-xs transition hover:bg-pine hover:text-white"
+        class="font-display flex flex-1 items-center justify-center gap-1.5 rounded-lg border border-pine/30 bg-surface px-2 py-2.5 text-xs font-semibold text-ink-brand shadow-xs transition hover:bg-pine hover:text-white"
       >
         <span class="text-base">ℹ️</span>
-        <span>About</span>
+        <span>{dict.about}</span>
+      </button>
+      <a
+        href={resolve("/[[lang=locale]]", {
+          lang: locale === "de" ? undefined : "de",
+        })}
+        onclick={preserveLocaleState}
+        lang={locale === "de" ? "en" : "de"}
+        hreflang={locale === "de" ? "en" : "de"}
+        aria-label={locale === "de"
+          ? "Switch to English"
+          : "Auf Deutsch wechseln"}
+        class="font-display flex w-10 flex-shrink-0 items-center justify-center rounded-lg border border-pine/30 bg-surface px-2 py-2.5 text-xs font-semibold text-ink-brand shadow-xs transition hover:bg-pine hover:text-white"
+      >
+        {locale === "de" ? "EN" : "DE"}
+      </a>
+      <button
+        onclick={toggleTheme}
+        aria-pressed={$isDark}
+        aria-label={dict.toggleDarkMode}
+        title={dict.toggleDarkMode}
+        class="flex w-10 flex-shrink-0 items-center justify-center rounded-lg border border-pine/30 bg-surface text-ink-brand shadow-xs transition hover:bg-pine hover:text-white"
+      >
+        <i class="fa-solid {$isDark ? 'fa-sun' : 'fa-moon'}" aria-hidden="true"
+        ></i>
       </button>
     </div>
     <div class="mb-2 flex items-end justify-between px-1">
       <h3 class="font-display font-bold text-ink-brand">
-        <label for="visit-date">Plan a visit</label>
+        <label for="visit-date">{dict.planAVisit}</label>
       </h3>
     </div>
     <div class="rounded-xl border border-pine/20 bg-pine/5 p-3">
-      <p class="mb-2 text-xs text-stone-600">
-        Want to know what's open on a particular day? Pick a date and the map
-        and list will show you.
-      </p>
+      <p class="mb-2 text-xs text-stone-600">{dict.planAVisitHint}</p>
       <div class="flex items-center gap-2">
         <input
           id="visit-date"
@@ -324,18 +351,22 @@
           <button
             onclick={() => setDate(null)}
             class="whitespace-nowrap rounded-lg px-2 py-2 text-xs font-semibold text-pine underline"
-            >Clear</button
+            >{dict.clearDate}</button
           >
         {/if}
       </div>
     </div>
-    <AttractionStrip />
+    <AttractionStrip {locale} />
 
     <section>
       <div class="mb-2 flex items-end justify-between px-1">
-        <h3 class="font-display font-bold text-ink-brand">Markets</h3>
+        <h3 class="font-display font-bold text-ink-brand">
+          {dict.marketsHeading}
+        </h3>
         <span class="text-xs font-semibold text-stone-500"
-          >{filteredMarkets.length} shown</span
+          >{interpolate(dict.shownCount, {
+            count: String(filteredMarkets.length),
+          })}</span
         >
       </div>
       <a
@@ -344,7 +375,7 @@
         rel="noopener noreferrer"
         class="mb-3 inline-block px-1 text-xs font-semibold text-ink-brand underline decoration-gold underline-offset-2 hover:text-ink-gold"
       >
-        Know a market we're missing? Tell us about it
+        {dict.suggestMarket}
       </a>
       <div
         class="drag-guard mb-3 flex gap-1.5 overflow-x-auto px-1 pb-1 scrollbar-thin"
@@ -363,10 +394,8 @@
         {/each}
       </div>
       <ul class="space-y-2">
-        {#each filteredMarkets as market (market.name)}
-          {@const meta = statusInfo(
-            statusByMarket.get(market.name) ?? "unknown",
-          )}
+        {#each filteredMarkets as market (market.id)}
+          {@const meta = statusInfo(statusByMarket.get(market.id) ?? "unknown")}
           <li>
             <button
               onclick={() => jumpTo(market)}
@@ -400,10 +429,10 @@
                         'bg',
                       )}"
                     ></span>
-                    {meta.label}
+                    {dict.status[statusByMarket.get(market.id) ?? "unknown"]}
                   </span>
                   <span class="truncate text-[11px] text-stone-400">
-                    {market.dates.raw}
+                    {market.dates.raw || dict.checkSite}
                   </span>
                 </div>
               </div>
@@ -419,18 +448,20 @@
             class="rounded-xl border border-dashed border-stone-300 p-5 text-center text-sm text-stone-500"
           >
             {#if planDate && activeFilter === "open"}
-              <p>No markets are open on {planLabel}.</p>
+              <p>
+                {interpolate(dict.noMarketsOpenOn, { date: planLabel ?? "" })}
+              </p>
               {#if nextDate}
                 <button
                   onclick={() => setDate(nextDate)}
                   class="mt-3 rounded-full bg-pine px-4 py-2 text-xs font-semibold text-white"
-                  >Jump to {dayLabel.format(
-                    new Date(`${nextDate}T00:00:00Z`),
-                  )}</button
+                  >{interpolate(dict.jumpToDate, {
+                    date: dayLabel.format(new Date(`${nextDate}T00:00:00Z`)),
+                  })}</button
                 >
               {/if}
             {:else}
-              No markets match this filter.
+              {dict.noMarketsMatch}
             {/if}
           </li>
         {/each}

@@ -1,18 +1,21 @@
 import { escapeHtml } from "./popup";
 import { gygAffiliateUrl } from "../constants/getyourguide";
+import type { Attraction, Locale } from "$shared/types";
+import { messages } from "$lib/i18n/messages";
+import { attractionText } from "$lib/i18n/attractions";
 
 /**
  * Compact "attraction card" for GetYourGuide markers: same visual language as
  * the market popups (photo header, gold accent, bold CTA), affiliate-linked.
  */
-export function buildAttractionPopup(attraction: {
-  name: string;
-  image_url: string;
-  description: string;
-  url: string;
-}): string {
-  const name = escapeHtml(attraction.name);
-  const description = escapeHtml(attraction.description);
+export function buildAttractionPopup(
+  attraction: Attraction,
+  locale: Locale,
+): string {
+  const dict = messages(locale);
+  const copy = attractionText(attraction, locale);
+  const name = escapeHtml(copy.name);
+  const description = escapeHtml(copy.description);
   const image = escapeHtml(attraction.image_url);
   const url = escapeHtml(gygAffiliateUrl(attraction.url, "map-pin"));
 
@@ -21,14 +24,14 @@ export function buildAttractionPopup(attraction: {
 					<img src="${image}" alt="${name}" loading="lazy" class="h-full w-full object-cover" />
 					<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
 					<div class="absolute top-3 left-3 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide bg-black/50 text-white border border-white/20">
-						Ad &middot; GetYourGuide
+						${dict.adDisclosure} &middot; GetYourGuide
 					</div>
 					<h3 class="absolute bottom-3 left-3 right-10 text-white font-display text-lg font-bold leading-tight drop-shadow line-clamp-2">${name}</h3>
 				</div>
 				<div class="h-1 w-full bg-gradient-to-r from-pine via-gold to-berry"></div>
 				<div class="space-y-3 p-4">
 					<div class="text-[13px] italic leading-relaxed text-stone-700">${description}</div>
-					<a href="${url}" target="_blank" rel="noopener nofollow sponsored" class="block text-center text-sm font-bold py-2.5 rounded-lg bg-gold !text-pine-dark shadow-lg transition hover:bg-gold-light"><i class="fa-solid fa-ticket mr-1.5" aria-hidden="true"></i>Book activities</a>
+					<a href="${url}" target="_blank" rel="noopener nofollow sponsored" class="block text-center text-sm font-bold py-2.5 rounded-lg bg-gold !text-pine-dark shadow-lg transition hover:bg-gold-light"><i class="fa-solid fa-ticket mr-1.5" aria-hidden="true"></i>${dict.bookActivities}</a>
 				</div>
 			</div>`;
 }

@@ -1,4 +1,5 @@
-import type { Market } from "$shared/types";
+import { interpolate, messages } from "$lib/i18n/messages";
+import type { Locale, Market } from "$shared/types";
 
 export interface LatLng {
   lat: number;
@@ -66,15 +67,21 @@ export function boundingBox(points: LatLng[]): BBox | null {
 export function locationErrorMessage(
   code: number,
   fallbackMessage: string,
+  locale: Locale,
 ): string {
+  const dict = messages(locale);
   switch (code) {
+    case 0:
+      // Map.svelte uses 0 for the "no geolocation API" path, which isn't a
+      // GeolocationPositionError code.
+      return dict.geoUnavailable;
     case 1:
-      return "Location access was denied. Enable it in your browser settings to use find-me.";
+      return dict.geoDenied;
     case 2:
-      return "Your location is currently unavailable. Check your device signal and try again.";
+      return dict.geoPositionUnavailable;
     case 3:
-      return "Getting your location timed out. Please try again.";
+      return dict.geoTimeout;
     default:
-      return `Could not get your location: ${fallbackMessage}`;
+      return interpolate(dict.geoUnknown, { message: fallbackMessage });
   }
 }

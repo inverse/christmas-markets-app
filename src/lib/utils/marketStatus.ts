@@ -137,8 +137,8 @@ export function getEarliestDate(dates: Dates): Date {
   return new Date(2099, 11, 31);
 }
 
+// Colors only; the display label is localized via messages().status.
 interface StatusMeta {
-  label: string;
   color: string;
   bg: string;
   border: string;
@@ -146,25 +146,21 @@ interface StatusMeta {
 
 const statusMeta: Record<MarketStatus, StatusMeta> = {
   open: {
-    label: "Open",
     color: "text-ink-brand",
     bg: "bg-ink-brand/10",
     border: "border-ink-brand",
   },
   upcoming: {
-    label: "Upcoming",
     color: "text-gold",
     bg: "bg-gold/10",
     border: "border-gold",
   },
   closed: {
-    label: "Closed",
     color: "text-stone-500",
     bg: "bg-stone-500/10",
     border: "border-stone-300",
   },
   unknown: {
-    label: "Check Web",
     color: "text-gold",
     bg: "bg-gold/10",
     border: "border-gold",
