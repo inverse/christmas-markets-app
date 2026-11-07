@@ -6,6 +6,7 @@ import { parseArgs } from "node:util";
 import { parseDates } from "../src/shared/dateParser.ts";
 import { slugify } from "../src/lib/slug.ts";
 import type { Market, MarketBase, MarketLocale } from "../src/shared/types.ts";
+import { fetchWithRetry } from "./lib/fetchWithRetry.ts";
 
 const RAW_URLS_PATH = path.resolve("data/markets-raw.json");
 const BASE_OUTPUT_PATH = path.resolve("data/markets.base.json");
@@ -44,133 +45,6 @@ interface MarketDetails {
   dates: Dates;
   opening_times: string;
   admission: string;
-}
-
-const RETRY_ATTEMPTS = 6;
-const RETRY_BASE_MS = 2_000;
-const RETRY_MAX_DELAY_MS = 60_000;
-const RETRY_MAX_RETRY_AFTER_MS = 300_000;
-const RETRYABLE_STATUS = new Set([408, 425, 429, 500, 502, 503, 504]);
-
-const FETCH_TIMEOUT_MS = 30_000;
-const RETRY_AFTER_JITTER = 0.25;
-const BROWSER_UA =
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36";
-
-// Per-origin pacing shared by every outbound request: request starts are
-// spaced by a base interval, and a 429/Retry-After response pushes the
-// origin's next allowed time out while doubling its interval (halved again
-// on each success), so a rate-limited host slows the whole run.
-class RateLimiter {
-  private static readonly BASE_MS = 1_000;
-  private static readonly MAX_MS = 60_000;
-  private readonly nextAllowed = new Map<string, number>();
-  private readonly interval = new Map<string, number>();
-
-  async acquire(url: string): Promise<void> {
-    const origin = new URL(url).origin;
-    const wait = (this.nextAllowed.get(origin) ?? 0) - Date.now();
-    if (wait > 0) await delay(wait);
-    this.nextAllowed.set(
-      origin,
-      Date.now() + (this.interval.get(origin) ?? RateLimiter.BASE_MS),
-    );
-  }
-
-  penalize(url: string, ms: number): void {
-    const origin = new URL(url).origin;
-    const current = this.interval.get(origin) ?? RateLimiter.BASE_MS;
-    this.interval.set(origin, Math.min(current * 2, RateLimiter.MAX_MS));
-    this.nextAllowed.set(origin, Date.now() + ms);
-  }
-
-  reward(url: string): void {
-    const origin = new URL(url).origin;
-    const current = this.interval.get(origin) ?? RateLimiter.BASE_MS;
-    this.interval.set(
-      origin,
-      Math.max(RateLimiter.BASE_MS, Math.floor(current / 2)),
-    );
-  }
-}
-
-const limiter = new RateLimiter();
-
-async function discardBody(response: Response): Promise<void> {
-  try {
-    await response.body?.cancel();
-  } catch {
-    // Stream already closed or errored; nothing left to release.
-  }
-}
-
-function parseRetryAfter(response: Response): number | null {
-  const header = response.headers.get("retry-after");
-  if (!header) return null;
-  const seconds = Number(header);
-  if (Number.isFinite(seconds)) {
-    return Math.min(Math.max(seconds, 0) * 1000, RETRY_MAX_RETRY_AFTER_MS);
-  }
-  const date = Date.parse(header);
-  if (Number.isNaN(date)) return null;
-  return Math.min(Math.max(date - Date.now(), 0), RETRY_MAX_RETRY_AFTER_MS);
-}
-
-async function fetchWithRetry(
-  url: string,
-  userAgent: string = BROWSER_UA,
-): Promise<Response> {
-  const label = url.split("/").pop() || url;
-  let lastError = "unknown error";
-
-  for (let attempt = 1; attempt <= RETRY_ATTEMPTS; attempt++) {
-    await limiter.acquire(url);
-    let response: Response | null = null;
-    try {
-      response = await fetch(url, {
-        headers: { "User-Agent": userAgent },
-        signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
-      });
-    } catch (err) {
-      lastError = err instanceof Error ? err.message : String(err);
-    }
-
-    const backoffMs = Math.min(
-      RETRY_BASE_MS * 2 ** (attempt - 1),
-      RETRY_MAX_DELAY_MS,
-    );
-    const retryAfterMs = response ? parseRetryAfter(response) : null;
-
-    if (response) {
-      if (response.ok) {
-        limiter.reward(url);
-        return response;
-      }
-      lastError = `HTTP ${response.status} ${response.statusText}`.trim();
-      if (!RETRYABLE_STATUS.has(response.status)) {
-        await discardBody(response);
-        throw new Error(`${lastError} for ${url}`);
-      }
-      if (response.status === 429 || retryAfterMs != null) {
-        limiter.penalize(url, retryAfterMs ?? backoffMs);
-      }
-      await discardBody(response);
-    }
-
-    if (attempt === RETRY_ATTEMPTS) break;
-
-    const waitMs =
-      retryAfterMs != null
-        ? retryAfterMs * (1 + Math.random() * RETRY_AFTER_JITTER)
-        : backoffMs + Math.random() * RETRY_BASE_MS;
-
-    console.warn(
-      `[Attempt ${attempt}/${RETRY_ATTEMPTS}] ${label}: ${lastError} - retrying in ${(waitMs / 1000).toFixed(1)}s`,
-    );
-    await delay(waitMs);
-  }
-
-  throw new Error(`${lastError} (gave up after ${RETRY_ATTEMPTS} attempts)`);
 }
 
 function parseMarketDetails($: cheerio.CheerioAPI): MarketDetails {
@@ -370,12 +244,6 @@ async function processGermanLocale(deUrl: string): Promise<MarketLocale> {
     admission: nullable(details.admission),
     description,
   };
-}
-
-function delay(ms: number): Promise<void> {
-  const { promise, resolve } = Promise.withResolvers<void>();
-  setTimeout(resolve, ms);
-  return promise;
 }
 
 // Short summary of parsed dates for the run log: "a to b" for ranges,
