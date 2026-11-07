@@ -9,13 +9,32 @@ export const GYG_UTM_MEDIUM = "online_publisher";
 /** Where an affiliate link is shown; sent as utm_campaign to compare placements. */
 export type GygPlacement = "drawer-strip" | "map-pin";
 
-/** Attraction ids shown, in order, in the drawer tours strip. */
-export const GYG_DRAWER_FEATURED_IDS = [
-  "christmas-markets-tour",
-  "christmas-lights-bus-tour",
-  "evening-spree-christmas-cruise",
-  "christmas-garden-berlin",
-];
+/** How many attractions the drawer strip shows. */
+export const GYG_STRIP_COUNT = 4;
+
+/**
+ * Deterministic daily rotation: the same ids serve all day, then change.
+ * Seeded by UTC date so the pick survives reloads and stays consistent
+ * across a visitor's session.
+ */
+export function pickDailyFeatured<T>(ids: readonly T[], date: Date): T[] {
+  const seed =
+    date.getUTCFullYear() * 10000 +
+    (date.getUTCMonth() + 1) * 100 +
+    date.getUTCDate();
+  let state = seed || 1;
+  const rand = () => {
+    // Numerical Recipes LCG.
+    state = (state * 1664525 + 1013904223) % 4294967296;
+    return state / 4294967296;
+  };
+  const shuffled = [...ids];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled.slice(0, GYG_STRIP_COUNT);
+}
 
 /** Appends affiliate tracking params to a base GetYourGuide URL. */
 export function gygAffiliateUrl(

@@ -174,5 +174,93 @@
     "image_url": "https://cdn.getyourguide.com/img/tour/ed8ca031420baeeb7673c153ce26306c71acd5b023db82b7390a174036a21e64.jpg/148.jpg",
     "description": "Berlin's winter season with the horse-mad TV favourite: a three-hour family musical staging.",
     "url": "https://www.getyourguide.com/berlin-l17/berlin-christmas-with-bibi-tina-the-musical-t1428809/"
+  },
+  {
+    "id": "festive-mitte-street-food-tour",
+    "name": "Festive Christmas Mitte Street Food & History Tour",
+    "coordinates": {
+      "lat": 52.520815,
+      "lng": 13.409419
+    },
+    "image_url": "https://cdn.getyourguide.com/img/tour/a052dc160bb6a6912339c819cc9e6724b0df1e69e6702eff87810f1085dde2bf.png/148.jpg",
+    "description": "A winter food walk through festive Berlin Mitte: currywurst, döner, fish rolls and jam donuts, with seamless vegetarian and vegan options.",
+    "url": "https://www.getyourguide.com/berlin-l17/true-berlin-flavors-street-food-tour-at-alexanderplatz-t995609/"
+  },
+  {
+    "id": "winter-spree-cruise",
+    "name": "Winter Spree Cruise",
+    "coordinates": {
+      "lat": 52.5233606,
+      "lng": 13.343837
+    },
+    "image_url": "https://cdn.getyourguide.com/img/tour/481f18b6386aea182fd0fbc78a0d7307f831358bf6dbb3e33cfd0df4352aef7d.jpg/148.jpg",
+    "description": "A cozy winter day on the water: a boat tour through the heart of Berlin past the Cathedral, Museum Island and other landmark sights.",
+    "url": "https://www.getyourguide.com/berlin-l17/christmas-magic-on-the-river-spree-t875551/"
+  },
+  {
+    "id": "christmas-spree-cruise-drag-queen",
+    "name": "Christmas Spree Cruise with Drag Queen and Live Entertainment",
+    "coordinates": {
+      "lat": 52.5220267,
+      "lng": 13.3467528
+    },
+    "image_url": "https://cdn.getyourguide.com/img/tour/9c04aceaa5eceec75b633c7c8fe1cc4786f48b672e575c6c166d5084d2263a89.png/148.jpg",
+    "description": "The craziest Christmas party on the water: a winter Spree cruise with drag queen Audrey Naline, glamour, mulled wine and plenty of tinsel.",
+    "url": "https://www.getyourguide.com/berlin-l17/berlin-christmas-spree-cruise-with-a-drag-queen-and-live-entertainment-t1446356/"
+  },
+  {
+    "id": "hop-on-hop-off-icebar-combo",
+    "name": "Hop-On Hop-Off Bus and Icebar Ticket Combo",
+    "coordinates": {
+      "lat": 52.5043992,
+      "lng": 13.3344401
+    },
+    "image_url": "https://cdn.getyourguide.com/img/tour/645b91edc1d83.jpeg/148.jpg",
+    "description": "Two days of unlimited hop-on hop-off sightseeing across Berlin, plus entry to Icebar Berlin for a frosty Arctic-style experience.",
+    "url": "https://www.getyourguide.com/berlin-l17/berlin-hop-on-hop-off-bus-and-icebar-ticket-combo-t439094/"
+  },
+  {
+    "id": "stars-in-concert-christmas-special",
+    "name": "Stars in Concert Christmas Special",
+    "coordinates": {
+      "lat": 52.4738429,
+      "lng": 13.4591883
+    },
+    "image_url": "https://cdn.getyourguide.com/img/tour/ff83cc1cf3e081a3895903dfeca1482e77d46e24360bb1cb7fb22e1f841afea6.jpg/148.jpg",
+    "description": "The traditional Christmas special of Stars in Concert: orchestral film music and holiday classics in a festive open-air setting.",
+    "url": "https://www.getyourguide.com/berlin-l17/berlin-stars-in-concert-christmas-special-t711857/"
+  },
+  {
+    "id": "harp-concert-citadel-spandau",
+    "name": "The Sounds of the Harp at Christmas in the Citadel Spandau",
+    "coordinates": {
+      "lat": 52.5403539,
+      "lng": 13.2120986
+    },
+    "image_url": "https://cdn.getyourguide.com/img/tour/2876c8f00698c38810eaedc9b98056888f97770769206d754236a78143195b6f.jpg/148.jpg",
+    "description": "Violin and harp in the Gothic Hall of the Citadel Spandau: a Christmas concert in one of Berlin's most atmospheric historic venues.",
+    "url": "https://www.getyourguide.com/berlin-l17/berlin-classical-concerts-in-the-citadel-spandau-t861547/"
+  },
+  {
+    "id": "edith-bells-christmas-show",
+    "name": "The Ades Zabel Company: When Edith's Bells Ring",
+    "coordinates": {
+      "lat": 52.4937095,
+      "lng": 13.3877506
+    },
+    "image_url": "https://cdn.getyourguide.com/img/tour/1ad5b3a78050bcac9efa328d7c8068d86f0f0bbc11dabedfb249ef919d0b9d41.jpg/148.jpg",
+    "description": "Berlin's beloved district mayor Edith Schröder delivers her lavishly produced Christmas show above the rooftops of Neukölln.",
+    "url": "https://www.getyourguide.com/berlin-l17/berlin-the-ades-zabel-company-when-edith-s-bells-ring-vol-22-t880329/"
+  },
+  {
+    "id": "ice-skating-potsdamer-platz",
+    "name": "Ice Skating at the Center at Potsdamer Platz",
+    "coordinates": {
+      "lat": 52.5095872,
+      "lng": 13.3734907
+    },
+    "image_url": "https://cdn.getyourguide.com/img/tour/09ccdedf676b22461180435170fe9b6f049a345a99186c0dbb606286adf81629.png/148.jpg",
+    "description": "Sixty minutes of skating fun right in the heart of Berlin, under the tent-like roof of the Center at Potsdamer Platz - open to all skill levels.",
+    "url": "https://www.getyourguide.com/berlin-l17/berlin-ice-skating-at-das-center-at-potsdamer-platz-t1126483/"
   }
 ]
