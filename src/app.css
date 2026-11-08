@@ -460,53 +460,113 @@
 }
 
 @layer components {
-  .market-date {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+  .snowfall {
+    position: absolute;
+    inset: 0;
     overflow: hidden;
-    overflow-wrap: anywhere;
+    pointer-events: none;
   }
 
-  .leaflet-marker-cluster {
-    background: color-mix(in oklab, var(--color-pine) 92%, var(--color-snow));
-    border: 2px solid var(--color-gold);
-    color: #fffdf8;
-    box-shadow: 0 2px 8px rgba(20, 83, 45, 0.28);
+  .flake {
+    position: absolute;
+    top: -4px;
+    border-radius: 50%;
+    background: #fffdf8;
+    box-shadow: 0 0 4px rgba(255, 253, 248, 0.9);
+    animation: snow-fall linear infinite;
   }
 
-  .leaflet-marker-cluster-small {
-    background: color-mix(in oklab, var(--color-pine) 88%, var(--color-snow));
+  @keyframes snow-fall {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      /* vh, not %: a percentage would resolve against each flake's own
+         ~5px height and the flakes would barely move. 120vh clears the
+         modal overlays the snow now lives on. */
+      transform: translate3d(var(--drift, 0px), 120vh, 0);
+    }
   }
 
-  .leaflet-marker-cluster-medium {
-    background: color-mix(in oklab, var(--color-pine) 94%, var(--color-gold));
+  /* Fairy-light bulbs along a gold border: a repeating strand of warm-white,
+     berry and pine bulbs, each a bright core inside a coloured glow, over a
+     thin wire. Default placement straddles the TOP border of a card
+     (.fairy-lights on the welcome/about modals); .fairy-lights-header
+     retargets the strip to a bottom border (the drawer header's gold bar). */
+  .fairy-lights::after,
+  .fairy-lights-header::after {
+    content: "";
+    position: absolute;
+    z-index: 5;
+    left: 16px;
+    right: 16px;
+    top: -7px; /* padding-box top is 4px inside the border box: centres the 10px strip on the 4px border's midline */
+    height: 10px;
+    border-radius: inherit;
+    background-image:
+      radial-gradient(
+        circle at 7px 5px,
+        #fff8e1 0 1.6px,
+        color-mix(in oklab, #fff8e1 55%, transparent) 3px,
+        transparent 4.5px
+      ),
+      radial-gradient(
+        circle at 21px 5px,
+        var(--color-berry) 0 1.8px,
+        color-mix(in oklab, var(--color-berry) 45%, transparent) 3.2px,
+        transparent 4.6px
+      ),
+      radial-gradient(
+        circle at 35px 5px,
+        #7ddf9a 0 1.8px,
+        color-mix(in oklab, #7ddf9a 45%, transparent) 3.2px,
+        transparent 4.6px
+      ),
+      linear-gradient(var(--color-gold), var(--color-gold));
+    background-size:
+      42px 10px,
+      42px 10px,
+      42px 10px,
+      100% 1px;
+    background-position:
+      0 0,
+      0 0,
+      0 0,
+      center;
+    background-repeat: repeat-x, repeat-x, repeat-x, no-repeat;
+    animation: fairy-strand-glow 3.2s ease-in-out infinite alternate;
+    pointer-events: none;
   }
 
-  .leaflet-marker-cluster-large {
-    background: color-mix(
-      in oklab,
-      var(--color-pine) 96%,
-      var(--color-gold-light)
-    );
+  /* Same strand on the drawer header's bottom gold bar. The header has
+     overflow: visible so the glow is not clipped; its z-10 keeps the strip
+     above the gradient. */
+  .fairy-lights-header::after {
+    top: calc(100% - 3px);
+    border-radius: 0;
   }
 
-  .leaflet-marker-cluster div {
-    color: #fffdf8;
-    font-family: var(--font-sans);
-    font-weight: 700;
+  @keyframes fairy-strand-glow {
+    from {
+      opacity: 0.7;
+      filter: drop-shadow(
+        0 0 2px color-mix(in oklab, var(--color-gold-light) 45%, transparent)
+      );
+    }
+    to {
+      opacity: 1;
+      filter: drop-shadow(
+        0 0 5px color-mix(in oklab, var(--color-gold-light) 75%, transparent)
+      );
+    }
   }
 
-  .leaflet-marker-cluster-small div {
-    background-color: rgba(255, 253, 248, 0.2);
-  }
-
-  .leaflet-marker-cluster-medium div {
-    background-color: rgba(240, 216, 115, 0.25);
-  }
-
-  .leaflet-marker-cluster-large div {
-    background-color: rgba(240, 216, 115, 0.3);
+  @media (prefers-reduced-motion: reduce) {
+    .flake,
+    .fairy-lights::after,
+    .fairy-lights-header::after {
+      animation: none;
+    }
   }
 }
 

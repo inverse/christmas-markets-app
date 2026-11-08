@@ -247,7 +247,7 @@
   in:fly={{ x: -320, duration: 300 }}
 >
   <header
-    class="relative sticky top-0 z-10 overflow-hidden border-b-4 border-gold bg-gradient-to-br from-pine to-pine-dark px-5 pb-4 pt-5"
+    class="fairy-lights-header relative sticky top-0 z-10 overflow-visible border-b-4 border-gold bg-gradient-to-br from-pine to-pine-dark px-5 pb-4 pt-5"
   >
     <img
       src="/icons/christmas-tree-raw.svg"
