@@ -12,8 +12,12 @@ export const load: LayoutLoad = ({ url, params }) => {
     const rest = url.pathname.replace(/^\/en(?=\/|$)/, "") || "/";
     redirect(301, `${rest}${url.search}${url.hash}`);
   }
+  // SvelteKit strips the trailing slash on /de/, so the canonical German URL
+  // is /de - emit it everywhere or canonical/hreflang point at a redirect.
+  const localePath = params.lang === "de" ? "/de" : "/";
   return {
     origin: url.origin,
     locale: localeFromParam(params.lang),
+    localePath,
   };
 };

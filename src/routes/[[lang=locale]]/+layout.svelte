@@ -26,10 +26,10 @@
   const TITLE = $derived(dict.title);
   const DESCRIPTION = $derived(dict.description);
   const IMAGE_ALT = $derived(dict.imageAlt);
-  const SITE_URL = $derived(`${data.origin}${locale === "de" ? "/de/" : "/"}`);
+  const SITE_URL = $derived(`${data.origin}${data.localePath}`);
   // Bump when the card art changes: X caches a card per URL for ~7 days, so
   // re-styling the image without a new URL keeps serving the stale card.
-  const SHARE_IMAGE = $derived(`${data.origin}/icons/og-image.png?v=2`);
+  const SHARE_IMAGE = $derived(`${data.origin}/icons/og-image.png?v=3`);
   $effect(() => {
     if (browser) document.documentElement.lang = locale;
   });
@@ -53,7 +53,13 @@
 
   <title>{TITLE}</title>
   <meta name="description" content={DESCRIPTION} />
-
+  <meta
+    name="robots"
+    content="index, follow, max-image-preview:large, max-snippet:-1"
+  />
+  <link rel="alternate" hreflang="en" href={`${data.origin}/`} />
+  <link rel="alternate" hreflang="de" href={`${data.origin}/de`} />
+  <link rel="alternate" hreflang="x-default" href={`${data.origin}/`} />
   <link rel="canonical" href={SITE_URL} />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Berlin Christmas Markets" />

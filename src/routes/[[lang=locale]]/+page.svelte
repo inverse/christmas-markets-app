@@ -30,6 +30,8 @@
     type MarketStatus,
   } from "$lib/utils/marketStatus";
   import { messages } from "$lib/i18n/messages";
+  import type { Market } from "$shared/types";
+  import type { Dates } from "$shared/dateParser";
 
   let { data } = $props();
   let markets = $derived(data.markets);
@@ -127,7 +129,102 @@
     // A shared market link is more relevant than the intro, so don't stomp it.
     if (window.location.hash === "") openWelcome();
   });
+
+  // One Event node per market date so rich results can show each market's
+  // real opening days. Ranges expand to days, capped so huge ranges stay sane.
+  const MAX_RANGE_DAYS = 62;
+  function marketDates(dates: Dates | undefined): string[] {
+    if (!dates) return [];
+    if (dates.type === "dates") return dates.dates;
+    if (!dates.start_date || !dates.end_date) return [];
+    const start = new Date(`${dates.start_date}T00:00:00Z`).getTime();
+    const end = new Date(`${dates.end_date}T00:00:00Z`).getTime();
+    if (Number.isNaN(start) || Number.isNaN(end) || end < start) {
+      return dates.start_date ? [dates.start_date] : [];
+    }
+    const days = Math.round((end - start) / 86_400_000) + 1;
+    if (days > MAX_RANGE_DAYS) {
+      // ponytail: emit only the endpoints for very long ranges; add full
+      // expansion if a market ever legitimately runs >62 days.
+      return [dates.start_date, dates.end_date];
+    }
+    return Array.from({ length: days }, (_, i) =>
+      new Date(start + i * 86_400_000).toISOString().slice(0, 10),
+    );
+  }
+
+  function marketEventNode(
+    market: Market,
+    date: string,
+    origin: string,
+    localePath: string,
+  ) {
+    const admission = market.admission?.trim().toLowerCase();
+    return {
+      "@type": "Event",
+      name: market.name,
+      description: market.description,
+      image: market.image_url,
+      url: `${origin}${localePath === "/" ? "" : localePath}/#market=${encodeURIComponent(market.id)}`,
+      startDate: date,
+      eventStatus: "https://schema.org/EventScheduled",
+      eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+      location: {
+        "@type": "Place",
+        name: market.name,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: market.address,
+          addressLocality: "Berlin",
+          addressCountry: "DE",
+        },
+      },
+      ...(admission === "free"
+        ? {
+            offers: {
+              "@type": "Offer",
+              price: "0",
+              priceCurrency: "EUR",
+              availability: "https://schema.org/InStock",
+            },
+          }
+        : {}),
+    };
+  }
+
+  const jsonLd = $derived.by(() => {
+    const dict = messages(data.locale);
+    const origin = data.origin;
+    const localePath = data.localePath;
+    const itemListElement = markets.flatMap((market, i) =>
+      marketDates(market.dates).map((date) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        item: marketEventNode(market, date, origin, localePath),
+      })),
+    );
+    return {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: dict.title,
+      description: dict.description,
+      url: `${origin}${localePath}`,
+      inLanguage: data.locale === "de" ? "de-DE" : "en-GB",
+      mainEntity: {
+        "@type": "ItemList",
+        name: dict.menuTitle,
+        numberOfItems: markets.length,
+        itemListElement,
+      },
+    };
+  });
 </script>
+
+<svelte:head>
+  <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+  {@html `<script type="application/ld+json">${JSON.stringify(jsonLd).replaceAll("<", "\\u003c")}</` +
+    `script>`}
+</svelte:head>
 
 <!-- Back/forward lands on an entry whose ?date may differ from memory; adopt it. -->
 <svelte:window onpopstate={restoreDateFromUrl} />

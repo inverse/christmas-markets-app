@@ -291,14 +291,14 @@
     <div class="flex gap-2">
       <button
         onclick={() => close(onShowWelcome)}
-        class="font-display flex flex-1 items-center justify-center gap-1.5 rounded-lg border border-pine/30 bg-surface px-2 py-2.5 text-xs font-semibold text-ink-brand shadow-xs transition hover:bg-pine hover:text-white"
+        class="flex flex-1 items-center justify-center gap-1.5 rounded-lg border border-pine/30 bg-surface px-2 py-2.5 text-xs font-semibold text-ink-brand shadow-xs transition hover:bg-pine hover:text-white"
       >
         <span class="text-base">🎄</span>
         <span>{dict.welcome}</span>
       </button>
       <button
         onclick={() => close(onShowAbout)}
-        class="font-display flex flex-1 items-center justify-center gap-1.5 rounded-lg border border-pine/30 bg-surface px-2 py-2.5 text-xs font-semibold text-ink-brand shadow-xs transition hover:bg-pine hover:text-white"
+        class="flex flex-1 items-center justify-center gap-1.5 rounded-lg border border-pine/30 bg-surface px-2 py-2.5 text-xs font-semibold text-ink-brand shadow-xs transition hover:bg-pine hover:text-white"
       >
         <span class="text-base">ℹ️</span>
         <span>{dict.about}</span>
@@ -313,7 +313,7 @@
         aria-label={locale === "de"
           ? "Switch to English"
           : "Auf Deutsch wechseln"}
-        class="font-display flex w-10 flex-shrink-0 items-center justify-center rounded-lg border border-pine/30 bg-surface px-2 py-2.5 text-xs font-semibold text-ink-brand shadow-xs transition hover:bg-pine hover:text-white"
+        class="flex w-10 flex-shrink-0 items-center justify-center rounded-lg border border-pine/30 bg-surface px-2 py-2.5 text-xs font-semibold text-ink-brand shadow-xs transition hover:bg-pine hover:text-white"
       >
         {locale === "de" ? "EN" : "DE"}
       </a>
@@ -329,7 +329,7 @@
       </button>
     </div>
     <div class="mb-2 flex items-end justify-between px-1">
-      <h3 class="font-display font-bold text-ink-brand">
+      <h3 class="font-sans text-lg font-bold tracking-tight text-ink-brand">
         <label for="visit-date">{dict.planAVisit}</label>
       </h3>
     </div>
@@ -360,7 +360,7 @@
 
     <section>
       <div class="mb-2 flex items-end justify-between px-1">
-        <h3 class="font-display font-bold text-ink-brand">
+        <h3 class="font-sans text-lg font-bold tracking-tight text-ink-brand">
           {dict.marketsHeading}
         </h3>
         <span class="text-xs font-semibold text-stone-500"
@@ -384,10 +384,10 @@
           <button
             onclick={() => (activeFilter = filter.id)}
             aria-pressed={activeFilter === filter.id}
-            class="font-display whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-semibold transition {activeFilter ===
+            class="whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-semibold transition {activeFilter ===
             filter.id
               ? 'border-pine bg-pine text-white'
-              : 'border-stone-200 bg-surface text-stone-600 hover:border-gold hover:text-ink-brand'}"
+              : 'border-stone-200 bg-surface text-stone-700 hover:border-gold hover:text-ink-brand'}"
           >
             {filter.label} <span class="opacity-70">{getCount(filter.id)}</span>
           </button>
@@ -399,7 +399,7 @@
           <li>
             <button
               onclick={() => jumpTo(market)}
-              class="group flex w-full gap-3 rounded-xl border border-stone-200 border-l-4 bg-surface p-3 text-left transition hover:border-gold hover:shadow-md"
+              class="group flex w-full gap-3 rounded-xl border border-stone-200 bg-surface p-3 text-left transition hover:border-gold/70 hover:shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pine"
             >
               <img
                 src={market.image_url}
@@ -409,12 +409,12 @@
               />
               <div class="min-w-0 flex-1">
                 <h4
-                  class="font-display text-sm font-bold leading-snug text-ink-brand transition group-hover:text-ink-gold"
+                  class="font-sans text-sm font-semibold leading-snug text-stone-800"
                 >
                   {market.name}
                 </h4>
                 <p
-                  class="mt-0.5 truncate text-xs text-stone-500"
+                  class="mt-1 truncate text-xs text-stone-600"
                   title={market.address}
                 >
                   {market.address}
@@ -431,7 +431,10 @@
                     ></span>
                     {dict.status[statusByMarket.get(market.id) ?? "unknown"]}
                   </span>
-                  <span class="truncate text-[11px] text-stone-400">
+                  <span
+                    class="market-date min-w-0 flex-1 truncate text-[11px] text-stone-400"
+                    title={market.dates.raw || dict.checkSite}
+                  >
                     {market.dates.raw || dict.checkSite}
                   </span>
                 </div>

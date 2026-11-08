@@ -272,7 +272,6 @@
       tileLayerCleanup?.();
     };
   });
-
   $effect(() => {
     if (!markersReady) return;
     for (const market of markets) {

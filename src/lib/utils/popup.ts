@@ -14,8 +14,8 @@ export function escapeHtml(value: string | undefined | null): string {
 
 /** One labeled info line: fixed-width icon column + evenly spaced content. */
 function row(icon: string, label: string, content: string): string {
-  return `<div class="flex items-start gap-3 text-[13px] leading-relaxed text-stone-800">
-					<i class="fa-solid ${icon} mt-1 w-4 shrink-0 text-center text-[13px] leading-none text-stone-600" aria-hidden="true"></i>
+  return `<div class="flex items-start gap-3 text-[13px] leading-relaxed text-stone-700">
+					<i class="fa-solid ${icon} mt-1 w-4 shrink-0 text-center text-[13px] leading-none text-stone-500" aria-hidden="true"></i>
 					<span class="min-w-0 flex-1"><span class="mr-1.5 font-semibold text-stone-600">${label}:</span>${content}</span>
 				</div>`;
 }
@@ -53,7 +53,6 @@ export function buildPopup(
 					</div>
 					<h3 class="absolute bottom-3 left-3 right-10 text-white font-display text-lg font-bold leading-tight drop-shadow line-clamp-2">${name}</h3>
 				</div>
-				<div class="h-1 w-full bg-gradient-to-r from-pine via-gold to-berry"></div>
 				<div class="space-y-3 p-4">
 					${description}
 					${row("fa-location-dot", dict.address, `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(market.address)}" target="_blank" rel="noopener" class="font-medium text-ink-brand underline decoration-gold underline-offset-2 hover:text-pine">${address}</a>`)}
@@ -61,8 +60,8 @@ export function buildPopup(
 					${row("fa-clock", dict.hours, `<strong>${openingTimes}</strong>`)}
 					${admission}
 					<div class="grid grid-cols-2 gap-2">
-						<a href="${directionsUrl}" target="_blank" rel="noopener" class="block text-center text-sm font-bold py-2.5 rounded-full bg-pine !text-white shadow-lg transition hover:bg-pine-dark">${dict.directions}</a>
-						<a href="${url}" target="_blank" rel="noopener" class="block text-center text-sm font-bold py-2.5 rounded-full bg-gold !text-pine-dark shadow-lg transition hover:bg-gold-light">${dict.viewDetails}</a>
+						<a href="${directionsUrl}" target="_blank" rel="noopener" class="block text-center text-sm font-semibold py-2.5 rounded-full bg-pine !text-white transition hover:bg-pine-dark">${dict.directions}</a>
+						<a href="${url}" target="_blank" rel="noopener" class="block text-center text-sm font-semibold py-2.5 rounded-full bg-gold !text-pine-dark transition hover:bg-gold-light">${dict.viewDetails}</a>
 					</div>
 				</div>
 			</div>`;

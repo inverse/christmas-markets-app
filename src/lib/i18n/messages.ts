@@ -98,7 +98,7 @@ const english = {
   dismissInstallPrompt: "Dismiss install prompt",
 };
 
-type Messages = typeof english;
+export type Messages = typeof english;
 
 const german: Messages = {
   title: "Berliner Weihnachtsmärkte 2026: Termine, Öffnungszeiten & Karte",

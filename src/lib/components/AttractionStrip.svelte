@@ -20,7 +20,10 @@
 {#if __ENABLE_GYG_ATTRACTIONS__ && featured.length > 0}
   <section aria-labelledby="tours-heading">
     <div class="mb-2 flex items-end justify-between px-1">
-      <h3 id="tours-heading" class="font-display font-bold text-ink-brand">
+      <h3
+        id="tours-heading"
+        class="font-sans text-lg font-bold tracking-tight text-ink-brand"
+      >
         {dict.toursHeading}
       </h3>
       <span
