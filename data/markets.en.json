@@ -11,10 +11,10 @@
   "christmas-flea-market-on-kranoldplatz": {
     "name": "Christmas Flea Market on Kranoldplatz",
     "address": "Kranoldplatz, 12051, Berlin",
-    "dates_raw": "Not yet known",
+    "dates_raw": "December 13, 2026",
     "url": "https://www.berlin.de/en/christmas-markets/10041394-3230598-christmas-flea-market-on-kranoldplatz.en.html",
-    "opening_times": null,
-    "admission": null,
+    "opening_times": "11 am to 5 pm",
+    "admission": "Free",
     "description": "The cozy Christmas flea market is expected to attract visitors to Neukölln's Kranoldplatz on the third Sunday of Advent with special offers."
   },
   "nowkoelln-xmas-flowmarkt": {
@@ -416,7 +416,7 @@
   "winter-market-at-the-wendenschloss-lido": {
     "name": "Winter Market at the Wendenschloss Lido",
     "address": "Möllhausenufer 30, 12557, Berlin",
-    "dates_raw": "Not yet known",
+    "dates_raw": "Not found",
     "url": "https://www.berlin.de/en/christmas-markets/7876023-3230598-winterzauber-strandbad-wendenschloss.en.html",
     "opening_times": null,
     "admission": null,
@@ -427,7 +427,7 @@
     "address": "Brienner Straße 12, 10713, Berlin",
     "dates_raw": "November 27 to 29, 2026",
     "url": "https://www.berlin.de/en/christmas-markets/5701678-3230598-danish-christmas-market.en.html",
-    "opening_times": null,
+    "opening_times": "Friday from 12 noon to 4 pm, Saturday and Sunday from 12 noon to 6 pm",
     "admission": "Free",
     "description": "Christianskirkens julemarked, the Danish Christmas market on Brienner Straße, attracts visitors to Wilmersdorf with numerous Nordic specialties."
   },
@@ -452,7 +452,7 @@
   "caribbean-christmas-market-at-yaam": {
     "name": "Caribbean Christmas Market at Yaam",
     "address": "An der Schillingbrücke 3, 10243, Berlin",
-    "dates_raw": "Not yet known",
+    "dates_raw": "Not found",
     "url": "https://www.berlin.de/en/christmas-markets/8562243-3230598-caribbean-christmas-market-at-yaam.en.html",
     "opening_times": null,
     "admission": null,
@@ -560,7 +560,7 @@
   "winter-market-on-teufelsberg": {
     "name": "Winter Market on Teufelsberg",
     "address": "Teufelsseechaussee 10, 14193, Berlin",
-    "dates_raw": "Not yet known",
+    "dates_raw": "Not found",
     "url": "https://www.berlin.de/en/christmas-markets/9282624-3230598-winter-market-on-teufelsberg.en.html",
     "opening_times": null,
     "admission": null,
@@ -686,7 +686,7 @@
   "gluehwald-at-uber-platz": {
     "name": "Glühwald at Uber Platz",
     "address": "Uber Platz, 10243, Berlin",
-    "dates_raw": "From November 6, 2026",
+    "dates_raw": "November 6 to December 29, 2026",
     "url": "https://www.berlin.de/en/christmas-markets/7839542-3230598-gluehwald-at-uber-platz.en.html",
     "opening_times": "Wednesday to Sunday from 4 pm",
     "admission": "Free",
@@ -695,11 +695,11 @@
   "kinky-christmas-market": {
     "name": "Kinky Christmas Market",
     "address": "Köpenicker Straße 18-20, 10997, Berlin",
-    "dates_raw": "Not yet known",
+    "dates_raw": "November 29, 2026",
     "url": "https://www.berlin.de/en/christmas-markets/8593915-3230598-kinky-christmas-market.en.html",
-    "opening_times": null,
-    "admission": null,
-    "description": "The Berlin Kinky Christmas Market has been part of the capital since 2023 and is expected to return in 2026."
+    "opening_times": "1 pm to 9 pm",
+    "admission": "€6 to €10",
+    "description": "Berlin’s first kinky Christmas market has been a fixture in the capital since 2023 and will be back again in 2026."
   },
   "merry-markthalle": {
     "name": "Merry Markthalle",
@@ -1055,9 +1055,9 @@
   "advent-bazaar-of-the-albert-schweitzer-foundation": {
     "name": "Advent Bazaar of the Albert Schweitzer Foundation",
     "address": "Bahnhofstraße 32, 13129, Berlin",
-    "dates_raw": "Not yet known",
+    "dates_raw": "November 28, 2026",
     "url": "https://www.berlin.de/en/christmas-markets/5744189-3230598-adventsbasar-der-albert-schweitzer-stift.en.html",
-    "opening_times": null,
+    "opening_times": "From 3 pm",
     "admission": "Free",
     "description": "In the run-up to Christmas, the Three Wise Men and Santa visit Weißensee: a cozy Advent bazaar is held on the grounds of the Albert Schweitzer Foundation."
   },
@@ -1082,10 +1082,10 @@
   "christmas-market-at-st-michaels-heim": {
     "name": "Christmas Market at St.-Michaels-Heim",
     "address": "Bismarckallee 23, 14193, Berlin",
-    "dates_raw": "Not yet known",
+    "dates_raw": "November 28 and 29, 2026",
     "url": "https://www.berlin.de/en/christmas-markets/5701609-3230598-weihnachtsmarkt-im-st-michaels-heim.en.html",
-    "opening_times": null,
-    "admission": null,
+    "opening_times": "Saturday from 2 pm to 8 pm, Sunday from 12 noon to 6 pm",
+    "admission": "Free",
     "description": "For over 40 years, the non-profit association Johannisches Sozialwerk has been hosting the Christmas market at their guesthouse, the St.-Michaels-Heim. For many visitors, the cozy market is like a trip back in time."
   },
   "veganer-weihnachtsmarkt-auf-dem-fehrbelliner-platz": {
@@ -1139,7 +1139,7 @@
     "dates_raw": "November 20 to December 20, 2026",
     "url": "https://www.berlin.de/en/christmas-markets/10734992-3230598-weihnachtsmarkt-auf-der-lohmuehleninsel.en.html",
     "opening_times": "Friday from 4 pm to 10 pm, Saturday and Sunday from 2 pm to 10 pm",
-    "admission": null,
+    "admission": "Free",
     "description": "This year, for the first time, Freischwimmer and Ipse Ufer are organising a joint Christmas market on the banks of the Flutgraben."
   }
 }

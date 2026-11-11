@@ -11,10 +11,10 @@
   "christmas-flea-market-on-kranoldplatz": {
     "name": "Weihnachtsflohmarkt auf dem Kranoldplatz",
     "address": "Kranoldplatz, 12051, Berlin",
-    "dates_raw": "Noch nicht bekannt",
+    "dates_raw": "13. Dezember 2026",
     "url": "https://www.berlin.de/weihnachtsmarkt/10041394-3496862-christmas-flea-market-on-kranoldplatz.html",
-    "opening_times": null,
-    "admission": null,
+    "opening_times": "11 bis 17 Uhr",
+    "admission": "Kostenlos",
     "description": "Voraussichtlich am dritten Advent lockt der gemütliche Weihnachtsflohmarkt mit besonderen Angeboten zum Neuköllner Kranoldplatz."
   },
   "nowkoelln-xmas-flowmarkt": {
@@ -416,8 +416,8 @@
   "winter-market-at-the-wendenschloss-lido": {
     "name": "Winterzauber am Strandbad Wendenschloss",
     "address": "Möllhausenufer 30, 12557, Berlin",
-    "dates_raw": "Noch nicht bekannt",
-    "url": "https://www.berlin.de/weihnachtsmarkt/7876023-3496862-winterzauber-strandbad-wendenschloss.html",
+    "dates_raw": "Not found",
+    "url": "https://www.berlin.de/kultur-und-tickets/archiv/7876023-2805649-winterzauber-strandbad-wendenschloss.html",
     "opening_times": null,
     "admission": null,
     "description": "Der Winterzauber an der Dahme hat sich mit Eisstockschießen, Schausteller-Ständen, Glühweinvariationen und Lagerfeuer zum Publikumsliebling entwickelt."
@@ -427,7 +427,7 @@
     "address": "Brienner Straße 12, 10713, Berlin",
     "dates_raw": "27. bis 29. November 2026",
     "url": "https://www.berlin.de/weihnachtsmarkt/5701678-3496862-danish-christmas-market.html",
-    "opening_times": null,
+    "opening_times": "Freitag von 12 bis 16 Uhr, Samstag und Sonntag von 12 bis 18 Uhr",
     "admission": null,
     "description": "Christianskirkens julemarked, der dänische Weihnachtsmarkt in der Brienner Straße, lockt Besucher mit zahlreichen nordischen Spezialitäten nach Wilmersdorf."
   },
@@ -452,8 +452,8 @@
   "caribbean-christmas-market-at-yaam": {
     "name": "Karibischer Weihnachtsmarkt im Yaam",
     "address": "An der Schillingbrücke 3, 10243, Berlin",
-    "dates_raw": "Noch nicht bekannt",
-    "url": "https://www.berlin.de/weihnachtsmarkt/8562243-3496862-caribbean-christmas-market-at-yaam.html",
+    "dates_raw": "Not found",
+    "url": "https://www.berlin.de/kultur-und-tickets/archiv/8562243-2805649-caribbean-christmas-market-at-yaam.html",
     "opening_times": null,
     "admission": null,
     "description": "Reggae und Dancehall auf die Ohren, tropische Weihnachtskreationen und allerhand außergewöhnliche Geschenkideen: Der Yaam on Ice Weihnachtsmarkt lockt mit karibischem Charme."
@@ -560,8 +560,8 @@
   "winter-market-on-teufelsberg": {
     "name": "Wintermarkt am Teufelsberg",
     "address": "Teufelsseechaussee 10, 14193, Berlin",
-    "dates_raw": "Noch nicht bekannt",
-    "url": "https://www.berlin.de/weihnachtsmarkt/9282624-3496862-winter-market-on-teufelsberg.html",
+    "dates_raw": "Not found",
+    "url": "https://www.berlin.de/kultur-und-tickets/archiv/9282624-2805649-winter-market-on-teufelsberg.html",
     "opening_times": null,
     "admission": null,
     "description": "Berlins höchster Weihnachtsbaum steht im grünen Wilmersdorf auf dem Teufelsberg: Der Wintermarkt am Teufelsberg lockt mit einem liebevollen Programm."
@@ -686,7 +686,7 @@
   "gluehwald-at-uber-platz": {
     "name": "Glühwald am Uber Platz",
     "address": "Uber Platz, 10243, Berlin",
-    "dates_raw": "Ab 6. November 2026",
+    "dates_raw": "6. November bis 29. Dezember 2026",
     "url": "https://www.berlin.de/weihnachtsmarkt/7839542-3496862-gluehwald-at-uber-platz.html",
     "opening_times": "Mittwoch bis Sonntag ab 16 Uhr",
     "admission": "Kostenlos",
@@ -695,11 +695,11 @@
   "kinky-christmas-market": {
     "name": "Kinky Weihnachtsmarkt",
     "address": "Köpenicker Straße 18-20, 10997, Berlin",
-    "dates_raw": "Noch nicht bekannt",
+    "dates_raw": "29. November 2026",
     "url": "https://www.berlin.de/weihnachtsmarkt/8593915-3496862-kinky-christmas-market.html",
-    "opening_times": null,
-    "admission": null,
-    "description": "Der erste Berliner Kinky-Weihnachtsmarkt gehört seit 2023 zu der Hauptstadt und kehrt voraussichtlich auch 2026 zurück."
+    "opening_times": "13 bis 21 Uhr",
+    "admission": "6 bis 10 Euro",
+    "description": "Der erste Berliner Kinky-Weihnachtsmarkt gehört seit 2023 zu der Hauptstadt und kehrt auch 2026 zurück."
   },
   "merry-markthalle": {
     "name": "Merry Markthalle",
@@ -762,7 +762,7 @@
     "url": "https://www.berlin.de/weihnachtsmarkt/5702850-3496862-christmas-lights-lichtenrade.html",
     "opening_times": "13 bis 19 Uhr",
     "admission": "Kostenlos",
-    "description": "Zum 48. Mal findet 2026 der Lichtermarkt in Lichtenrade voraussichtlich wieder statt. Rund um den alten Dorfanger wird es im Advent richtig weihnachtlich."
+    "description": "Zum 48. Mal findet 2026 der Lichtermarkt in Lichtenrade wieder statt. Rund um den alten Dorfanger wird es im Advent richtig weihnachtlich."
   },
   "christmas-at-tempelhof-airport": {
     "name": "Weihnachten im Tempelhofer Flughafen",
@@ -981,29 +981,29 @@
     "description": "Blankenburg feiert die vorweihnachtliche Zeit gebührend. Seit über zehn Jahren kommen Blankenburger, Berliner und Besucher beim Weihnachtsfest zusammen."
   },
   "advent-bazaar-of-the-albert-schweitzer-foundation": {
-    "name": "Adventsbasar der Albert Schweitzer Stiftung",
+    "name": "Adventsbasar der Albert-Schweitzer-Stiftung",
     "address": "Bahnhofstraße 32, 13129, Berlin",
-    "dates_raw": "Noch nicht bekannt",
+    "dates_raw": "28. November 2026",
     "url": "https://www.berlin.de/weihnachtsmarkt/5744189-3496862-advent-bazaar-albert-schweitzer-foundati.html",
-    "opening_times": null,
-    "admission": null,
-    "description": "In der Vorweihnachtszeit besuchen die Heiligen Drei Könige und der Weihnachtsmann Weißensee: Auf dem Gelände der Albert Schweitzer Stiftung findet Ende November ein gemütlicher Adventsbasar statt."
+    "opening_times": "Ab 15 Uhr",
+    "admission": "Kostenlos",
+    "description": "In der Vorweihnachtszeit besuchen die Heiligen Drei Könige und der Weihnachtsmann Weißensee: Auf dem Gelände der Albert-Schweitzer-Stiftung findet Ende November ein gemütlicher Adventsbasar statt."
   },
   "advent-market-at-oekowerk": {
     "name": "Adventsmarkt im Ökowerk",
     "address": "Teufelsseechaussee 22, 14193, Berlin",
-    "dates_raw": "Noch nicht bekannt",
+    "dates_raw": "22. November 2026",
     "url": "https://www.berlin.de/weihnachtsmarkt/5694601-3496862-advent-market-at-oekowerk.html",
-    "opening_times": null,
-    "admission": null,
+    "opening_times": "11 bis 15:30 Uhr",
+    "admission": "30 Euro pro Kranz",
     "description": "Im Naturschutzzentrum Ökowerk wartet ein besonders besinnlicher Weihnachtsmarkt im Grünen auf Familien und Besucher."
   },
   "christmas-market-at-st-michaels-heim": {
     "name": "Adventsmarkt im St.-Michaels-Heim",
     "address": "Bismarckallee 23, 14193, Berlin",
-    "dates_raw": "Noch nicht bekannt",
+    "dates_raw": "28. und 29. November 2026",
     "url": "https://www.berlin.de/weihnachtsmarkt/5701609-3496862-christmas-market-at-st-michaels-heim.html",
-    "opening_times": null,
+    "opening_times": "Samstag von 14 bis 20 Uhr, Sonntag von 12 bis 18 Uhr",
     "admission": null,
     "description": "Seit über 40 Jahren richtet das Johannische Sozialwerk den Weihnachtsmarkt im St-Michaels-Heim aus. Für viele Besucher:innen ist der gemütliche Markt wie eine Reise in die Vergangenheit."
   },
@@ -1031,7 +1031,7 @@
     "dates_raw": "Not found",
     "url": "https://www.berlin.de/weihnachtsmarkt/10734992-3496862-christmas-market-on-lohmuehlen-island.html",
     "opening_times": "Freitag von 16 bis 22 Uhr, Samstag und Sonntag von 14 bis 22 Uhr",
-    "admission": null,
+    "admission": "Kostenlos",
     "description": "Freischwimmer und Ipse Ufer organisieren in diesem Jahr zum ersten Mal einen gemeinsamen Weihnachtsmarkt am Ufer des Flutgrabens."
   }
 }

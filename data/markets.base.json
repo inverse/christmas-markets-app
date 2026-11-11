@@ -29,8 +29,8 @@
     "id": "christmas-flea-market-on-kranoldplatz",
     "dates": {
       "type": "range",
-      "start_date": "",
-      "end_date": ""
+      "start_date": "2026-12-13",
+      "end_date": "2026-12-13"
     },
     "image_url": "https://www.berlin.de/binaries/asset/image_assets/9837514/ratio_4_3/1764074950/800x600/",
     "coordinates": {
@@ -719,7 +719,7 @@
       "start_date": "",
       "end_date": ""
     },
-    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7883886/ratio_4_3/1669204516/800x600/",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7883886/ratio_4_3/1794218187/800x600/",
     "coordinates": {
       "lng": 13.5995,
       "lat": 52.4154
@@ -775,7 +775,7 @@
       "start_date": "",
       "end_date": ""
     },
-    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8562336/ratio_4_3/1700463797/800x600/",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8562336/ratio_4_3/1794218063/800x600/",
     "coordinates": {
       "lng": 13.43,
       "lat": 52.5097
@@ -943,7 +943,7 @@
       "start_date": "",
       "end_date": ""
     },
-    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9284124/ratio_4_3/1733314255/800x600/",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9284124/ratio_4_3/1794219910/800x600/",
     "coordinates": {
       "lng": 13.2396,
       "lat": 52.4966
@@ -1136,7 +1136,7 @@
     "dates": {
       "type": "range",
       "start_date": "2026-11-06",
-      "end_date": "2026-11-06"
+      "end_date": "2026-12-29"
     },
     "image_url": "https://www.berlin.de/binaries/asset/image_assets/7842425/ratio_4_3/1765189933/800x600/",
     "coordinates": {
@@ -1149,8 +1149,8 @@
     "id": "kinky-christmas-market",
     "dates": {
       "type": "range",
-      "start_date": "",
-      "end_date": ""
+      "start_date": "2026-11-29",
+      "end_date": "2026-11-29"
     },
     "image_url": "https://www.berlin.de/binaries/asset/image_assets/8593942/ratio_4_3/1701770567/800x600/",
     "coordinates": {
@@ -1707,8 +1707,8 @@
     "id": "advent-bazaar-of-the-albert-schweitzer-foundation",
     "dates": {
       "type": "range",
-      "start_date": "",
-      "end_date": ""
+      "start_date": "2026-11-28",
+      "end_date": "2026-11-28"
     },
     "image_url": "https://www.berlin.de/binaries/asset/image_assets/7817756/ratio_4_3/1666177723/800x600/",
     "coordinates": {
@@ -1748,9 +1748,8 @@
   {
     "id": "christmas-market-at-st-michaels-heim",
     "dates": {
-      "type": "range",
-      "start_date": "",
-      "end_date": ""
+      "type": "dates",
+      "dates": ["2026-11-28", "2026-11-29"]
     },
     "image_url": "https://www.berlin.de/binaries/asset/image_assets/1320580/ratio_4_3/1663929684/800x600/",
     "coordinates": {
