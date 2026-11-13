@@ -83,8 +83,8 @@
   "bloody-x-mas-market": {
     "name": "Bloody X-Mas Markt",
     "address": "Schumannstraße 22, 10117, Berlin",
-    "dates_raw": "Noch nicht bekannt",
-    "url": "https://www.berlin.de/weihnachtsmarkt/9358333-3496862-bloody-xmas-market.html",
+    "dates_raw": "Not found",
+    "url": "https://www.berlin.de/kultur-und-tickets/archiv/9358333-2805649-bloody-xmas-market.html",
     "opening_times": null,
     "admission": null,
     "description": "Wenn Wacken Open Air und die Berliner Charité einen gemeinsamen Weihnachtsmarkt betreiben, kann es blutig werden."
@@ -146,8 +146,8 @@
   "christmas-market-at-spandau-city-hall": {
     "name": "Spandauer Weihnachtstraum vor dem Rathaus",
     "address": "Carl-Schurz-Straße 2-6, 13597, Berlin",
-    "dates_raw": "Noch nicht bekannt",
-    "url": "https://www.berlin.de/weihnachtsmarkt/5698821-3496862-christmas-market-spandau-city-hall.html",
+    "dates_raw": "Not found",
+    "url": "https://www.berlin.de/kultur-und-tickets/archiv/5698821-2805649-christmas-market-spandau-city-hall.html",
     "opening_times": null,
     "admission": null,
     "description": "Der Spandauer Weihnachtstraum lockt mit Fahrgeschäften und weihnachtlicher Rummel-Atmosphäre."
@@ -164,8 +164,8 @@
   "social-christmas-market-in-spandau": {
     "name": "Goldnetz Sozial-Weihnachtsmarkt in Spandau",
     "address": "Pillnitzer Weg 8, 13593, Berlin",
-    "dates_raw": "Noch nicht bekannt",
-    "url": "https://www.berlin.de/weihnachtsmarkt/5701517-3496862-social-christmas-market.html",
+    "dates_raw": "Not found",
+    "url": "https://www.berlin.de/kultur-und-tickets/archiv/5701517-2805649-social-christmas-market.html",
     "opening_times": null,
     "admission": null,
     "description": "Jeden Dezember wird es auf dem Goldnetz Sozialmarkt weihnachtlich. Der soziale Weihnachtsmarkt richtet sich vornehmlich an Menschen mit geringen Einkünften."
@@ -490,8 +490,8 @@
     "address": "Marzahner Promenade 55, 12679, Berlin",
     "dates_raw": "Not found",
     "url": "https://www.berlin.de/weihnachtsmarkt/5748698-3496862-christmas-market-marzahner-promenade.html",
-    "opening_times": null,
-    "admission": null,
+    "opening_times": "15 bis 18 Uhr",
+    "admission": "Kostenlos",
     "description": "Der nachbarschaftliche Weihnachtsmarkt lockt mit Feuerschalen, einem bunten Kulturprogramm und einem internationalen Warenangebot Besucher nach Marzahn."
   },
   "british-christmas-market": {
@@ -605,10 +605,10 @@
   "weddingmarkt-christmas-edition": {
     "name": "Weddingmarkt - Weihnachtsausgabe",
     "address": "Leopoldplatz, 13353, Berlin",
-    "dates_raw": "Noch nicht bekannt",
+    "dates_raw": "An allen Adventssonntagen und am Samstag vor Weihnachten 2026 (29. November, 6., 13., 19. und 20. Dezember)",
     "url": "https://www.berlin.de/weihnachtsmarkt/7791702-3496862-weddingmarkt-christmas-edition.html",
-    "opening_times": null,
-    "admission": null,
+    "opening_times": "11 bis 19 Uhr",
+    "admission": "Kostenlos",
     "description": "Die Weihnachtsausgabe des Weddingmarktes bietet einzigartige Geschenkideen von lokalen Künstler:innen und Designer:innen."
   },
   "designer-christmas-market": {
@@ -947,9 +947,9 @@
   "advent-bazaar-at-tegel-prison": {
     "name": "Adventsbasar in der JVA Tegel",
     "address": "Seidelstraße 41, 13507, Berlin",
-    "dates_raw": "Noch nicht bekannt",
+    "dates_raw": "21. November 2026",
     "url": "https://www.berlin.de/weihnachtsmarkt/7866294-3496862-advent-bazaar-at-tegel-prison.html",
-    "opening_times": null,
+    "opening_times": "10 bis 15 Uhr",
     "admission": null,
     "description": "Auf dem Basar gibt es Geschenkartikel, Kinderspielzeug, Backwaren, Adventsgestecke, Glasdesign und vieles mehr aus den Betrieben der Justizvollzugsanstalt Tegel."
   },

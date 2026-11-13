@@ -83,7 +83,7 @@
   "bloody-x-mas-market": {
     "name": "Bloody X-Mas Market",
     "address": "Schumannstraße 22, 10117, Berlin",
-    "dates_raw": "Not yet known",
+    "dates_raw": "Not found",
     "url": "https://www.berlin.de/en/christmas-markets/9358333-3230598-bloody-xmas-market.en.html",
     "opening_times": null,
     "admission": null,
@@ -146,7 +146,7 @@
   "christmas-market-at-spandau-city-hall": {
     "name": "Christmas Market at Spandau City Hall",
     "address": "Carl-Schurz-Straße 2-6, 13597, Berlin",
-    "dates_raw": "Not yet known",
+    "dates_raw": "Not found",
     "url": "https://www.berlin.de/en/christmas-markets/5698821-3230598-christmas-market-spandau-city-hall.en.html",
     "opening_times": null,
     "admission": null,
@@ -164,10 +164,10 @@
   "social-christmas-market-in-spandau": {
     "name": "Social Christmas Market in Spandau",
     "address": "Pillnitzer Weg 8, 13593, Berlin",
-    "dates_raw": "Not yet known",
+    "dates_raw": "Not found",
     "url": "https://www.berlin.de/en/christmas-markets/5701517-3230598-social-christmas-market.en.html",
     "opening_times": null,
-    "admission": "Free",
+    "admission": null,
     "description": "Every December it gets Christmassy at the Goldnetz social market. The Social Christmas Market is primarily aimed at people with low incomes."
   },
   "arts-and-crafts-christmas-market-in-gatow": {
@@ -488,10 +488,10 @@
   "christmas-market-on-marzahner-promenade": {
     "name": "Christmas Market on Marzahner Promenade",
     "address": "Marzahner Promenade 55, 12679, Berlin",
-    "dates_raw": "Not yet known",
+    "dates_raw": "December 4, 2026",
     "url": "https://www.berlin.de/en/christmas-markets/5748698-3230598-christmas-market-marzahner-promenade.en.html",
-    "opening_times": null,
-    "admission": null,
+    "opening_times": "3 pm to 6 pm",
+    "admission": "Free",
     "description": "This neighbourhood Christmas market attracts visitors to Marzahn with fire bowls, a colorful cultural program and an international range of foods and goods."
   },
   "british-christmas-market": {
@@ -605,10 +605,10 @@
   "weddingmarkt-christmas-edition": {
     "name": "Weddingmarkt - Christmas Edition",
     "address": "Leopoldplatz, 13353, Berlin",
-    "dates_raw": "Not yet known",
+    "dates_raw": "On all Sundays in Advent and on the Saturday before Christmas 2026 (November 29, December 6, 13, 19 and 20)",
     "url": "https://www.berlin.de/en/christmas-markets/7791702-3230598-weddingmarkt-christmas-edition.en.html",
-    "opening_times": null,
-    "admission": null,
+    "opening_times": "11 am to 7 pm",
+    "admission": "Free",
     "description": "The Christmas Edition of the Weddingmarkt art market offers lots of unique gift ideas by local artists and designers."
   },
   "designer-christmas-market": {
@@ -965,9 +965,9 @@
   "advent-bazaar-at-tegel-prison": {
     "name": "Advent Bazaar at Tegel Prison",
     "address": "Seidelstraße 41, 13507, Berlin",
-    "dates_raw": "Not yet known",
+    "dates_raw": "November 21, 2026",
     "url": "https://www.berlin.de/en/christmas-markets/7866294-3230598-adventsbasar-in-der-jva-tegel.en.html",
-    "opening_times": null,
+    "opening_times": "10 am to 3 pm",
     "admission": null,
     "description": "This cozy bazaar offers gifts, children's toys, baked goods, Advent arrangements, glass design and much more - all made in the Tegel Prison."
   },
@@ -1091,7 +1091,7 @@
   "veganer-weihnachtsmarkt-auf-dem-fehrbelliner-platz": {
     "name": "Veganer Weihnachtsmarkt auf dem Fehrbelliner Platz",
     "address": "Fehrbelliner Platz 4, 10707, Berlin",
-    "dates_raw": "Noch nicht bekannt",
+    "dates_raw": "Not found",
     "url": "https://www.berlin.de/weihnachtsmarkt/6003520-3496862-veganer-weihnachtsmarkt-auf-dem-fehrbell.html",
     "opening_times": null,
     "admission": null,

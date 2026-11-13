@@ -142,7 +142,7 @@
       "start_date": "",
       "end_date": ""
     },
-    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9358408/ratio_4_3/1734436584/800x600/",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/9358408/ratio_4_3/1794568286/800x600/",
     "coordinates": {
       "lng": 13.3779,
       "lat": 52.5234
@@ -183,7 +183,7 @@
       "start_date": "2026-11-27",
       "end_date": "2026-11-29"
     },
-    "image_url": "https://www.berlin.de/binaries/asset/image_assets/3717101/ratio_4_3/1763973412/800x600/",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/3717101/ratio_4_3/1794468595/800x600/",
     "coordinates": {
       "lng": 13.4055,
       "lat": 52.5783
@@ -239,7 +239,7 @@
       "start_date": "",
       "end_date": ""
     },
-    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7799928/ratio_4_3/1693299978/800x600/",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/7799928/ratio_4_3/1794565929/800x600/",
     "coordinates": {
       "lng": 13.2,
       "lat": 52.5347
@@ -267,7 +267,7 @@
       "start_date": "",
       "end_date": ""
     },
-    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8572167/ratio_4_3/1701351617/800x600/",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/8572167/ratio_4_3/1794565776/800x600/",
     "coordinates": {
       "lng": 13.1576,
       "lat": 52.523
@@ -828,8 +828,8 @@
     "id": "christmas-market-on-marzahner-promenade",
     "dates": {
       "type": "range",
-      "start_date": "",
-      "end_date": ""
+      "start_date": "2026-12-04",
+      "end_date": "2026-12-04"
     },
     "image_url": "https://www.berlin.de/binaries/asset/image_assets/5084195/ratio_4_3/1664188705/800x600/",
     "coordinates": {
@@ -1008,9 +1008,14 @@
   {
     "id": "weddingmarkt-christmas-edition",
     "dates": {
-      "type": "range",
-      "start_date": "",
-      "end_date": ""
+      "type": "dates",
+      "dates": [
+        "2026-11-29",
+        "2026-12-06",
+        "2026-12-13",
+        "2026-12-19",
+        "2026-12-20"
+      ]
     },
     "image_url": "https://www.berlin.de/binaries/asset/image_assets/7831133/ratio_4_3/1666779362/800x600/",
     "coordinates": {
@@ -1567,8 +1572,8 @@
     "id": "advent-bazaar-at-tegel-prison",
     "dates": {
       "type": "range",
-      "start_date": "",
-      "end_date": ""
+      "start_date": "2026-11-21",
+      "end_date": "2026-11-21"
     },
     "image_url": "https://www.berlin.de/binaries/asset/image_assets/2836687/ratio_4_3/1701444292/800x600/",
     "coordinates": {
@@ -1765,7 +1770,7 @@
       "start_date": "",
       "end_date": ""
     },
-    "image_url": "https://www.berlin.de/binaries/asset/image_assets/3717101/ratio_4_3/1763973412/800x600/",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/3717101/ratio_4_3/1794468595/800x600/",
     "coordinates": {
       "lng": 13.3138,
       "lat": 52.4898
