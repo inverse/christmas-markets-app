@@ -1033,5 +1033,14 @@
     "opening_times": "Freitag von 16 bis 22 Uhr, Samstag und Sonntag von 14 bis 22 Uhr",
     "admission": "Kostenlos",
     "description": "Freischwimmer und Ipse Ufer organisieren in diesem Jahr zum ersten Mal einen gemeinsamen Weihnachtsmarkt am Ufer des Flutgrabens."
+  },
+  "christmas-market-at-markusplatz": {
+    "name": "Weihnachtsmarkt am Markusplatz",
+    "address": "Heinrich-Seidel-Straße 1, 12167, Berlin",
+    "dates_raw": "Not found",
+    "url": "https://www.berlin.de/weihnachtsmarkt/10754444-3496862-christmas-market-at-markusplatz.html",
+    "opening_times": "14 bis 21 Uhr",
+    "admission": "Kostenlos",
+    "description": "Am Steglitzer Markusplatz findet in diesem Jahr erstmalig ein stimmungsvoller Weihnachtsmarkt statt. Ein besonderer Fokus liegt auf Nachhaltigkeit und Abfallvermeidung."
   }
 }

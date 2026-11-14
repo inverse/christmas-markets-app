@@ -1141,5 +1141,14 @@
     "opening_times": "Friday from 4 pm to 10 pm, Saturday and Sunday from 2 pm to 10 pm",
     "admission": "Free",
     "description": "This year, for the first time, Freischwimmer and Ipse Ufer are organising a joint Christmas market on the banks of the Flutgraben."
+  },
+  "christmas-market-at-markusplatz": {
+    "name": "Christmas market at Markusplatz",
+    "address": "Heinrich-Seidel-Straße 1, 12167, Berlin",
+    "dates_raw": "November 28, 2026",
+    "url": "https://www.berlin.de/en/christmas-markets/10754444-3230598-weihnachtsmarkt-am-markusplatz.en.html",
+    "opening_times": "2 pm to 9 pm",
+    "admission": "Free",
+    "description": "This year, for the first time, an atmospheric Christmas market is taking place at Markusplatz in Steglitz. There is a particular focus on sustainability and waste reduction."
   }
 }

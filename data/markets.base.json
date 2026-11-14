@@ -1856,5 +1856,19 @@
       "lat": 52.4971
     },
     "coordinates_approximate": false
+  },
+  {
+    "id": "christmas-market-at-markusplatz",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-11-28",
+      "end_date": "2026-11-28"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/10754627/ratio_4_3/1794475920/800x600/",
+    "coordinates": {
+      "lng": 13.3424,
+      "lat": 52.4489
+    },
+    "coordinates_approximate": false
   }
 ]
