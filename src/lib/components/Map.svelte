@@ -4,6 +4,7 @@
   import { browser } from "$app/environment";
   import type { MarketStatus } from "$lib/utils/marketStatus";
   import attractions from "../../../data/attractions.json";
+  import { fly } from "svelte/transition";
   import { buildAttractionPopup } from "$lib/utils/attractionPopup";
   import type { Attraction, Locale, Market } from "$shared/types";
   import {
@@ -30,6 +31,17 @@
   } = $props();
 
   const dict = $derived(messages(locale));
+
+  // Miniatures of the four market badge styles shown in the legend.
+  const legendMarkers: { status: MarketStatus; dot: string }[] = [
+    { status: "open", dot: "bg-snow border-pine" },
+    {
+      status: "upcoming",
+      dot: "border-gold bg-[color-mix(in_oklab,var(--color-gold-light)_55%,var(--color-snow))]",
+    },
+    { status: "closed", dot: "border-stone-400 opacity-60" },
+    { status: "unknown", dot: "border-gold border-dashed" },
+  ];
 
   let mapElement: HTMLDivElement;
   let map: L.Map;
@@ -59,6 +71,7 @@
   let treeIcons: Record<MarketStatus, L.DivIcon>;
   let markersReady = $state(false);
   let mapReady = $state(false);
+  let legendOpen = $state(false);
   let tileLayerCleanup: (() => void) | undefined;
   let attractionMarkers: L.Marker[] = [];
 
@@ -86,34 +99,40 @@
           popupAnchor: [0, -size / 2],
         });
 
+      // Status hierarchy: open is the only full-colour marker - the original
+      // SVG tree on a light badge with a pine ring and pulse halo, so it
+      // pops off the basemap. Upcoming glows softly (gold-tinted badge),
+      // closed recedes (smaller, faded), unknown stays tentative (dashed
+      // ring). Non-open statuses share a single-ink silhouette (.tree-glyph
+      // masks the SVG with currentColor), so each can recolor it.
       treeIcons = {
         open: makeTreeIcon(
           `<div class="relative w-10 h-10">
             <span class="absolute inset-0 rounded-full bg-pulse/50 marker-pulse"></span>
             <span class="map-marker map-marker--open absolute inset-0 rounded-full border-2 border-pine flex items-center justify-center">
-              <img src="/icons/christmas-tree-raw.svg" class="w-6 h-6" />
+              <img src="/icons/christmas-tree-raw.svg" class="w-6 h-6" alt="" />
             </span>
           </div>`,
           40,
           "custom-tree-icon-open",
         ),
         upcoming: makeTreeIcon(
-          `<div class="map-marker relative w-8 h-8 rounded-full border-2 border-gold flex items-center justify-center">
-            <img src="/icons/christmas-tree-raw.svg" class="w-5 h-5" />
+          `<div class="map-marker map-marker--upcoming relative w-8 h-8 rounded-full border-2 border-gold flex items-center justify-center">
+            <span class="tree-glyph w-5 h-5 text-gold-dark"></span>
           </div>`,
           32,
           "custom-tree-icon-upcoming",
         ),
         closed: makeTreeIcon(
-          `<div class="map-marker relative w-8 h-8 rounded-full border-2 border-stone-400 flex items-center justify-center">
-            <img src="/icons/christmas-tree-raw.svg" class="w-5 h-5 grayscale opacity-70" />
+          `<div class="map-marker relative w-7 h-7 rounded-full border-2 border-stone-400 flex items-center justify-center opacity-60">
+            <span class="tree-glyph w-4 h-4 text-stone-400"></span>
           </div>`,
-          32,
+          28,
           "custom-tree-icon-closed",
         ),
         unknown: makeTreeIcon(
           `<div class="map-marker relative w-8 h-8 rounded-full border-2 border-dashed border-gold flex items-center justify-center">
-            <img src="/icons/christmas-tree-raw.svg" class="w-5 h-5 opacity-80" />
+            <span class="tree-glyph w-5 h-5 text-gold-dark"></span>
           </div>`,
           32,
           "custom-tree-icon-unknown",
@@ -408,6 +427,38 @@
       <path d="M12 2v3M12 19v3M2 12h3M19 12h3" />
     </svg>
   </button>
+
+  <!-- Legend: a small map chip, top-right under find-me. Collapsed by default
+       so it never fights the map for space on mobile. -->
+  <button
+    onclick={() => (legendOpen = !legendOpen)}
+    aria-expanded={legendOpen}
+    aria-label={dict.mapLegend}
+    title={dict.mapLegend}
+    class="absolute top-16 right-4 z-[1000] flex h-11 w-11 items-center justify-center rounded-full border-2 border-gold bg-snow text-pine shadow-lg transition hover:bg-gold-light/40"
+  >
+    <i class="fa-solid fa-map" aria-hidden="true"></i>
+  </button>
+  {#if legendOpen}
+    <div
+      class="absolute top-29 right-4 z-[1000] rounded-xl border border-pine/30 bg-surface p-3 shadow-lg"
+      transition:fly={{ y: -8, duration: 150 }}
+    >
+      <ul class="space-y-1.5">
+        {#each legendMarkers as marker (marker.status)}
+          <li
+            class="flex items-center gap-2 text-xs font-medium text-stone-700"
+          >
+            <span
+              class="h-3.5 w-3.5 flex-shrink-0 rounded-full border {marker.dot}"
+              aria-hidden="true"
+            ></span>
+            {dict.status[marker.status]}
+          </li>
+        {/each}
+      </ul>
+    </div>
+  {/if}
 
   {#if locationNotice}
     <div

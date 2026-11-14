@@ -142,6 +142,10 @@ interface StatusMeta {
   color: string;
   bg: string;
   border: string;
+  // Solid badge colours for use over photos (the map popup), where the
+  // 10% tints above would vanish into the image. Readable in both themes:
+  // brand colours are constant and the neutral ramp inverts at night.
+  chip: string;
 }
 
 const statusMeta: Record<MarketStatus, StatusMeta> = {
@@ -149,21 +153,25 @@ const statusMeta: Record<MarketStatus, StatusMeta> = {
     color: "text-ink-brand",
     bg: "bg-ink-brand/10",
     border: "border-ink-brand",
+    chip: "bg-pine/95 text-white",
   },
   upcoming: {
     color: "text-gold",
     bg: "bg-gold/10",
     border: "border-gold",
+    chip: "bg-gold/95 text-on-gold",
   },
   closed: {
     color: "text-stone-500",
     bg: "bg-stone-500/10",
     border: "border-stone-300",
+    chip: "bg-stone-700/95 text-stone-100",
   },
   unknown: {
     color: "text-gold",
     bg: "bg-gold/10",
     border: "border-gold",
+    chip: "bg-gold/95 text-on-gold",
   },
 };
 

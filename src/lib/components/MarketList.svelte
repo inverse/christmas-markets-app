@@ -395,21 +395,34 @@
       </div>
       <ul class="space-y-2">
         {#each filteredMarkets as market (market.id)}
-          {@const meta = statusInfo(statusByMarket.get(market.id) ?? "unknown")}
+          {@const status = statusByMarket.get(market.id) ?? "unknown"}
+          {@const meta = statusInfo(status)}
+          {@const isClosed = status === "closed"}
           <li>
             <button
               onclick={() => jumpTo(market)}
               class="group flex w-full gap-3 rounded-xl border border-stone-200 bg-surface p-3 text-left transition hover:border-gold/70 hover:shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pine"
             >
+              <span
+                class="w-1 flex-shrink-0 self-stretch rounded-full {meta.border.replace(
+                  'border-',
+                  'bg-',
+                )}"
+                aria-hidden="true"
+              ></span>
               <img
                 src={market.image_url}
                 alt=""
                 loading="lazy"
-                class="h-16 w-16 flex-shrink-0 rounded-lg object-cover"
+                class="h-16 w-16 flex-shrink-0 rounded-lg object-cover transition-opacity {isClosed
+                  ? 'opacity-60 group-hover:opacity-100'
+                  : ''}"
               />
               <div class="min-w-0 flex-1">
                 <h4
-                  class="font-sans text-sm font-semibold leading-snug text-stone-800"
+                  class="font-sans text-sm font-semibold leading-snug {isClosed
+                    ? 'text-stone-500'
+                    : 'text-stone-800'}"
                 >
                   {market.name}
                 </h4>
@@ -429,7 +442,7 @@
                         'bg',
                       )}"
                     ></span>
-                    {dict.status[statusByMarket.get(market.id) ?? "unknown"]}
+                    {dict.status[status]}
                   </span>
                   <span
                     class="market-date min-w-0 flex-1 truncate text-[11px] text-stone-400"

@@ -43,6 +43,7 @@ const english = {
   toursHeading: "Tours & experiences",
   adDisclosure: "Ad",
   findMyLocation: "Find my location",
+  mapLegend: "Map legend",
   dismiss: "Dismiss",
   geoUnavailable: "Geolocation is not available on this device.",
   geoDenied:
@@ -146,6 +147,7 @@ const german: Messages = {
   toursHeading: "Touren & Erlebnisse",
   adDisclosure: "Werbung",
   findMyLocation: "Meinen Standort finden",
+  mapLegend: "Kartenlegende",
   dismiss: "Schließen",
   geoUnavailable: "Standortbestimmung ist auf diesem Gerät nicht verfügbar.",
   geoDenied:

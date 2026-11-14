@@ -1,4 +1,4 @@
-import type { MarketStatus } from "./marketStatus";
+import { statusInfo, type MarketStatus } from "./marketStatus";
 import type { Locale, Market } from "$shared/types";
 import { messages } from "$lib/i18n/messages";
 
@@ -26,6 +26,7 @@ export function buildPopup(
   locale: Locale,
 ): string {
   const dict = messages(locale);
+  const meta = statusInfo(status);
   const name = escapeHtml(market.name);
   const address = escapeHtml(market.address);
   const url = escapeHtml(market.url);
@@ -48,7 +49,7 @@ export function buildPopup(
 				<div class="relative h-40">
 					<img src="${escapeHtml(market.image_url)}" alt="${name}" loading="lazy" class="h-full w-full object-cover" />
 					<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-					<div class="absolute top-3 left-3 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide bg-black/50 text-white border border-white/20">
+                    <div class="absolute top-3 left-3 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide ${meta.chip}">
 						${dict.status[status]}
 					</div>
 					<h3 class="absolute bottom-3 left-3 right-10 text-white font-display text-lg font-bold leading-tight drop-shadow line-clamp-2">${name}</h3>

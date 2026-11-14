@@ -310,9 +310,30 @@
 }
 
 .map-marker--open {
+  /* Light fill like every other badge: the colourful tree icon inside needs
+     the contrast, and the pine ring + pulse carry the "open" signal. */
   box-shadow:
     0 0 0 2px var(--color-snow),
     0 3px 12px rgba(20, 83, 45, 0.45);
+}
+
+/* Upcoming keeps a light badge so the gold ring still reads, warmed with a
+   gold tint to separate it from the neutral closed badge. Same tint in both
+   themes: the marker pane re-pins brand colours to day values. */
+.map-marker--upcoming {
+  background: color-mix(
+    in oklab,
+    var(--color-gold-light) 55%,
+    var(--color-snow)
+  );
+}
+
+/* Single-ink tree silhouette: masks the coloured SVG with currentColor, so a
+   marker recolours the tree via a text-* class on the span. */
+.tree-glyph {
+  background: currentColor;
+  -webkit-mask: url("/icons/christmas-tree-raw.svg") center / contain no-repeat;
+  mask: url("/icons/christmas-tree-raw.svg") center / contain no-repeat;
 }
 
 /* ---------------------------------------------------------------------------
@@ -448,6 +469,18 @@
   border-color: var(--color-locator);
   box-shadow: 0 0 12px
     color-mix(in oklab, var(--color-locator) 55%, transparent);
+}
+
+/* Reduced motion stills the map halos as well. Unlayered on purpose: the day
+   .marker-pulse rule lives in @layer components, which any unlayered
+   declaration outranks, and the night ring rule above is matched on
+   specificity and beaten by source order. Covers the open-market halo and
+   the user-location star. */
+@media (prefers-reduced-motion: reduce) {
+  .leaflet-marker-pane .marker-pulse,
+  .dark .leaflet-marker-pane .marker-pulse {
+    animation: none;
+  }
 }
 
 .dark .leaflet-control-attribution {
