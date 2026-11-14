@@ -2,7 +2,7 @@
   import { statusInfo, type MarketStatus } from "$lib/utils/marketStatus";
   import { selectedMarket } from "$lib/mapStore";
   import { isDark, toggleTheme } from "$lib/utils/theme";
-  import { onMount, untrack } from "svelte";
+  import { onMount } from "svelte";
   import AttractionStrip from "$lib/components/AttractionStrip.svelte";
   import { fade, fly } from "svelte/transition";
   import type { Locale, Market } from "$shared/types";
@@ -36,8 +36,8 @@
     onShowWelcome: () => void;
     onShowAbout: () => void;
   } = $props();
-  // Opening the drawer with a planned day lands on that day's open markets.
-  let activeFilter = $state<Filter>(untrack(() => planDate) ? "open" : "all");
+  // Default view is markets open today; a planned day also lands on open.
+  let activeFilter = $state<Filter>("open");
 
   const sortedMarkets = $derived(
     [...markets].sort((a, b) => {
@@ -73,7 +73,6 @@
   );
 
   const filterOptions = $derived<{ id: Filter; label: string }[]>([
-    { id: "all", label: dict.filterAll },
     {
       id: "open",
       label: planLabel
@@ -81,10 +80,11 @@
         : dict.filterOpenToday,
     },
     { id: "upcoming", label: dict.filterUpcoming },
+    { id: "all", label: dict.filterAll },
   ]);
 
   function setDate(date: string | null) {
-    activeFilter = date ? "open" : "all";
+    activeFilter = "open";
     onSetDate(date);
   }
 
