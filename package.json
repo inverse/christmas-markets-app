@@ -6,6 +6,8 @@
   "scripts": {
     "markets:generate": "tsx scripts/generate-markets.ts",
     "markets:find": "tsx scripts/find-new-markets.ts",
+    "markets:generate:missing": "tsx scripts/generate-markets.ts --missing",
+    "markets:generate:incomplete": "tsx scripts/generate-markets.ts --incomplete",
     "dev": "vite dev",
     "dev:tunnel": "concurrently \"npm run dev\" \"node scripts/dev-tunnel-qr.mjs\"",
     "build": "vite build",

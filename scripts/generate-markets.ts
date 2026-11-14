@@ -315,15 +315,18 @@ async function* processMarketsSequential(
   }
 }
 
-// Usage: markets:generate [--missing] [--only <url-substring>]...
+// Usage: markets:generate [--missing] [--incomplete] [--only <url-substring>]...
 //   no flags: scrape every URL in markets-raw.json (English + linked German page)
 //   --missing: scrape only URLs absent from markets.en.json or markets.de.json
+//   --incomplete: scrape only markets with no parsed dates or no opening times
+//     (includes URLs absent from the output files)
 //   --only: scrape only URLs containing the given text (repeatable)
 // Scraped markets are merged by URL/id; failed scrapes keep existing data.
 async function main() {
   const { values } = parseArgs({
     options: {
       missing: { type: "boolean" },
+      incomplete: { type: "boolean" },
       only: { type: "string", multiple: true },
     },
   });
@@ -354,7 +357,19 @@ async function main() {
       } as Market,
     ];
   });
+
   const byUrl = new Map(existing.map((market) => [market.url, market]));
+  // A market is incomplete when its dates never parsed or its opening times
+  // are unknown; never-scraped URLs count as incomplete too.
+  function isIncomplete(url: string): boolean {
+    const market = byUrl.get(url);
+    if (!market) return true;
+    const { dates } = market;
+    const noDates =
+      (dates.type === "range" && (!dates.start_date || !dates.end_date)) ||
+      (dates.type === "dates" && (dates.dates?.length ?? 0) === 0);
+    return noDates || market.opening_times == null;
+  }
   const only = values.only ?? [];
   const missingEnCount = urls.filter((url) => !byUrl.has(url)).length;
   const missingDeCount = urls.filter(
@@ -366,6 +381,7 @@ async function main() {
     const missingDe = id ? !localeDe[id] : true;
     return (
       (!values.missing || missingEn || missingDe) &&
+      (!values.incomplete || isIncomplete(url)) &&
       (only.length === 0 || only.some((substring) => url.includes(substring)))
     );
   });
@@ -373,11 +389,14 @@ async function main() {
     console.log("Nothing to fetch.");
     return;
   }
+  const incompleteCount = urls.filter(isIncomplete).length;
   const scope = values.missing
     ? `missing en: ${missingEnCount}, missing de: ${missingDeCount}`
-    : only.length > 0
-      ? `filtered by --only`
-      : "full scrape";
+    : values.incomplete
+      ? `incomplete: ${incompleteCount}`
+      : only.length > 0
+        ? `filtered by --only`
+        : "full scrape";
   console.log(
     `Loaded ${urls.length} market URLs. Scraping ${targets.length} (${scope})`,
   );
