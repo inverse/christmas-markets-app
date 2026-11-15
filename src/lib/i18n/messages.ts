@@ -5,7 +5,7 @@ const english = {
   description:
     "Find Berlin Christmas markets by date, location, opening hours and admission price. Explore markets across Mitte, Charlottenburg, Prenzlauer Berg, Kreuzberg and more.",
   imageAlt:
-    "Berlin Christmas Markets 2026: a map of over 20 Berlin Christmas markets with dates, opening hours and admission prices.",
+    "Berlin Christmas Markets 2026: a map of over 100 Berlin Christmas markets with dates, opening hours and admission prices.",
   checkSite: "Check site",
   openingTimesToBeAnnounced: "Opening times to be announced",
   admission: "Admission",
@@ -106,7 +106,7 @@ const german: Messages = {
   description:
     "Finden Sie Berliner Weihnachtsmärkte nach Datum, Ort, Öffnungszeiten und Eintrittspreis. Entdecken Sie Märkte in Mitte, Charlottenburg, Prenzlauer Berg, Kreuzberg und mehr.",
   imageAlt:
-    "Berliner Weihnachtsmärkte 2026: Karte mit über 20 Märkten und Angaben zu Terminen, Öffnungszeiten und Eintrittspreisen.",
+    "Berliner Weihnachtsmärkte 2026: Karte mit über 100 Märkten und Angaben zu Terminen, Öffnungszeiten und Eintrittspreisen.",
   checkSite: "Website prüfen",
   openingTimesToBeAnnounced: "Öffnungszeiten werden noch bekannt gegeben",
   admission: "Eintritt",

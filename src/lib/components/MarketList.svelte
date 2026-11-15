@@ -401,7 +401,7 @@
           <li>
             <button
               onclick={() => jumpTo(market)}
-              class="group flex w-full gap-3 rounded-xl border border-stone-200 bg-surface p-3 text-left transition hover:border-gold/70 hover:shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pine"
+              class="group flex w-full gap-3 rounded-xl border border-stone-200 bg-surface py-3 pr-3 pl-0 text-left transition hover:border-gold/70 hover:shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pine"
             >
               <span
                 class="w-1 flex-shrink-0 self-stretch rounded-full {meta.border.replace(
@@ -436,12 +436,7 @@
                   <span
                     class="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold {meta.bg} {meta.color} border {meta.border}"
                   >
-                    <span
-                      class="h-1.5 w-1.5 rounded-full {meta.color.replace(
-                        'text',
-                        'bg',
-                      )}"
-                    ></span>
+                    <span class="h-1.5 w-1.5 rounded-full {meta.dot}"></span>
                     {dict.status[status]}
                   </span>
                   <span
