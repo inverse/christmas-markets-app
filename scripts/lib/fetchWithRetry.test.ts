@@ -40,6 +40,8 @@ describe("fetchWithRetry", () => {
     // fetchWithRetry holds a module-level RateLimiter; reset the module
     // registry so each test gets a fresh instance.
     vi.resetModules();
+    // Retry attempts log via console.warn; keep test output clean.
+    vi.spyOn(console, "warn").mockImplementation(() => {});
   });
   afterEach(() => {
     vi.unstubAllGlobals();
