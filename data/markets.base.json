@@ -166,8 +166,8 @@
     "id": "christmas-magic-in-buch",
     "dates": {
       "type": "range",
-      "start_date": "",
-      "end_date": ""
+      "start_date": "2026-12-11",
+      "end_date": "2026-12-13"
     },
     "image_url": "https://www.berlin.de/binaries/asset/image_assets/5476957/ratio_4_3/1662970815/800x600/",
     "coordinates": {
