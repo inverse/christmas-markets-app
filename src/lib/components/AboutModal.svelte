@@ -1,9 +1,9 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { fade } from "svelte/transition";
-  import type { Locale } from "$shared/types";
-  import { messages, interpolate } from "$lib/i18n/messages";
-  import Snowfall from "$lib/components/Snowfall.svelte";
+  import type { Locale } from "#shared/types";
+  import { messages, interpolate } from "#lib/i18n/messages";
+  import Snowfall from "#lib/components/Snowfall.svelte";
 
   let { onClose, locale }: { onClose: () => void; locale: Locale } = $props();
 
@@ -159,9 +159,9 @@
                 {dict.aboutIosShare}
               </span>
               {dict.aboutIosMiddle}
-              <span class="font-semibold text-ink-brand"
-                >{dict.aboutIosAddToHome}</span
-              >. {dict.aboutIosAfter}
+              <span class="font-semibold text-ink-brand">
+                {dict.aboutIosAddToHome}
+              </span>. {dict.aboutIosAfter}
             </p>
           </section>
         {/if}

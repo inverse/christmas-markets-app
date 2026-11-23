@@ -1,25 +1,25 @@
 <script lang="ts">
   import { onMount, onDestroy } from "svelte";
   import { SvelteMap } from "svelte/reactivity";
-  import { browser } from "$app/environment";
-  import type { MarketStatus } from "$lib/utils/marketStatus";
+  import { browser } from "$app/env";
+  import type { MarketStatus } from "#lib/utils/marketStatus";
   import attractions from "../../../data/attractions.json";
   import { fly } from "svelte/transition";
-  import { buildAttractionPopup } from "$lib/utils/attractionPopup";
-  import type { Attraction, Locale, Market } from "$shared/types";
+  import { buildAttractionPopup } from "#lib/utils/attractionPopup";
+  import type { Attraction, Locale, Market } from "#shared/types";
   import {
     boundingBox,
     findNearestMarket,
     locationErrorMessage,
-  } from "$lib/utils/findMe";
+  } from "#lib/utils/findMe";
   import {
     buildPopup,
     buildUserPopup,
     type NearestMarket,
-  } from "$lib/utils/popup";
-  import { mapStore, selectedMarket } from "$lib/mapStore";
-  import { messages } from "$lib/i18n/messages";
-  import { attractionText } from "$lib/i18n/attractions";
+  } from "#lib/utils/popup";
+  import { mapStore, selectedMarket } from "#lib/mapStore";
+  import { messages } from "#lib/i18n/messages";
+  import { attractionText } from "#lib/i18n/attractions";
   let {
     markets,
     statusByMarket,
@@ -465,13 +465,13 @@
       role="status"
       class="absolute bottom-6 left-1/2 z-[1000] flex max-w-[90vw] -translate-x-1/2 items-center gap-3 rounded-lg bg-pine-dark/90 px-4 py-2.5 text-sm text-snow shadow-lg"
     >
-      <span class="flex-1"
-        >{locationErrorMessage(
+      <span class="flex-1">
+        {locationErrorMessage(
           locationNotice.code,
           locationNotice.message,
           locale,
-        )}</span
-      >
+        )}
+      </span>
       <button
         onclick={() => (locationNotice = null)}
         aria-label={dict.dismiss}

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { Market } from "$shared/types";
+import type { Market } from "#shared/types";
 import {
   boundingBox,
   findNearestMarket,

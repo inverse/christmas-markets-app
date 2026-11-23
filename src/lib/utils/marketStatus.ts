@@ -1,5 +1,5 @@
-import type { Dates } from "$shared/dateParser";
-import type { Market } from "$shared/types";
+import type { Dates } from "#shared/dateParser";
+import type { Market } from "#shared/types";
 
 export type MarketStatus = "open" | "upcoming" | "closed" | "unknown";
 

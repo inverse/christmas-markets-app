@@ -1,4 +1,4 @@
-import type { Attraction, Locale } from "$shared/types";
+import type { Attraction, Locale } from "#shared/types";
 
 /**
  * Per-locale copy for the GetYourGuide attractions in data/attractions.json,

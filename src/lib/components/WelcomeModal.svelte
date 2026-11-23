@@ -1,8 +1,8 @@
 <script lang="ts">
   import { fade } from "svelte/transition";
-  import type { Locale } from "$shared/types";
-  import { messages, interpolate } from "$lib/i18n/messages";
-  import Snowfall from "$lib/components/Snowfall.svelte";
+  import type { Locale } from "#shared/types";
+  import { messages, interpolate } from "#lib/i18n/messages";
+  import Snowfall from "#lib/components/Snowfall.svelte";
 
   let {
     onClose,

@@ -1,8 +1,8 @@
 import { escapeHtml } from "./popup";
 import { gygAffiliateUrl } from "../constants/getyourguide";
-import type { Attraction, Locale } from "$shared/types";
-import { messages } from "$lib/i18n/messages";
-import { attractionText } from "$lib/i18n/attractions";
+import type { Attraction, Locale } from "#shared/types";
+import { messages } from "#lib/i18n/messages";
+import { attractionText } from "#lib/i18n/attractions";
 
 /**
  * Compact "attraction card" for GetYourGuide markers: same visual language as

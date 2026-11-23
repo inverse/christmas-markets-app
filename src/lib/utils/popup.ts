@@ -1,6 +1,6 @@
 import { statusInfo, type MarketStatus } from "./marketStatus";
-import type { Locale, Market } from "$shared/types";
-import { messages } from "$lib/i18n/messages";
+import type { Locale, Market } from "#shared/types";
+import { messages } from "#lib/i18n/messages";
 
 export function escapeHtml(value: string | undefined | null): string {
   if (!value) return "";

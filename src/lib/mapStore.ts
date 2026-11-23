@@ -1,6 +1,6 @@
 import { writable, get, type Readable } from "svelte/store";
-import { browser } from "$app/environment";
-import type { Market } from "$shared/types";
+import { browser } from "$app/env";
+import type { Market } from "#shared/types";
 import { slugify } from "./slug";
 import type { Map as LeafletMap } from "leaflet";
 

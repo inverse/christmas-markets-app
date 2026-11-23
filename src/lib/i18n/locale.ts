@@ -1,4 +1,4 @@
-import type { Locale } from "$shared/types";
+import type { Locale } from "#shared/types";
 
 /**
  * Resolves a raw route param (or any untrusted string) to a Locale.

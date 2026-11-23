@@ -1,5 +1,5 @@
 import { writable, get } from "svelte/store";
-import { browser } from "$app/environment";
+import { browser } from "$app/env";
 
 const STORAGE_KEY = "theme";
 const DARK_QUERY = "(prefers-color-scheme: dark)";

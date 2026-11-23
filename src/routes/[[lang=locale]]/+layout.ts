@@ -1,6 +1,6 @@
 import { redirect } from "@sveltejs/kit";
 import type { LayoutLoad } from "./$types";
-import { localeFromParam } from "$lib/i18n/locale";
+import { localeFromParam } from "#lib/i18n/locale";
 
 /**
  * Absolute origin for social metadata. Crawlers need an absolute image URL.

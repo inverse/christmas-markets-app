@@ -1,12 +1,12 @@
 <script lang="ts">
   import "../../app.css";
   import "leaflet/dist/leaflet.css";
-  import { browser } from "$app/environment";
+  import { browser } from "$app/env";
   import { onMount } from "svelte";
-  import { initDateSimulation } from "$lib/utils/date";
-  import { initTheme } from "$lib/utils/theme";
+  import { initDateSimulation } from "#lib/utils/date";
+  import { initTheme } from "#lib/utils/theme";
   import type { Component } from "svelte";
-  import { messages } from "$lib/i18n/messages";
+  import { messages } from "#lib/i18n/messages";
 
   // Dynamically import to avoid SSR issues with Svelte 5 components
   let DevDateSelector: Component | null = $state(null);
@@ -14,7 +14,7 @@
     initDateSimulation();
     initTheme();
     if (import.meta.env.DEV) {
-      const module = await import("$lib/components/DevDateSelector.svelte");
+      const module = await import("#lib/components/DevDateSelector.svelte");
       DevDateSelector = module.default;
     }
   });

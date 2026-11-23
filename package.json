@@ -3,6 +3,12 @@
   "private": true,
   "version": "0.0.1",
   "type": "module",
+  "imports": {
+    "#lib": "./src/lib",
+    "#lib/*": "./src/lib/*",
+    "#shared": "./src/shared",
+    "#shared/*": "./src/shared/*"
+  },
   "scripts": {
     "markets:generate": "tsx scripts/generate-markets.ts",
     "markets:find": "tsx scripts/find-new-markets.ts",
@@ -11,7 +17,7 @@
     "dev": "vite dev",
     "dev:tunnel": "concurrently \"npm run dev\" \"node scripts/dev-tunnel-qr.mjs\"",
     "build": "vite build",
-    "publish:web": "npm run build && npx wrangler pages deploy",
+    "publish:web": "npm run build && npx wrangler deploy",
     "preview": "vite preview",
     "test": "vitest",
     "test:run": "vitest run",
@@ -31,14 +37,14 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@sveltejs/adapter-cloudflare": "^7.2.9",
-    "@sveltejs/kit": "^2.70.3",
+    "@sveltejs/adapter-cloudflare": "^9.0.0",
+    "@sveltejs/kit": "^3.4.0",
     "@sveltejs/vite-plugin-svelte": "^7.3.1",
     "@tailwindcss/postcss": "^4.3.3",
     "@tailwindcss/vite": "^4.3.3",
     "@types/leaflet": "^1.9.22",
     "@types/node": "^26.6.5",
-    "@vitest/coverage-v8": "^4.1.11",
+    "@vitest/coverage-v8": "^5.1.1",
     "autoprefixer": "^10.6.1",
     "concurrently": "^10.0.6",
     "eslint": "^10.12.0",
@@ -58,7 +64,7 @@
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.71.1",
     "vite": "^8.3.4",
-    "vitest": "^4.1.11"
+    "vitest": "^5.1.1"
   },
   "dependencies": {
     "@types/leaflet.markercluster": "^1.5.6",

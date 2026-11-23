@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import type { Dates } from "$shared/dateParser";
-import type { Market } from "$shared/types";
+import type { Dates } from "#shared/dateParser";
+import type { Market } from "#shared/types";
 import {
   isMarketOpenOnDate,
   getEarliestDate,

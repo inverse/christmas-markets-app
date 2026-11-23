@@ -1,5 +1,5 @@
-import { loadMarkets } from "$lib/data/markets";
-import type { Dates } from "$shared/dateParser";
+import { loadMarkets } from "#lib/data/markets";
+import type { Dates } from "#shared/dateParser";
 import type { RequestHandler } from "./$types";
 
 function esc(text: string): string {

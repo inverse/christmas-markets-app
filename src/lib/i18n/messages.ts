@@ -1,4 +1,4 @@
-import type { Locale } from "$shared/types";
+import type { Locale } from "#shared/types";
 
 const english = {
   title: "Berlin Christmas Markets 2026: Dates, Hours & Map",

@@ -1,5 +1,5 @@
-import type { Handle } from "@sveltejs/kit";
-import { localeFromParam } from "$lib/i18n/locale";
+import type { Handle } from "@sveltejs/kit/hooks";
+import { localeFromParam } from "#lib/i18n/locale";
 
 export const handle: Handle = async ({ event, resolve }) => {
   const locale = localeFromParam(event.params.lang);

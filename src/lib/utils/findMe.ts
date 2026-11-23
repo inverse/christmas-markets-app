@@ -1,5 +1,5 @@
-import { interpolate, messages } from "$lib/i18n/messages";
-import type { Locale, Market } from "$shared/types";
+import { interpolate, messages } from "#lib/i18n/messages";
+import type { Locale, Market } from "#shared/types";
 
 export interface LatLng {
   lat: number;

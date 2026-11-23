@@ -1,4 +1,4 @@
-import type { Locale, Market, MarketBase, MarketLocale } from "$shared/types";
+import type { Locale, Market, MarketBase, MarketLocale } from "#shared/types";
 import base from "../../../data/markets.base.json";
 
 const localeFiles = {

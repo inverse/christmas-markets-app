@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { simulatedDate, setSimulatedDate } from "$lib/utils/date";
+  import { simulatedDate, setSimulatedDate } from "#lib/utils/date";
 
   let dateValue = $state(new Date());
   let isCollapsed = $state(true);
@@ -24,10 +24,9 @@
       stroke-width="2"
       stroke-linecap="round"
       stroke-linejoin="round"
-      ><polyline points="16 18 22 12 16 6" /><polyline
-        points="8 6 2 12 8 18"
-      /></svg
     >
+      <polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" />
+    </svg>
   </button>
 {:else}
   <div
@@ -37,8 +36,10 @@
       <h3 class="font-bold">Dev Date</h3>
       <button
         onclick={() => (isCollapsed = true)}
-        class="text-xs text-stone-500 hover:text-stone-800">Close</button
+        class="text-xs text-stone-500 hover:text-stone-800"
       >
+        Close
+      </button>
     </div>
     <label class="flex items-center gap-2 mb-2">
       <input

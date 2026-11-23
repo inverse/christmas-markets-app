@@ -1,8 +1,8 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { fade } from "svelte/transition";
-  import type { Locale } from "$shared/types";
-  import { messages } from "$lib/i18n/messages";
+  import type { Locale } from "#shared/types";
+  import { messages } from "#lib/i18n/messages";
 
   let { locale }: { locale: Locale } = $props();
   const dict = $derived(messages(locale));

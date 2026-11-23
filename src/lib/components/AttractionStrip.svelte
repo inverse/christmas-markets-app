@@ -3,13 +3,13 @@
   // drawer. Sits above the market list so it is seen without scrolling.
   // The four shown rotate daily across all attractions.
   import attractions from "../../../data/attractions.json";
-  import type { Attraction, Locale } from "$shared/types";
-  import { messages } from "$lib/i18n/messages";
-  import { attractionText } from "$lib/i18n/attractions";
+  import type { Attraction, Locale } from "#shared/types";
+  import { messages } from "#lib/i18n/messages";
+  import { attractionText } from "#lib/i18n/attractions";
   import {
     gygAffiliateUrl,
     pickDailyFeatured,
-  } from "$lib/constants/getyourguide";
+  } from "#lib/constants/getyourguide";
 
   let { locale }: { locale: Locale } = $props();
   const dict = $derived(messages(locale));
@@ -28,8 +28,9 @@
       </h3>
       <span
         class="text-[11px] font-medium uppercase tracking-wide text-stone-400"
-        >{dict.adDisclosure} &middot; GetYourGuide</span
       >
+        {dict.adDisclosure} &middot; GetYourGuide
+      </span>
     </div>
     <div
       class="drag-guard -mx-4 flex gap-2 overflow-x-auto px-4 pb-1 scrollbar-thin"

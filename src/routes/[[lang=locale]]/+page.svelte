@@ -1,10 +1,10 @@
 <script lang="ts">
   import { page } from "$app/state";
-  import Map from "$lib/components/Map.svelte";
-  import MarketList from "$lib/components/MarketList.svelte";
-  import WelcomeModal from "$lib/components/WelcomeModal.svelte";
-  import AboutModal from "$lib/components/AboutModal.svelte";
-  import InstallPrompt from "$lib/components/InstallPrompt.svelte";
+  import Map from "#lib/components/Map.svelte";
+  import MarketList from "#lib/components/MarketList.svelte";
+  import WelcomeModal from "#lib/components/WelcomeModal.svelte";
+  import AboutModal from "#lib/components/AboutModal.svelte";
+  import InstallPrompt from "#lib/components/InstallPrompt.svelte";
   import { onMount } from "svelte";
   import { SvelteMap } from "svelte/reactivity";
   import {
@@ -17,9 +17,9 @@
     closeAbout,
     openWelcome,
     closeWelcome,
-  } from "$lib/mapStore";
-  import { initMarkets } from "$lib/mapStore";
-  import { simulatedDate } from "$lib/utils/date";
+  } from "#lib/mapStore";
+  import { initMarkets } from "#lib/mapStore";
+  import { simulatedDate } from "#lib/utils/date";
   import {
     getEarliestDate,
     isMarketOpenOnDate,
@@ -28,10 +28,10 @@
     seasonRange,
     toIsoDate,
     type MarketStatus,
-  } from "$lib/utils/marketStatus";
-  import { messages } from "$lib/i18n/messages";
-  import type { Market } from "$shared/types";
-  import type { Dates } from "$shared/dateParser";
+  } from "#lib/utils/marketStatus";
+  import { messages } from "#lib/i18n/messages";
+  import type { Market } from "#shared/types";
+  import type { Dates } from "#shared/dateParser";
 
   let { data } = $props();
   let markets = $derived(data.markets);
@@ -258,8 +258,10 @@
       stroke="currentColor"
       stroke-width="2"
       stroke-linecap="round"
-      class="w-5 h-5"><path d="M4 7h16M4 12h16M4 17h16" /></svg
+      class="w-5 h-5"
     >
+      <path d="M4 7h16M4 12h16M4 17h16" />
+    </svg>
     <span class="font-sans font-semibold">{messages(data.locale).menu}</span>
   </button>
   {#if $menuOpen}

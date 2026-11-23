@@ -1,13 +1,13 @@
 <script lang="ts">
-  import { statusInfo, type MarketStatus } from "$lib/utils/marketStatus";
-  import { selectedMarket } from "$lib/mapStore";
-  import { isDark, toggleTheme } from "$lib/utils/theme";
+  import { statusInfo, type MarketStatus } from "#lib/utils/marketStatus";
+  import { selectedMarket } from "#lib/mapStore";
+  import { isDark, toggleTheme } from "#lib/utils/theme";
   import { onMount } from "svelte";
-  import AttractionStrip from "$lib/components/AttractionStrip.svelte";
+  import AttractionStrip from "#lib/components/AttractionStrip.svelte";
   import { fade, fly } from "svelte/transition";
-  import type { Locale, Market } from "$shared/types";
+  import type { Locale, Market } from "#shared/types";
   import { resolve } from "$app/paths";
-  import { interpolate, messages } from "$lib/i18n/messages";
+  import { interpolate, messages } from "#lib/i18n/messages";
 
   type Filter = "all" | "open" | "upcoming" | "closed" | "unknown";
 
@@ -351,8 +351,9 @@
           <button
             onclick={() => setDate(null)}
             class="whitespace-nowrap rounded-lg px-2 py-2 text-xs font-semibold text-pine underline"
-            >{dict.clearDate}</button
           >
+            {dict.clearDate}
+          </button>
         {/if}
       </div>
     </div>
@@ -363,11 +364,11 @@
         <h3 class="font-sans text-lg font-bold tracking-tight text-ink-brand">
           {dict.marketsHeading}
         </h3>
-        <span class="text-xs font-semibold text-stone-500"
-          >{interpolate(dict.shownCount, {
+        <span class="text-xs font-semibold text-stone-500">
+          {interpolate(dict.shownCount, {
             count: String(filteredMarkets.length),
-          })}</span
-        >
+          })}
+        </span>
       </div>
       <a
         href="https://forms.gle/eoZER8JEssuHaGtDA"
@@ -466,10 +467,11 @@
                 <button
                   onclick={() => setDate(nextDate)}
                   class="mt-3 rounded-full bg-pine px-4 py-2 text-xs font-semibold text-white"
-                  >{interpolate(dict.jumpToDate, {
-                    date: dayLabel.format(new Date(`${nextDate}T00:00:00Z`)),
-                  })}</button
                 >
+                  {interpolate(dict.jumpToDate, {
+                    date: dayLabel.format(new Date(`${nextDate}T00:00:00Z`)),
+                  })}
+                </button>
               {/if}
             {:else}
               {dict.noMarketsMatch}
