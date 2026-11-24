@@ -12,12 +12,12 @@
 {#if isCollapsed}
   <button
     onclick={() => (isCollapsed = false)}
-    class="fixed bottom-4 right-4 z-[9999] p-3 bg-pine text-white rounded-full shadow-lg hover:bg-pine-dark transition"
+    class="flex h-11 w-11 items-center justify-center bg-pine text-white rounded-full shadow-lg hover:bg-pine-dark transition"
     title="Date Simulation"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      class="w-6 h-6"
+      class="w-5 h-5"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -29,9 +29,7 @@
     </svg>
   </button>
 {:else}
-  <div
-    class="fixed bottom-4 right-4 z-[9999] rounded-lg bg-surface p-4 shadow-lg border border-stone-200"
-  >
+  <div class="rounded-lg bg-surface p-4 shadow-lg border border-stone-200">
     <div class="flex justify-between items-center mb-3">
       <h3 class="font-bold">Dev Date</h3>
       <button

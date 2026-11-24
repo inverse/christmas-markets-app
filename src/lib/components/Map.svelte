@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount, onDestroy } from "svelte";
+  import { onMount, onDestroy, type Component } from "svelte";
   import { SvelteMap } from "svelte/reactivity";
   import { browser } from "$app/env";
   import type { MarketStatus } from "#lib/utils/marketStatus";
@@ -72,6 +72,7 @@
   let markersReady = $state(false);
   let mapReady = $state(false);
   let legendOpen = $state(false);
+  let DevDateSelector: Component | null = $state(null);
   let tileLayerCleanup: (() => void) | undefined;
   let attractionMarkers: L.Marker[] = [];
 
@@ -82,6 +83,10 @@
 
     const initializeMap = async () => {
       if (!browser) return;
+      if (import.meta.env.DEV) {
+        const module = await import("#lib/components/DevDateSelector.svelte");
+        if (!cancelled) DevDateSelector = module.default;
+      }
       const leaflet = await import("leaflet");
       await import("leaflet.markercluster");
       L = leaflet.default || leaflet;
@@ -428,37 +433,45 @@
     </svg>
   </button>
 
-  <!-- Legend: a small map chip, top-right under find-me. Collapsed by default
-       so it never fights the map for space on mobile. -->
-  <button
-    onclick={() => (legendOpen = !legendOpen)}
-    aria-expanded={legendOpen}
-    aria-label={dict.mapLegend}
-    title={dict.mapLegend}
-    class="absolute top-16 right-4 z-[1000] flex h-11 w-11 items-center justify-center rounded-full border-2 border-gold bg-snow text-pine shadow-lg transition hover:bg-gold-light/40"
+  <!-- Bottom-right controls above Leaflet attribution: legend chip, plus
+       dev-only date simulator stacked below it. In prod the legend sits at the
+       bottom of the stack. -->
+  <div
+    class="pointer-events-none absolute bottom-8 right-4 z-[1000] flex flex-col items-end gap-2 [&>*]:pointer-events-auto"
   >
-    <i class="fa-solid fa-map" aria-hidden="true"></i>
-  </button>
-  {#if legendOpen}
-    <div
-      class="absolute top-29 right-4 z-[1000] rounded-xl border border-pine/30 bg-surface p-3 shadow-lg"
-      transition:fly={{ y: -8, duration: 150 }}
+    {#if legendOpen}
+      <div
+        class="rounded-xl border border-pine/30 bg-surface p-3 shadow-lg"
+        transition:fly={{ y: 8, duration: 150 }}
+      >
+        <ul class="space-y-1.5">
+          {#each legendMarkers as marker (marker.status)}
+            <li
+              class="flex items-center gap-2 text-xs font-medium text-stone-700"
+            >
+              <span
+                class="h-3.5 w-3.5 flex-shrink-0 rounded-full border {marker.dot}"
+                aria-hidden="true"
+              ></span>
+              {dict.status[marker.status]}
+            </li>
+          {/each}
+        </ul>
+      </div>
+    {/if}
+    <button
+      onclick={() => (legendOpen = !legendOpen)}
+      aria-expanded={legendOpen}
+      aria-label={dict.mapLegend}
+      title={dict.mapLegend}
+      class="flex h-11 w-11 items-center justify-center rounded-full border-2 border-gold bg-snow text-pine shadow-lg transition hover:bg-gold-light/40"
     >
-      <ul class="space-y-1.5">
-        {#each legendMarkers as marker (marker.status)}
-          <li
-            class="flex items-center gap-2 text-xs font-medium text-stone-700"
-          >
-            <span
-              class="h-3.5 w-3.5 flex-shrink-0 rounded-full border {marker.dot}"
-              aria-hidden="true"
-            ></span>
-            {dict.status[marker.status]}
-          </li>
-        {/each}
-      </ul>
-    </div>
-  {/if}
+      <i class="fa-solid fa-map" aria-hidden="true"></i>
+    </button>
+    {#if browser && DevDateSelector}
+      <DevDateSelector />
+    {/if}
+  </div>
 
   {#if locationNotice}
     <div

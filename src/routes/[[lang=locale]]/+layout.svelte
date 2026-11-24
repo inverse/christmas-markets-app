@@ -5,18 +5,11 @@
   import { onMount } from "svelte";
   import { initDateSimulation } from "#lib/utils/date";
   import { initTheme } from "#lib/utils/theme";
-  import type { Component } from "svelte";
   import { messages } from "#lib/i18n/messages";
 
-  // Dynamically import to avoid SSR issues with Svelte 5 components
-  let DevDateSelector: Component | null = $state(null);
-  onMount(async () => {
+  onMount(() => {
     initDateSimulation();
     initTheme();
-    if (import.meta.env.DEV) {
-      const module = await import("#lib/components/DevDateSelector.svelte");
-      DevDateSelector = module.default;
-    }
   });
 
   let { data, children } = $props();
@@ -34,10 +27,6 @@
     if (browser) document.documentElement.lang = locale;
   });
 </script>
-
-{#if browser && DevDateSelector}
-  <DevDateSelector />
-{/if}
 
 <svelte:head>
   <link rel="icon" href="/icons/logo.svg" />
