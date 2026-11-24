@@ -1628,8 +1628,8 @@
     "id": "schauriger-weihnachtsmarkt-im-goerzwerk",
     "dates": {
       "type": "range",
-      "start_date": "",
-      "end_date": ""
+      "start_date": "2026-12-05",
+      "end_date": "2026-12-05"
     },
     "image_url": "https://www.berlin.de/binaries/asset/image_assets/9322146/ratio_4_3/1793875552/800x600/",
     "coordinates": {
@@ -1847,7 +1847,7 @@
     "id": "christmas-market-on-lohmuehlen-island",
     "dates": {
       "type": "range",
-      "start_date": "2026-11-20",
+      "start_date": "2026-11-27",
       "end_date": "2026-12-20"
     },
     "image_url": "https://www.berlin.de/binaries/asset/image_assets/10735028/ratio_4_3/1793704957/800x600/",

@@ -1001,9 +1001,9 @@
   "schauriger-weihnachtsmarkt-im-goerzwerk": {
     "name": "Schauriger Weihnachtsmarkt im Goerzwerk",
     "address": "Berlin, Deutschland",
-    "dates_raw": "Not found",
+    "dates_raw": "5. Dezember 2026",
     "url": "https://www.berlin.de/weihnachtsmarkt/9323172-3496862-schauriger-weihnachtsmarkt-im-goerzwerk.html",
-    "opening_times": null,
+    "opening_times": "14 bis 17:30 Uhr",
     "admission": null,
     "description": "Das Goerzwerk lädt zum Weihnachtsmarkt, auf dem unter anderem ein schauriger Krampus umherstreift."
   },
@@ -1136,7 +1136,7 @@
   "christmas-market-on-lohmuehlen-island": {
     "name": "Christmas market on Lohmühlen Island",
     "address": "Vor dem Schlesischen Tor 2, 10997, Berlin",
-    "dates_raw": "November 20 to December 20, 2026",
+    "dates_raw": "November 27 to December 20, 2026",
     "url": "https://www.berlin.de/en/christmas-markets/10734992-3230598-weihnachtsmarkt-auf-der-lohmuehleninsel.en.html",
     "opening_times": "Friday from 4 pm to 10 pm, Saturday and Sunday from 2 pm to 10 pm",
     "admission": "Free",
