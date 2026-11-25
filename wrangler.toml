@@ -1,2 +1,5 @@
 name = "christmas-markets"
 compatibility_date = "2026-08-29"
+routes = [
+  { pattern = "christmas-markets.inberlin.fyi", custom_domain = true }
+]
