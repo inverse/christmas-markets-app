@@ -3,7 +3,7 @@ import { browser } from "$app/env";
 
 const STORAGE_KEY = "theme";
 const DARK_QUERY = "(prefers-color-scheme: dark)";
-const THEME_COLOR = { light: "#2c5e1a", dark: "#0b1512" };
+const THEME_COLOR = { light: "#2c5e1a", dark: "#101014" };
 
 let initialized = false;
 

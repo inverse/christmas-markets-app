@@ -22,13 +22,13 @@
   --color-pine: #14532d;
   --color-pine-dark: #0f4023;
   --color-pine-light: #1b6b3a;
-  --color-gold: #d4af37;
-  --color-gold-dark: #a8871f;
-  --color-gold-light: #f0d873;
-  --color-cream: #faf6ec;
-  --color-snow: #fffdf8;
-  --color-berry: #a31621;
-  --color-berry-dark: #7d111a;
+  --color-gold: #f2c200;
+  --color-gold-dark: #ca8a04;
+  --color-gold-light: #f9df7d;
+  --color-cream: #f7f5f0;
+  --color-snow: #fbfaf7;
+  --color-berry: #d40511;
+  --color-berry-dark: #8f0a0f;
   --color-green: #22c55e;
   /* "You are here" star marker + its popup */
   --color-locator: #3b82f6;
@@ -41,10 +41,10 @@
      to work on either a light or a dark surface, so each one holds the
      light-mode value here and its night-mode value in `.dark` at the bottom of
      this file. The utility itself (bg-surface, text-ink-brand) never changes. */
-  --color-surface: #fffdf8; /* cards, popups, drawer items - light: snow */
+  --color-surface: #fbfaf7; /* cards, popups, drawer items - light: snow */
   --color-ink-brand: #14532d; /* headings, links, brand labels - light: pine */
-  --color-ink-gold: #a8871f; /* hover ink on gold accents - light: gold-dark */
-  --color-ink-berry: #a31621; /* small counters - light: berry */
+  --color-ink-gold: #ca8a04; /* hover ink on gold accents - light: gold-dark */
+  --color-ink-berry: #b3050f; /* small counters - deep red for contrast */
   --color-on-gold: #14532d; /* text sitting on a gold fill - light: pine */
 
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
@@ -206,7 +206,7 @@
 .dark .leaflet-marker-cluster-small,
 .dark .leaflet-marker-cluster-medium,
 .dark .leaflet-marker-cluster-large {
-  background: color-mix(in oklab, #27794a 88%, #16221c);
+  background: color-mix(in oklab, #27794a 88%, #1a1c22);
   border-color: var(--color-gold);
   color: #fffdf8;
 }
@@ -224,7 +224,7 @@
 .festive-surface {
   background-color: var(--color-cream);
   background-image: radial-gradient(
-    rgba(163, 22, 33, 0.07) 0.7px,
+    rgba(212, 5, 17, 0.07) 0.7px,
     transparent 0.7px
   );
   background-size: 12px 12px;
@@ -352,23 +352,23 @@
 .dark {
   color-scheme: dark;
 
-  --color-cream: #0b1512; /* pine-black canvas: page, drawer, modals */
-  --color-surface: #16221c; /* cards, popups, chips */
+  --color-cream: #101014; /* neutral near-black canvas: page, drawer, modals */
+  --color-surface: #1a1c22; /* cards, popups, chips */
 
   /* The neutral ramp is inverted wholesale. stone-100/200/300 are surfaces and
      borders, stone-400..800 are faint-to-strong text, so swapping the ends
      keeps every existing pairing readable at night. */
-  --color-stone-100: #1d2b24;
-  --color-stone-200: #28372f;
-  --color-stone-300: #3a4a40;
-  --color-stone-400: #7b8f82;
-  --color-stone-500: #94a89a;
-  --color-stone-600: #adc0b2;
-  --color-stone-700: #cbd9cd;
-  --color-stone-800: #e4ede5;
+  --color-stone-100: #24272f;
+  --color-stone-200: #2f333c;
+  --color-stone-300: #41454f;
+  --color-stone-400: #7e848e;
+  --color-stone-500: #9aa1ac;
+  --color-stone-600: #b4bbc6;
+  --color-stone-700: #d1d6de;
+  --color-stone-800: #e9ebef;
 
   --color-ink-brand: #cfe8d2; /* mint: headings/links read at 11:1 on surface */
-  --color-ink-gold: #e9cb63;
+  --color-ink-gold: #f7d774;
   --color-ink-berry: #f08a92;
   --color-on-gold: #0f4023; /* keep the gold buttons' ink dark */
 
@@ -386,7 +386,7 @@
 
 .dark .festive-surface {
   background-image: radial-gradient(
-    rgba(212, 175, 55, 0.07) 0.7px,
+    rgba(242, 194, 0, 0.07) 0.7px,
     transparent 0.7px
   );
 }
@@ -601,23 +601,4 @@
       animation: none;
     }
   }
-}
-
-.dark .leaflet-marker-cluster,
-.dark .leaflet-marker-cluster-small,
-.dark .leaflet-marker-cluster-medium,
-.dark .leaflet-marker-cluster-large {
-  background: color-mix(in oklab, #27794a 88%, #16221c);
-  border-color: var(--color-gold);
-  color: #fffdf8;
-}
-
-.dark .leaflet-marker-cluster div {
-  color: #fffdf8;
-}
-
-.dark .leaflet-marker-cluster-small div,
-.dark .leaflet-marker-cluster-medium div,
-.dark .leaflet-marker-cluster-large div {
-  background-color: rgba(240, 216, 115, 0.2);
 }
