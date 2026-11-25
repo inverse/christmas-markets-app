@@ -74,6 +74,11 @@ const english = {
   welcomeHintPlan: "Pick a date to see what's open then",
   welcomeHintTap: "Tap a market for hours, admission and directions",
   closeAboutModal: "Close about modal",
+  searchMarkets: "Search markets",
+  clearSearch: "Clear search",
+  sortMarkets: "Sort markets",
+  sortByDate: "By date",
+  sortByDistance: "Nearest",
   aboutWhyTitle: "Why I built this",
   aboutWhyBody:
     "Every winter, Berlin comes alive with dozens of Christmas markets, but finding out which ones are open today, where they are, and what dates they run always felt harder than it should be. I built this map to make it simple for locals and visitors to explore the city's festive season and plan outings together.",
@@ -180,6 +185,11 @@ const german: Messages = {
   welcomeHintPlan: "Wählen Sie ein Datum, um zu sehen, was dann geöffnet ist",
   welcomeHintTap: "Tippen Sie auf einen Markt für Zeiten, Eintritt und Anfahrt",
   closeAboutModal: "Info-Dialog schließen",
+  searchMarkets: "Märkte suchen",
+  clearSearch: "Suche löschen",
+  sortMarkets: "Märkte sortieren",
+  sortByDate: "Nach Datum",
+  sortByDistance: "Nächste",
   aboutWhyTitle: "Warum ich das gebaut habe",
   aboutWhyBody:
     "Jeden Winter erwacht Berlin mit Dutzenden von Weihnachtsmärkten zum Leben, aber herauszufinden, welche heute geöffnet sind, wo sie liegen und an welchen Tagen sie stattfinden, war immer schwieriger als nötig. Ich habe diese Karte gebaut, damit Einheimische und Besucher die festliche Saison der Stadt einfach erkunden und gemeinsame Ausflüge planen können.",

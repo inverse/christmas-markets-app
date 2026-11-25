@@ -4,6 +4,9 @@ import type { Market } from "#shared/types";
 import { slugify } from "./slug";
 import type { Map as LeafletMap } from "leaflet";
 
+/** Last geolocation fix, shared so the drawer can sort by distance. */
+export const userPosition = writable<{ lat: number; lng: number } | null>(null);
+
 export const mapStore = writable<LeafletMap | null>(null);
 
 const selectedName = writable<string | null>(null);

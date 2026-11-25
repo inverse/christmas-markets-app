@@ -32,6 +32,12 @@ export function haversineDistance(a: LatLng, b: LatLng): number {
     Math.cos(a.lat * toRad) * Math.cos(b.lat * toRad) * sinLng * sinLng;
   return 2 * EARTH_RADIUS_M * Math.asin(Math.sqrt(h));
 }
+/** Compact human distance for list rows and popups ("840 m", "1.2 km"). */
+export function formatDistance(meters: number): string {
+  return meters < 950
+    ? `${Math.round(meters / 10) * 10} m`
+    : `${(meters / 1000).toFixed(1)} km`;
+}
 
 /** Closest market to the user position, or null when there is no data. */
 export function findNearestMarket(

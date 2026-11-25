@@ -17,7 +17,7 @@
     buildUserPopup,
     type NearestMarket,
   } from "#lib/utils/popup";
-  import { mapStore, selectedMarket } from "#lib/mapStore";
+  import { mapStore, selectedMarket, userPosition } from "#lib/mapStore";
   import { messages } from "#lib/i18n/messages";
   import { attractionText } from "#lib/i18n/attractions";
   let {
@@ -371,6 +371,7 @@
         userNearest = nearest
           ? { id: nearest.market.id, distanceMeters: nearest.distanceMeters }
           : null;
+        userPosition.set(user);
         // The popup content is built lazily on open; refresh it if it is
         // already showing while the user re-runs find-me.
         if (userMarker.isPopupOpen()) userMarker.getPopup()?.update();

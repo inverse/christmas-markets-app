@@ -1,6 +1,7 @@
 import { statusInfo, type MarketStatus } from "./marketStatus";
 import type { Locale, Market } from "#shared/types";
 import { messages } from "#lib/i18n/messages";
+import { formatDistance } from "./findMe";
 
 export function escapeHtml(value: string | undefined | null): string {
   if (!value) return "";
@@ -71,12 +72,6 @@ export function buildPopup(
 export interface NearestMarket {
   name: string;
   distanceMeters: number;
-}
-
-function formatDistance(meters: number): string {
-  return meters < 950
-    ? `${Math.round(meters / 10) * 10} m`
-    : `${(meters / 1000).toFixed(1)} km`;
 }
 
 /** Compact "you are here" card for the blue star marker: same chrome language

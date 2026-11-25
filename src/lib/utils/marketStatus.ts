@@ -143,6 +143,8 @@ interface StatusMeta {
   bg: string;
   border: string;
   dot: string;
+  // Vertical accent bar on drawer rows.
+  bar: string;
   // Solid badge colours for use over photos (the map popup), where the
   // 10% tints above would vanish into the image. Readable in both themes:
   // brand colours are constant and the neutral ramp inverts at night.
@@ -155,6 +157,7 @@ const statusMeta: Record<MarketStatus, StatusMeta> = {
     bg: "bg-ink-brand/10",
     border: "border-ink-brand",
     dot: "bg-green",
+    bar: "bg-ink-brand",
     chip: "bg-pine/95 text-white",
   },
   upcoming: {
@@ -162,6 +165,7 @@ const statusMeta: Record<MarketStatus, StatusMeta> = {
     bg: "bg-gold/10",
     border: "border-gold",
     dot: "bg-gold",
+    bar: "bg-gold",
     chip: "bg-gold/95 text-on-gold",
   },
   closed: {
@@ -169,6 +173,7 @@ const statusMeta: Record<MarketStatus, StatusMeta> = {
     bg: "bg-stone-500/10",
     border: "border-stone-300",
     dot: "bg-stone-500",
+    bar: "bg-stone-300",
     chip: "bg-stone-700/95 text-stone-100",
   },
   unknown: {
@@ -176,6 +181,7 @@ const statusMeta: Record<MarketStatus, StatusMeta> = {
     bg: "bg-gold/10",
     border: "border-gold",
     dot: "bg-gold",
+    bar: "bg-gold",
     chip: "bg-gold/95 text-on-gold",
   },
 };

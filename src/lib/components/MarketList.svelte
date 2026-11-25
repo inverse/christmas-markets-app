@@ -117,12 +117,7 @@
       },
     );
   }
-    [...markets].sort((a, b) => {
-      const dateA = earliestDates.get(a.id)?.getTime() ?? Infinity;
-      const dateB = earliestDates.get(b.id)?.getTime() ?? Infinity;
-      return dateA - dateB;
-    }),
-  );
+  // Parsed as UTC so the label never shifts a day in western time zones.
   const dayLabel = $derived(
     new Intl.DateTimeFormat(locale, {
       weekday: "short",
@@ -132,6 +127,10 @@
     }),
   );
   const dict = $derived(messages(locale));
+
+  const reduceMotion =
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const planLabel = $derived(
     planDate ? dayLabel.format(new Date(`${planDate}T00:00:00Z`)) : null,
   );
@@ -331,7 +330,10 @@
           />
         </div>
         <div>
-          <h2 id="menu-title" class="font-sans text-xl font-bold leading-tight text-white">
+          <h2
+            id="menu-title"
+            class="font-sans text-xl font-bold leading-tight text-white"
+          >
             {dict.menuTitle}
           </h2>
           <p class="mt-0.5 text-xs text-gold">
@@ -339,6 +341,7 @@
           </p>
         </div>
       </div>
+      <div class="flex items-center gap-1.5">
         <button
           onclick={() => close()}
           aria-label={dict.closeMenu}
@@ -444,6 +447,43 @@
           })}
         </span>
       </div>
+      <div class="mb-3 flex items-center gap-2">
+        <div class="relative min-w-0 flex-1">
+          <input
+            type="search"
+            bind:value={searchQuery}
+            aria-label={dict.searchMarkets}
+            placeholder={dict.searchMarkets}
+            class="w-full rounded-lg border border-stone-200 bg-surface py-2 pl-8 pr-8 text-sm shadow-xs transition placeholder:text-stone-400 focus:border-gold focus:outline-none focus-visible:ring-2 focus-visible:ring-gold/60"
+          />
+          <i
+            class="fa-solid fa-magnifying-glass pointer-events-none absolute left-2.5 top-1/2 -translate-y-1/2 text-xs text-stone-400"
+            aria-hidden="true"
+          ></i>
+          {#if searchQuery}
+            <button
+              onclick={() => (searchQuery = "")}
+              aria-label={dict.clearSearch}
+              class="absolute right-1.5 top-1/2 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded-full text-stone-400 transition hover:bg-stone-100 hover:text-stone-600"
+            >
+              <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+            </button>
+          {/if}
+        </div>
+        <select
+          value={sortMode}
+          onchange={onSortChange}
+          disabled={isLocating}
+          aria-label={dict.sortMarkets}
+          class="rounded-lg border border-stone-200 bg-surface px-2 py-2 text-sm font-semibold text-stone-700 shadow-xs transition focus:border-gold focus:outline-none focus-visible:ring-2 focus-visible:ring-gold/60 disabled:opacity-60"
+        >
+          <option value="date">{dict.sortByDate}</option>
+          <option value="distance">{dict.sortByDistance}</option>
+        </select>
+      </div>
+      {#if sortError}
+        <p class="mb-3 px-1 text-xs text-ink-berry" role="alert">{sortError}</p>
+      {/if}
       <a
         href="https://forms.gle/eoZER8JEssuHaGtDA"
         target="_blank"
@@ -511,6 +551,13 @@
                     <span class="h-1.5 w-1.5 rounded-full {meta.dot}"></span>
                     {dict.status[status]}
                   </span>
+                  {#if $userPosition}
+                    <span
+                      class="whitespace-nowrap text-[11px] font-semibold text-stone-500"
+                    >
+                      {formatDistance(distanceTo(market))}
+                    </span>
+                  {/if}
                   <span
                     class="market-date min-w-0 flex-1 truncate text-[11px] text-stone-400"
                     title={market.dates.raw || dict.checkSite}
