@@ -410,7 +410,7 @@
 
 <div
   bind:this={mapElement}
-  class="relative h-screen w-full bg-cream"
+  class="relative h-dvh w-full bg-cream"
   aria-busy={!mapReady}
 >
   <button

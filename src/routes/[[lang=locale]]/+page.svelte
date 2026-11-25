@@ -228,7 +228,7 @@
 
 <!-- Back/forward lands on an entry whose ?date may differ from memory; adopt it. -->
 <svelte:window onpopstate={restoreDateFromUrl} />
-<main class="h-screen w-screen relative">
+<main class="h-dvh w-screen relative">
   {#if $welcomeOpen}
     <WelcomeModal
       locale={data.locale}
