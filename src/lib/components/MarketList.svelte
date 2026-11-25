@@ -1,6 +1,11 @@
 <script lang="ts">
   import { statusInfo, type MarketStatus } from "#lib/utils/marketStatus";
-  import { selectedMarket } from "#lib/mapStore";
+  import { selectedMarket, userPosition } from "#lib/mapStore";
+  import {
+    formatDistance,
+    haversineDistance,
+    locationErrorMessage,
+  } from "#lib/utils/findMe";
   import { isDark, toggleTheme } from "#lib/utils/theme";
   import { onMount } from "svelte";
   import AttractionStrip from "#lib/components/AttractionStrip.svelte";
@@ -36,19 +41,38 @@
     onShowWelcome: () => void;
     onShowAbout: () => void;
   } = $props();
+  let searchQuery = $state("");
+  let sortMode = $state<"date" | "distance">("date");
+  let isLocating = $state(false);
+  let sortError = $state<string | null>(null);
+
+  function distanceTo(market: Market): number {
+    const pos = $userPosition;
+    return pos ? haversineDistance(pos, market.coordinates) : Infinity;
+  }
+
   // Default view is markets open today; a planned day also lands on open.
   let activeFilter = $state<Filter>("open");
 
-  const sortedMarkets = $derived(
-    [...markets].sort((a, b) => {
+  const sortedMarkets = $derived.by(() => {
+    const list = [...markets];
+    if (sortMode === "distance" && $userPosition) {
+      return list.sort((a, b) => distanceTo(a) - distanceTo(b));
+    }
+    return list.sort((a, b) => {
       const dateA = earliestDates.get(a.id)?.getTime() ?? Infinity;
       const dateB = earliestDates.get(b.id)?.getTime() ?? Infinity;
       return dateA - dateB;
-    }),
-  );
+    });
+  });
 
   const filteredMarkets = $derived(
     sortedMarkets.filter((market) => {
+      const query = searchQuery.trim().toLowerCase();
+      if (query) {
+        const haystack = `${market.name} ${market.address}`.toLowerCase();
+        if (!haystack.includes(query)) return false;
+      }
       if (activeFilter === "all") return true;
       const status = statusByMarket.get(market.id) ?? "unknown";
       if (activeFilter === "upcoming") {
@@ -58,7 +82,47 @@
     }),
   );
 
-  // Parsed as UTC so the label never shifts a day in western time zones.
+  // "Nearest" needs a position: reuse the browser fix when none is cached.
+  function onSortChange(event: Event) {
+    const mode = (event.currentTarget as HTMLSelectElement)
+      .value as typeof sortMode;
+    sortError = null;
+    if (mode === "distance" && !$userPosition) {
+      requestLocation();
+      return;
+    }
+    sortMode = mode;
+  }
+
+  function requestLocation() {
+    if (!navigator.geolocation) {
+      sortMode = "date";
+      sortError = locationErrorMessage(0, "", locale);
+      return;
+    }
+    isLocating = true;
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        isLocating = false;
+        userPosition.set({
+          lat: pos.coords.latitude,
+          lng: pos.coords.longitude,
+        });
+        sortMode = "distance";
+      },
+      (error) => {
+        isLocating = false;
+        sortMode = "date";
+        sortError = locationErrorMessage(error.code, error.message, locale);
+      },
+    );
+  }
+    [...markets].sort((a, b) => {
+      const dateA = earliestDates.get(a.id)?.getTime() ?? Infinity;
+      const dateB = earliestDates.get(b.id)?.getTime() ?? Infinity;
+      return dateA - dateB;
+    }),
+  );
   const dayLabel = $derived(
     new Intl.DateTimeFormat(locale, {
       weekday: "short",
@@ -231,20 +295,20 @@
   aria-label={dict.closeMenu}
   style="opacity: {backdropOpacity}"
   onclick={() => close()}
-  transition:fade
+  transition:fade={{ duration: reduceMotion ? 0 : 200 }}
 ></button>
 <div
   bind:this={panelEl}
   role="dialog"
   tabindex="-1"
-  aria-label="Christmas markets"
+  aria-labelledby="menu-title"
   class="festive-surface safe-area-bottom fixed top-0 left-0 z-[1001] h-full w-full overflow-y-auto overscroll-y-contain shadow-2xl sm:w-96 scrollbar-thin"
   style="padding-top: env(safe-area-inset-top); transform: translate3d({offsetPct}%, 0, 0); transition: {isDragging
     ? 'none'
     : 'transform 260ms cubic-bezier(0.32, 0.72, 0, 1)'}; will-change: {isDragging
     ? 'transform'
     : 'auto'}"
-  in:fly={{ x: -320, duration: 300 }}
+  in:fly={reduceMotion ? { duration: 0 } : { x: -320, duration: 300 }}
 >
   <header
     class="fairy-lights-header relative sticky top-0 z-10 overflow-visible border-b-4 border-gold bg-gradient-to-br from-pine to-pine-dark px-5 pb-4 pt-5"
@@ -267,7 +331,7 @@
           />
         </div>
         <div>
-          <h2 class="font-sans text-xl font-bold leading-tight text-white">
+          <h2 id="menu-title" class="font-sans text-xl font-bold leading-tight text-white">
             {dict.menuTitle}
           </h2>
           <p class="mt-0.5 text-xs text-gold">
@@ -275,13 +339,23 @@
           </p>
         </div>
       </div>
-      <div class="flex items-center gap-1.5">
         <button
           onclick={() => close()}
           aria-label={dict.closeMenu}
-          class="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-xl text-white transition hover:bg-white/20"
+          class="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
         >
-          &times;
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            class="h-5 w-5"
+            aria-hidden="true"
+          >
+            <path d="M18 6 6 18M6 6l12 12" />
+          </svg>
         </button>
       </div>
     </div>
@@ -293,14 +367,14 @@
         onclick={() => close(onShowWelcome)}
         class="flex flex-1 items-center justify-center gap-1.5 rounded-lg border border-pine/30 bg-surface px-2 py-2.5 text-xs font-semibold text-ink-brand shadow-xs transition hover:bg-pine hover:text-white"
       >
-        <span class="text-base">🎄</span>
+        <i class="fa-solid fa-snowflake" aria-hidden="true"></i>
         <span>{dict.welcome}</span>
       </button>
       <button
         onclick={() => close(onShowAbout)}
         class="flex flex-1 items-center justify-center gap-1.5 rounded-lg border border-pine/30 bg-surface px-2 py-2.5 text-xs font-semibold text-ink-brand shadow-xs transition hover:bg-pine hover:text-white"
       >
-        <span class="text-base">ℹ️</span>
+        <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
         <span>{dict.about}</span>
       </button>
       <a
@@ -405,10 +479,7 @@
               class="group flex w-full gap-3 rounded-xl border border-stone-200 bg-surface py-3 pr-3 pl-0 text-left transition hover:border-gold/70 hover:shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pine"
             >
               <span
-                class="w-1 flex-shrink-0 self-stretch rounded-full {meta.border.replace(
-                  'border-',
-                  'bg-',
-                )}"
+                class="w-1 flex-shrink-0 self-stretch rounded-full {meta.bar}"
                 aria-hidden="true"
               ></span>
               <img

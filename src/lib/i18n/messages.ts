@@ -69,6 +69,10 @@ const english = {
   welcomeUntilFirstMarket: "until the first market opens",
   welcomeExploreCount: "Explore {count} festive markets across Berlin",
   welcomeStartExploring: "Start exploring",
+  welcomeCloseModal: "Close welcome dialog",
+  welcomeHintOpen: "Live status shows which markets are open today",
+  welcomeHintPlan: "Pick a date to see what's open then",
+  welcomeHintTap: "Tap a market for hours, admission and directions",
   closeAboutModal: "Close about modal",
   aboutWhyTitle: "Why I built this",
   aboutWhyBody:
@@ -171,6 +175,10 @@ const german: Messages = {
   welcomeUntilFirstMarket: "bis der erste Markt öffnet",
   welcomeExploreCount: "Entdecken Sie {count} festliche Märkte in ganz Berlin",
   welcomeStartExploring: "Los geht's",
+  welcomeCloseModal: "Willkommensdialog schließen",
+  welcomeHintOpen: "Live-Status zeigt, welche Märkte heute geöffnet sind",
+  welcomeHintPlan: "Wählen Sie ein Datum, um zu sehen, was dann geöffnet ist",
+  welcomeHintTap: "Tippen Sie auf einen Markt für Zeiten, Eintritt und Anfahrt",
   closeAboutModal: "Info-Dialog schließen",
   aboutWhyTitle: "Warum ich das gebaut habe",
   aboutWhyBody:
