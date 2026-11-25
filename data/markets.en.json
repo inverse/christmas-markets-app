@@ -1116,13 +1116,13 @@
     "description": "A castle deep in the forest, brightly lit market stalls and the smell of Christmas treats... The Christmas market at Grunewald Hunting Lodge creates a festive atmosphere."
   },
   "winter-wonderland-im-britzer-garten": {
-    "name": "Winter Wonderland im Britzer Garten",
+    "name": "Winter Wonderland at Britzer Garten",
     "address": "Mohriner Allee 152, 12347, Berlin",
-    "dates_raw": "An allen Adventswochenenden 2026 (27. bis 29. November, 04. bis 06., 11. bis 13. sowie 18. bis 20. Dezember)",
+    "dates_raw": "On all Advent weekends in 2026 (November 27–29, December 4–6, 11–13 and 18–20)",
     "url": "https://www.berlin.de/en/christmas-markets/10720667-3230598-winter-wonderland-im-britzer-garten.en.html",
-    "opening_times": "10 bis 20 Uhr",
-    "admission": "Nur Parkeintritt (2 Euro, ermäßigt 1 Euro, Kinder bis einschließlich 5 Jahre Eintritt frei)",
-    "description": "Der Britzer Garten beherbergt in diesem Jahr zum ersten Mal einen stimmungsvollen Weihnachtsmarkt: das Winter Wonderland."
+    "opening_times": "10 a.m. to 8 p.m.",
+    "admission": "Park admission only (€2, concessions €1, free admission for children 5 years old and under)",
+    "description": "This year, for the first time, the Britzer Garten is hosting a festive Christmas market: Winter Wonderland."
   },
   "nordberliner-weihnachtsrummel": {
     "name": "Nordberliner Weihnachtsrummel",
@@ -1134,20 +1134,20 @@
     "description": "Berlin bekommt in diesem Jahr einen neuen Weihnachtsrummel: Wer Weihnachtsstimmung mit rasanten Fahrgeschäften verbinden möchte, wird in Tegel fündig."
   },
   "christmas-market-on-lohmuehlen-island": {
-    "name": "Christmas market on Lohmühlen Island",
+    "name": "Christmas Market on Lohmühlen Island",
     "address": "Vor dem Schlesischen Tor 2, 10997, Berlin",
     "dates_raw": "November 27 to December 20, 2026",
     "url": "https://www.berlin.de/en/christmas-markets/10734992-3230598-weihnachtsmarkt-auf-der-lohmuehleninsel.en.html",
-    "opening_times": "Friday from 4 pm to 10 pm, Saturday and Sunday from 2 pm to 10 pm",
+    "opening_times": "Friday from 4 p.m. to 10 p.m., Saturday and Sunday from 2 p.m. to 10 p.m.",
     "admission": "Free",
     "description": "This year, for the first time, Freischwimmer and Ipse Ufer are organising a joint Christmas market on the banks of the Flutgraben."
   },
   "christmas-market-at-markusplatz": {
-    "name": "Christmas market at Markusplatz",
+    "name": "Christmas Market at Markusplatz",
     "address": "Heinrich-Seidel-Straße 1, 12167, Berlin",
     "dates_raw": "November 28, 2026",
     "url": "https://www.berlin.de/en/christmas-markets/10754444-3230598-weihnachtsmarkt-am-markusplatz.en.html",
-    "opening_times": "2 pm to 9 pm",
+    "opening_times": "2 p.m. to 9 p.m.",
     "admission": "Free",
     "description": "This year, for the first time, an atmospheric Christmas market is taking place at Markusplatz in Steglitz. There is a particular focus on sustainability and waste reduction."
   }

@@ -1025,6 +1025,15 @@
     "admission": "3,50 Euro, ermäßigt 2 Euro, frei für Kinder bis 6 Jahre",
     "description": "Ein Schloss tief im Wald, hell erleuchtete Marktstände und der Duft von weihnachtlichen Leckereien... Der märchenhafte Weihnachtsmarkt am Jagdschloss Grunewald verbreitet festliche Stimmung abseits der Großstadthektik."
   },
+  "winter-wonderland-im-britzer-garten": {
+    "name": "Winter Wonderland im Britzer Garten",
+    "address": "Mohriner Allee 152, 12347, Berlin",
+    "dates_raw": "An allen Adventswochenenden 2026 (27. bis 29. November, 04. bis 06., 11. bis 13. sowie 18. bis 20. Dezember)",
+    "url": "https://www.berlin.de/weihnachtsmarkt/10720667-3496862-winter-wonderland-at-britzer-garten.html",
+    "opening_times": "10 bis 20 Uhr",
+    "admission": "Nur Parkeintritt (2 Euro, ermäßigt 1 Euro, Kinder bis einschließlich 5 Jahre Eintritt frei)",
+    "description": "Der Britzer Garten beherbergt in diesem Jahr zum ersten Mal einen stimmungsvollen Weihnachtsmarkt: das Winter Wonderland."
+  },
   "christmas-market-on-lohmuehlen-island": {
     "name": "Weihnachtsmarkt auf der Lohmühleninsel",
     "address": "Vor dem Schlesischen Tor 2, 10997, Berlin",

@@ -13,6 +13,11 @@ const BASE_OUTPUT_PATH = path.resolve("data/markets.base.json");
 const EN_OUTPUT_PATH = path.resolve("data/markets.en.json");
 const DE_OUTPUT_PATH = path.resolve("data/markets.de.json");
 
+// Cancelled or moved markets still return 200 with the page intact; the only
+// signal is a notice in the body. Keep in sync with find-new-markets.ts.
+const CANCELLED_PHRASES =
+  /it no longer takes place|findet nicht (?:mehr )?statt|wird nicht stattfinden|cancelled|storniert/i;
+
 function toAbsoluteUrl(href: string): string {
   return href.startsWith("http") ? href : `https://www.berlin.de${href}`;
 }
@@ -125,6 +130,10 @@ async function processMarket(index: number, total: number, url: string) {
   try {
     const response = await fetchWithRetry(url);
     const html = await response.text();
+    if (CANCELLED_PHRASES.test(html)) {
+      console.log(`  cancelled: market no longer takes place`);
+      return { cancelled: true as const };
+    }
     const $ = cheerio.load(html);
 
     const name =
@@ -264,17 +273,29 @@ interface RunStats {
   deOk: number;
   deMissingLink: number;
   deFailed: number;
+  cancelled: number;
 }
 
 async function* processMarketsSequential(
   urls: string[],
   stats: RunStats,
-): AsyncGenerator<{ market: Market; de: MarketLocale | null }> {
+): AsyncGenerator<{
+  market: Market | null;
+  de: MarketLocale | null;
+  cancelled: boolean;
+  url: string;
+}> {
   for (let i = 0; i < urls.length; i++) {
     const result = await processMarket(i, urls.length, urls[i]);
     if (!result) {
       stats.enFailed++;
       console.log(`  en: FAILED - previous entry kept if present`);
+      continue;
+    }
+    if ("cancelled" in result) {
+      stats.cancelled++;
+      console.log(`  cancelled: market no longer takes place`);
+      yield { market: null, de: null, cancelled: true, url: urls[i] };
       continue;
     }
     const { market, deUrl } = result;
@@ -311,7 +332,7 @@ async function* processMarketsSequential(
       stats.deMissingLink++;
       console.warn(`  de: no German page linked - will fall back to English`);
     }
-    yield { market, de };
+    yield { market, de, cancelled: false, url: market.url };
   }
 }
 
@@ -409,7 +430,9 @@ async function main() {
     deOk: 0,
     deMissingLink: 0,
     deFailed: 0,
+    cancelled: 0,
   };
+  const cancelledUrls = new Set<string>();
 
   const outputConfigs = new Map(
     await Promise.all(
@@ -480,7 +503,17 @@ async function main() {
   });
 
   let counts: { en: number; de: number } | undefined;
-  for await (const { market, de } of processMarketsSequential(targets, stats)) {
+  for await (const { market, de, cancelled, url } of processMarketsSequential(
+    targets,
+    stats,
+  )) {
+    if (cancelled) {
+      byUrl.delete(url);
+      cancelledUrls.add(url);
+      counts = await writeOutputs();
+      continue;
+    }
+    if (!market) continue;
     const previous = byUrl.get(market.url);
     const id = previous?.id ?? market.id;
     byUrl.set(market.url, { ...market, id });
@@ -488,13 +521,21 @@ async function main() {
     counts = await writeOutputs();
   }
   counts ??= await writeOutputs();
+  if (cancelledUrls.size > 0) {
+    const kept = urls.filter((url) => !cancelledUrls.has(url));
+    fs.writeFileSync(RAW_URLS_PATH, JSON.stringify(kept, null, 2) + "\n");
+    console.log(
+      `Removed ${cancelledUrls.size} cancelled market(s) from markets-raw.json`,
+    );
+  }
   const elapsed = Math.round((Date.now() - startedAt) / 1000);
   const deDelta = counts.de - deBefore;
   const deChange =
     deDelta > 0 ? `, +${deDelta} new` : deDelta < 0 ? `, ${deDelta}` : "";
   console.log(
     `Done in ${Math.floor(elapsed / 60)}m ${elapsed % 60}s.\n` +
-      `  en: ${counts.en} entries (${stats.enOk} scraped, ${stats.enFailed} failed)\n` +
+      `  en: ${counts.en} entries (${stats.enOk} scraped, ${stats.enFailed} failed, ` +
+      `${stats.cancelled} cancelled)\n` +
       `  de: ${counts.de} entries (${stats.deOk} scraped${deChange}, ` +
       `${stats.deMissingLink} no de link, ${stats.deFailed} failed)`,
   );
