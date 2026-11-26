@@ -44,6 +44,7 @@ const english = {
   adDisclosure: "Ad",
   findMyLocation: "Find my location",
   mapLegend: "Map legend",
+  clusterLabel: "Cluster of {count} map pins",
   dismiss: "Dismiss",
   geoUnavailable: "Geolocation is not available on this device.",
   geoDenied:
@@ -157,6 +158,7 @@ const german: Messages = {
   adDisclosure: "Werbung",
   findMyLocation: "Meinen Standort finden",
   mapLegend: "Kartenlegende",
+  clusterLabel: "Gruppe von {count} Karten-Pins",
   dismiss: "Schließen",
   geoUnavailable: "Standortbestimmung ist auf diesem Gerät nicht verfügbar.",
   geoDenied:

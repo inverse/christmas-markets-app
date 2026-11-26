@@ -18,7 +18,7 @@
     type NearestMarket,
   } from "#lib/utils/popup";
   import { mapStore, selectedMarket, userPosition } from "#lib/mapStore";
-  import { messages } from "#lib/i18n/messages";
+  import { interpolate, messages } from "#lib/i18n/messages";
   import { attractionText } from "#lib/i18n/attractions";
   let {
     markets,
@@ -74,7 +74,29 @@
   let legendOpen = $state(false);
   let DevDateSelector: Component | null = $state(null);
   let tileLayerCleanup: (() => void) | undefined;
-  let attractionMarkers: L.Marker[] = [];
+  const attractionMarkers = new SvelteMap<string, L.Marker>();
+
+  // Cluster bubbles are interactive divs with no text alternative, so
+  // keyboard and screen-reader users meet a focusable "button" with no
+  // name. markercluster rebuilds their DOM on every recluster, hence the
+  // relabel must re-run after each animationend and on locale switch, not
+  // just once at creation.
+  function labelClusters() {
+    if (!mapElement) return;
+    mapElement.querySelectorAll(".marker-cluster").forEach((el) => {
+      const count =
+        el.querySelector(".marker-cluster span")?.textContent?.trim() ?? "";
+      const label = interpolate(dict.clusterLabel, { count });
+      el.setAttribute("aria-label", label);
+      el.setAttribute("title", label);
+    });
+  }
+
+  $effect(() => {
+    if (!markersReady) return;
+    void locale;
+    labelClusters();
+  });
 
   onMount(() => {
     let cancelled = false;
@@ -197,6 +219,7 @@
         showCoverageOnHover: false,
         zoomToBoundsOnClick: true,
       });
+      markerClusterGroup.on("animationend", () => labelClusters());
       markets.forEach((market: Market) => {
         // Approximate coordinates (geocoder fallback) would pin the wrong spot.
         if (market.coordinates_approximate) return;
@@ -234,7 +257,7 @@
             autoPanPadding: L.point(20, 60),
           });
           markerClusterGroup.addLayer(marker);
-          attractionMarkers.push(marker);
+          attractionMarkers.set(attraction.id, marker);
         });
       }
 
@@ -303,6 +326,12 @@
       if (!marker) continue;
       const status: MarketStatus = statusByMarket.get(market.id) ?? "unknown";
       marker.setIcon(treeIcons[status]);
+      // Leaflet only applies alt/title when the marker is created; with a
+      // DivIcon both are strings on that element, so relabel it here to
+      // follow a locale switch without rebuilding every marker.
+      const name = marketsById.get(market.id)?.name ?? market.name;
+      marker.getElement()?.setAttribute("aria-label", name);
+      marker.getElement()?.setAttribute("title", name);
       const popup = marker.getPopup();
       if (popup?.isOpen()) {
         popup.setContent(buildPopup(market, status, locale));
@@ -318,6 +347,18 @@
       userMarker.options.title = dict.youAreHere;
       userMarker.options.alt = dict.youAreHere;
       if (userLocationIcon) userMarker.setIcon(userLocationIcon);
+    }
+  });
+
+  // Same relabel pass for the attraction pins, whose copy is locale-switched
+  // through attractionText rather than the market data objects.
+  $effect(() => {
+    if (!markersReady) return;
+    for (const attraction of attractions as Attraction[]) {
+      const name = attractionText(attraction, locale).name;
+      const el = attractionMarkers.get(attraction.id)?.getElement();
+      el?.setAttribute("aria-label", name);
+      el?.setAttribute("title", name);
     }
   });
 

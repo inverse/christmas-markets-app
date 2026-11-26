@@ -4,6 +4,7 @@
   import type { Locale } from "#shared/types";
   import { messages, interpolate } from "#lib/i18n/messages";
   import Snowfall from "#lib/components/Snowfall.svelte";
+  import { containFocus } from "#lib/actions/containFocus";
 
   let { onClose, locale }: { onClose: () => void; locale: Locale } = $props();
 
@@ -45,6 +46,8 @@
   <div
     role="dialog"
     aria-modal="true"
+    tabindex="-1"
+    use:containFocus
     aria-labelledby="about-title"
     class="festive-surface fairy-lights relative flex max-h-[90vh] w-full max-w-md flex-col rounded-2xl border-4 border-gold shadow-2xl"
   >

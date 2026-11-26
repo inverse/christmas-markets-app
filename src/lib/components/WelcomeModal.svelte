@@ -3,6 +3,7 @@
   import type { Locale } from "#shared/types";
   import { messages, interpolate } from "#lib/i18n/messages";
   import Snowfall from "#lib/components/Snowfall.svelte";
+  import { containFocus } from "#lib/actions/containFocus";
 
   let {
     onClose,
@@ -49,6 +50,8 @@
 
   <div
     role="dialog"
+    tabindex="-1"
+    use:containFocus
     aria-modal="true"
     aria-labelledby="welcome-title"
     class="festive-surface fairy-lights relative w-full max-w-sm rounded-2xl border-4 border-gold shadow-2xl"

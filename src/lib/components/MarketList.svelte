@@ -9,6 +9,7 @@
   import { isDark, toggleTheme } from "#lib/utils/theme";
   import { onMount } from "svelte";
   import AttractionStrip from "#lib/components/AttractionStrip.svelte";
+  import { containFocus } from "#lib/actions/containFocus";
   import { fade, fly } from "svelte/transition";
   import type { Locale, Market } from "#shared/types";
   import { resolve } from "$app/paths";
@@ -297,6 +298,7 @@
   transition:fade={{ duration: reduceMotion ? 0 : 200 }}
 ></button>
 <div
+  use:containFocus
   bind:this={panelEl}
   role="dialog"
   tabindex="-1"
