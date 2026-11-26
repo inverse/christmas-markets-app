@@ -544,8 +544,8 @@
     },
     "image_url": "https://www.berlin.de/binaries/asset/image_assets/5589994/ratio_4_3/1658132660/800x600/",
     "coordinates": {
-      "lng": 13.453986686509,
-      "lat": 52.496078776217
+      "lng": 13.454,
+      "lat": 52.4961
     },
     "coordinates_approximate": false
   },
@@ -1783,7 +1783,7 @@
       "type": "dates",
       "dates": ["2026-11-29", "2026-12-06", "2026-12-13", "2026-12-20"]
     },
-    "image_url": "https://www.berlin.de/binaries/asset/image_assets/4296415/ratio_4_3/1663052175/800x600/",
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/10771163/ratio_4_3/1795679406/800x600/",
     "coordinates": {
       "lng": 13.2334,
       "lat": 52.4378
@@ -1868,6 +1868,34 @@
     "coordinates": {
       "lng": 13.3424,
       "lat": 52.4489
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "weihnachtsmarkt-in-den-heckmann-hoefen",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-11-01",
+      "end_date": "2026-11-01"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/10782173/ratio_4_3/1795680847/800x600/",
+    "coordinates": {
+      "lng": 13.3935,
+      "lat": 52.525
+    },
+    "coordinates_approximate": false
+  },
+  {
+    "id": "weihnachtsmarkt-in-der-freiheit-fuenfzehn",
+    "dates": {
+      "type": "range",
+      "start_date": "2026-12-04",
+      "end_date": "2026-12-06"
+    },
+    "image_url": "https://www.berlin.de/binaries/asset/image_assets/10754633/ratio_4_3/1795703488/800x600/",
+    "coordinates": {
+      "lng": 13.57686,
+      "lat": 52.44756
     },
     "coordinates_approximate": false
   }

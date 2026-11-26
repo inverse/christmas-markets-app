@@ -204,7 +204,7 @@
     "url": "https://www.berlin.de/en/christmas-markets/7093285-3230598-advent-market-karlaugustplatz.en.html",
     "opening_times": "11 am to 6 pm",
     "admission": "Free",
-    "description": "Those in search of unique Christmas presents will find what they are looking for on the first three Sundays of Advent at the arts and crafts market on Karl-August-Platz."
+    "description": "Anyone still looking for Christmas presents will find what they’re after at the arts and crafts market on Karl-August-Platz."
   },
   "advent-market-on-kollwitzplatz": {
     "name": "Advent Market on Kollwitzplatz",
@@ -337,8 +337,8 @@
     "address": "Eichenstraße 4A, 12435, Berlin",
     "dates_raw": "November 28 and 29, 2026",
     "url": "https://www.berlin.de/en/christmas-markets/2208886-3230598-holy-shit-shopping.en.html",
-    "opening_times": null,
-    "admission": null,
+    "opening_times": "Saturday and Sunday from 11 a.m. to 6 p.m.",
+    "admission": "€8, free for children 14 and under",
     "description": "During Advent, the Haus der Visionäre in Friedrichshain is transformed into a design market offering creative gift ideas."
   },
   "lgbtiqa-winterdays-and-christmas-avenue": {
@@ -1150,5 +1150,23 @@
     "opening_times": "2 p.m. to 9 p.m.",
     "admission": "Free",
     "description": "This year, for the first time, an atmospheric Christmas market is taking place at Markusplatz in Steglitz. There is a particular focus on sustainability and waste reduction."
+  },
+  "weihnachtsmarkt-in-den-heckmann-hoefen": {
+    "name": "Weihnachtsmarkt in den Heckmann-Höfen",
+    "address": "Oranienburger Straße 32, 10117, Berlin",
+    "dates_raw": "28. November bis 23. Dezember 2026",
+    "url": "https://www.berlin.de/weihnachtsmarkt/10782143-3496862-weihnachtsmarkt-in-den-heckmannhoefen.html",
+    "opening_times": "13 bis 22 Uhr",
+    "admission": "Kostenlos",
+    "description": "Im historischen Innenhof der Heckmann-Höfe findet ein stimmungsvoller Weihnachtsmarkt statt."
+  },
+  "weihnachtsmarkt-in-der-freiheit-fuenfzehn": {
+    "name": "Weihnachtsmarkt in der Freiheit Fünfzehn",
+    "address": "Freiheit 15, 12555, Berlin",
+    "dates_raw": "4. bis 6. Dezember 2026",
+    "url": "https://www.berlin.de/weihnachtsmarkt/10782455-3496862-weihnachtsmarkt-in-der-freiheit-fuenfzeh.html",
+    "opening_times": "Freitag von 16 bis 22 Uhr, Samstag von 14 bis 22 Uhr, Sonntag von 14 bis 20 Uhr",
+    "admission": "Kostenlos, Eisstockschießen 10 Euro pro Bahn und Stunde",
+    "description": "Auf dem Gelände der Freiheit Fünfzehn an der Müggelspree findet am zweiten Adventswochenende ein gemütlicher Weihnachtsmarkt statt."
   }
 }

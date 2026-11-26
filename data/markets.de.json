@@ -95,7 +95,7 @@
     "dates_raw": "4. und 5. Dezember 2026",
     "url": "https://www.berlin.de/weihnachtsmarkt/7875792-3496862-christmas-bazaar-federal-foreign-office.html",
     "opening_times": "Freitag von 15 bis 18 Uhr, Samstag von 12 bis 18 Uhr",
-    "admission": null,
+    "admission": "Kostenlos",
     "description": "Der Weihnachtsbasar des Auswärtigen Amts lockt mit Kuriositäten aus aller Welt."
   },
   "christmas-magic-in-buch": {
@@ -337,8 +337,8 @@
     "address": "Eichenstraße 4A, 12435, Berlin",
     "dates_raw": "28. und 29. November 2026",
     "url": "https://www.berlin.de/weihnachtsmarkt/2208886-3496862-holy-shit-shopping.html",
-    "opening_times": null,
-    "admission": null,
+    "opening_times": "Samstag und Sonntag jeweils von 11 bis 18 Uhr",
+    "admission": "8 Euro, frei für Kinder bis 14 Jahre",
     "description": "Im Advent verwandelt sich das Haus der Visionäre in Friedrichshain in einen Designmarkt für kreative Geschenkideen."
   },
   "lgbtiqa-winterdays-and-christmas-avenue": {
