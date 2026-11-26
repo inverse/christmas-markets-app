@@ -498,6 +498,17 @@
               {dict.status[marker.status]}
             </li>
           {/each}
+          {#if __ENABLE_GYG_ATTRACTIONS__}
+            <li
+              class="flex items-center gap-2 text-xs font-medium text-stone-700"
+            >
+              <span
+                class="h-3.5 w-3.5 flex-shrink-0 rounded-full border-2 border-berry bg-white"
+                aria-hidden="true"
+              ></span>
+              {dict.toursHeading}
+            </li>
+          {/if}
         </ul>
       </div>
     {/if}

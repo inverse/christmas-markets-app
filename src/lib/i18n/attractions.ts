@@ -88,6 +88,46 @@ const german: Record<string, AttractionText> = {
     description:
       "Berliner Winterzeit mit dem pferdeverrückten TV-Liebling: ein dreistündiges Familienmusical.",
   },
+  "festive-mitte-street-food-tour": {
+    name: "Festliche Streetfood- & Geschichtstour durch Mitte",
+    description:
+      "Ein winterlicher Essensspaziergang durch das festliche Berlin-Mitte: Currywurst, Döner, Fischbrötchen und Berliner - mit lückenlosen vegetarischen und veganen Optionen.",
+  },
+  "winter-spree-cruise": {
+    name: "Winterliche Spreefahrt",
+    description:
+      "Ein gemütlicher Wintertag auf dem Wasser: eine Bootsfahrt durch das Herz Berlins vorbei am Dom, der Museumsinsel und weiteren Wahrzeichen.",
+  },
+  "christmas-spree-cruise-drag-queen": {
+    name: "Weihnachtliche Spreefahrt mit Dragqueen & Live-Entertainment",
+    description:
+      "Die verrückteste Weihnachtsparty auf dem Wasser: eine winterliche Spreefahrt mit Dragqueen Audrey Naline, Glamour, Glühwein und jeder Menge Lametta.",
+  },
+  "hop-on-hop-off-icebar-combo": {
+    name: "Hop-On-Hop-Off-Bus & Icebar-Kombo",
+    description:
+      "Zwei Tage unbegrenztes Hop-on-Hop-off-Sightseeing durch Berlin - plus Eintritt in die Icebar Berlin für ein frostiges Erlebnis im Arktis-Stil.",
+  },
+  "stars-in-concert-christmas-special": {
+    name: "Stars in Concert: Weihnachts-Special",
+    description:
+      "Das traditionelle Weihnachts-Special von Stars in Concert: orchestrale Filmmusik und Weihnachtsklassiker in festlicher Open-Air-Atmosphäre.",
+  },
+  "harp-concert-citadel-spandau": {
+    name: "Harfenklänge zur Weihnachtszeit in der Zitadelle Spandau",
+    description:
+      "Violine und Harfe im Gotischen Saal der Zitadelle Spandau: ein Weihnachtskonzert in einem der stimmungsvollsten historischen Veranstaltungsorte Berlins.",
+  },
+  "edith-bells-christmas-show": {
+    name: "The Ades Zabel Company: Wenn Ediths Glocken läuten",
+    description:
+      "Berlins geliebte Bezirksbürgermeisterin Edith Schröder präsentiert ihre aufwendig produzierte Weihnachtsshow über den Dächern von Neukölln.",
+  },
+  "ice-skating-potsdamer-platz": {
+    name: "Eislaufen im Center am Potsdamer Platz",
+    description:
+      "Sechzig Minuten Eislaufvergnügen mitten im Herzen Berlins, unter dem zeltartigen Dach des Centers am Potsdamer Platz - für alle Könnensstufen offen.",
+  },
 };
 
 /** Localized name/description for an attraction; falls back to its JSON text. */
