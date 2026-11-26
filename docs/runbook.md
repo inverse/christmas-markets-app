@@ -1,0 +1,68 @@
+# Operations Runbook
+
+Operational details for deploying and maintaining the site. Not needed for
+development - see the README for that.
+
+## Edge Caching
+
+A `_headers` file in the project root sets Cloudflare Pages cache headers for
+the deployed assets:
+
+| Path                            | Cache-Control                         | Notes                                                    |
+| ------------------------------- | ------------------------------------- | -------------------------------------------------------- |
+| `/manifest.json`, `/robots.txt` | `public, max-age=86400`               | 1 day at the edge                                        |
+| `/_app/immutable/*`             | `public, max-age=31536000, immutable` | Filenames are content-hashed; never rename them manually |
+| `/icons/*`                      | `public, max-age=604800`              | 7 days; filenames are NOT hashed                         |
+
+### Updating an icon
+
+Icon filenames are unversioned, so a changed icon may serve stale for up to 7
+days. Either accept the delay, rename the file (and update `static/manifest.json`
+and `app.html` references), or purge the cache early (below).
+
+### Social share image
+
+`static/icons/og-image.png` is the 1200×630 card that Open Graph and X render
+when the app is shared. Its editable source is
+`static/icons/og-image-raw.svg`, which embeds the Playfair Display and Inter
+woff2 files as base64 so it renders identically offline, with no font CDN.
+
+The tags that point at it live in `src/routes/+layout.svelte`. They build the
+absolute URL from the request origin (see `src/routes/+layout.ts`) rather than
+hardcoding a host, so dev tunnels and production emit identical markup. This
+matters: crawlers fetch `og:image` out of band and cannot resolve a relative
+one, so a bare `/icons/og-image.png` yields no card at all.
+
+To restyle the card, edit the raw SVG and re-render it to PNG at 1200×630 -
+either a 1:1 browser screenshot at that viewport, or a headless Chromium
+`page.screenshot` with `clip: { width: 1200, height: 630 }` and
+`deviceScaleFactor: 1`.
+
+X caches a card per URL for roughly seven days, so a restyled image keeps
+serving the stale card. `SHARE_IMAGE` in `src/routes/+layout.svelte` therefore
+carries a `?v=N` suffix: bump it whenever the PNG changes, and X fetches the
+new URL instead of replaying its cache. Re-test with the Facebook Sharing
+Debugger and LinkedIn Post Inspector.
+
+### Purging the edge cache early
+
+Dashboard method:
+
+1. Go to https://dash.cloudflare.com -> **inberlin.fyi**
+2. **Caching** -> **Configuration** -> **Purge Cache**
+3. Choose **Custom Purge** -> **By URL**, list the full URLs, e.g.
+   `https://inberlin.fyi/icons/icon-512.png`
+4. Purge. Takes effect within ~30 seconds.
+
+API equivalent (needs a zone API token):
+
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/zones/f53e898ab37f83e72970929246100047/purge_cache" \
+  -H "Authorization: Bearer $CF_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{"files":["https://inberlin.fyi/icons/icon-512.png","https://inberlin.fyi/manifest.json"]}'
+```
+
+Note: purging clears Cloudflare's edge copy. Browser caches hold their own copy,
+so users with an already-cached icon still see the old one until its `max-age`
+runs out - renaming the file is the only way to bypass that.
